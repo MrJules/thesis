@@ -1,0 +1,225 @@
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% PACKAGES %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+%%% Mandatory %%%
+%%%%%%%%%%%%%%%%%
+\documentclass[11pt,twoside,a4paper]{report}
+\usepackage[DETI,newLogo]{uaThesis}
+
+%%%%%%%%%%%%%%%%
+%%% Optional %%%
+%%%%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}% used by \sigla
+\usepackage{lipsum}
+\usepackage[backend=biber, refsegment=chapter, sorting=none, url=false, doi=false]{biblatex}
+
+\bibliography{thesisBib.bib}  %% bibliografia
+
+\usepackage{csquotes}
+\usepackage[acronym,nonumberlist]{glossaries}
+\newglossary[tlg]{nomenclature}{tld}{tdn}{Nomenclature}
+\usepackage{xcolor}
+\setlength {\marginparwidth }{2cm}
+\usepackage{todonotes}
+\usepackage[bottom]{footmisc}
+
+\usepackage{amsmath}
+\usepackage{xfrac}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usetikzlibrary{fadings,shapes,arrows,chains,backgrounds,calc,arrows,arrows.meta,shadows,shapes.geometric, fit, positioning}
+\usepackage{caption,subcaption}
+\usepackage{epstopdf}
+\usepackage{mathtools, nccmath}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{url}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{nomencl}
+\makenomenclature   
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Tikz library and set
+\include{tikzlib}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Header makeup %%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[Sonny]{fncychap}
+%\ChNameVar{\Huge\bfseries}
+%\ChNumVar{\Huge\bfseries}
+%\ChTitleVar{\LARGE\bfseries}
+\usepackage{color}
+\definecolor{gray75}{gray}{0.75}
+\usepackage{titlesec}
+
+\titlespacing*{\chapter}{0pt}{-10pt}{60pt}
+
+\titleformat{\chapter}[display] % shape
+{\bfseries\LARGE} % format
+{\MakeUppercase{\chaptertitlename} \Huge\thechapter} % label
+{0.5ex} % sep
+{\titlerule\vspace{1ex}\filleft}
+[\vspace{1ex}\titlerule]
+
+\newcommand{\dgrayvline}{\raisebox{-0.5ex}{\tikz\filldraw[darkgray,x=2pt,y=2pt] (0,0) -- ++(0.5,0) -- ++(0,1em) -- ++(-0.5,0) -- cycle;}}
+
+\titleformat{\section}[hang]
+{\Large\bfseries}
+{\thesection\hspace{25pt}\dgrayvline\hspace{10pt}}
+{0pt}
+{\Large\bfseries}
+
+\newcommand{\grayvline}{\raisebox{-0.5ex}{\tikz\filldraw[gray,x=2pt,y=2pt] (0,0) -- ++(0.5,0) -- ++(0,1em) -- ++(-0.5,0) -- cycle;}}
+
+\titleformat{\subsection}[hang]
+{\large\bfseries}
+{\thesubsection\hspace{18pt}\grayvline\hspace{10pt}}
+{0pt}
+{\large\bfseries}
+
+\newcommand{\lgrayvline}{\raisebox{-0.5ex}{\tikz\filldraw[lightgray,x=2pt,y=2pt] (0,0) -- ++(0.5,0) -- ++(0,1em) -- ++(-0.5,0) -- cycle;}}
+
+\titleformat{\subsubsection}[hang]
+{\normalsize\bfseries}
+{\thesubsubsection\hspace{10pt}\lgrayvline\hspace{10pt}}
+{0pt}
+{\normalsize\bfseries}
+
+\newcommand{\textsep}{\noindent\makebox[\linewidth]{\resizebox{0.3333\linewidth}{1pt}{$\bullet$}}\bigskip}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% MACROS %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+% TOS
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+% optional (comment to used default)
+%   horizontal line to separate floats (figures and tables) from text
+%\def\topfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
+%\def\dblfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
+%\def\botfigrule{\kern -7.8pt \hrule width\textwidth\kern 8.2pt\relax}
+
+% custom macros (could also be defined using \newcommand)
+\def\I{\mathtt{i}}         % one possible way to represent $\sqrt{-1}$
+\def\Exp#1{e^{2\pi\I #1}}  % argument inside braces, i.e., "{}"
+\def\EXP#1.{e^{2\pi\I #1}} % argument finishes when a full stop is encountered, i.e., "."
+\def\sigla{\LaTeX\xspace}  % use as "blabla \sigla blabla (no need to do "blabla \sigla\ blabla"
+
+\def\AddVMargin#1{\setbox0=\hbox{#1}%
+                  \dimen0=\ht0\advance\dimen0 by 2pt\ht0=\dimen0%
+                  \dimen0=\dp0\advance\dimen0 by 2pt\dp0=\dimen0%
+                  \box0}   % add extra vertical space above and below the argument (#1)
+\def\Header#1#2{\setbox1=\hbox{#1}\setbox2=\hbox{#2}%
+           \ifdim\wd1>\wd2\dimen0=\wd1\else\dimen0=\wd2\fi%
+           \AddVMargin{\parbox{\dimen0}{\centering #1\\#2}}} % put #1 on top #2
+
+%%%%%%%%%%%%
+% Mine
+\def\ThesisYear{\the\year}
+\def\myName{Júlio Miguel Braz da Costa Silva}
+\def\TituloTese{Recuperação e Identificação de Momentos em Imagens/Vídeos}
+\def\ThesisTitle{Recuperation and Identification of Moments in Images/Videos}
+
+\setlength\bibitemsep{2.5\itemsep}        % Aumenta espaçamento entre entradas da bibliografia
+
+\emergencystretch=20em                     % Corrigir overfull hbox
+
+\setlength{\parskip}{0ex}
+
+\newcommand{\figwidth}{0.6\textwidth}
+
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{12pt}
+
+\DeclarePairedDelimiter{\nint}\lfloor\rceil
+\DeclarePairedDelimiter{\nfloor}\lfloor\rfloor
+\DeclarePairedDelimiter{\nceil}\lceil\rceil
+
+\interfootnotelinepenalty=10000         % Change priority for footnotes
+
+\newcommand{\todor}[1]{\todo[inline, color=red!40]{#1}}
+\newcommand{\pathcos}[6]{\path (#1.east) to node [pathcos, color=#5, #6] {$\sfrac{#3\pi}{#4}$} (#2.west)}
+
+%%%%%%%%%%%%%%%%%%%%
+% Carregar Glossário
+\makenoidxglossaries
+\loadglsentries{glossary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% BEGIN DOCUMENT %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Capa, contracapa, Júri, agradecimentos, palavras chave, resumo
+\input{Sections/0Cover/InitPages}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tables of contents, of figures, ...
+\pagenumbering{roman}
+\tableofcontents
+
+\cleardoublepage
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename}
+
+\cleardoublepage
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
+
+\cleardoublepage
+\printnoidxglossary[type=\acronymtype]
+\addcontentsline{toc}{chapter}{\acronymname}
+
+\cleardoublepage
+\printnoidxglossary
+\addcontentsline{toc}{chapter}{\glossaryname}
+
+
+%%%%%%%%%% Descomentar para adicionar nomenclatura
+\cleardoublepage
+\printnoidxglossary[type=nomenclature,title=Nomenclature]
+\addcontentsline{toc}{chapter}{Nomenclature}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+% Introduction
+\include{Sections/1Introduction/introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Sections/2StateOfTheArt/computerVision}
+
+\include{Sections/3StateOfTheArt/naturalLanguage}
+
+\include{Sections/4InitialWork/initialWork}
+
+\include{Sections/5ImageClef/imageclef}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografia
+\cleardoublepage
+\nocite{*}
+\printbibliography
+\cleardoublepage
+\end{document}

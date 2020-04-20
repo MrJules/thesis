@@ -1,0 +1,15 @@
+{
+    "spellright.language": [],
+    "spellright.documentTypes": [
+        "markdown",
+        "plaintext"
+    ],
+    "python.pythonPath": "/bin/python3",
+    "cSpell.ignoreWords": [
+        "vectorizing"
+    ],
+    "cSpell.words": [
+        "dataset",
+        "datasets"
+    ]
+}

@@ -1,0 +1,33 @@
+\usepackage{tikz}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning} 
+\usetikzlibrary{matrix}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+    %Define style for boxes
+    process/.style=  {
+                     rectangle,
+                     draw=black, very thick,
+                     text width=6.5em,
+                     minimum height=2em,
+                     text centered
+                     },
+    secProc/.style=  {
+                     rectangle,           
+                     rounded edge,
+                     draw=black, very thick,
+                     minimum height=2em,
+                     text centered
+                     },
+    % Define arrow style
+    pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,}
+}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
