@@ -1,8 +1,12 @@
 ﻿
-pwd
 cd image_processing
-cd code
 python3 detection.py
+
+cd pre_process_json
+python3 copy_json.py
+cd ..
+cd places365
+python3 run_placesCNN_unified.py
 cd ..
 cd ..
 cd text_processing
