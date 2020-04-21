@@ -28,7 +28,7 @@ Em principio deve estar tudo operacional depois de concluídos estes passos.
 
 
 ## **PARA CORRER O PROGRAMA**
-Ir ao folder /V1_0/ , abrir o terminal nesse ficheiro e fazer : ./script.sh
+Ir ao folder **/V1_0/** , abrir o terminal nesse ficheiro e fazer : ./script.sh
 
 
 ## **RESULTADOS** 
