@@ -158,10 +158,21 @@ def findDay(date):
 if __name__ == '__main__' :
     print("")
     print("-----------------------------------------------CONFIDENCE CALCULATION SCRIPT----------------------------------------- \n")
-    print("LOADING NLP MODEL : ")
+    print("LOADING NLP MODEL ... ")
     nlp = spacy.load("en_core_web_md")     
     dir_path = os.path.dirname(os.path.realpath(__file__))
     
+
+
+    previous_file =os.listdir( dir_path + "/results_confidence")
+    previous_file_path = dir_path + "/results_confidence"
+
+    for each_file in previous_file:
+        if each_file.endswith(".txt"):
+            os.remove(previous_file_path + "/" + each_file)
+
+
+
     topic_count = 1 
 
     while topic_count <= 10:

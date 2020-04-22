@@ -13,19 +13,27 @@ if __name__ == '__main__' :
     print("-----------------------------------------------IMAGE PROCESSING SCRIPT----------------------------------------- \n")
     dir_path = os.path.dirname(os.path.realpath(__file__))
    
-    images_folder = os.listdir(dir_path + "/images")
-    images_folder_path = dir_path + "/images"
+    image_folder = os.listdir(dir_path + "/images")
+    folders_paths = []
+
+
+    for each_folder in image_folder : 
+        if each_folder != ".gitkeep" :
+            folders_paths.append(dir_path + "/images/" + each_folder)
+
     images_paths = []
     images_names = []
-
     image_info = {}
 
-    for each_image in images_folder:
-        if(each_image.endswith(".jpg") or each_image.endswith(".png")):
-            images_paths.append( images_folder_path + "/" + each_image) 
-            images_names.append(each_image)
-            image_info.update({each_image : {}})
-            
+
+    for each_folder_path in folders_paths:
+        folder = os.listdir(each_folder_path)
+        for each_image in folder :
+            if(each_image.endswith(".jpg") or each_image.endswith(".png") or each_image.endswith(".JPG") or each_image.endswith(".PNG")):
+                images_paths.append(each_folder_path + "/" + each_image) 
+                images_names.append(each_image)
+                image_info.update({each_image : {}})
+
 
 
     json_path = dir_path + "/json_result/image_data.json"
@@ -42,12 +50,14 @@ if __name__ == '__main__' :
     
     output_path = dir_path + "/results/" 
     print("")
-    print("PROCESSING IMAGES")
+    print("PROCESSING IMAGES...")
+    print("")
     for path in tqdm(images_paths) :
         for name in images_names:
             if name in path:
 
                 if name[0] == "b" : local_time = name[17:21] + "-" + name[21:23] + "-" + name[23:25] + "_" + name[26:28] + ":" + name[28:30]
+                if name[0] == "B" : local_time = name[17:21] + "-" + name[21:23] + "-" + name[23:25] + "_" + name[26:28] + ":" + name[28:30]
                 if str(name[0]) == "2" :  local_time = name[0:4] + "-" + name[4:6] + "-" + name[6:8] + "_" + name[9:11] + ":" + name[11:13]
                 image_info[name]["local_time"] = local_time
                 image_info[name]["concepts"] = {}

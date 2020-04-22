@@ -27,7 +27,7 @@ if __name__ == '__main__' :
                 image_data[image_name]["activity"] = ground_data[ground_image]["activity"]
                 image_data[image_name]["location"] = ground_data[ground_image]["location"]
 
-    #image_path = dir_path + "/../image_processing/json_result/image_data_2.json"
+    #iage_path = dir_path + "/../image_processing/json_result/image_data_2.json"
 
     json.dump(image_data, open(image_path,"w"),indent=5)
                 

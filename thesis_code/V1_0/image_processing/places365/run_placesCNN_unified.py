@@ -140,23 +140,30 @@ if __name__ == '__main__' :
 
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
+    image_folder = os.listdir(dir_path + "/../images")
+    folders_paths = []
 
-    images_folder = os.listdir(dir_path + "/../images")
-    images_folder_path = dir_path + "/../images"
+
+    for each_folder in image_folder : 
+        if each_folder != ".gitkeep" :
+            folders_paths.append(dir_path + "/../images/" + each_folder)
 
     images_paths = []
+
+    for each_folder_path in folders_paths:
+        folder = os.listdir(each_folder_path)
+        for each_image in folder :
+            if(each_image.endswith(".jpg") or each_image.endswith(".png") or each_image.endswith(".JPG") or each_image.endswith(".PNG")):
+                images_paths.append(each_folder_path + "/" + each_image) 
+            
+
     image_json_path = dir_path + "/../json_result/image_data.json"
     image_data = json.loads(open(image_json_path).read())
-
-
-    for each_image in images_folder:
-        if(each_image.endswith(".jpg") or each_image.endswith(".png")):
-            images_paths.append( images_folder_path + "/" + each_image) 
 
     for image_in_folder in tqdm(images_paths):
         img = Image.open(image_in_folder)
         input_img = V(tf(img).unsqueeze(0))
-        image_name = image_in_folder[image_in_folder.index("images") + 7 : len(image_in_folder)]
+        image_name = image_in_folder[image_in_folder.index("images") + 18 : len(image_in_folder)]
 
 
 
@@ -193,4 +200,4 @@ if __name__ == '__main__' :
         for i in range(-1,-10,-1): 
             image_data[image_name]["attributes"].append(labels_attribute[idx_a[i]])
 
-        json.dump(image_data, open(image_json_path,"w"),indent=5)
+    json.dump(image_data, open(image_json_path,"w"),indent=5)

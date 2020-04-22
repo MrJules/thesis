@@ -8,7 +8,7 @@ if __name__ == '__main__' :
     # Load English tokenizer, tagger, parser, NER and word vectors
     print("")
     print("-----------------------------------------------TEXT PROCESSING SCRIPT----------------------------------------- \n")
-    print("LOADING NLP MODEL : \n")
+    print("LOADING NLP MODEL ... \n")
     nlp = spacy.load("en_core_web_md")
     # nlp = spacy.load("en_core_web_md") # medium model
 

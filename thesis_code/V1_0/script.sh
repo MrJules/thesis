@@ -1,7 +1,6 @@
 ﻿
 cd image_processing
 python3 detection.py
-
 cd pre_process_json
 python3 copy_json.py
 cd ..
