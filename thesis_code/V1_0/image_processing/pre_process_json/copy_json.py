@@ -14,7 +14,7 @@ if __name__ == '__main__' :
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    ground_path = dir_path + "/ground_data/images.json"
+    ground_path = dir_path + "/ground_data/data.json"
     ground_data = json.loads(open(ground_path).read())
 
     image_path = dir_path + "/../json_result/image_data.json"
