@@ -10,13 +10,15 @@ pip3 install keras
 
 pip3 install imageai --upgrade
 
-pip3 install jsonlib
-
 pip3 install tqdm
 
-pip3 install collections
+pip3 install torch
 
-python3 -m spacy download en_core_web_md
+## SPACY installation
+
+Seguir as instruções em : https://spacy.io/usage
+
+Download do modelo médio : python3 -m spacy download en_core_web_md
 
 ## Downloads necessários 
 

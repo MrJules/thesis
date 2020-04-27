@@ -115,6 +115,23 @@ def load_model():
         model._modules.get(name).register_forward_hook(hook_feature)
     return model
 
+def getIndexPositions(listOfElements, element):
+    ''' Returns the indexes of all occurrences of give element in
+    the list- listOfElements '''
+    indexPosList = []
+    indexPos = 0
+    while True:
+        try:
+            # Search for item in list from indexPos to the end of list
+            indexPos = listOfElements.index(element, indexPos)
+            # Add the index position in list
+            indexPosList.append(indexPos)
+            indexPos += 1
+        except ValueError as e:
+            break
+ 
+    return indexPosList
+
 if __name__ == '__main__' :
     print("")
     print ( "------------------------------------------PlACES365 SCRIPT ----------------------------------------- \n") 
@@ -153,51 +170,60 @@ if __name__ == '__main__' :
     for each_folder_path in folders_paths:
         folder = os.listdir(each_folder_path)
         for each_image in folder :
-            if(each_image.endswith(".jpg") or each_image.endswith(".png") or each_image.endswith(".JPG") or each_image.endswith(".PNG")):
-                images_paths.append(each_folder_path + "/" + each_image) 
-            
+            if each_image.startswith("2") or each_image.startswith("b") or each_image.startswith("B"):
+                if(each_image.endswith(".jpg") or each_image.endswith(".png") or each_image.endswith(".JPG") or each_image.endswith(".PNG")):
+                    images_paths.append(each_folder_path + "/" + each_image) 
+                
 
     image_json_path = dir_path + "/../json_result/image_data.json"
     image_data = json.loads(open(image_json_path).read())
 
     for image_in_folder in tqdm(images_paths):
-        img = Image.open(image_in_folder)
-        input_img = V(tf(img).unsqueeze(0))
-        image_name = image_in_folder[image_in_folder.index("images") + 18 : len(image_in_folder)]
-
-
-
-        # forward pass
-        logit = model.forward(input_img)
-        h_x = F.softmax(logit, 1).data.squeeze()
-        probs, idx = h_x.sort(0, True)
-        probs = probs.numpy()
-        idx = idx.numpy()
-
-        #print('RESULT ON ' + img_url)
-                
-        # output the IO prediction
-        io_image = np.mean(labels_IO[idx[:10]]) # vote for the indoor or outdoor
         
-        '''
-        if io_image < 0.5:
-            print('--TYPE OF ENVIRONMENT: indoor')
-        else:
-            print('--TYPE OF ENVIRONMENT: outdoor')
-        '''
-        image_data[image_name]["io_score"] = io_image
+        index_barra = getIndexPositions(image_in_folder, '/')
+        image_name = image_in_folder[index_barra[len(index_barra)-1] + 1: len(image_in_folder)]
+        except_flag = False
 
-        # output the prediction of scene category
-       
-        for i in range(0, 5):
-            image_data[image_name]["categories"].update({classes[idx[i]] : float(probs[i])})
+        try :  img = Image.open(image_in_folder)
+        except : except_flag = True
+
+        if except_flag == True : print("Exception ocurred, skipping image name : " , image_name)
+
+        if except_flag == False:
+            input_img = V(tf(img).unsqueeze(0))
+            
            
+            # forward pass
+            logit = model.forward(input_img)
+            h_x = F.softmax(logit, 1).data.squeeze()
+            probs, idx = h_x.sort(0, True)
+            probs = probs.numpy()
+            idx = idx.numpy()
 
-        # output the scene attributes
-        responses_attribute = W_attribute.dot(features_blobs[1])
-        idx_a = np.argsort(responses_attribute)
-       
-        for i in range(-1,-10,-1): 
-            image_data[image_name]["attributes"].append(labels_attribute[idx_a[i]])
+            #print('RESULT ON ' + img_url)
+                    
+            # output the IO prediction
+            io_image = np.mean(labels_IO[idx[:10]]) # vote for the indoor or outdoor
+            
+            '''
+            if io_image < 0.5:
+                print('--TYPE OF ENVIRONMENT: indoor')
+            else:
+                print('--TYPE OF ENVIRONMENT: outdoor')
+            '''
+            image_data[image_name]["io_score"] = io_image
+
+            # output the prediction of scene category
+        
+            for i in range(0, 5):
+                image_data[image_name]["categories"].update({classes[idx[i]] : float(probs[i])})
+            
+
+            # output the scene attributes
+            responses_attribute = W_attribute.dot(features_blobs[1])
+            idx_a = np.argsort(responses_attribute)
+        
+            for i in range(-1,-10,-1): 
+                image_data[image_name]["attributes"].append(labels_attribute[idx_a[i]])
 
     json.dump(image_data, open(image_json_path,"w"),indent=5)
