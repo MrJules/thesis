@@ -154,10 +154,10 @@ if __name__ == '__main__' :
     #img_url = 'http://places.csail.mit.edu/demo/6.jpg'
     #os.system('wget %s -q -O test.jpg' % img_url)
 
-
-
     dir_path = os.path.dirname(os.path.realpath(__file__))
+    
     image_folder = os.listdir(dir_path + "/../images")
+    
     folders_paths = []
 
 
@@ -165,65 +165,77 @@ if __name__ == '__main__' :
         if each_folder != ".gitkeep" :
             folders_paths.append(dir_path + "/../images/" + each_folder)
 
-    images_paths = []
+
 
     for each_folder_path in folders_paths:
+
+        images_paths = []
+        images_names = []
+        image_info = {}
+
+        index_bar = getIndexPositions(each_folder_path, '/')
+        folder_name = each_folder_path[index_bar[len(index_bar)-1] + 1 : len(each_folder_path)]
+
+        json_path = dir_path + "/.." + "/json_result/" + folder_name + ".json"
+        image_data = json.loads(open(json_path).read())
+
         folder = os.listdir(each_folder_path)
+
+
         for each_image in folder :
             if each_image.startswith("2") or each_image.startswith("b") or each_image.startswith("B"):
                 if(each_image.endswith(".jpg") or each_image.endswith(".png") or each_image.endswith(".JPG") or each_image.endswith(".PNG")):
                     images_paths.append(each_folder_path + "/" + each_image) 
+                    images_names.append(each_image)
+
+        print("Processing folder : " + str(folders_paths.index(each_folder_path) + 1) + "/" + str(len(folders_paths)))
+        
+        for image_in_folder in tqdm(images_paths):
+            
+            index_bar = getIndexPositions(image_in_folder, '/')
+            image_name = image_in_folder[index_bar[len(index_bar)-1] + 1: len(image_in_folder)]
+            except_flag = False
+
+            try :  img = Image.open(image_in_folder)
+            except : except_flag = True
+
+            if except_flag == True : print("Exception ocurred, skipping image name : " , image_name)
+
+            if except_flag == False:
+                input_img = V(tf(img).unsqueeze(0))
+                
+            
+                # forward pass
+                logit = model.forward(input_img)
+                h_x = F.softmax(logit, 1).data.squeeze()
+                probs, idx = h_x.sort(0, True)
+                probs = probs.numpy()
+                idx = idx.numpy()
+
+                #print('RESULT ON ' + img_url)
+                        
+                # output the IO prediction
+                io_image = np.mean(labels_IO[idx[:10]]) # vote for the indoor or outdoor
+                
+                '''
+                if io_image < 0.5:
+                    print('--TYPE OF ENVIRONMENT: indoor')
+                else:
+                    print('--TYPE OF ENVIRONMENT: outdoor')
+                '''
+                image_data[image_name]["io_score"] = io_image
+
+                # output the prediction of scene category
+            
+                for i in range(0, 5):
+                    image_data[image_name]["categories"].update({classes[idx[i]] : float(probs[i])})
                 
 
-    image_json_path = dir_path + "/../json_result/image_data.json"
-    image_data = json.loads(open(image_json_path).read())
-
-    for image_in_folder in tqdm(images_paths):
-        
-        index_barra = getIndexPositions(image_in_folder, '/')
-        image_name = image_in_folder[index_barra[len(index_barra)-1] + 1: len(image_in_folder)]
-        except_flag = False
-
-        try :  img = Image.open(image_in_folder)
-        except : except_flag = True
-
-        if except_flag == True : print("Exception ocurred, skipping image name : " , image_name)
-
-        if except_flag == False:
-            input_img = V(tf(img).unsqueeze(0))
+                # output the scene attributes
+                responses_attribute = W_attribute.dot(features_blobs[1])
+                idx_a = np.argsort(responses_attribute)
             
-           
-            # forward pass
-            logit = model.forward(input_img)
-            h_x = F.softmax(logit, 1).data.squeeze()
-            probs, idx = h_x.sort(0, True)
-            probs = probs.numpy()
-            idx = idx.numpy()
+                for i in range(-1,-10,-1): 
+                    image_data[image_name]["attributes"].append(labels_attribute[idx_a[i]])
 
-            #print('RESULT ON ' + img_url)
-                    
-            # output the IO prediction
-            io_image = np.mean(labels_IO[idx[:10]]) # vote for the indoor or outdoor
-            
-            '''
-            if io_image < 0.5:
-                print('--TYPE OF ENVIRONMENT: indoor')
-            else:
-                print('--TYPE OF ENVIRONMENT: outdoor')
-            '''
-            image_data[image_name]["io_score"] = io_image
-
-            # output the prediction of scene category
-        
-            for i in range(0, 5):
-                image_data[image_name]["categories"].update({classes[idx[i]] : float(probs[i])})
-            
-
-            # output the scene attributes
-            responses_attribute = W_attribute.dot(features_blobs[1])
-            idx_a = np.argsort(responses_attribute)
-        
-            for i in range(-1,-10,-1): 
-                image_data[image_name]["attributes"].append(labels_attribute[idx_a[i]])
-
-    json.dump(image_data, open(image_json_path,"w"),indent=5)
+                json.dump(image_data, open(json_path,"w"),indent=5)
