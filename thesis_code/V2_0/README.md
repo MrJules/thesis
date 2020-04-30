@@ -30,7 +30,7 @@ No seguinte repo : https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/
 
 O ficheiro **yolo.h5** deve ser colocado no folder : **/V2_0/image_processing/neural_network/**
 
-Todos os folders de imagens (2015-03-05 / 2016-04-08 / etc...) devem ser colocados no seguinte folder : **/V1_0/image_processing/images**
+Todos os folders de imagens (2015-03-05 / 2016-04-08 / etc...) devem ser colocados no seguinte folder : **/V2_0/image_processing/images**
 
 O ficheiro **data.json** (aquele ficheiro de 10.000.000 fornecido pelo imageclef) deve ser colocado no folder **/V2_0/image_processing/json/ground_data/** (este ficheiro serve somente para obter a "location" e "activity" das imagens processadas)
 

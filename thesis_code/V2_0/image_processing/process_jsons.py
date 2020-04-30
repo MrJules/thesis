@@ -27,7 +27,7 @@ def getIndexPositions(listOfElements, element):
 if __name__ == '__main__' :
 
     print("")
-    print("------------------------------------------JSON ACTIVITY AND LOCATION COPY SCRIPT ----------------------------------------- \n")
+    print("------------------------------------------JSON PROCESSING SCRIPT ----------------------------------------- \n")
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -37,11 +37,11 @@ if __name__ == '__main__' :
 
     json_templates_path = dir_path + "/json/json_template/"
     json_templates_folder = os.listdir(json_templates_path)
-    
+    if ".gitkeep" in json_templates_folder : del json_templates_folder[json_templates_folder.index(".gitkeep")]
     
     for each_json in json_templates_folder:
         print("")
-        print("Copying GT location and activity -> json: " + str(json_templates_folder.index(each_json)+1) + "/" + str(len(json_templates_folder)))
+        print("Copying GT location and activity to template -> json: " + str(json_templates_folder.index(each_json)+1) + "/" + str(len(json_templates_folder)))
 
         if each_json.endswith(".json"):
             json_path_result = dir_path + "/json/json_result/" + each_json
@@ -61,11 +61,12 @@ if __name__ == '__main__' :
 
     json_detect_path = dir_path + "/json/json_detect/"
     json_detect_folder = os.listdir(json_detect_path)
+    if ".gitkeep" in json_detect_folder : del json_detect_folder[json_detect_folder.index(".gitkeep")]
 
     for each_json in json_detect_folder:
         if each_json.endswith(".json"):
             print("")
-            print("Copying detections  -> json: " + str(json_templates_folder.index(each_json)+1) + "/" + str(len(json_templates_folder)))
+            print("Copying detections json to template -> json: " + str(json_templates_folder.index(each_json)+1) + "/" + str(len(json_templates_folder)))
             json_path_result = dir_path + "/json/json_result/" + each_json 
             each_json_path = json_detect_path + "/" + each_json
 
@@ -84,11 +85,12 @@ if __name__ == '__main__' :
 
     json_places_path = dir_path + "/json/json_places/"
     json_places_folder = os.listdir(json_detect_path)
+    if ".gitkeep" in json_places_folder : del json_places_folder[json_places_folder.index(".gitkeep")]
 
     for each_json in json_places_folder:
         if each_json.endswith(".json"):
             print("")
-            print("Copying detections  -> json: " + str(json_templates_folder.index(each_json)+1) + "/" + str(len(json_templates_folder)))
+            print("Copying places json to template  -> json: " + str(json_templates_folder.index(each_json)+1) + "/" + str(len(json_templates_folder)))
             json_path_result = dir_path + "/json/json_result/" + each_json 
             each_json_path = json_places_path + "/" + each_json
 

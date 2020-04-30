@@ -4,12 +4,18 @@ import json
 
 
 if __name__ == '__main__' :
+    print("")
+    print("------------------------------------------JSON TEMPLATE SCRIPT CREATION----------------------------------------- \n")
+
+
     dir_path = os.path.dirname(os.path.realpath(__file__))
     image_folder_path = dir_path + "/images/"
     json_folder_path = dir_path + "/json/json_template/"
-
+    folder_list = os.listdir(image_folder_path)
+    if ".gitkeep" in folder_list : del folder_list[folder_list.index(".gitkeep")]
     for date_folder in os.listdir(image_folder_path):
         if not date_folder.startswith(".") :
+            print("Creating JSON : " + str(folder_list.index(date_folder)) + "/" + str(len(folder_list)))
             json_path = json_folder_path + date_folder + ".json"
             date_folder_path = image_folder_path + "/" + date_folder 
             images_dict = {}
