@@ -277,7 +277,7 @@ if __name__ == '__main__' :
 
                 # >>>>>>>> Procura as datas
 
-                if token.pos_ == "NUM" and token.text.isdigit():
+                if token.pos_ == "NUM" and token.text.isdigit() and len(token.text) == 4 :
                     dates.append(token.text)
                 
                 if token.text in days_week_plural:

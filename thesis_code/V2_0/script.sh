@@ -9,5 +9,5 @@ python3 process_jsons.py
 cd ..
 cd text_processing
 python3 NLP.py
-python3 NLP_find_confidence.py
+python3 find_confidence.py
 python3 f1_score.py

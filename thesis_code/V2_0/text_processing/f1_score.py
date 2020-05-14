@@ -155,9 +155,6 @@ if __name__ == '__main__' :
             os.remove(previous_file_path + "/" + each_file)
     
     
-
-
-    topic_count = 1
     
     top = [5 , 10 , 20 , 30 , 40 , 50]
     topic = [1,2,3,4,5,6,7,8,9,10]

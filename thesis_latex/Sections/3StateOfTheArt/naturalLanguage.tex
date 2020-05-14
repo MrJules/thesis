@@ -39,7 +39,7 @@ Semantics is the study of the meaning of words by taking into account the meanin
 
     \subsection{Word Embeddings}
 
-    \par The dominant approach to solve this problem is the usage of word embeddings, which is a type of word representation that allows words with similar meaning to have a similar representation by mapping a set of words, or phrases in a vocabulary, to vectors of numerical values. 
+    \par The dominant approach to solve this problem is the usage of word embeddings, which is a type of word representation that allows words with similar meaning to have a similar representation by mapping a set of words, or phrases in a vocabulary, to vectors of numerical values. For example, the word “happy” can be represented as a vector of 4 dimensions [0.24, 0.45, 0.11, 0.49] and “sad” has a vector of [0.88, 0.78, 0.45, 0.91]. The reason for this vectors to exist is so that a machine learning algorithm can perform linear algebra operations on numbers (vectors) instead of words. \cite{MuratMustafa}
 
     \par  Word embedding methods learn a real-valued vector representation for a predefined fixed size vocabulary from a corpus  of text. \cite{Brownlee2017}  
    
@@ -51,7 +51,7 @@ Semantics is the study of the meaning of words by taking into account the meanin
     
     \begin{figure}[htb]
         \centering
-        \includegraphics[scale = 0.25]{Sections/3StateOfTheArt/3_images/one_hot_encoding.png}
+        \includegraphics[scale = 0.23]{Sections/3StateOfTheArt/3_images/one_hot_encoding.png}
         \caption{Example of text representation by one-hot vector.}   
     \end{figure}
     
@@ -77,7 +77,7 @@ Semantics is the study of the meaning of words by taking into account the meanin
         \item "This apple is delicious."
     \end{itemize}
 
-    \par In this case, the word "Apple" has two different meanings, being one a company and the other a fruit, however for static word embedding models the word representation for "Apple" would be the same, since they fail to capture the meaning of the word. \cite{Batista2018}
+    \par In this case, the word "Apple" has two different meanings, being one a company and the other a fruit, however for static word embedding models, words only have one single meaning, and therefore  the word representation for "Apple" would be the same for both cases. \cite{Batista2018}
 
    
         \subsubsection{Word2Vec}
@@ -120,6 +120,9 @@ Semantics is the study of the meaning of words by taking into account the meanin
 
         
         \subsubsection{GloVe}
+            \par GloVe stands for Global Vectors for Word Representation and was a new approach created by Pennington et all. (in 2014) \cite{Pennington2014} to generate word embeddings with unsupervised learning. Glove main goals are to create word vectors that capture meaning in the vector space and to take advantage of global count statistics instead of using only local information. 
+            \par The problem with Word2Vec is that it only uses local information into account, and does not consider global context. This means that the semantics learnt for a given word are only affected by the surrounding words. 
+            \par GloVe works by aggregating global word-to-word co-occurrence matrix from a of corpus text. This means that if two words keep appearing together in a corpus of text they either share a linguistic or a semantic similarity. Simply put, similar words will be placed together in the high-dimensional space. Therefore GloVe can be seen like an extension to the Word2Vec model.
 
         \subsubsection{fastText}
     
@@ -143,8 +146,16 @@ Semantics is the study of the meaning of words by taking into account the meanin
 
         \subsection{SpaCy}
         
-        \par SpaCy is a free, open-source library for advanced natural language processing written in Python and Cython published by Explosion AI. It was designed specifically for production use and to help in the building of applications that process and "understand" text data. Some use cases for this specific library are to build information extraction or natural language understanding systems, or to pre-process text for deep learning. \cite{Spacy2017}
+        \par SpaCy is a free, open-source library for advanced natural language processing written in Python and Cython published by Explosion AI. It was designed specifically for production use and to help in the building of applications that process and "understand" large volumes of text data.  Some use cases for this specific library are to build information extraction or natural language understanding systems, or to pre-process text for deep learning. \cite{Spacy2017}
 
+        \par This NLP library was chosen for the development of the text processing phase of the practical work, not only it is simple to use and has a very well written documentation, but manly because SpaCy offers a range of different and useful features such as:
+
+        \begin{itemize}
+            \item \textbf{Tokenization} : The segmentation of text into words, punctuation, etc
+            \item \textbf{Part-of-Speech Tagging} : The assignment of word types to tokens, like verb, noun, etc
+            \item \textbf{Similarity} : The comparison between different words, phrases or text documents and how similar they are.
+            \item \textbf{Lemmatization} : The assignment of base forms of words.
+        \end{itemize}
 
         \subsection{Gensim}
 

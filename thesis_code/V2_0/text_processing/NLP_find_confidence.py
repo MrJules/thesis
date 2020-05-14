@@ -1,4 +1,4 @@
-    ###################################################### IMPORT ######################################################
+###################################################### IMPORT ######################################################
 
 import spacy
 import json
@@ -17,12 +17,10 @@ def find_score (images_data, text_data,image_name, json_image_key,json_text_key)
         max_scores = []
 
         for data in text_data[json_text_key]:
-        
             temp_max_score = 0
-            for concept in images_data[image_name][json_image_key].keys():
-                sim_score = nlp(data).similarity(nlp(concept))
-                
-                temp_score = sim_score * images_data[image_name][json_image_key][concept]["score"]
+            
+            for concept in images_data[image_name][json_image_key].keys():  
+                temp_score =  nlp(data).similarity(nlp(concept)) * images_data[image_name][json_image_key][concept]["score"]
                 if temp_score > temp_max_score:
                     temp_max_score = temp_score
        
@@ -177,17 +175,16 @@ if __name__ == '__main__' :
     print("-----------------------------------------------CONFIDENCE CALCULATION SCRIPT----------------------------------------- \n")
     print("LOADING NLP MODEL ... ")
     nlp = spacy.load("en_core_web_md")     
+    #clear dir results
     dir_path = os.path.dirname(os.path.realpath(__file__))
     
-
-
     previous_file =os.listdir( dir_path + "/results_confidence")
     previous_file_path = dir_path + "/results_confidence"
 
     for each_file in previous_file:
         if each_file.endswith(".txt"):
             os.remove(previous_file_path + "/" + each_file)
-
+    #
 
     json_folder_path = dir_path + "/../image_processing/json/json_result"
     json_folder = os.listdir(json_folder_path)
@@ -221,7 +218,6 @@ if __name__ == '__main__' :
                     category_score = 0
                     category_score_array = []
                     temp_category_score = 0
-
                     score_concepts = 0
                     score_location = 0
                     score_activities = 0
@@ -229,7 +225,7 @@ if __name__ == '__main__' :
                     score_indoor_outdoor = 0
                     total_positive_score = 0
                     total_score = 0
-                    
+
                     empty = 0
 
                     concept_flag = True
@@ -354,22 +350,19 @@ if __name__ == '__main__' :
                                 score_date = 1 / (5 - empty) * find_score(images_data, text_data, image_name, "local_time" , "dates") 
                         
                         if indoor_outdoor_flag == True:
-                            if images_data[image_name]["categories"] == "NULL":
-                                score_indoor_outdoor = 0
-                            else:
-                                score_indoor_outdoor = 1 / (5 - empty) * find_score(images_data, text_data, image_name, "categories" , "inside") 
+                            print(":..................s")
 
                         total_positive_score = (score_concepts + score_location + score_activities + score_date + score_indoor_outdoor)/div
 
                     total_score = total_positive_score - total_negative_score
 
-
+                    
                     txt_path = dir_path + "/results_confidence/results_topic_" + text_data["topic"] + ".txt"
                     f = open(txt_path,"a+")
                     line = text_data["topic"] + " , " + str(image_name) + " , " + str(total_score) + "\n"
                     f.write(line)
                     f.close()       
-
+                    
        
         topic_count = topic_count + 1
 

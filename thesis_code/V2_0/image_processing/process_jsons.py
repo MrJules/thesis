@@ -1,10 +1,10 @@
-###################################################### IMPORT ######################################################
+####################################################### IMPORT ######################################################
 
 import json
 import os
 from tqdm import tqdm
 
-####################################################### FUNCTIONS #################################################
+###################################################### FUNCTIONS #################################################
 def getIndexPositions(listOfElements, element):
     ''' Returns the indexes of all occurrences of give element in
     the list- listOfElements '''
@@ -22,7 +22,7 @@ def getIndexPositions(listOfElements, element):
  
     return indexPosList
 
-####################################################### MAIN  ######################################################
+###################################################### MAIN ######################################################
 
 if __name__ == '__main__' :
 
@@ -61,6 +61,7 @@ if __name__ == '__main__' :
 
     json_detect_path = dir_path + "/json/json_detect/"
     json_detect_folder = os.listdir(json_detect_path)
+    
     if ".gitkeep" in json_detect_folder : del json_detect_folder[json_detect_folder.index(".gitkeep")]
 
     for each_json in json_detect_folder:

@@ -191,17 +191,13 @@ if __name__ == '__main__' :
         print("Processing folder : " + str(folders_paths.index(each_folder_path) + 1) + "/" + str(len(folders_paths)))
         
         for image_in_folder in tqdm(images_paths):
-            
+            del features_blobs[:]
             index_bar = getIndexPositions(image_in_folder, '/')
             image_name = image_in_folder[index_bar[len(index_bar)-1] + 1: len(image_in_folder)]
             except_flag = False
 
-            try :  img = Image.open(image_in_folder)
-            except : except_flag = True
-
-            if except_flag == True : print("Exception ocurred, skipping image name : " , image_name)
-
-            if except_flag == False:
+            try :  
+                img = Image.open(image_in_folder)
                 input_img = V(tf(img).unsqueeze(0))
                 
                 image_data.update({image_name : {
@@ -240,5 +236,7 @@ if __name__ == '__main__' :
 
                 sorted_data = {k: v for k, v in sorted(image_data.items(), key=lambda item: item[0])}
 
+            except : print("Exception ocurred, skipping image name : " , image_name)
+            
         with open(json_path, 'w') as jsonfile:
             json.dump(sorted_data, jsonfile, indent=4)

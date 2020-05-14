@@ -7,8 +7,31 @@ if __name__ == '__main__' :
     print("")
     print("------------------------------------------JSON TEMPLATE SCRIPT CREATION----------------------------------------- \n")
 
-
     dir_path = os.path.dirname(os.path.realpath(__file__))
+
+    ############################################################## clean directories
+    previous_file =os.listdir( dir_path + "/json/json_template") 
+    previous_file_path = dir_path + "/json/json_template"
+
+    for each_file in previous_file:
+        if each_file.endswith(".json"):
+            os.remove(previous_file_path + "/" + each_file)
+
+    previous_file =os.listdir( dir_path + "/json/json_detect")
+    previous_file_path = dir_path + "/json/json_detect"
+
+    for each_file in previous_file:
+        if each_file.endswith(".json"):
+            os.remove(previous_file_path + "/" + each_file)
+
+    previous_file =os.listdir( dir_path + "/json/json_places")
+    previous_file_path = dir_path + "/json/json_places"
+
+    for each_file in previous_file:
+        if each_file.endswith(".json"):
+            os.remove(previous_file_path + "/" + each_file)
+    #############################################################
+
     image_folder_path = dir_path + "/images/"
     json_folder_path = dir_path + "/json/json_template/"
     folder_list = os.listdir(image_folder_path)

@@ -30,6 +30,9 @@ if __name__ == '__main__' :
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
+    
+
+
     #### detector
     neural_path = dir_path + "/neural_network/yolo.h5"
     detector = ObjectDetection()
@@ -78,13 +81,10 @@ if __name__ == '__main__' :
         for path in tqdm(images_paths) :
             for name in images_names:
                 if name in path:
-                    except_flag = False
-
                     # use output_image = path to results, and delete in output_type in order to get the output images in the file results
-                    try : returned_image, detections =  detector.detectObjectsFromImage(input_image=path, output_type= "array" , minimum_percentage_probability=30)
-                    except: except_flag = True
+                    try:
+                        returned_image, detections =  detector.detectObjectsFromImage(input_image=path, output_type= "array" , minimum_percentage_probability=30)
 
-                    if except_flag == False:
                         images_dict.update({name : {}})
                         images_dict[name]["concepts"] = {}
 
@@ -93,8 +93,8 @@ if __name__ == '__main__' :
                                 "score" : float(eachObject["percentage_probability"]/100),
                                 "box" : [float(eachObject["box_points"][0]),float(eachObject["box_points"][1]),float(eachObject["box_points"][2]),float(eachObject["box_points"][3])]
                             }
-                    if except_flag == True:
-                        print("Exception ocurred, skipping image :" , name)
+                   
+                    except: print("Exception ocurred, skipping image :" , name)
 
         sorted_data = {k: v for k, v in sorted(images_dict.items(), key=lambda item: item[0])}                
         #json.dump(images_dict, image_data, indent=5)
