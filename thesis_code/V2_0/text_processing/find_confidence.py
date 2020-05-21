@@ -1,6 +1,6 @@
 ###################################################### IMPORT ######################################################
 import spacy
-import json
+import simplejson as json
 import os
 import datetime 
 import calendar
@@ -43,51 +43,56 @@ def findDay(date):
     born = datetime.datetime.strptime(date, '%d %m %Y').weekday() 
     return (calendar.day_name[born])
 
-def find_score_concepts (images_data, text_data,image_name, json_image_key,json_text_key):
+def find_score_concepts (images_data, text_data):
     final_score = 0
-    max_scores = []
+    #max_scores = []
+    temp_max_score = 0
 
-    for data in text_data[json_text_key]:
-        scores = []
-        for concept in images_data[image_name][json_image_key]: #images_data[image_name][json_image_key].keys()
+    for data in text_data:
+        #scores = []
+        for concept in images_data: #images_data[image_name][json_image_key].keys()
                 for i in concept.keys():
-                    temp_sim = nlp(data).similarity(nlp(i))
-                    if temp_sim > 0.35 :
+                    temp_sim = data.similarity(nlp(i))
+                    if temp_sim > 0.3 :
                         #temp_score = temp_sim * images_data[image_name][json_image_key][concept]["score"]
                         temp_score = temp_sim * concept[i]["score"]
-                        scores.append(temp_score)
-        if scores : 
-            max_scores.append(max(scores))
-    if max_scores:
-        final_score = sum(max_scores)/len(max_scores)
-    #final_score = temp_max_score
+                        if temp_score > temp_max_score :
+                            temp_max_score = temp_score
+                        #scores.append(temp_score)
+        #if scores : 
+            #max_scores.append(max(scores))
+    #if max_scores:
+    #    final_score = sum(max_scores)/len(max_scores)
+    final_score = temp_max_score
 
 
     return final_score 
 
-def find_score_location (images_data, text_data,image_name, json_image_key,json_text_key,):
+def find_score_location (images_data, text_data):
     final_score = 0
-    image_info = images_data[image_name][json_image_key]
+    image_info = images_data
 
-    for data in text_data[json_text_key]:
-        sim_score = nlp(data).similarity(nlp(image_info))
+    for data in text_data:
+        sim_score = data.similarity(nlp(image_info))
         if sim_score > final_score:
             final_score = sim_score
     return final_score
 
-def find_score_activity (images_data, text_data,image_name, json_image_key,json_text_key):
+def find_score_activity (images_data, text_data):
     final_score = 0
-    image_info = images_data[image_name][json_image_key]
+
+    image_info = nlp(images_data)
     # procura a maior semelhança entre verbo ou a frase toda
-    for data in text_data[json_text_key]:
-        temp_score = nlp(data).similarity(nlp(image_info))
+    
+    for data in text_data:
+        temp_score = data.similarity(image_info)
 
         if temp_score > final_score:
-                final_score = temp_score
+            final_score = temp_score
 
-        for token in nlp(data):
-            if token.pos_ == "VERB":     
-                temp_score = token.similarity(nlp(image_info))
+        for token in data:
+            #if token.pos_ == "VERB":      removed VERB
+                temp_score = token.similarity(image_info)
                 if temp_score > final_score:
                     final_score = temp_score
 
@@ -97,10 +102,12 @@ def find_score_indoor_outdoor(images_data, text_data, image_name, json_image_key
     final_score = 0
 
     if text_data[json_text_key] == True :
-        final_score = 1 - images_data[image_name][json_image_key]
+        final_score = 1 - float(images_data[image_name][json_image_key])
+        return final_score
 
     if text_data[json_text_key] == False:
-        final_score =  images_data[image_name][json_image_key]
+        final_score =  float(images_data[image_name][json_image_key])
+        return final_score
 
     else :
         return final_score
@@ -141,7 +148,8 @@ if __name__ == '__main__':
     topic_count = 1
     ######################################################################################### TOPIC START - END
 
-    while topic_count <= topic:
+    #while topic_count <= topic:
+    while topic_count <= 10:
         print("")
         print("PROCESSING CONFIDENCE FOR TOPIC : " + str(topic_count) + "/10")
         print("")
@@ -150,8 +158,6 @@ if __name__ == '__main__':
         text_data = json.loads(open(text_data_path).read())
 
         ############################## - Variables json - Begin
-        empty = 1
-        #
         date_flag = True
         concept_flag = True
         location_flag = True
@@ -176,8 +182,7 @@ if __name__ == '__main__':
         negative_weight_location = 0
         negative_change_weight = 0
         #
-        lines = []
-        #
+        
         ################################################################## - check status json - Begin
         ##########   negatives
         if not text_data["negative relevant thing"]:
@@ -214,22 +219,22 @@ if __name__ == '__main__':
         while total_weight > 1e-10:
 
             if concept_flag == True:
-                change_weight = total_weight/600
+                change_weight = total_weight/1000
                 weight_concept += change_weight
                 total_weight -=  change_weight
                 
             if activity_flag == True:
-                change_weight = total_weight / 1500
+                change_weight = total_weight / 1000
                 weight_activity+= change_weight
                 total_weight -= change_weight
 
             if location_flag == True:
-                change_weight = total_weight / 1500
+                change_weight = total_weight / 1000
                 weight_location += change_weight
                 total_weight -= change_weight
 
             if indoor_outdoor_flag == True :
-                change_weight = total_weight / 2000
+                change_weight = total_weight / 1000
                 weight_indoor_outdoor += change_weight
                 total_weight -= change_weight
         
@@ -246,12 +251,12 @@ if __name__ == '__main__':
                     negative_total_weight -=  negative_change_weight
                     
                 if negative_activity_flag == True:
-                    negative_change_weight = negative_total_weight / 2500
+                    negative_change_weight = negative_total_weight / 1000
                     negative_weight_activity += negative_change_weight
                     negative_total_weight -= negative_change_weight
 
                 if negative_location_flag == True:
-                    negative_change_weight = negative_total_weight / 2500
+                    negative_change_weight = negative_total_weight / 1000
                     negative_weight_location += negative_change_weight
                     negative_total_weight -= negative_change_weight
 
@@ -282,7 +287,30 @@ if __name__ == '__main__':
                     if data not in day_data : day_data.append(data)
         ########################################################## - text dates - End 
 
+
+
+
+        ######################################################### faster text processing
+        if concept_flag == True : 
+            nlp_relevant_things = []
+            for data in text_data["relevant things"]:
+                nlp_relevant_things.append(nlp(data))
+
+        if activity_flag == True:
+            nlp_activity = []
+            for data in text_data["activities"]:
+                nlp_activity.append(nlp(data))
+
+        if location_flag == True:
+            nlp_location = []
+            for data in text_data["locations"]:
+                nlp_location.append(nlp(data))
+
+         ######################################################### faster text processing
+
+
         for each_json in json_folder:
+            lines = []
             if each_json.endswith(".json"):
                 print("Processing Json file :" + str(json_folder.index(each_json)+1) + "/" + str(len(json_folder)))
 
@@ -295,8 +323,6 @@ if __name__ == '__main__':
                     total_score = 0
                     total_positive_score = 0
                     total_negative_score = 0
-                    #
-                    score_concepts = 0
                     score_activities = 0
                     score_date = 0
                     score_location = 0
@@ -327,15 +353,15 @@ if __name__ == '__main__':
                         else:
                             score_date = find_score_date(images_data, image_name, "local_time", day_data, year_data)
                             if score_date != 1: skip_flag = True # discard the image
-                    ################################################################################################## -  check date of image - End
+                    ###########################################images_data, text_data, image_name, "location" , "negative locations##################################################### -  check date of image - End
                     
                     ################################################################################################## -  check concepts of image - Begin
                     if concept_flag == True and skip_flag == False:
                         if not images_data[image_name]["concepts"]:
                             skip_flag = True # discard the image
                         if images_data[image_name]["concepts"]:
-                                score_concepts = find_score_concepts(images_data, text_data, image_name, "concepts" , "relevant things") 
-                                if score_concepts < 0.3  : skip_flag = True
+                                score_concepts = find_score_concepts(images_data[image_name]["concepts"], nlp_relevant_things) 
+                                if score_concepts < 0.15  : skip_flag = True
                     ################################################################################################### -  check concepts of image - End
 
                     ################################################################################################### -  check the rest - Begin
@@ -343,29 +369,29 @@ if __name__ == '__main__':
                         
                         if location_flag == True:
                             if images_data[image_name]["location"] != "NULL" :
-                                score_location =  find_score_location(images_data, text_data, image_name, "location" , "locations") 
+                                score_location =  find_score_location(images_data[image_name]["location"], nlp_location) 
                             
                         if activity_flag == True:    
                             if images_data[image_name]["activity"] != "NULL" : 
-                                score_activities = find_score_activity(images_data, text_data, image_name, "activity" , "activities") 
+                                score_activities = find_score_activity(images_data[image_name]["activity"], nlp_activity) 
                         
                         if indoor_outdoor_flag == True:
-                            if images_data[image_name]["io_score"] != "NULL" or images_data[image_name]["io_score"] != {}:
+                            if images_data[image_name]["io_score"] != "NULL" :
                                 score_indoor_outdoor = find_score_indoor_outdoor(images_data, text_data, image_name, "io_score" , "inside")
 
                         total_positive_score = weight_concept * score_concepts + weight_location * score_location + weight_activity * score_activities + weight_indoor_outdoor * score_indoor_outdoor
 
                         if negative_location_flag == True:
                             if images_data[image_name]["location"] != "NULL" :
-                                negative_score_location = find_score_location(images_data, text_data, image_name, "location" , "negative locations") 
+                                negative_score_location = find_score_location(images_data[image_name]["location"], nlp_location)
                         
                         if negative_activity_flag == True:
                             if images_data[image_name]["activity"] != "NULL" : 
-                                negative_score_activities = find_score_activity(images_data, text_data, image_name, "activity" , "negative activities")
+                                negative_score_activities = find_score_activity(images_data[image_name]["activity"], nlp_activity)
 
                         if negative_concept_flag == True : 
                             if images_data[image_name]["concepts"] != []:
-                                negative_score_concepts = find_score_concepts(images_data, text_data, image_name, "concepts" , "negative relevant thing") 
+                                negative_score_concepts = find_score_concepts(images_data[image_name]["concepts"], nlp_relevant_things) 
 
                         total_negative_score = negative_weight_concept * negative_score_concepts + negative_weight_activity * negative_score_activities + negative_weight_location * negative_score_location
                     #################################################################################################### -  check the rest - End
@@ -376,11 +402,11 @@ if __name__ == '__main__':
                         line = text_data["topic"] + " , " + str(image_name) + " , " + str(total_score) + "\n"
                         lines.append(line)
 
-        txt_path = dir_path + "/results_confidence/results_topic_" + text_data["topic"] + ".txt"
-        f = open(txt_path,"a+")
-        for line in lines:
-            f.write(line)
-        f.close()
+                txt_path = dir_path + "/results_confidence/results_topic_" + text_data["topic"] + ".txt"
+                f = open(txt_path,"a+")
+                for line in lines:
+                    f.write(line)
+                f.close()
         
         topic_count += 1 
 

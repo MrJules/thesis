@@ -22,13 +22,7 @@ Work in NLP can be divided in two broad sub-areas: core areas and applications a
 
 To perform translation, text summarization, image captioning, or any other linguistic task, there must be some understanding of the underlying language. This understanding can be broken down into at least 4 main areas : language modeling, morphology, parsing, semantics. \par 
 
-Language modeling is the determination of the meaning of words and which words follow which. \par
-
-Morphology is the study of how words themselves are formed, by considering the root of the word, it's suffixes and prefixes, gender, plurality, etc.
-
-Parsing considers which words modify others. \par
-
-Semantics is the study of the meaning of words by taking into account the meaning of individual words  and how they relate and modify others. \cite{Otter2018} \par 
+Language modeling is the determination of the meaning of words and which words follow which, morphology is the study of how words themselves are formed, by considering the root of the word, it's suffixes and prefixes, gender, plurality, etc, parsing considers which words modify others and semantics is the study of the meaning of words by taking into account the meaning of individual words and how they relate and modify others. \cite{Otter2018} \par 
 
 
 
@@ -127,15 +121,17 @@ Semantics is the study of the meaning of words by taking into account the meanin
         \subsubsection{fastText}
     
     \subsection{Contextualized Word Embedding Models}
-
-        \par This section introduces some common contextualized word embedding models to learn word embeddings from text.
         
         \par Contextualized words embeddings aim at capturing word semantics in different contexts to address the issue of polysemous and the context-dependent nature of words \cite{Batista2018}. So, in theory, for the example given in  \ref{sec:static}, these models would be able to distinguish the different usage of the word Apple to represent the fruit or the company.
 
 
 
         \subsubsection{COVE}
-        \subsubsection{ELMO}
+        \subsubsection{ELMo}
+            ELMo (Embeddings from Language Models) is a NLP model with context-aware representation, it understands different meanings for the same word since it takes into account the surrounding words.
+
+
+
         \subsubsection{BERT}
         \subsubsection{XLNet}
         
@@ -148,7 +144,7 @@ Semantics is the study of the meaning of words by taking into account the meanin
         
         \par SpaCy is a free, open-source library for advanced natural language processing written in Python and Cython published by Explosion AI. It was designed specifically for production use and to help in the building of applications that process and "understand" large volumes of text data.  Some use cases for this specific library are to build information extraction or natural language understanding systems, or to pre-process text for deep learning. \cite{Spacy2017}
 
-        \par This NLP library was chosen for the development of the text processing phase of the practical work, not only it is simple to use and has a very well written documentation, but manly because SpaCy offers a range of different and useful features such as:
+        \par This NLP library was chosen for the development of the text processing phase of the practical work, since not only it is simple to use and has a well written documentation, but also because it offers many useful features such as:
 
         \begin{itemize}
             \item \textbf{Tokenization} : The segmentation of text into words, punctuation, etc
