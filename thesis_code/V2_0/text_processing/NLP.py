@@ -16,8 +16,11 @@ if __name__ == '__main__' :
     topic_array = [1,2,3,4,5,6,7,8,9,10]
     
     print("PROCESSING TEXT")
-    for topic_count in tqdm(topic_array):
 
+    for topic_count in tqdm(topic_array):
+        '''
+        ####### Topics for test
+        
         if topic_count == 1:
             #[TOPIC 1]
             topic = "1"
@@ -92,66 +95,22 @@ if __name__ == '__main__' :
             text_title = "Monsters"
             text_description  = "Find the moment(s) when u1 was looking at an old clock, with flowers visible, with a small monster watching u1."
             text_narrative= "Moments when u1 was at home, looking at an old clock, with flowers visible, with a lamp and perhaps two small monsters watching u1 are considered relevant. One of the monsters might be a long rabbit. The moments without one of the aforementioned conditions: monsters, flowers, and old clock are not considered relevant."
-
+        '''
         #######################################################################################################################################################
-        '''
-        #[TOPIC 1] - 2019
-        text_title = "Icecream by the sea"
-        text_description = "Find the moment when u1 was eating an icecream beside the sea."
-        text_narrative = "To be relevant, the moment must show both the ice cream with cone in the hand of u1 as well as the sea clearly visible. Any moments by the sea, or eating an ice cream which do not occur together are not considered to be relevant. "
-        '''
+        ### test topics
+        if topic_count == 1:
+            #[TOPIC 1]
+            topic = "1"
+            text_title = "Praying Rite"
+            text_description  = "Find the moment when u1 was attending a praying rite with other people in the church."
+            text_narrative= "To be relevant, the moment must show u1 is currently inside the church, attending a praying rite with other people. The moments that u1 is outside with the church visible or inside the church but is not attending the praying rite are not considered relevant."
 
-        '''
-        #[TOPIC 2] - 2019
-        text_title = "Having food in a restaurant"
-        text_description = "Find the moment when u1 was eating food or drinking in a restaurant."
-        text_narrative = "U1 was eating food in a restaurant while away from home. Any kinds of dishes are relevant. Only Drinking coffee and have dessert in a cafe won't be relevant"
-        '''
-
-        '''
-        #[TOPIC 3] - 2019
-        text_title = "Watching Videos"
-        text_description = "Find the moment when u1 was watching video when using other digital devices."
-        text_narrative = "To be relevant, u1 must be watching videos in any location and any digital devices can be considered. For example: TV machine, tablet, mobile phone, laptop, desktop computer."
-        '''
-        '''
-        #[TOPIC 5] - 2019
-        text_title = "Photograph of a Bridges"
-        text_description = "Find the moment when u1 was taking a photo of a bridge."
-        text_narrative = "U1 was walking on a pedestrian street and stopped to take a photo of a bridge. Moments when u1 was walking on a street without stopping to take a photo of a bridge are not relevant. Any other moment showing a bridge when a photo was not being taken are also not considered to be relevant."
-        '''
-
-        '''
-        #[TOPIC 5] - 2019
-        text_title = "Grocery shopping"
-        text_description = "Find the moment when u1 was shopping for food in a grocery shop."
-        text_narrative = "To be considered relevant, u1 must be clearly in a grocery shop and bought something from the it"
-        '''
-        '''
-        #[TOPIC 6] - 2019
-        text_title = "Playing a Guitar"
-        text_description = "Find the moment when U1 or a man is playing guitar in view."
-        text_narrative = " Any use of guitars indoors could be considered relevant. Any type of Guitar could be considered as relevant."
-        '''
-
-        '''
-        #[TOPIC 7] - 2019
-        text_title = "Cooking"
-        text_description = "Find moments when u1 was cooking food."
-        text_narrative = "The moments shows U1 was cooking food at any places are relevant"
-        '''
-        '''
-        #[TOPIC 8] - 2019
-        text_title = "Car Sales Showroom"
-        text_description = "Find the moments when u1 was in a car sales showroom."
-        text_narrative = " u1 visited a car sales showroom a few times. Relevant moments show u1 indoors in a car sales showroom, either looking at cars or waiting for a salesman sitting at a table. Any moments looking at cars while outside of a showroom are not considered relevant"
-        '''
-        '''
-        #[TOPIC 10] - 2019
-        text_title = "Paper or book reviewing"
-        text_description = "Find all moments when u1 was reading a paper or book."
-        text_narrative = "To be relevant, the paper or book must be visible in front of U1 and sometimes U1 use a pen to mark on the paper or book"
-        '''
+        if topic_count == 2:
+            #[TOPIC 1]
+            topic = "2  "
+            text_title = "Lifelog data on touchscreen on the wall"
+            text_description  = "Find the moment when u1 was looking at lifelog data on a large touchscreen on the wall."
+            text_narrative= "To be relevant, the moment must show u1 is looking at his lifelog data on the touchscreen wall. The touchscreen wall showed a range of colorful images at that time. At some moments, u1 was talking to other people while looking at the lifelog data on the touchscreen wall. The moments that u1 is looking at the touchscreen on the wall but it did not show colorful lifelog images are not considered relevant. The moments that u1 is looking at his colorful lifelog data on a desktop monitor are also not considered relevant."
         ############################################################### Pre-processamento do texto ########################################################
 
         text_narrative = text_narrative.split(".")

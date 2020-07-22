@@ -1,6 +1,7 @@
 changed all weights to the same
 changed negative scores impact to 0.5
 changed concepts threshold to 0.3 and concepts_score to 0.15
+#no media
 
 
 1 , f1@05 : 0.28571428571428575

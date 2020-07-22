@@ -20,27 +20,30 @@ NLP consists in two major components, Natural Language Understanding (NLU) and N
 
 Work in NLP can be divided in two broad sub-areas: core areas and applications area. The core areas address fundamental problems such as segmentation of meaningful components of words, syntactic processing, semantic processing and morphological processing \cite{Otter2018}. Currently, some applications for NLP are Machine Translation, Email Spam detection, Information Extraction, Personal Assistants (i.e Siri, Google Assistant), Chat bots, etc.  \par 
 
-To perform translation, text summarization, image captioning, or any other linguistic task, there must be some understanding of the underlying language. This understanding can be broken down into at least 4 main areas : language modeling, morphology, parsing, semantics. \par 
+To perform translation, text summarization, image captioning, or any other linguistic task, there must be some understanding of the underlying language. This understanding can be broken down into at least 4 main areas : language modeling, morphology, parsing and  semantics. \par 
 
-Language modeling is the determination of the meaning of words and which words follow which, morphology is the study of how words themselves are formed, by considering the root of the word, it's suffixes and prefixes, gender, plurality, etc, parsing considers which words modify others and semantics is the study of the meaning of words by taking into account the meaning of individual words and how they relate and modify others. \cite{Otter2018} \par 
+Language modeling is the determination of the meaning of words and which words follow which. Morphology is the study of how words themselves are formed, by considering the root of the word, it's suffixes and prefixes, gender, plurality, etc. Parsing considers which words modify others. Semantics is the study of the meaning of words by taking into account the meaning of individual words and how they relate and modify others. \cite{Otter2018} \par 
 
 
 
 \section{Numerical Representation of Text}
 
 
-\par Machine learning algorithms and most of all deep learning architectures are incapable of processing strings and text, this is because they require numbers as an input. \cite{Vidhya2017} A human can easily tell that the word "dog" and the word "cat" are identical, since they both represent an animal, however a computer would answer that they are completely different things since all the letters in those words are different. 
+\par Machine learning algorithms and most of all deep learning architectures are incapable of processing strings of text, this is because they require numbers as an input. \cite{Vidhya2017} A human can easily tell that the word "dog" and the word "cat" are identical, since they both represent an animal, however a computer would assume that they are completely different things since all the letters in those  words are different. 
 
     \subsection{Word Embeddings}
 
-    \par The dominant approach to solve this problem is the usage of word embeddings, which is a type of word representation that allows words with similar meaning to have a similar representation by mapping a set of words, or phrases in a vocabulary, to vectors of numerical values. For example, the word “happy” can be represented as a vector of 4 dimensions [0.24, 0.45, 0.11, 0.49] and “sad” has a vector of [0.88, 0.78, 0.45, 0.91]. The reason for this vectors to exist is so that a machine learning algorithm can perform linear algebra operations on numbers (vectors) instead of words. \cite{MuratMustafa}
+    \par The dominant approach to solve this problem is the usage of word embeddings, which is a type of word representation that allows words with similar meaning to have a similar representation by mapping a set of words, or phrases in a vocabulary, to vectors of numerical values. For example, the word “happy” can be represented as a vector of 4 dimensions [0.24, 0.45, 0.11, 0.49] and “sad” has a vector of [0.88, 0.78, 0.45, 0.91]. The reason for this vectors to exist is so that a machine learning algorithm can perform linear algebra operations on numbers (vectors) instead of words \cite{MuratMustafa}.
 
-    \par  Word embedding methods learn a real-valued vector representation for a predefined fixed size vocabulary from a corpus  of text. \cite{Brownlee2017}  
+    \par  Word embedding methods learn a real-valued vector representation for a predefined fixed size vocabulary from a corpus  of text \cite{Brownlee2017}.
    
     \par A vector representation of a word may be a one-hot encoded vector where 1 stands for the position where the word exists and 0 everywhere else. 
     
-    \par As an example the sentence   ”Word Embeddings are Word converted into numbers” can be convert to a dictionary in this form : [‘Word’,’Embeddings’,’are’,’Converted’,’into’,’numbers’]. The vector representation of the word“numbers” in this format according to the above dictionary is [0,0,0,0,0,1] and of the word "converted" is [0,0,0,1,0,0]. This is considered to be the most simple method to represent words in vector forms. \cite{Vidhya2017}
-    \par An image showcasing this example is shown below.
+    \par As an example, the sentence ”Word Embeddings are Word converted into numbers” can be converted to the following dictionary using the one-hot encoded vector representation : [‘Word’,’Embeddings’,’are’,’Converted’,"Word",’into’,’numbers’] .
+
+    \par Using this representation the word “numbers” in the one-hot encoded vector is [0,0,0,0,0,1] and for the word "converted" is [0,0,0,1,0,0]. This is considered to be the most simple method to represent words in vector forms \cite{Vidhya2017}.
+
+    \par The following image showcases the given example.
     
     
     \begin{figure}[htb]
@@ -102,7 +105,7 @@ Language modeling is the determination of the meaning of words and which words f
 
         \par The output of Word2Vec is a vocabulary in which each item has a vector attached to it, which can be fed into a deep-learning net or simply queried to detect relationships between words.
 
-        \par Word2Vec is composed of two different models, CBOW (Continuous Bag of words) which predicts a word given its context and Skip-Gram which predicts context given a word. \cite{Mikolov2013} \cite{Wiki}
+        \par Word2Vec is composed of two different models, CBOW (Continuous Bag of words) which predicts a word given the context and Skip-Gram which predicts context given a word. \cite{Mikolov2013} \cite{Wiki}
 
         
 
@@ -115,20 +118,41 @@ Language modeling is the determination of the meaning of words and which words f
         
         \subsubsection{GloVe}
             \par GloVe stands for Global Vectors for Word Representation and was a new approach created by Pennington et all. (in 2014) \cite{Pennington2014} to generate word embeddings with unsupervised learning. Glove main goals are to create word vectors that capture meaning in the vector space and to take advantage of global count statistics instead of using only local information. 
-            \par The problem with Word2Vec is that it only uses local information into account, and does not consider global context. This means that the semantics learnt for a given word are only affected by the surrounding words. 
+            \par The problem with Word2Vec is that it only takes local information into account, and does not consider global context. This means that the semantics learnt for a given word are only affected by the surrounding words. 
             \par GloVe works by aggregating global word-to-word co-occurrence matrix from a of corpus text. This means that if two words keep appearing together in a corpus of text they either share a linguistic or a semantic similarity. Simply put, similar words will be placed together in the high-dimensional space. Therefore GloVe can be seen like an extension to the Word2Vec model.
 
-        \subsubsection{fastText}
+        \subsubsection{FastText}
+
+        \par FastText, created by Facebook's AI Research (FAIR) lab, is a fast text classifier based on the skipgram model  used for efficient learning of word representations and sentence classification. Popular models like word2Vec and GloVe  are based on continuous word representations that create vectors directly from words in a sentence while ignoring the morphology of words, this is done by assigning a distinct vector to each word, fastText uses a different approach treating each word as bag of characters n-grams. A vector representation is associated to each character n-gram and words are represented as the sum of these representations. This allows fastText to work with rare words not seen in the training data since the word is broken down into n-grams to get the corresponding embeddings \cite{bojanowski2016enriching}.
+
+
+        \par Using the word "where" as an example and n=3, the representation of this word in a fastText model is <wh, whe, her, er, re> and the special sequence <where>. The angular brackets serve as boundary symbols to distinguish the n-gram of a word from the word itself, this means that if the word "her" was part of the vocabulary it would be represented as <her>, which allows the preservation of the meaning of shorter words and the understanding of suffixes and prefixes.
+
+        
+
+       
+
+
+  
     
     \subsection{Contextualized Word Embedding Models}
         
-        \par Contextualized words embeddings aim at capturing word semantics in different contexts to address the issue of polysemous and the context-dependent nature of words \cite{Batista2018}. So, in theory, for the example given in  \ref{sec:static}, these models would be able to distinguish the different usage of the word Apple to represent the fruit or the company.
+        \par Contextualized words embeddings aim at capturing word semantics in different contexts to address the issue of polysemous and the context-dependent nature of words \cite{Batista2018}. Using the example given in  section \ref{sec:static}, these models would be able to distinguish the different meaning of the word "apple" given the two different sentences.
 
 
-
-        \subsubsection{COVE}
         \subsubsection{ELMo}
-            ELMo (Embeddings from Language Models) is a NLP model with context-aware representation, it understands different meanings for the same word since it takes into account the surrounding words.
+
+            ELMo (Embeddings from Language Models) is a NLP model with context-aware representation, it understands different meanings for the same word since it takes into account the surrounding words unlike traditional word embedding models such as word2Vec and GLoVe. In order to achieve this, ELMo attributes an embedding for each word after looking at the entire sentence, instead of using fixed embeddings for each word. Therefore, the same word might have different word vectors under different contexts.
+            This NLP models both syntax and semantics of word use and how these
+
+            %ELMo models both complex characteristics of word use (e.g., syntax and semantics) and how these uses vary across linguistic contexts (i.e, to model polysemy). These word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pre-trained on a large text corpus. They can be easily added to existing models and significantly improve the state of the art across a broad range of challenging NLP problems, including question answering, textual entailment and sentiment analysis. 
+
+            %ELMo representations are:
+
+            %Contextual: The representation for each word depends on the entire context in which it is used.
+            %Deep: The word representations combine all layers of a deep pre-trained neural network.
+            %Character based: ELMo representations are purely character based, allowing the network to use morphological clues to form robust representations for out-of-vocabulary tokens unseen in training. 
+
 
 
 
@@ -144,7 +168,7 @@ Language modeling is the determination of the meaning of words and which words f
         
         \par SpaCy is a free, open-source library for advanced natural language processing written in Python and Cython published by Explosion AI. It was designed specifically for production use and to help in the building of applications that process and "understand" large volumes of text data.  Some use cases for this specific library are to build information extraction or natural language understanding systems, or to pre-process text for deep learning. \cite{Spacy2017}
 
-        \par This NLP library was chosen for the development of the text processing phase of the practical work, since not only it is simple to use and has a well written documentation, but also because it offers many useful features such as:
+        \par This NLP library was chosen for the development of the text processing phase of the practical work, not only because ig provides a well written documentation and being simple to use but also because it offers many useful features such as:
 
         \begin{itemize}
             \item \textbf{Tokenization} : The segmentation of text into words, punctuation, etc
