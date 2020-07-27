@@ -130,34 +130,50 @@ Language modeling is the determination of the meaning of words and which words f
 
         
 
-       
-
-
-  
     
     \subsection{Contextualized Word Embedding Models}
         
         \par Contextualized words embeddings aim at capturing word semantics in different contexts to address the issue of polysemous and the context-dependent nature of words \cite{Batista2018}. Using the example given in  section \ref{sec:static}, these models would be able to distinguish the different meaning of the word "apple" given the two different sentences.
 
+        \subsubsection{Context2vec}
+        
+            \par Context2Vec is an unsupervised model capable of learning efficiently generic context embedding of wide sentential contexts, using a bidirectional LSTM. 
+
+            A large plain text corpora is utilized in order to learn a neural model capable of embedding  entire  sentential  contexts  and  target words in the same low-dimensional space, which is optimized to reflect inter-dependencies between targets and their entire sentential context as a whole. 
+            
+            
+            In contrast to word2vec that use context modeling mostly internally and considers the target word embeddings as their main output, the focus of context2vec is the context representation. Context2vec achieves its objective by assigning similar embeddings to sentential contexts and their associated target words \cite{Melamud2016}.
+
+            \begin{figure}[htb]
+                \centering
+                \includegraphics[scale = 0.35]{Sections/3StateOfTheArt/3_images/context2vec_embedding.png}
+                \caption{A 2D illustration of context2vec’s embedded space and similarity metrics. Triangles and circles denote sentential context embeddings and target word embeddings, respectively \cite{Melamud2016}.} 
+            \end{figure}
+
+            \begin{figure}[htb]
+                \centering
+                \includegraphics[scale = 0.35]{Sections/3StateOfTheArt/3_images/context2vec_predict.png}
+                \caption{Closest target words to various sentential contexts, illustrating context2vec’s sensitivity to long range dependencies, and both sides of the target word \cite{Melamud2016}.} 
+            \end{figure}
+            
+        \newpage
+
 
         \subsubsection{ELMo}
 
-            ELMo (Embeddings from Language Models) is a NLP model with context-aware representation, it understands different meanings for the same word since it takes into account the surrounding words unlike traditional word embedding models such as word2Vec and GLoVe. In order to achieve this, ELMo attributes an embedding for each word after looking at the entire sentence, instead of using fixed embeddings for each word. Therefore, the same word might have different word vectors under different contexts.
-            This NLP models both syntax and semantics of word use and how these
+            \par ELMo (Embeddings from Language Models) is a NLP model with context-aware representation, it understands different meanings for the same word since it takes into account the surrounding words unlike traditional word embedding models such as Word2Vec and GLoVe. In order to achieve this, ELMo attributes an embedding for each word after looking at the entire context in which it is used, instead of using fixed embeddings for each word. Therefore, the same word might have different word vectors under different contexts.
+            \par This NLP models both syntax and semantics of word use and how these uses vary across linguistic context.The word vectors are learned through the usage of internal states of a deep bidirectional LSTM algorithm, trained on a large corpus of text. Bidirectional implies that the algorithm takes into account the words before and the words after it in both directions. LSTM (Long Short-Term Memory) is one type of neural network that is able to retain data in memory for long periods of time, allowing it to learn longer-term dependencies.
+            This language model can predict both the next word and the previous word and it is a character based model allowing the network to use morphological clues to form robust representations for out-of-vocabulary tokens not presented during training.  \cite{Peters:2018}
+            \par Below an image showcasing an example of the differences between GLOVe that is a non-context aware model and ELMo biLM (bidirectional Language Model) that is context aware.
 
-            %ELMo models both complex characteristics of word use (e.g., syntax and semantics) and how these uses vary across linguistic contexts (i.e, to model polysemy). These word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pre-trained on a large text corpus. They can be easily added to existing models and significantly improve the state of the art across a broad range of challenging NLP problems, including question answering, textual entailment and sentiment analysis. 
+            
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[scale = 0.3]{Sections/3StateOfTheArt/3_images/ELMO.png}
+            \caption{Nearest neighbors to "play" using GLoVe and context embeddings from a biLM \cite{Peters:2018}.} 
+        \end{figure}
 
-            %ELMo representations are:
-
-            %Contextual: The representation for each word depends on the entire context in which it is used.
-            %Deep: The word representations combine all layers of a deep pre-trained neural network.
-            %Character based: ELMo representations are purely character based, allowing the network to use morphological clues to form robust representations for out-of-vocabulary tokens unseen in training. 
-
-
-
-
-        \subsubsection{BERT}
-        \subsubsection{XLNet}
+        \par GLoVe only uses the word "play" as source, therefore the obtained neighbors for that word are spread across several parts of speech however they all focus on the sports-related sense of the word "play". ELMo biLM uses the entire sentence as source, this means that it is able to understand the context of the word, therefore in both cases, the biLM is able to disambiguate both the part of speech and word sense in the source sentence \cite{Peters:2018}.
         
 
        
@@ -183,6 +199,10 @@ Language modeling is the determination of the meaning of words and which words f
 
 
         \subsection{Natural Language ToolKit}
+
+        \par Developed by Steven Bird and Edward Loper in the Department of Computer and Information Science at the University of Pennsylvania, NLTK (Natural Language ToolKit) is a suite of open source program modules, tutorials, problem sets and a leading platform for building Python programs to work with human language data. This library provides easy-to-use interfaces such as WordNet, along with a suite of text processing libraries for classification, tokenization, stemming, tagging, parsing, and semantic reasoning.
+        
+        
 
         \subsection{Stanford Core NLP}
 
