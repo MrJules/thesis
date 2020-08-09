@@ -1,0 +1,29 @@
+{
+   "topic": "6",
+   "relevant things": [
+      "fast food",
+      "order"
+   ],
+   "activities": [
+      "ordering",
+      "ordering fast food",
+      "ordering food",
+      "queuing",
+      "queuing to order food"
+   ],
+   "dates": [],
+   "locations": [
+      "airport"
+   ],
+   "inside": true,
+   "outside": false,
+   "negative relevant thing": [],
+   "negative activities": [
+      "eating",
+      "waiting",
+      "waiting for collection",
+      "considered"
+   ],
+   "negative locations": [],
+   "negative dates": []
+}

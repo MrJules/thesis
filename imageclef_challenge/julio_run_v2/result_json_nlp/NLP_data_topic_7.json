@@ -1,0 +1,26 @@
+{
+   "topic": "7",
+   "relevant things": [
+      "seafood",
+      "parts",
+      "seafood",
+      "shrimp",
+      "lobster",
+      "salmon"
+   ],
+   "activities": [
+      "eating",
+      "eating seafood"
+   ],
+   "dates": [],
+   "locations": [
+      "restaurant",
+      "evening time"
+   ],
+   "inside": true,
+   "outside": false,
+   "negative relevant thing": [],
+   "negative activities": [],
+   "negative locations": [],
+   "negative dates": []
+}

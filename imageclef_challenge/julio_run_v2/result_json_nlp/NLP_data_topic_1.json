@@ -1,0 +1,27 @@
+{
+   "topic": "1",
+   "relevant things": [
+      "rite",
+      "people"
+   ],
+   "activities": [
+      "praying",
+      "praying rite",
+      "attending"
+   ],
+   "dates": [],
+   "locations": [
+      "church"
+   ],
+   "inside": true,
+   "outside": false,
+   "negative relevant thing": [
+      "church",
+      "church visible"
+   ],
+   "negative activities": [
+      "considered"
+   ],
+   "negative locations": [],
+   "negative dates": []
+}

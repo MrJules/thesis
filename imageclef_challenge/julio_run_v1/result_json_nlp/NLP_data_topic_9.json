@@ -1,0 +1,21 @@
+{
+   "topic": "9",
+   "relevant things": [
+      "pizza",
+      "man"
+   ],
+   "activities": [
+      "eating",
+      "eating pizza",
+      "eating a pizza",
+      "talking"
+   ],
+   "dates": [],
+   "locations": [],
+   "inside": "NULL",
+   "outside": "NULL",
+   "negative relevant thing": [],
+   "negative activities": [],
+   "negative locations": [],
+   "negative dates": []
+}

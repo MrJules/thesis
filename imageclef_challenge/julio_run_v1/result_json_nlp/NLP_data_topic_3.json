@@ -1,0 +1,36 @@
+{
+   "topic": "3",
+   "relevant things": [
+      "bus",
+      "home",
+      "workplace"
+   ],
+   "activities": [
+      "getting",
+      "getting a bus",
+      "going"
+   ],
+   "dates": [],
+   "locations": [
+      "office",
+      "dublin city university",
+      "home"
+   ],
+   "inside": false,
+   "outside": true,
+   "negative relevant thing": [
+      "that",
+      "public transportations",
+      "transportations"
+   ],
+   "negative activities": [
+      "waiting",
+      "travelling",
+      "travelling on any other transportations",
+      "considered"
+   ],
+   "negative locations": [
+      "bus stop"
+   ],
+   "negative dates": []
+}

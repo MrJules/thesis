@@ -1,33 +1,90 @@
 \cleardoublepage
 
 
-\chapter{Natural Language Processing}
+\chapter{Information Extraction From Text}
 
+As previously discussed in chapter \ref{ch:computervision} the problem of big data has become more relevant in the recent years. There is too much data to be analysed and the human brain is incapable of processing such large quantities of information. Therefore, information extraction becomes more prevalent as data increases. 
 
-Natural language processing (NLP) is a subfield of linguistics, computer science, information engineering and artificial intelligence, which is devoted to the engineering of computational models and processes to give the ability of human language understanding to computers. \cite{Khurana2018}  \par
+Information Extraction (IE) is the task of automatically extracting pre-specified information from textual sources, a trivial example is the usage of IE to analyse large quantities of documents only retrieving the relevant information.
+In most cases the task of extracting information is concerned with the processing of human language texts by means of natural language processing (NLP).
 
-Human language is extremely complex and rarely precise, to understand it is to understand not only the words, but the concepts and how they are linked together in order to create meaning. This makes NLP one of the most difficult tasks in computer science. \par
-
-NLP consists in two major components, Natural Language Understanding (NLU) and Natural Language Generation (NLG).  \par
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[scale = 0.25]{Sections/3StateOfTheArt/3_images/NLP_diagram.png}
-    \caption{Classification of NLP. \cite{Khurana2018}}   
+    \includegraphics[scale = 0.55]{Sections/3StateOfTheArt/3_images/NaturalLanguageProcessing.png}
+    \caption{Natural Language Processing \cite{rite_wiki}.}   
 \end{figure}
 
 
 
-Work in NLP can be divided in two broad sub-areas: core areas and applications area. The core areas address fundamental problems such as segmentation of meaningful components of words, syntactic processing, semantic processing and morphological processing \cite{Otter2018}. Currently, some applications for NLP are Machine Translation, Email Spam detection, Information Extraction, Personal Assistants (i.e Siri, Google Assistant), Chat bots, etc.  \par 
 
-To perform translation, text summarization, image captioning, or any other linguistic task, there must be some understanding of the underlying language. This understanding can be broken down into at least 4 main areas : language modeling, morphology, parsing and  semantics. \par 
 
-Language modeling is the determination of the meaning of words and which words follow which. Morphology is the study of how words themselves are formed, by considering the root of the word, it's suffixes and prefixes, gender, plurality, etc. Parsing considers which words modify others. Semantics is the study of the meaning of words by taking into account the meaning of individual words and how they relate and modify others. \cite{Otter2018} \par 
+This chapter starts with an introduction to Natural Language Processing in section \ref{sec:nlp}. Section \ref{sec:num} explains the process of representing text in a numerical vector form while describing the concept of word embeddings. Static and contextualized word embedding models are discussed in section \ref{sec:static} and \ref{sec:context} respectively. An overview on some of the available NLP libraries is presented in section \ref{sec:libraries}.
+
+\newpage
+\section{Natural Language Processing}
+\label{sec:nlp}
+
+Natural language processing is a subfield of linguistics, computer science, information engineering and artificial intelligence, which is devoted to the engineering of computational models and processes to give the ability of human language understanding to computers. \cite{Khurana2018}  \par
+
+Human language is extremely complex and rarely precise, to understand it is to understand not only the words, but the concepts and how they are linked together in order to create meaning. This makes NLP one of the most difficult tasks in computer science. \par
+
+Figure \ref{fig:nlp_class} shows the classification of NLP, which consists in two major components, Natural Language Understanding (NLU) and Natural Language Generation (NLG) \cite{Khurana2018}.  \par
+
+
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.3]{Sections/3StateOfTheArt/3_images/NLP_diagram.png}
+    \caption{Classification of NLP. \cite{Khurana2018}}  
+    \label{fig:nlp_class} 
+\end{figure}
+
+Natural Language Understanding is the process of understanding text. It is related to the science of Linguistic that studies the meaning of languages, context and various forms of language. 
+
+Natural Language Generation is the process of generating text, sentences and
+paragraphs that are meaningful from an internal representation \cite{Khurana2018}. 
+
+\subsection{Important NLP Terminologies}
+
+\textbf{Phonology}: The part of Linguistics which refers to the systematic arrangement of sound.
+
+\textbf{Morphology}: In linguistics, morphology is the study of words, how they are formed, and their relationship to other words in the same language. The different parts of the word represent the smallest units of meaning known as Morphemes.
+
+
+\textbf{Lexical}: In Lexical the focus is the interpretation of the meaning of individual words.
+
+\textbf{Syntax}: Syntax refers to the study of the grammatical structure of the sentence. 
+
+\textbf{Semantic}: Semantic processing determines the possible meanings of a
+sentence by pivoting on the interactions among word-level meanings in the sentence.
+
+\textbf{Discourse}: Discourse focuses on the properties of the text as a whole that convey meaning by making connections between component sentences.
+
+\textbf{Pragmatic:}: Pragmatic is a subfield of linguistics that studies the ways in which the context of a sentence contributes to the meaning \cite{Khurana2018}. 
+
+
+
+
+
+
+
+
+
+
+\subsection{Core Areas}
+
+The field of NLP can be divided in two broad sub-areas: core areas and application areas. The core areas address fundamental problems such as language modeling, morphological processing, parsing and semantic processing. Language modeling underscores quantifying associations among naturally occurring words. Morphological processing deals with the segmentation of meaningful components of words and the identification of the true parts of speech of words used. Parsing consists in the building of sentence diagrams as possible precursors to semantic processing. Semantic processing attempts to distill meaning of words, phrases, and higher level components in text \cite{Otter2018}.
+
+\subsection{Application Areas}
+The application areas address topics such as extraction of useful information from text (e.g named entities and relations), translation of text, summarization of written documents, automatic answering of questions, chat bots, email spam detection and many others \cite{Otter2018}.
+
 
 
 
 \section{Numerical Representation of Text}
-
+\label{sec:num}
 
 \par Machine learning algorithms and most of all deep learning architectures are incapable of processing strings of text, this is because they require numbers as an input. \cite{Vidhya2017} A human can easily tell that the word "dog" and the word "cat" are identical, since they both represent an animal, however a computer would assume that they are completely different things since all the letters in those  words are different. 
 
@@ -55,12 +112,11 @@ Language modeling is the determination of the meaning of words and which words f
     
     
 
- 
 
-    \newpage
 
-    \subsection{Static Word Embedding Models}
+    \section{Static Word Embedding Models}
     \label{sec:static}
+
     \par This section introduces some common static word embedding models to learn word embeddings from text.
 
 
@@ -77,7 +133,7 @@ Language modeling is the determination of the meaning of words and which words f
     \par In this case, the word "Apple" has two different meanings, being one a company and the other a fruit, however for static word embedding models, words only have one single meaning, and therefore  the word representation for "Apple" would be the same for both cases. \cite{Batista2018}
 
    
-        \subsubsection{Word2Vec}
+        \subsection{Word2Vec}
 
         \par Developed by Tomas Mikolov, et al. at Google in 2013, Word2Vec is a two-layer neural network that processes text by "vectorizing" words with the purpose of grouping vectors of similar words together in vectorspace. The way Word2Vec detects those similarities is by creating vectors that are distributed numerical representations of word features, without human intervention.
 
@@ -116,14 +172,14 @@ Language modeling is the determination of the meaning of words and which words f
         \end{figure}
 
         
-        \subsubsection{GloVe}
-            \par GloVe stands for Global Vectors for Word Representation and was a new approach created by Pennington et all. (in 2014) \cite{Pennington2014} to generate word embeddings with unsupervised learning. Glove main goals are to create word vectors that capture meaning in the vector space and to take advantage of global count statistics instead of using only local information. 
+        \subsection{GloVe}
+            \par GloVe stands for Global Vectors for Word Representation and was a new approach created by Pennington et all. in 2014 \cite{Pennington2014} to generate word embeddings with unsupervised learning. Glove main goals are to create word vectors that capture meaning in the vector space and to take advantage of global count statistics instead of using only local information. 
             \par The problem with Word2Vec is that it only takes local information into account, and does not consider global context. This means that the semantics learnt for a given word are only affected by the surrounding words. 
             \par GloVe works by aggregating global word-to-word co-occurrence matrix from a of corpus text. This means that if two words keep appearing together in a corpus of text they either share a linguistic or a semantic similarity. Simply put, similar words will be placed together in the high-dimensional space. Therefore GloVe can be seen like an extension to the Word2Vec model.
 
-        \subsubsection{FastText}
+        \subsection{FastText}
 
-        \par FastText, created by Facebook's AI Research (FAIR) lab, is a fast text classifier based on the skipgram model  used for efficient learning of word representations and sentence classification. Popular models like word2Vec and GloVe  are based on continuous word representations that create vectors directly from words in a sentence while ignoring the morphology of words, this is done by assigning a distinct vector to each word, fastText uses a different approach treating each word as bag of characters n-grams. A vector representation is associated to each character n-gram and words are represented as the sum of these representations. This allows fastText to work with rare words not seen in the training data since the word is broken down into n-grams to get the corresponding embeddings \cite{bojanowski2016enriching}.
+        \par FastText, created by Facebook's AI Research (FAIR) lab in 2016, is a fast text classifier based on the skipgram model  used for efficient learning of word representations and sentence classification. Popular models like word2Vec and GloVe  are based on continuous word representations that create vectors directly from words in a sentence while ignoring the morphology of words, this is done by assigning a distinct vector to each word, fastText uses a different approach treating each word as bag of characters n-grams. A vector representation is associated to each character n-gram and words are represented as the sum of these representations. This allows fastText to work with rare words not seen in the training data since the word is broken down into n-grams to get the corresponding embeddings \cite{bojanowski2016enriching}.
 
 
         \par Using the word "where" as an example and n=3, the representation of this word in a fastText model is <wh, whe, her, er, re> and the special sequence <where>. The angular brackets serve as boundary symbols to distinguish the n-gram of a word from the word itself, this means that if the word "her" was part of the vocabulary it would be represented as <her>, which allows the preservation of the meaning of shorter words and the understanding of suffixes and prefixes.
@@ -131,11 +187,11 @@ Language modeling is the determination of the meaning of words and which words f
         
 
     
-    \subsection{Contextualized Word Embedding Models}
-        
+    \section{Contextualized Word Embedding Models}
+    \label{sec:context}    
         \par Contextualized words embeddings aim at capturing word semantics in different contexts to address the issue of polysemous and the context-dependent nature of words \cite{Batista2018}. Using the example given in  section \ref{sec:static}, these models would be able to distinguish the different meaning of the word "apple" given the two different sentences.
 
-        \subsubsection{Context2vec}
+        \subsection{Context2vec}
         
             \par Context2Vec is an unsupervised model capable of learning efficiently generic context embedding of wide sentential contexts, using a bidirectional LSTM. 
 
@@ -159,7 +215,7 @@ Language modeling is the determination of the meaning of words and which words f
         \newpage
 
 
-        \subsubsection{ELMo}
+        \subsection{ELMo}
 
             \par ELMo (Embeddings from Language Models) is a NLP model with context-aware representation, it understands different meanings for the same word since it takes into account the surrounding words unlike traditional word embedding models such as Word2Vec and GLoVe. In order to achieve this, ELMo attributes an embedding for each word after looking at the entire context in which it is used, instead of using fixed embeddings for each word. Therefore, the same word might have different word vectors under different contexts.
             \par This NLP models both syntax and semantics of word use and how these uses vary across linguistic context.The word vectors are learned through the usage of internal states of a deep bidirectional LSTM algorithm, trained on a large corpus of text. Bidirectional implies that the algorithm takes into account the words before and the words after it in both directions. LSTM (Long Short-Term Memory) is one type of neural network that is able to retain data in memory for long periods of time, allowing it to learn longer-term dependencies.
@@ -178,7 +234,7 @@ Language modeling is the determination of the meaning of words and which words f
 
        
 \section{Available NLP libraries}
-
+    \label{sec:libraries}
 
         \subsection{SpaCy}
         
@@ -193,19 +249,21 @@ Language modeling is the determination of the meaning of words and which words f
             \item \textbf{Lemmatization} : The assignment of base forms of words.
         \end{itemize}
 
-        \subsection{Gensim}
-
-        \par Gensim is a Natural Language Processing open-source library for unsupervised topic modeling (a technique to extract the underlying topics from large volumes of text)  and for natural language processing
-
+      
 
         \subsection{Natural Language ToolKit}
 
-        \par Developed by Steven Bird and Edward Loper in the Department of Computer and Information Science at the University of Pennsylvania, NLTK (Natural Language ToolKit) is a suite of open source program modules, tutorials, problem sets and a leading platform for building Python programs to work with human language data. This library provides easy-to-use interfaces such as WordNet, along with a suite of text processing libraries for classification, tokenization, stemming, tagging, parsing, and semantic reasoning.
-        
-        
+        \par Developed by Steven Bird, Edward Loper and Ewan Klein in the Department of Computer and Information Science at the University of Pennsylvania, NLTK (Natural Language ToolKit) is a suite of open source program modules, tutorials, problem sets and a leading platform for building Python programs to work with human language data. NLTK covers symbolic and statistical natural language processing, and is interfaced to annotated corpora. This library provides easy-to-use interfaces such as WordNet, along with a suite of text processing libraries for classification, tokenization, stemming, tagging, parsing, and semantic reasoning \cite{Loper2002}. 
 
         \subsection{Stanford Core NLP}
 
-        \subsection{Flair}
+        \par Developed at Stanford University, Core NLP is library written in Java, however with wrappers for different languages, including Python. This library is fast and some of its components can be integrated to NLTK which boosts efficiency. CoreNLP enables users to derive linguistic annotations for text, including token and sentence boundaries, parts of speech, named entities, numeric and time values, dependency and constituency parses, coreference, sentiment, quote attributions, and relations \cite{Manning2015}.
 
-        \subsection{Pattern}
+
+        \subsection{Gensim}
+
+        \par Gensim ("Generate Similar”) is a Natural Language Processing open-source library for unsupervised topic modeling (a technique to extract the underlying topics from large volumes of text)  and for natural language processing. This python-cython library specializes in finding the semantic similarity between two documents through vector space modeling and topic modeling toolkit. It is capable of building document or word vectors, corpora, performing topic identification, performing document comparison (retrieving semantically similar documents) and analysing plain-text documents for semantic structure. In terms of producing word embedding, gensim allows for the usage of Word2Vec and fastText \cite{rehurek_lrec}.
+
+        
+        \subsection{Others}
+        Other NLP libraries not so common are Flair \cite{akbik2018coling}, Polyglot \cite{polyglot:2013:ACL-CoNLL}, CogCompNLP \cite{2018_lrec_cogcompnlp}, TextBlob \cite{textblob}.

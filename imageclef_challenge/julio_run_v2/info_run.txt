@@ -1,0 +1,10 @@
+concepts weights  division factor = 600
+location weight division factor = 1500
+actiivity weight division factor = 1500
+inside outside weight division factor = 1000
+
+changed concepts threshold to 0.3 and concepts_score to 0.15
+change threshold to 0.2 on image score
+
+using media in concepts
+using yolo detections

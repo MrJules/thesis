@@ -1,0 +1,32 @@
+{
+   "topic": "4",
+   "relevant things": [
+      "aircraft landing deck",
+      "landing deck",
+      "bus",
+      "airplanes"
+   ],
+   "activities": [
+      "getting",
+      "getting on a bus",
+      "aircraft landing",
+      "walking",
+      "walking to the bus",
+      "walking to the bus parking"
+   ],
+   "dates": [],
+   "locations": [
+      "airport",
+      "bus parking"
+   ],
+   "inside": true,
+   "outside": false,
+   "negative relevant thing": [
+      "airplanes visible"
+   ],
+   "negative activities": [
+      "considered"
+   ],
+   "negative locations": [],
+   "negative dates": []
+}

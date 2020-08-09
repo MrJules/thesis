@@ -1,0 +1,28 @@
+{
+   "topic": "10",
+   "relevant things": [
+      "lady",
+      "red top",
+      "top",
+      "poster",
+      "woman",
+      "research",
+      "red"
+   ],
+   "activities": [
+      "socializing",
+      "talking",
+      "talking to a lady",
+      "standing",
+      "hanging",
+      "talking with a woman"
+   ],
+   "dates": [],
+   "locations": [],
+   "inside": "NULL",
+   "outside": "NULL",
+   "negative relevant thing": [],
+   "negative activities": [],
+   "negative locations": [],
+   "negative dates": []
+}

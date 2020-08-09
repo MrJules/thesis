@@ -1,0 +1,31 @@
+{
+   "topic": "5",
+   "relevant things": [
+      "medicine cabinet",
+      "mirror"
+   ],
+   "activities": [
+      "looking",
+      "looking inside the medicine cabinet",
+      "looking inside the opening medicine cabinet"
+   ],
+   "dates": [],
+   "locations": [
+      "medicine cabinet",
+      "bathroom",
+      "home"
+   ],
+   "inside": true,
+   "outside": false,
+   "negative relevant thing": [
+      "other places",
+      "places",
+      "closed medicine",
+      "medicine"
+   ],
+   "negative activities": [
+      "considered"
+   ],
+   "negative locations": [],
+   "negative dates": []
+}

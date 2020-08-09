@@ -1,0 +1,32 @@
+{
+   "topic": "2",
+   "relevant things": [
+      "lifelog data",
+      "large touchscreen",
+      "touchscreen",
+      "touchscreen wall",
+      "colorful images",
+      "images",
+      "people"
+   ],
+   "activities": [
+      "looking",
+      "looking at lifelog data",
+      "showed",
+      "showed a range",
+      "talking"
+   ],
+   "dates": [],
+   "locations": [],
+   "inside": "NULL",
+   "outside": "NULL",
+   "negative relevant thing": [
+      "desktop monitor"
+   ],
+   "negative activities": [
+      "looking at the touchscreen",
+      "considered"
+   ],
+   "negative locations": [],
+   "negative dates": []
+}

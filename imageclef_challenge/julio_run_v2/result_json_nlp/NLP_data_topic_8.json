@@ -1,0 +1,27 @@
+{
+   "topic": "8",
+   "relevant things": [
+      "people",
+      "name-cards",
+      "person",
+      "meeting",
+      "pink name"
+   ],
+   "activities": [
+      "meeting",
+      "meeting with people",
+      "roundtable meeting",
+      "having",
+      "having a meeting"
+   ],
+   "dates": [],
+   "locations": [],
+   "inside": "NULL",
+   "outside": "NULL",
+   "negative relevant thing": [
+      "that"
+   ],
+   "negative activities": [],
+   "negative locations": [],
+   "negative dates": []
+}
