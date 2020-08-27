@@ -1,263 +1,399 @@
 \cleardoublepage
 
-\chapter{Initial Work}
+\chapter{Image Processing}
 \label{ch:initial_work}
 
-\par In this chapter a fundamental tool used was imageAI, which is a Computer Vision Python library that allows developers the ability to easily use state-of-the-art AI features . It supports algorithms for image prediction, custom image prediction, object detection, video detection, video object tracking and image predictions trainings. ImageAI also supports object detection, video detection and object tracking using RetinaNet, YOLOv3 and TinyYOLOv3 trained on COCO dataset. In terms of Machine Learning algorithms imageAI supports 4 trained on the imageNet-1000 dataset. \cite{ImageAI}
 
-
-\par With the goal of finding the best performing neural network or algorithm for image recognition and for object detection a few test runs were made. These test runs consist on feeding each of the neural networks and algorithms available for image recognition and object detection with one picture manually chosen beforehand. Each neural network and algorithm makes five guesses on what the image represents with a prediction probability that ranges in an interval between [0,100]. This prediction probability represents the certainty of the neural network and algorithm in its guess.
-\par In sections \ref{sec:image_test} and \ref{sec:object_test} an overview of three example test runs are presented and analysed.
+\par This chapter aims at explaining how the image processing system was created from scratch. Initially a performance comparison between some state-of-the-art image recognition neural networks and object detection algorithms was made. These networks and algorithms were obtained trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features. It supports algorithms for image prediction, custom image prediction, object detection, video detection, video object tracking and image predictions trainings. ImageAI also supports object detection, video detection and object tracking using RetinaNet, YOLOv3 and TinyYOLOv3 trained on COCO dataset. In terms of Machine Learning algorithms imageAI supports 4 trained on the imageNet-1000 dataset. \cite{ImageAI}
 
 
 
-\section{Image Recognition test runs}
-\label{sec:image_test}
 
-\par The imageAI library allows the usage of 4 deep learning neural networks for image recognition which are DenseNet, inceptionV3, ResNet50, and SquezeeNet. The explanation on how these neural networks function is presented in chapter \ref{ch:computervision}. The analysis of the results is in section  \ref{sec:results_image_rec}
+  \section{Test Runs}
 
+  \par With the goal of finding the best performing neural network and algorithm for image recognition and object detection a few test runs were made. These test runs consist on feeding each of the neural network and algorithm available with one picture manually chosen beforehand. Each neural network and algorithm produces predictions on what the image represents or what the objected detected is. The prediction probability ranges in an interval between [0,100]. This prediction probability represents the certainty of the neural network or the algorithm in the respective prediction.
+  \par In sections \ref{sec:image_test} and \ref{sec:object_test} examples of performance test runs done to image recognition neural networks and object detection algorithms are  presented and analysed.
 
+  \subsection{Image Recognition test runs}
+  \label{sec:image_test}
 
-    \newpage
-    \subsection{Test Run Number 1}
+  The imageAI library allows the usage of 4 deep learning neural networks for image recognition which are DenseNet, inceptionV3, ResNet50, and SquezeeNet.
 
-    \par For the first run an image of a dog (breed saluki) was analysed by all 4 neural networks.
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.20]{Sections/4InitialWork/4_images/run1_pic.jpg}
-        \caption{First picture to be analysed.} 
-    \end{figure}
-
-    \par The obtained results can be seen in the figure below. 
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.37]{Sections/4InitialWork/4_images/run1_res.png}
-        \caption{Results obtained.} 
-    \end{figure}
-
-
-    \newpage
-    \subsection{Test Run Number 2}
-    \par For the second run an image of a car was analysed by all 4 neural networks.
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.2]{Sections/4InitialWork/4_images/run3_pic.jpg}
-        \caption{Second picture to be analysed.} 
-    \end{figure}
-    \par The  obtained results can be seen in the image below.
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.37]{Sections/4InitialWork/4_images/run3_res.png}
-        \caption{Results obtained.} 
-    \end{figure}
-
-    \newpage
-    \subsection{Test Run Number 3}
-    \par For the last run an image of an espresso was analysed by all 4 neural networks.
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.04]{Sections/4InitialWork/4_images/run4_pic.jpg}
-        \caption{Third picture to be analysed.} 
-    \end{figure}
-    \par The obtained results can be seen in the figure below
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.37]{Sections/4InitialWork/4_images/run4_res.png}
-        \caption{Results obtained.} 
-    \end{figure}
-    
-    \newpage
-    \subsection{Results analysis}
-    \label{sec:results_image_rec}
-    
+  The next page shows three examples of some test runs done to these neural networks. The examples are exhibited in the following way : on the left a  picture to be analysed is present and on the right the respective graph with the results is presented. The graphs are structured in the following manner : the X axis shows the predictions, the Y axis shows the percentage probability certainty for the respective prediction and the color represents the neural network.
 
 
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OBJECT RECOGNITION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \newpage
-\section{Object Recognition test runs}
-\label{sec:object_test}
 
-\par ImageAI provides 3 different models trained on the COCO dataset for object recognition that are able to identify up to 80 of the most common objects in everyday life. The models provide include RetinaNet, YOLOv3 and TinyYOLOv3. \cite{ImageAI}
-\par The explanation on how these algorithms work is presented in chapter \ref{ch:computervision}. The analysis of the results is in section  \ref{sec:results_obj_rec}
 
-    \subsection{Test Run Number 1}
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.20]{Sections/4InitialWork/4_images_obj_run1/photo.jpg}
-        \caption{First picture to be analysed.} 
-    \end{figure}
-
-    \subsubsection{RetinaNet Results}
-
-    \begin{figure}[htb]
-        \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/retinaNet.jpg}
-          \caption{RetinaNet Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/retinaNet_graph.png}
-          \caption{RetinaNet Detections.}
-        \end{minipage}
+    \begin{figure}[H]
+      \centering
+      \captionsetup{justification=centering}
+      \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run1_pic.jpg} 
+      \end{subfigure}
+      \begin{subfigure}{0.74\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run1_res.png}
+      \end{subfigure}
+      \centering
+      \captionsetup{justification=centering}
+      \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run3_pic.jpg} 
+      \end{subfigure}
+      \begin{subfigure}{0.74\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run3_res.png}
+      \end{subfigure}
+      \centering
+      \captionsetup{justification=centering}
+      \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run4_pic.jpg} 
+      \end{subfigure}
+      \begin{subfigure}{0.74\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run4_res.png}
+      \end{subfigure}
+      
+      \caption{Three test runs done with the image recognition models.}
       \end{figure}
-    
-    \newpage
 
-    \subsubsection{Yolo Results}
+
+\newpage
+
+\subsubsection{Image Recognition Test Runs Results Analysis}
+
+
+In the first example a picture of a dog (breed Saluki) is analysed. InceptionV3 is the best performer in the first run, predicting correctly with an efficiency of 96.38\% and out performing the other 3 neural networks by a large margin, being that the second best is the ResNet50 with an efficiency of 42.32\%.
+
+For the second example a picture of a car was fed to the neural networks. InceptionV3 predicted with a 99.99\% that the car was a minivan. The shown car is not a minivan but its similar to one, so it is possible to assume that the prediction is correct.
+
+The final example a picture of a coffee, more precisely, an espresso is analysed. In this example all of the networks predicted correctly that the image represents an espresso. However, SquezeeNet only 63.88\% efficiency . InceptionV3 predicted with 100.0\% efficiency .
+
+From the 3 examples that were shown, it is clear that the inceptionV3 network achieved the best results and out performed the other neural networks.
+
+
+
+
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OBJECT RECOGNITION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \subsection{Object Detection test runs}
+  \label{sec:object_test}
+
+  \par ImageAI provides 3 different models trained on the COCO dataset for object recognition that are able to identify up to 80 of the most common objects in everyday life. The models that are provided include RetinaNet, YOLOv3 and TinyYOLOv3. \cite{ImageAI}.
+
+
+  The objects that these models are able to detect can be seen in the following image : 
+
+
+
+
 
     \begin{figure}[htb]
+      \centering
+      \includegraphics[width = \textwidth]{Sections/4InitialWork/4_images_random/detections.png}
+      \caption{Available labels for detection. }
+      \label{fig:yolov3} 
+  \end{figure}
+
+
+The following pictures were used to test the described models.
+
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+
+  \begin{subfigure}{0.3\textwidth}
+  \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/photo.jpg} 
+  \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+  \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/photo.jpg}
+  \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+  \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/photo.jpg}
+  \end{subfigure}
+
+  \caption{ 
+  Pictures used for test runs.}
+  \end{figure}
+
+  \newpage
+      \subsubsection{Object Detection Test Run Number 1}
+
+    
+
+      \begin{figure}[H]
         \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/yolo.jpg}
-          \caption{YOLO Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
+        \captionsetup{justification=centering}
+
+        \begin{subfigure}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/retinaNet.jpg} 
+        \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.65\textwidth}
+        \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/retinaNet_graph.png}
+        \caption{}
+        \end{subfigure}
+        
+        \caption{ 
+        Test run 1 with RetinaNet; a) Analysed picture with detections; b) Achieved performance on detections. }
+        \end{figure}
+    
+
+      
+        \begin{figure}[H]
+          \centering
+          \captionsetup{justification=centering}
+  
+          \begin{subfigure}{0.29\textwidth}
+          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/yolo.jpg} 
+          \caption{}
+          \end{subfigure}
+          \begin{subfigure}{0.65\textwidth}
           \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/yolo_graph.png}
-          \caption{YOLO Detections.}
-        \end{minipage}
-      \end{figure}
+          \caption{}
+          \end{subfigure}
+          
+          \caption{ 
+          Test run 1 with YOLOv3; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \end{figure}
+      
+
+
+          \begin{figure}[H]
+            \centering
+            \captionsetup{justification=centering}
     
-      \subsubsection{TinyYolo Results}
+            \begin{subfigure}{0.29\textwidth}
+            \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/yolo_tiny.jpg} 
+            \caption{}
+            \end{subfigure}
+            \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/tiny_yolo_graph.png}
+            \caption{}
+            \end{subfigure}
+            
+            \caption{ 
+            Test run 1 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \end{figure}
 
-    \begin{figure}[htb]
-        \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/yolo_tiny.jpg}
-          \caption{TinyYolo Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/yolo_tiny_graph.png}
-          \caption{TinyYolo Detections.}
-        \end{minipage}
-      \end{figure}
+      \newpage
 
-    \newpage
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% run2   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      
+      \subsubsection{Object Detection Test Run Number 2}
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% run2   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \subsection{Test Run Number 2}
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.20]{Sections/4InitialWork/4_images_obj_run2/photo.jpg}
-        \caption{Second picture to be analysed.} 
-    \end{figure}
-
-    \subsubsection{RetinaNet run 2 results}
-
-    \begin{figure}[htb]
-        \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run2/retinaNet.jpg}
-          \caption{RetinaNet Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run2/retinaNet_graph.png}
-          \caption{RetinaNet Detections.}
-        \end{minipage}
-      \end{figure}
+  
     
-    \newpage
 
-    \subsubsection{Yolo run 2 results}
-
-    \begin{figure}[htb]
+      \begin{figure}[H]
         \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run2/yolo.jpg}
-          \caption{YOLO Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run2/yolo_graph.png}
-          \caption{YOLO Detections.}
-        \end{minipage}
-      \end{figure}
-    
-      \subsubsection{TinyYolo run 2 results}
+        \captionsetup{justification=centering}
 
-    \begin{figure}[htb]
-        \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run2/yolo_tiny.jpg}
-          \caption{TinyYolo Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run2/yolo_tiny_graph.png}
-          \caption{TinyYolo Detections.}
-        \end{minipage}
-      \end{figure}
-
-    \newpage
+        \begin{subfigure}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/retinaNet.jpg} 
+        \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.65\textwidth}
+        \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/retinaNet_graph.png}
+        \caption{}
+        \end{subfigure}
+        
+        \caption{ 
+        Test run 2 with RetinaNet; a) Analysed picture with detections; b) Achieved performance detections. }
+        \end{figure}
 
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% run3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \subsection{Test Run Number 3}
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale = 0.20]{Sections/4InitialWork/4_images_obj_run3/photo.jpg}
-        \caption{Third picture to be analysed.} 
-    \end{figure}
-
-    \subsubsection{RetinaNet Results}
-
-    \begin{figure}[htb]
-        \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/retinaNet.jpg}
-          \caption{RetinaNet Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/retinaNet_graph.png}
-          \caption{RetinaNet Detections.}
-        \end{minipage}
-      \end{figure}
-    
-    \newpage
-
-    \subsubsection{YOLO Results}
-    
-    \begin{figure}[htb]
-        \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/yolo.jpg}
-          \caption{YOLO Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
+        \begin{figure}[H]
+          \centering
+          \captionsetup{justification=centering}
+  
+          \begin{subfigure}{0.29\textwidth}
+          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/yolo.jpg} 
+          \caption{}
+          \end{subfigure}
+          \begin{subfigure}{0.65\textwidth}
           \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/yolo_graph.png}
-          \caption{YOLO Detections.}
-        \end{minipage}
-      \end{figure}
-    
-      \subsubsection{TinyYOLO Results}
+          \caption{}
+          \end{subfigure}
+          
+          \caption{ 
+          Test run 2 with YoloV3 model; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \end{figure}
+  
 
-    \begin{figure}[htb]
+          \begin{figure}[H]
+            \centering
+            \captionsetup{justification=centering}
+    
+            \begin{subfigure}{0.29\textwidth}
+            \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/yolo_tiny.jpg} 
+            \caption{}
+            \end{subfigure}
+            \begin{subfigure}{0.6\textwidth}
+            \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/yolo_tiny_graph.png}
+            \caption{}
+            \end{subfigure}
+            
+            \caption{ 
+            Test run 2 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \end{figure}
+
+      \newpage
+
+      \subsubsection{Object Detection Test Run Number 3}
+
+
+
+      \begin{figure}[H]
         \centering
-        \begin{minipage}[b]{0.44\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/yolo_tiny.jpg}
-          \caption{TinyYolo Detections.}
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b]{0.50\textwidth}
-          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run3/yolo_tiny_graph.png}
-          \caption{TinyYolo Detections.}
-        \end{minipage}
-      \end{figure}
+        \captionsetup{justification=centering}
+
+        \begin{subfigure}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/retinaNet.jpg} 
+        \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.7\textwidth}
+        \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/retinaNet_graph.png}
+        \caption{}
+        \end{subfigure}
+        
+        \caption{ 
+        Test run 3 with RetinaNet; a) Analysed picture with detections; b) Achieved performance detections. }
+        \end{figure}
+
+
+
+        \begin{figure}[H]
+          \centering
+          \captionsetup{justification=centering}
+  
+          \begin{subfigure}{0.29\textwidth}
+          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/yolo.jpg} 
+          \caption{}
+          \end{subfigure}
+          \begin{subfigure}{0.7\textwidth}
+          \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/yolo_graph.png}
+          \caption{}
+          \end{subfigure}
+          
+          \caption{ 
+          Test run 3 with YoloV3 model; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \end{figure}
+  
+
+          \begin{figure}[H]
+            \centering
+            \captionsetup{justification=centering}
+    
+            \begin{subfigure}{0.29\textwidth}
+            \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/yolo_tiny.jpg} 
+            \caption{}
+            \end{subfigure}
+            \begin{subfigure}{0.65\textwidth}
+            \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/tiny_yolo_graph.png}
+            \caption{}
+            \end{subfigure}
+            
+            \caption{ 
+            Test run 3 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \end{figure}
+
 
     \newpage
-    \subsection{Results analysis}
 
-    \label{sec:results_obj_rec}
+    \subsection{Object Detection Word Clouds Generation Test Run}
+    In order to make the labels extraction more easily visible and still achieve some degree of performance comparison between the 3 object detection models word clouds were generated.
+
+    For this test 6 previously chosen images with identical setting were processed in order to generate 1 word cloud with all the extracted labels.
+    
+    In a word cloud, the bigger a word is the more times that label was detected in the pictures.
+
+
+    \begin{figure}[H]
+      \begin{subfigure}{\linewidth}
+      \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_wordcloud/photo1.jpg}\hfill
+      \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_wordcloud/photo2.jpg}\hfill
+      \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_wordcloud/photo7.jpg}
+      \end{subfigure}\par\medskip
+      \begin{subfigure}{\linewidth}
+      \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_wordcloud/photo4.jpg}\hfill
+      \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_wordcloud/photo5.jpg}\hfill
+      \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_wordcloud/photo6.jpg}
+      \end{subfigure}\par\medskip
+      \caption{Used images for word cloud generation.}
+    \end{figure}
+
+
+
+    \subsubsection{Word Clouds}
+
+    \begin{figure}[H]
+      \centering
+      \captionsetup{justification=centering}
+    
+      \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_wordcloud/yolo_pic.png} 
+      \caption{}
+      \end{subfigure}
+      \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_wordcloud/retina_pic.png}\hfill
+      \caption{}
+      \end{subfigure}
+      \begin{subfigure}{0.3\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_wordcloud/tiny_yolo_pic.png}\hfill
+      \caption{}
+      \end{subfigure}
+      \caption{Generated Word Clouds; a) Yolo word cloud; b) RetinaNet word cloud; c) TinyYolo word cloud}
+    \end{figure}
+
+    \newpage
+    
+
+    \subsubsection{Object Detection Results Analysis}
+      \label{sec:results_image_rec}
+
+
+     From the different test runs it is possible to analyse that the TinyYolo model under performs severely compared to RetinaNet and YoloV3. This is expected, as explained in section \ref{sec:tiny_yolo} the TinyYolo model is a smaller model of YOLOv3 that requires less computational resources and that is better suited for more constrained environments with smaller targets.
+
+     Comparing RetinaNet to YoloV3 it is possible to conclude that YoloV3 is more accurate than RetinaNet. For example in the first run, RetinaNet detects knifes and forks in the same place, in third example RetinaNet detects a bus in the place of a building while Yolo is capable of detecting a correctly stop sign that no other model detected.
+
+     As for the word clouds, it is possible to notice that in the YoloV3 cloud and the retinaNet cloud there are many more words than the tinyyolo cloud, again, tinyyolo is severely under performing when compared to the other 2 model.
+     
+     Looking at the Yolo model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words from different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like "pizza", "donut and "person" in one of the images.
+
+     This test runs allow for the conclusion that the YoloV3 model is the better performing one, and therefore is the one chosen for the object detections for the automatic retrieval system. 
+
+
+\section{First stage of the retrieval system}
+
+As a first step in building a fully automatic retrieval system an "alpha system" was created, without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects detected that are "cup" below the treshold of 40\% wont be returned.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = \textwidth]{Sections/4InitialWork/4_images_random/alpha.png}
+  \caption{System capable of detecting specific user inputted labels in multiple images. }
+  \label{fig:yolov3} 
+\end{figure}
+
+
+
+
+\begin{figure}[H]
+  \begin{subfigure}{\linewidth}
+  \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_2.jpg}\hfill
+  \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_3.jpg}\hfill
+  \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_4.jpg}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}{\linewidth}
+  \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_5.jpg}\hfill
+  \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_6.jpg}\hfill
+  \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_7.jpg}
+  \end{subfigure}
+  \caption{Used images for word cloud generation.}
+\end{figure}
 

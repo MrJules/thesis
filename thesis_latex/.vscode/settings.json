@@ -4,7 +4,6 @@
         "markdown",
         "plaintext"
     ],
-    "python.pythonPath": "/bin/python3",
     "cSpell.ignoreWords": [
         "vectorizing"
     ],
