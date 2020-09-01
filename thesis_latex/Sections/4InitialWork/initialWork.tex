@@ -3,23 +3,31 @@
 \chapter{Image Processing}
 \label{ch:initial_work}
 
+\par This chapter aims at explaining how the image processing system was created from scratch.
 
-\par This chapter aims at explaining how the image processing system was created from scratch. Initially a performance comparison between some state-of-the-art image recognition neural networks and object detection algorithms was made. These networks and algorithms were obtained trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features. It supports algorithms for image prediction, custom image prediction, object detection, video detection, video object tracking and image predictions trainings. ImageAI also supports object detection, video detection and object tracking using RetinaNet, YOLOv3 and TinyYOLOv3 trained on COCO dataset. In terms of Machine Learning algorithms imageAI supports 4 trained on the imageNet-1000 dataset. \cite{ImageAI}
-
+\par Initially in section \ref{sec:testruns} a performance comparison between some state-of-the-art image recognition algorithms and object detection models was done. Section \ref{sec:alpha_retrieval} describes a very raw first attempt at an image retrieval system using only object detection. Subsequently in section \ref{sec:scene_recognition} it is demonstrated how the scene recognition algorithm worked. Finally section \ref{sec:process_dataset} clarifies how all of the images in the imageclef dataset were processed.
 
 
 
   \section{Test Runs}
+  \label{sec:testruns}
 
-  \par With the goal of finding the best performing neural network and algorithm for image recognition and object detection a few test runs were made. These test runs consist on feeding each of the neural network and algorithm available with one picture manually chosen beforehand. Each neural network and algorithm produces predictions on what the image represents or what the objected detected is. The prediction probability ranges in an interval between [0,100]. This prediction probability represents the certainty of the neural network or the algorithm in the respective prediction.
-  \par In sections \ref{sec:image_test} and \ref{sec:object_test} examples of performance test runs done to image recognition neural networks and object detection algorithms are  presented and analysed.
+   With the goal of comparing the different image recognition algorithms and object detection models a few test runs were made.  The models and algorithms were provided trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features. It supports algorithms for image prediction, custom image prediction, object detection, video detection, video object tracking and image predictions trainings \cite{ImageAI}.
+
+  The test runs consist on feeding each of the models and algorithms with one picture manually chosen beforehand. Each model produces predictions on what the image represents or what the objected detected is. The prediction probability ranges in an interval between [0,100]. This prediction probability represents the certainty of the model or algorithm in the respective prediction.
+
+
+  \par Sections \ref{sec:image_test} and \ref{sec:object_test} provide examples of the performance test runs done to the models and algorithms.
 
   \subsection{Image Recognition test runs}
   \label{sec:image_test}
 
-  The imageAI library allows the usage of 4 deep learning neural networks for image recognition which are DenseNet, inceptionV3, ResNet50, and SquezeeNet.
 
-  The next page shows three examples of some test runs done to these neural networks. The examples are exhibited in the following way : on the left a  picture to be analysed is present and on the right the respective graph with the results is presented. The graphs are structured in the following manner : the X axis shows the predictions, the Y axis shows the percentage probability certainty for the respective prediction and the color represents the neural network.
+  The imageAI library allows the usage of 4 image recognition algorithms for image recognition which are DenseNet, inceptionV3, ResNet50, and SquezeeNet.
+
+  The next page shows three examples of some test runs done to these algorithms. The examples are exhibited in the following way : on the left a  picture to be analysed is present and on the right the respective graph with the results is presented. The graphs are structured in the following manner : the X axis shows the predictions, the Y axis shows the percentage probability certainty for the respective prediction and the color represents the algorithm used.
+
+  The obtained results are discussed in section \ref{sec:results_image}
 
 
 
@@ -62,6 +70,7 @@
 \newpage
 
 \subsubsection{Image Recognition Test Runs Results Analysis}
+\label{sec:results_image}
 
 
 In the first example a picture of a dog (breed Saluki) is analysed. InceptionV3 is the best performer in the first run, predicting correctly with an efficiency of 96.38\% and out performing the other 3 neural networks by a large margin, being that the second best is the ResNet50 with an efficiency of 42.32\%.
@@ -70,7 +79,7 @@ For the second example a picture of a car was fed to the neural networks. Incept
 
 The final example a picture of a coffee, more precisely, an espresso is analysed. In this example all of the networks predicted correctly that the image represents an espresso. However, SquezeeNet only 63.88\% efficiency . InceptionV3 predicted with 100.0\% efficiency .
 
-From the 3 examples that were shown, it is clear that the inceptionV3 network achieved the best results and out performed the other neural networks.
+From the 3 examples that were shown, it is clear that the inceptionV3 algorithm achieved the best results and out performed the other algorithms.
 
 
 
@@ -82,7 +91,9 @@ From the 3 examples that were shown, it is clear that the inceptionV3 network ac
   \subsection{Object Detection test runs}
   \label{sec:object_test}
 
-  \par ImageAI provides 3 different models trained on the COCO dataset for object recognition that are able to identify up to 80 of the most common objects in everyday life. The models that are provided include RetinaNet, YOLOv3 and TinyYOLOv3. \cite{ImageAI}.
+  \par ImageAI provides 3 different models trained on the COCO dataset for object detection that are able to identify up to 80 of the most common objects in everyday life. The models that are provided include RetinaNet, YOLOv3 and TinyYOLOv3. \cite{ImageAI}.
+
+  \par The obtained results are discussed in section \ref{sec:results_objet}
 
 
   The objects that these models are able to detect can be seen in the following image : 
@@ -355,7 +366,7 @@ The following pictures were used to test the described models.
     
 
     \subsubsection{Object Detection Results Analysis}
-      \label{sec:results_image_rec}
+      \label{sec:results_objet}
 
 
      From the different test runs it is possible to analyse that the TinyYolo model under performs severely compared to RetinaNet and YoloV3. This is expected, as explained in section \ref{sec:tiny_yolo} the TinyYolo model is a smaller model of YOLOv3 that requires less computational resources and that is better suited for more constrained environments with smaller targets.
@@ -370,8 +381,9 @@ The following pictures were used to test the described models.
 
 
 \section{First stage of the retrieval system}
+\label{sec:alpha_retrieval}
 
-As a first step in building a fully automatic retrieval system an "alpha system" was created, without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects detected that are "cup" below the treshold of 40\% wont be returned.
+As a first step in building a fully automatic retrieval system an "alpha system" was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects that are not "cup" or that are "cup" but below the threshold of 40\% wont be returned.
 
 \begin{figure}[H]
   \centering
@@ -394,6 +406,74 @@ As a first step in building a fully automatic retrieval system an "alpha system"
   \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_6.jpg}\hfill
   \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_7.jpg}
   \end{subfigure}
-  \caption{Used images for word cloud generation.}
+  \caption{Retrieved images for the label "cup" with "40\%" threshold.}
 \end{figure}
 
+\section{Scene Recognition}
+\label{sec:scene_recognition}
+  In order to detect interiors, exteriors and places a pretrained model provided by Zhou et al. \cite{Zhou2018}  trained on the Places365 standard dataset was used .
+
+  The following example shows the extractions done to a random image from the imageclef dataset. 
+
+  \begin{figure}[H]
+    \centering
+    \captionsetup{justification=centering}
+
+    \begin{subfigure}{0.525\textwidth}
+    
+    \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/dataset_place.jpg} 
+    \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+    \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/places_detect.png}
+    \caption{}
+    \end{subfigure}
+    
+    \caption{Example of a scene recognition; a) Picture 20161004\_213423\_000.jpg from the imageclef dataset; b) Scene recognition model output for that image.}
+
+    \label{fig:imagea}
+    \end{figure}
+
+
+    The "io\_score" represents the interior vs exterior certainty. It ranges from 0 to 1. If its close to 0 it means the image is probably an interior and if it is close to 1 it means it is probably an exterior. In this example, the image is an interior and the "io\_score" is 0, therefore the model predicted correctly that the image is in fact an interior.
+
+    Following up, the "categories" is where the model tries to predict what the image represents in terms of a scene. In this case the model predicts with 34.8\% accuracy that it is a "television\_room" which is also correct, since the image represents a division of a house with a television.
+
+    Finally, the "attributes" is the section where the model tries to describe the picture. Some of the predicaments were "enclosed area", "man-made", "indoor lightning" and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
+
+
+\section{Processing the Imageclef Dataset}
+\label{sec:process_dataset}
+
+    In order to extract the maximum possible labels, all images in the imageclef dataset were fully processed with YOLOv3 and the Places scene recognition model. This is an exhaustive approach since it takes a lot of computer processing time and resources. 
+    
+    Using \ref{fig:imagea} a) as an example, the fully processed image looks like this:
+    
+    \begin{figure}[H]
+      \centering
+      \captionsetup{justification=centering}
+  
+      \begin{subfigure}{0.395\textwidth}
+      
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/process1.png} 
+      \end{subfigure}
+      \begin{subfigure}{0.49\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/process2.png}
+      \end{subfigure}
+      \caption{Fully processed image with YOLOv3 and PLACES365.}
+      \label{fig:image_fully_processed}
+      \end{figure}
+
+      The "activity" and "location" were extracted from the data provided by the organizers in a .csv file. Unfortunately that data is not accurate enough, and a good option would be to use activity recognition algorithms to extract activities from images. unfortunately the processing time was already to high with the current setup.
+      The "local\_time" was extracted directly from the picture name.
+      The "box" is the location of the given "concept" in the image according to the pixels of the image.
+
+
+\section{Run  1 and Run 2}
+      In this year challenge, 2 different runs were made with the automatic retrieval system. 
+      
+      For the first run the extract objects from the images is a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset that was proposed by Mahajan et al. \cite{Mahajan2018}
+      
+      In the second run, the object detection algorithm used is the YoloV3 \cite{Redmon2018} model pretrained in the COCO dataset. 
+
+      This was done in order to understand if different object detection algorithms, would help in achieving better results.
