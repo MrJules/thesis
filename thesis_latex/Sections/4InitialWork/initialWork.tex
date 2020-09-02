@@ -441,11 +441,19 @@ As a first step in building a fully automatic retrieval system an "alpha system"
 
     Finally, the "attributes" is the section where the model tries to describe the picture. Some of the predicaments were "enclosed area", "man-made", "indoor lightning" and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
 
+\section{Run  1 and Run 2}
+    In this year challenge, 2 different runs were made with the automatic retrieval system. 
+    
+    For the first run the extract objects from the images is a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset that was proposed by Mahajan et al. \cite{Mahajan2018}
+    
+    In the second run, the object detection algorithm used is the YoloV3 \cite{Redmon2018} model pretrained in the COCO dataset. 
+
+    This was done in order to understand if different object detection algorithms, would help in achieving better results.
 
 \section{Processing the Imageclef Dataset}
 \label{sec:process_dataset}
 
-    In order to extract the maximum possible labels, all images in the imageclef dataset were fully processed with YOLOv3 and the Places scene recognition model. This is an exhaustive approach since it takes a lot of computer processing time and resources. 
+    In order to extract the maximum possible labels, all images in the imageclef dataset were fully processed with YOLOv3 or with ResNeXt-101 and the Places scene recognition model. This is an exhaustive approach since it takes a lot of computer processing time and resources. 
     
     Using \ref{fig:imagea} a) as an example, the fully processed image looks like this:
     
@@ -464,16 +472,29 @@ As a first step in building a fully automatic retrieval system an "alpha system"
       \label{fig:image_fully_processed}
       \end{figure}
 
+
+       
+    \begin{figure}[H]
+      \centering
+      \captionsetup{justification=centering}
+  
+      \begin{subfigure}{0.3\textwidth}
+      
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/res1.png} 
+      \end{subfigure}
+      \begin{subfigure}{0.3\textwidth}
+      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/res2.png}
+      \end{subfigure}
+      \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/res3.png}
+        \end{subfigure}
+      \caption{Fully processed image with ResNeXt-101 and PLACES365.}
+      \label{fig:image_fully_processed_resnext}
+      \end{figure}
+
+
       The "activity" and "location" were extracted from the data provided by the organizers in a .csv file. Unfortunately that data is not accurate enough, and a good option would be to use activity recognition algorithms to extract activities from images. unfortunately the processing time was already to high with the current setup.
       The "local\_time" was extracted directly from the picture name.
       The "box" is the location of the given "concept" in the image according to the pixels of the image.
 
 
-\section{Run  1 and Run 2}
-      In this year challenge, 2 different runs were made with the automatic retrieval system. 
-      
-      For the first run the extract objects from the images is a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset that was proposed by Mahajan et al. \cite{Mahajan2018}
-      
-      In the second run, the object detection algorithm used is the YoloV3 \cite{Redmon2018} model pretrained in the COCO dataset. 
-
-      This was done in order to understand if different object detection algorithms, would help in achieving better results.

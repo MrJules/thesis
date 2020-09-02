@@ -1,10 +1,11 @@
-\chapter{The Automatic Retrieval system}
+\chapter{Text Processing and Image Retrieval}
 
-This chapter aims at explaining how the text processing system was created and how it manages to extract relevant information from text like activities, locations, objects and so on.
+This chapter aims at explaining how the automatic retrieval system works. Firstly in section \ref{sec:text} it is explained how the system does text processing and word extraction and how it manages to extract relevant information from text like activities, locations, objects and so on.
 
 
 
-\section{Text Processing and Word Extraction}
+\section{ Word Extraction Stage}
+\label{sec:text}
 
 In the text processing stage, the query topics are analysed using Natural Language Processing tools to extract relevant words in order to retrieve the desired moment. Those words are compared with the visual concepts words obtained in the image processing stage. The text is therefore processed using a pre-trained state-of-the-art word2vec model in order to produce word embeddings.
 
@@ -24,15 +25,16 @@ sentences.
     \label{fig:spacy_labels}
   \end{figure}
   
+  \newpage
   
-  
-  As an example, some of the rules that were applied in the extraction of words to different categories:
+  As an example, some of the rules that were applied in the extraction of words to different categories were:
   
   \begin{itemize}
+    \itemsep0em
       \item  If the word is a "VERB" and ends with "ing", like "ordering" then it probably is an activity and if the words that follows are "NOUN" with or without "ADJ" (adjectives) then those words are probably either a location or an object.
       \item  If the word is and "ADP" and its either "in" or "at" then the words that follow are probably locations and usually means that the moment occurs inside a location and not outside, the category "inside" is then flagged to "True" and "outside" is flagged to "False".
       \item If the word is a "NUM" (number) then it probably refers to a year.
-      \item if the sentence has an auxiliary verb, the main verb usually corresponds to an activity and the words that follow the main verb may be objects or locations.
+      \item If the sentence has an auxiliary verb, the main verb usually corresponds to an activity and the words that follow the main verb may be objects or locations.
       \item If the word is an "ADJ" (adjective) then the following word is probably an object. It can also be a bi-gram like "ice cream" or in this case "fast food".
       \item If the sentence ends with "not considered relevant" the extracted words go to the negative categories.
       \item Rules for the extraction of dates, like day of the week, months, years, were also created, but do the the syntax of the test topics they were discarded in order to save time, however, for the dev topics they were used and produced good results. As an example if in the topic it was said that the moment happened on a "wednesday" or in year 2014, only pictures from wednesday or the year 2014 were retrieved.
@@ -40,7 +42,7 @@ sentences.
     \end{itemize}
 
 
-Using figure \ref{fig:spacy_labels} as an example, the extracted words for the different categories for the topic narrative of topic 6 from the test topics were as follows:
+Using figure \ref{fig:spacy_labels} as an example, the extracted words for the different categories for the narrative of topic 6 from the test topics were:
 
     \begin{itemize}
         \item \textbf{relevant things} : "fast food".
@@ -51,8 +53,8 @@ Using figure \ref{fig:spacy_labels} as an example, the extracted words for the d
        
     \end{itemize}
 
-
-\section{Retrieval}
+\newpage
+\section{Retrieval Stage}
 
     In the retrieval step the images are recovered according to the desired query topic.
     As an example figure \ref{fig:testtopic} represents the test topic number 7.
@@ -68,6 +70,7 @@ Using figure \ref{fig:spacy_labels} as an example, the extracted words for the d
       The extracted words of the title, description and narrative are as follows:
 
       \begin{itemize}
+        \itemsep0em
         \item \textbf{relevant things} : 
             "seafood",
             "parts",
@@ -87,76 +90,109 @@ Using figure \ref{fig:spacy_labels} as an example, the extracted words for the d
        
     \end{itemize}
 
-    The words "evening time" went to the locations category wrongly because of the previously described rule, where if a word is an "ADP" and it is "in" then the following "NOUN" is probably a location, which in this case is not correct.
+    It is however noticeable that the words "evening time" are wrongly placed on the locations category. One of the reasons for this to happen is because of the previously described rule, where if a word is an "ADP" and it is "in" then the following "NOUN" is probably a location, which in this case is not correct.
+
+    \subsection{Retrieving Images According to the Similarity Between Words}
+
+    In order to retrieve images according to the defined moment in a textual topic, a comparison is made between the extracted visual concept words from the images and the words extracted from the topic trough an NLP model capable of returning a similarity value.
+
+    Allowing the the computer to  tell the similarity between the visual concepts and the extracted data, the SpaCy en\_core\_web\_md model was used, which is an english mult-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl. This model allows for the computation of the similarity between words. For example the word "television" and "seafood" have a similarity of 0.0705759162558067 while "television" and "screen" have a similarity of 0.4271196001925812.
+    
+    A confidence score is calculated based on that value for for each image for each topic. This score ranges from a value of 0.0 (0\%) to 1.0 (100\%).
+
+    Since the images dataset consists in 200.000 images and the test topic dataset consists on 10 topics, approximately 2.000.000 confidence score calculations had to occur. This step is extremely exhaustive on computer time and resources, which made it  hard to make adjustments and correct errors and bugs on the code.
+    
+    The computation of the confidence score is also influenced by the score of the image concepts obtained trough the image processing phase. This means that an image with low prediction score has a lower confidence score. Not only is the confidence score influenced by the similarity between words, the prediction score, but also the computed weights assigned to each category. The weight for each category is obtained through two different factors, an importance weight factor of and a distributed weight factor. The weight of the category is therefore the sum of the importance weight factors and the distributed weight factor.
 
 
-    A comparison is made between the visual concept words extracted from the images and the words extracted from the topic. In order to do this, the SpaCy en\_core\_web\_md model was used, which is an english mult-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl. This model allows for the computation of the similarity between words.
+    The distributed weight factor value is not the same for each category, the ratio of the distribution is equal to the default ratio of the importance factor of all categories. To make it clearly, if the importance weight factor for ”relevant things” is 0.5, which is half of the sum of all importance factors, and if the ”activities” category is worth 0.2 and has no extracted textual data, then half of 0.2 is distributed to ”relevant things”, which increases the importance to 0.6 and the remainder 0.1 will be distributed the same way to other categories ensuring that the sum of all importance factors and distributed weight factors is 1, that represents an 100\% confidence score. The negative categories works the same way, but instead of contributing for the confidence score, it decreases the value of the confidence.
 
-    For example the word "television" and "seafood" have a similarity of 0.0705759162558067 while "television" and "screen" have a similarity of 0.4271196001925812.
+    In order to have a better visualization of how this calculations are done section \ref{sec:equation} shows all of the equations needed to calculate the confidence score.
 
-    Afterwards, a confidence score is computed for each image in the dataset for every single topic, which means that a confidence score was calculated for 2.000.000 images, which took a lot of computer processing time and resources, and made it extremely difficult to make adjustments and correct errors.
+    Finally, a script runs through all the selected confidence scores for a given
+    query topic and stores the 50 pictures with the highest confidence score for each topic are stored and the 10 highest pictures are the ones who count for the f1@measure score.
+       
 
-    The score is obtained through the comparison of the extracted words from the
-    topic and the extracted labels from the images. The 10 pictures with the highest confidence score for each topic are retrieved.
+    Due to the fact that the PLACES365 scene recognition model extracts scenes with very low scores, rarely above 30\%-40\% it was decided to discard the category "categories" and "attributes" from contributing to the confidence score in order to save processing time.
 
-    \section{Run 1 and Run 2 }
-    Using figure \ref{fig:image_fully_processed}, the comparisons made are the following :
+  
+\newpage
 
+    \subsection{Comparisons done  }
+    Using the figures \ref{fig:image_fully_processed} and \ref{fig:image_fully_processed_resnext} that represent the visual extracted words, the comparisons made are the following:
     \begin{itemize}
-        \item The category "concepts" is compared to the category "relevant things";
-        \item The category "activity" is compared to the category "activities";
-        \item The category "location" is compared to the category "locations";
-        \item "Depending if "inside" = "True" / "False" the "io\_score" value will have different impact.
-        \item Do to the fact that the labels extracted from the Places model are sometimes not accurate enough and that the textual data extracted from the topic is not specific enough, the category "categories" and "attributes" was discarded from counting to the confidence score in order to save time.
+        \itemsep0em
+        \item The visual category "concepts" is compared to the textual category "relevant things";
+        \item The visual category "concepts" is compared to the textual category "negative relevant things";
+        \item The visual category "activity" is compared to the textual category "activities";
+        \item The visual category "activity" is compared to the textual category "negative activities";
+        \item The visual category "location" is compared to the textual category "locations";
+        \item The visual category "location" is compared to the textual category "negative locations";
+        \item "Depending if the textual category "inside" = "True" / "False" the visual category "io\_score" value will have different impact on the confidence score.
     \end{itemize}
     
 
- This confidence score is influenced by the
-scores of the image concepts obtained through the object detection phase and
-the different weights assigned to each category. The weight for each category is
-obtained through two different factors, a factor of importance and a computed
-factor.
+    \subsection{Run 1}
 
-In Run 1, the importance factor for all categories is the same. This means
-that each category has the same weight for the computation of the confidence
-score.
+    The first run to be submitted for the imageclef LMRT subtask used a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset for the extraction of visual concepts.
 
-For Run 2, it was decided to define the importance factor differently for each category. It was given a bigger importance to specific categories like "relevant things" in order to improve results, since the computation of the similarity of this textual category with the extracted object detection image label concepts. Categories like
-”activities” and ”locations” get a lesser importance factor since they are being
-compared to the organizers label data which is limiting and lesser accurate. The
-sum of all importance factors of all categories is equal to 1, which represents
-100\%.
+    In this run all of the importance weight factors for all categories were the same. This means that each category counts the same for the computation of the confidence score. No category is more important or less important. When a category is empty, their respective importance factor is equally apportionated to all other categories but never to the negative categories. If a negative category importance factor is negative, their factor is apportionated to the other negative categories. And if a positive category is empty, their factor is apportionated to the positive categories.
 
-The computed factor is obtained from the distribution of the factor of importance from empty categories to all other categories. If there isn't any
-textual data extracted from a query topic for the category ”activities”, this category will
-be empty, therefore, the  the importance factor of the ”activities” is apportioned
- to all other categories, increasing their importance factor, in order to
-maintain the sum of 1.
+    Another aspect of Run 1 is that the negative categories can only impact the confidence score up to 0.5.
+    
+    A general threshold was previously defined in order to remove images of low
+concept scores, images above the threshold are selected for the calculation of the confidence score in order to select them for the query topic.  The threshold was implemented through some trial and error during the test phases, and it merely serves the purpose of saving some computational time.
 
-This value is not the same for each category, the ratio of the distribution is equal to the default ratio of the importance factor of all categories. To make it clearly, if the importance factor for ”relevant things” is 0.5, which is half of the sum of all importance factors, and
-if the ”activities” category is worth 0.2 and has no extracted textual data, then
-half of 0.2 is distributed to ”relevant things”, which increases the importance to
-0.6 and the remainder 0.1 will be distributed the same way to other categories
-ensuring that the sum of all importance factors is 1.
+    \subsection{Run 2}
 
-The negative categories works the same way, but instead of contributing for
-the confidence score, it decreases the value of the confidence.
+    
+    In the second run, the object detection algorithm used is the YoloV3 model pretrained in the COCO dataset.  It was decided to define the importance weight factor differently for each category. It was given a bigger importance to specific categories like "relevant things" and "ioscore". Categories like ”activities” and ”locations” get a lesser importance weight factor since they are being compared to the organizers label data which is limiting and lesser accurate.  Another difference from Run 1 to Run 2 is that all of the negative categories were discarded from contributing to the confidence score, in order to save processing time and since the first results from Run 1 did not appear to impact much.
+    
 
-A general threshold was previously defined in order to remove images of low
-concept scores or low confidence score, images above the threshold are selected
-for the query topic. The threshold was implemented through some trial and
-error during the test phases, and it merely serves the purpose of saving some
-computational time.
+\newpage
+\subsection{Confidence Score Computation Equations}
+\label{sec:equation}
+The following equations showcase how the confidence score is calculated :
 
-Run 2 differs from Run 1 not only in the image processing step, where differ-
-ent image processing algorithms were used, but also in the retrieval step, where
-all factors of importance were altered in order to give more importance to some
-categories than others, as previously discussed. Another difference is the nega-
-tive category which was discarded from the calculation of the confidence score
-in Run 2.
 
-Finally, a script runs through all the selected confidence scores for a given
-query topic and stores the fifty highest on the csv file. As expected by the
-previous year results, this automatic and exhaustive approach is not the most
-suitable for a lifelog application.
 
+
+
+
+\begin{align*}
+    &\textbf{ConceptScore}  =   [CategoryWeight_1]\times[HighestSimilarityScore]\times[Score] \\ 
+    &\textbf{LocationScore} = [CategoryWeight_2]\times[HighestSimilarityScore] \\ 
+   &\textbf{ActivityScore} =  [CategoryWeight_3]\times[HighestSimilarityScore]\\
+    &\textbf{InsideScore}   =  [CategoryWeight_4]\times[ioscore]\\
+    &\textbf{OutsideScore}  =  [CategoryWeight_5]\times(1-[ioscore])\\
+    &\textbf{PositiveScore}  =  ConceptScore + LocationScore + ActivityScore + (Inside||Ouside)Score\\
+    &\textbf{NegativeConceptScore}  =  [CategoryWeight_6]\times[HighestSimilarityScore]\times[Score]\\
+    &\textbf{NegativeLocationScore}  =  [CategoryWeight_7]\times[HighestSimilarityScore]\\
+    &\textbf{NegativeActivityScore}  =  [CategoryWeight_8]\times[HighestSimilarityScore]\\
+    &\textbf{NegativeScore}  =  Negative(ConceptScore + LocationScore + ActivityScore) \\
+    &\textbf{ConfidenceScore}  =  PositiveScore - NegativeScore\\
+\end{align*}
+
+
+
+%Using again figures \ref{fig:image_fully_processed} and \ref{fig:image_fully_processed_resnext} as an
+
+
+\newpage
+
+
+\section{System Architecture Diagram}
+\label{sec:diagram}
+   
+\begin{figure}[H]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width = 0.75\textwidth]{Sections/6textprocessing/images/diagram.png}
+    \caption{System Architecture}
+    \label{fig:testtopic}
+  \end{figure}
+
+
+
+
+  
