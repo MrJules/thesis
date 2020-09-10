@@ -7,9 +7,9 @@
 \par The task of automatically recognizing and locating objects in images and videos is of extreme importance for computers to be able to understand and interact with their surroundings. Some major applications of this particular task are pedestrian face detection, surveillance, autonomous driving and text digitalization, where object detection is a crucial challenge. \cite{Agarwal2019}
 
 
-\par Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. It is characterized by two important aspects, the mapping of image pixels into the feature space (explained in more details in section \ref{sec:featurespace}) and with the extraction of various attributes of an object. Only after extracting useful features from either images or videos, the computer is able to define what an object is or what a certain environment contains.\cite{Tiwari2013}
+\par Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. It is characterized by two important aspects, the mapping of image pixels into the feature space (explained in more detail in section \ref{sec:featurespace}) and with the extraction of various attributes of an object. Only after extracting useful features from either images or videos, the computer is able to define what an object is or what a certain environment contains.\cite{Tiwari2013}
 
-Putting it simply, feature extraction is the first step to convert an image into text.
+Putting it simply, feature extraction is the first step in converting an image into text.
 
 \begin{figure}[htb]
     \centering
@@ -18,13 +18,14 @@ Putting it simply, feature extraction is the first step to convert an image into
 \end{figure}
 
 
-\par This chapter starts with fundamental concepts in order to understand how feature extraction in computer vision works. Section \ref{sec:libraries} gives a brief introduction of the most common computer vision libraries. Neural networks are introduced in section \ref{sec:neuralnet}, where the most common architecture types are presented. All CNN architectures and regression based algorithms used during the development of this thesis are explained with detail in sections \ref{sec:cnn} and \ref{sec:regression}. Classification based algorithms, presented in \ref{sec:classification}, were not used in this work, but they are a required reading in order to understand the differences between them and the regression based algorithms. Finally, a state-of-the-art in object detection and image classification can be read in section \ref{sec:state}.
+\par This chapter starts with fundamental concepts in section \ref{sec:fundamental}. Section \ref{sec:libraries_cv} gives a brief introduction of the most common computer vision libraries. Neural networks are introduced in section \ref{sec:neuralnet}, where the most common architecture types are presented. All CNN architectures and regression based algorithms used during the development of this thesis are explained with detail in sections \ref{sec:cnn} and \ref{sec:regression}. Classification based algorithms, presented in \ref{sec:classification}, were not used in this work, but they are a required reading in order to understand the differences between them and the regression based algorithms. Finally, a state-of-the-art in object detection and image classification can be read in section \ref{sec:state}.
 
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Fundamental Concepts}
+\label{sec:fundamental}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \subsection{Artificial Intelligence}
     \par Artificial Intelligence (AI) is the artificial simulation of human intelligence by a computer system in a way that it can perceive its environment, understand its behaviors and take action. Two important areas of AI are machine learning and deep learning. \cite{mathworks_AI}
@@ -35,7 +36,7 @@ Putting it simply, feature extraction is the first step to convert an image into
 
     \par Machine learning can be defined as a data analytics technique that allows computers to learn from experience. There are two types of machine learning techniques, which are supervised learning and unsupervised learning.
     \par Normally, supervised machine learning is used to train a model to predict future outputs, this is done by inputting and outputting known data. Supervised learning uses two different techniques which are classification and regression. Classification techniques are used to classify input data into categories while regression techniques are used to predict continuous responses. 
-    \par Unsupervised learning is mostly used to find hidden patterns or intrinsic structures in input data. The most common unsupervised learning technique is clustering which is used for data analysis exploration, in order to find hidden patterns or groupings in data. \cite{mathworks_NN}
+    \par Unsupervised learning is mostly used to find hidden patterns or intrinsic structures in input data. The most common unsupervised learning technique is clustering which is used for data analysis exploration, in order to find hidden patterns or groupings in data. \cite{mathworks_ML}
 
     \subsection{Deep Learning}
 
@@ -63,7 +64,7 @@ Putting it simply, feature extraction is the first step to convert an image into
         \item Medical Research : For the automatic detection of cancer cells.
     \end{itemize} 
 
-    \par However, the main purpose of deep learning, for this work, will be to apply it to the images obtained from lifelogging. In simple words, lifelogging is the process of tracking and record personal data created through our activities and behaviour \cite{Ribeiro}. More on liffelogging can be read in chapter \ref{ch:imageclef}.
+    \par However, the main purpose of deep learning, for this work, will be to apply it to the images obtained from lifelogging.
     
     
     
@@ -155,7 +156,7 @@ Putting it simply, feature extraction is the first step to convert an image into
 
     \par A dataset is a collection of images and videos that contain every day life objects that are manually labeled. State-of-the-art object detection models require deep learning neural networks, and in order for neural networks to be trained, they  require training datasets, as previously explained.  
 
-    \par A few examples of some available datasets are:  MS COCO \cite{Lin2014}, ImageNet \cite{Takamitsu1978} , VisualGenome \cite{Language2015}, OpenImages \cite{Kuznetsova2018} and Pascal-VOC \cite{Everingham2010}
+    \par A few examples of some available datasets are:  MS COCO \cite{Lin2014}, ImageNet \cite{Takamitsu1978} , VisualGenome \cite{Language2015}, OpenImages \cite{Kuznetsova2018} and Pascal-VOC \cite{Everingham2010}.
 
     \par Some of these datasets propose challenges, where teams are able to compete in order to achieve state-of-the-art results. This subject is discussed in section \ref{sec:state}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,7 +165,7 @@ Putting it simply, feature extraction is the first step to convert an image into
 
 
 \section{Computer Vision Libraries}
-\label{sec:libraries}
+\label{sec:libraries_cv}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,7 +254,7 @@ Putting it simply, feature extraction is the first step to convert an image into
 
             \subsubsection{Feedforward Neural Network}
             
-            \par A Feedforward neural network has the most simple architecture, the data only travels in one single direction. It goes through the input node and exits at the output node. Since there is no back-propagation algorithm this neural network is not able to correct itself. \cite{ArmaanMerchant2018}
+            \par A Feedforward neural network has the most simple architecture, the data only travels in one single direction. It goes through the input node and exits at the output node. Since there is no back-propagation algorithm this neural network is not able to correct itself. \cite{ArmaanMerchant2018} \cite{VikasGupta2017}
 
             \begin{figure}[htb]
                 \centering
@@ -277,7 +278,7 @@ Putting it simply, feature extraction is the first step to convert an image into
 
             \subsubsection{Convolutional Neural Network (CNN)}
             
-            \par CNNs, also known as ConvNets, are a class of deep neural networks that employ the mathematically convolutional operation in at least one of its layers and have a deep feed-forward (not recurrent) architecture \cite{Ribeiro}. They share similarities with feedforward neural networks, since neurons also have weights and biases that are able to learn. In this network the input features are taken like a filter, which allows the network to have memory, since it can remember the images in parts and compute operations like conversion of the image from RGB or HSI to grayscale, allowing the detection of edges and images that can be classified into different categories. \cite{ArmaanMerchant2018}
+            \par CNNs, also known as ConvNets, are a class of deep neural networks that employ the mathematically convolutional operation in at least one of its layers and have a deep feed-forward (not recurrent) architecture \cite{Ribeiro}. They share similarities with feedforward neural networks, since neurons also have weights and biases that are able to learn. In this network the input features are taken like a filter, which allows the network to have memory, since it can remember the images in parts and compute operations like conversion of the image from RGB or HSI to grayscale, allowing the detection of edges and images that can be classified into different categories. \cite{ArmaanMerchant2018} 
 
             \par The only notable difference between CNNs and traditional ANNs is that CNNs are primarily used in the field of pattern recognition within images. This allows the encoding image-specific features into the architecture, making the network more suited for image-focused tasks, while further reducing the parameters required to set up the model. \cite{OShea2015}
             

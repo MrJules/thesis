@@ -3,8 +3,7 @@
 \chapter{Image Processing}
 \label{ch:initial_work}
 
-\par This chapter aims at explaining how the image processing system was created from scratch.
-
+\par This chapter aims at discussing how the image processing stage was built.
 \par Initially in section \ref{sec:testruns} a performance comparison between some state-of-the-art image recognition algorithms and object detection models was done. Section \ref{sec:alpha_retrieval} describes a very raw first attempt at an image retrieval system using only object detection. Subsequently in section \ref{sec:scene_recognition} it is demonstrated how the scene recognition algorithm worked. Finally section \ref{sec:process_dataset} clarifies how all of the images in the imageclef dataset were processed.
 
 
@@ -12,7 +11,7 @@
   \section{Test Runs}
   \label{sec:testruns}
 
-   With the goal of comparing the different image recognition algorithms and object detection models a few test runs were made.  The models and algorithms were provided trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features. It supports algorithms for image prediction, custom image prediction, object detection, video detection, video object tracking and image predictions trainings \cite{ImageAI}.
+   With the goal of comparing the different image recognition algorithms and object detection models a few test runs were made. The models and algorithms were provided trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features. It supports algorithms for image prediction, custom image prediction, object detection, video detection, video object tracking and image predictions trainings \cite{ImageAI}.
 
   The test runs consist on feeding each of the models and algorithms with one picture manually chosen beforehand. Each model produces predictions on what the image represents or what the objected detected is. The prediction probability ranges in an interval between [0,100]. This prediction probability represents the certainty of the model or algorithm in the respective prediction.
 
@@ -25,7 +24,7 @@
 
   The imageAI library allows the usage of 4 image recognition algorithms for image recognition which are DenseNet, inceptionV3, ResNet50, and SquezeeNet.
 
-  The next page shows three examples of some test runs done to these algorithms. The examples are exhibited in the following way : on the left a  picture to be analysed is present and on the right the respective graph with the results is presented. The graphs are structured in the following manner : the X axis shows the predictions, the Y axis shows the percentage probability certainty for the respective prediction and the color represents the algorithm used.
+  The next page shows three examples of some test runs done to these algorithms. The examples are exhibited in the following way : on the left a  picture to be analysed is present and on the right the respective graph with the results is displayed. The graphs are structured in the following manner : the X axis represents the predictions, the Y axis represents the percentage probability certainty for the respective prediction and the color represents the algorithm used.
 
   The obtained results are discussed in section \ref{sec:results_image}
 
@@ -63,7 +62,7 @@
       \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run4_res.png}
       \end{subfigure}
       
-      \caption{Three test runs done with the image recognition models.}
+      \caption{Image recognition test runs.}
       \end{figure}
 
 
@@ -75,9 +74,9 @@
 
 In the first example a picture of a dog (breed Saluki) is analysed. InceptionV3 is the best performer in the first run, predicting correctly with an efficiency of 96.38\% and out performing the other 3 neural networks by a large margin, being that the second best is the ResNet50 with an efficiency of 42.32\%.
 
-For the second example a picture of a car was fed to the neural networks. InceptionV3 predicted with a 99.99\% that the car was a minivan. The shown car is not a minivan but its similar to one, so it is possible to assume that the prediction is correct.
+For the second example a picture of a car was processed. InceptionV3 predicted with a 99.99\% that the car was a minivan. The shown car is not a minivan but its similar to one, so it is possible to assume that the prediction is correct.
 
-The final example a picture of a coffee, more precisely, an espresso is analysed. In this example all of the networks predicted correctly that the image represents an espresso. However, SquezeeNet only 63.88\% efficiency . InceptionV3 predicted with 100.0\% efficiency .
+The final example a picture of an espresso coffee is analysed. In this example all image recognition algorithms predicted correctly that the image represents an espresso. However, SquezeeNet only achieved 63.88\% efficiency while InceptionV3 predicted with 100.0\% efficiency.
 
 From the 3 examples that were shown, it is clear that the inceptionV3 algorithm achieved the best results and out performed the other algorithms.
 
@@ -377,10 +376,10 @@ The following pictures were used to test the described models.
      
      Looking at the Yolo model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words from different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like "pizza", "donut and "person" in one of the images.
 
-     This test runs allow for the conclusion that the YoloV3 model is the better performing one, and therefore is the one chosen for the object detections for the automatic retrieval system. 
+     This test runs allow for the conclusion that the YoloV3 model is the better performing one, and therefore was the one chosen for the object detections for the automatic retrieval system. However, since the interactive system was built with detections from ResNeXt-101, those detections were also reutilized for the automatic system in a different run for the imageclef challenge. This will be further discussed in section \ref{sec:runs}.
 
 
-\section{First stage of the retrieval system}
+\section{Example of a Raw Retrieval System}
 \label{sec:alpha_retrieval}
 
 As a first step in building a fully automatic retrieval system an "alpha system" was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects that are not "cup" or that are "cup" but below the threshold of 40\% wont be returned.
@@ -442,6 +441,7 @@ As a first step in building a fully automatic retrieval system an "alpha system"
     Finally, the "attributes" is the section where the model tries to describe the picture. Some of the predicaments were "enclosed area", "man-made", "indoor lightning" and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
 
 \section{Run  1 and Run 2}
+\label{sec:runs}
     In this year challenge, 2 different runs were made with the automatic retrieval system. 
     
     For the first run the extract objects from the images is a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset that was proposed by Mahajan et al. \cite{Mahajan2018}

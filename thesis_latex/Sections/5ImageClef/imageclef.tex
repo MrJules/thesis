@@ -3,11 +3,11 @@
 \chapter{ImageCLEF}
 \label{ch:imageclef}
 
-This chapter aims at explaining the ImageCLEF challenge. Firstly in section \ref{sec:introduct} an introduction is given to the challenge and the respective goals. Section \ref{sec:tasks} describes the tasks available for the year 2020. The concept of lifelogging is explained in section \ref{sec:concept_lifelog}. Finally section \ref{sec:imagecleflifelog} it is clarified the task that is the main focus of this work, along with an introduction to the dataset, dev topics, test topics, ground truth and the evaluation methodology of the task.
+This chapter aims at describing the ImageCLEF challenge. Firstly in section \ref{sec:introduct} an introduction is given to the challenge and the respective goals. Section \ref{sec:tasks} describes the tasks available for the year 2020. The concept of lifelogging is explained in section \ref{sec:concept_lifelog}. Finally section \ref{sec:imagecleflifelog} clarifies the LMRT subtask which is the main focus of this work, along with an introduction to the dataset, dev topics, test topics, ground truth and the evaluation methodology of the task.
 
 
 
-\section{Introduction to the ImageCLEF challenge}
+\section{The ImageCLEF challenge}
 \label{sec:introduct}
 
 The ImageCLEF challenge is a large–scale evaluation campaign that aims at evaluating cross-language image retrieval systems. It is organized as part of the CLEF Initiative (Conference and Labs of the Evaluation Forum, formerly known as Cross-Language Evaluation Forum) and launched in  2003, initially proposed by Mark Sanderson and Paul Clough from the Department of Information Studies from the University of Sheffiel with the goal of providing support for the evaluation of 1) language-independent methods for the automatic annotation of images with concepts, 2) multimodal information retrieval methods based on the combination of visual and textual features, and 3) multilingual image retrieval methods, so as to compare the effect of retrieval of image annotations and query formulations in several languages.
@@ -45,7 +45,7 @@ Lifelogging is defined as a form of pervasive computing consisting of a unified 
 
 Personal lifelogs have a great potential in numerous applications, including memory and moments retrieval, daily living understanding, diet monitoring, or disease diagnosis, as well as other emerging application areas. For example: in Alzheimer’s disease, people with memory problems can use a lifelog application to help a specialist follow the progress of the disease, or to remember certain moments from the last days or months.
 
-One of the greatest challenges of lifelog applications is the large amount of lifelog data that a person can generate. The lifelog datasets, for example the ImageCLEFlifelog dataset, are rich multimodal datasets which consist in one or more months of data from multiple lifeloggers. Therefore, an important aspect is the lifelog data organization in the interest of improving the search and retrieval of information. In order to organize the lifelog data, useful information has to be extracted from it. 
+One of the greatest challenges of lifelog applications is the large amount of lifelog data that a person can generate. The lifelog datasets, for example the ImageCLEFlifelog dataset, are rich multimodal datasets which consist in one or more months of data from multiple lifeloggers. Therefore, an important aspect is the lifelog data organization in the interest of improving the search and retrieval of information. In order to organize the lifelog data, useful information has to be extracted from it. \cite{Ribeiro2019} \cite{Ribeiro2020}
 
 \newpage
 \section{ImageCLEFlifelog}
@@ -57,12 +57,12 @@ The ImageCLEFlifelog 2020 task is divided into two different sub-tasks: the Life
     
 The UA.PT Bioinformatics participated in the LMRT subtask with two different retrieval systems. The first one is the automatic retrieval system which was a continuation of the work done in the previous year challenge \cite{Ribeiro2019} and the main objective of this thesis. The other one was a retrieval system capable of providing user interaction and visualization. 
 
-The interactive retrieval system is only interesting for this work in terms of comparing the achieved results, therefore this document will not explain how it works. However in case of curiosity the article "UA.PT Bioinformatics at ImageCLEF 2020: Lifelog Moment Retrieval Web based Tool" \cite{Ribeiro2020} explains in detail how that system functions.
+The interactive retrieval system is only interesting for this work in terms of comparing the achieved results, therefore this document will not explain how it works. However, for further readings the article "UA.PT Bioinformatics at ImageCLEF 2020: Lifelog Moment Retrieval Web based Tool" \cite{Ribeiro2020} explains in detail how the interactive system operates.
 
     \subsection{SubTask: Lifelog Moment Retrieval}
     In the LMRT subtask, the main objective is to create a system capable of retrieving a number of predefined moments in a lifelogger’s day-to-day life from a set of images. Moments can be defined as semantic events or activities that happen at any given time during the day. For example, given the query ”Find the moment(s) when the lifelogger was having an icecream on the beach“ the participants should return the corresponding relevant images that show the moments of the lifelogger having icecream at the beach. Like last year, particular attention should be paid to the diversification of the selected moments with respect to the target scenario.
 
-    ImageCLEFlifelog dataset is a new rich multimodal dataset which consists of 4.5 months of data from three lifeloggers, namely: images (1,500-2,500 per day), visual concepts (automatically extracted visual concepts with varying rates of accuracy), semantic content (locations and activities) based on sensor readings on mobile devices (via the Moves App), biometrics information (heart rate, galvanic skin response, calories burn, steps, continual blood glucose, etc.), music listening history and computer usage . However, in this work only the images, the visual concepts and the semantic content of the dataset were used.
+    ImageCLEFlifelog dataset is a new rich multimodal dataset which consists of 4.5 months of data from three lifeloggers, namely: images (1,500-2,500 per day), visual concepts (automatically extracted visual concepts with varying rates of accuracy), semantic content (locations and activities) based on sensor readings on mobile devices (via the Moves App), biometrics information (heart rate, galvanic skin response, calories burn, steps, continual blood glucose, etc.), music listening history and computer usage . However, in this work only the images, the visual concepts and the semantic content of the dataset were used. \cite{Ribeiro2020}
 
     Firstly the organizers release the dev topics and the image dataset with the corresponding ground truth. This means that it is possible to initially create a retrieval system and analyse if it is producing good results, since it is possible to know which pictures should retrieved for each textual topic. 
 
@@ -91,7 +91,6 @@ The interactive retrieval system is only interesting for this work in terms of c
     \end{itemize}
     
 
-    \
     \subsubsection{Example of the ground truth}
 
 
@@ -124,7 +123,7 @@ The interactive retrieval system is only interesting for this work in terms of c
 
     \subsection{Test Topic example}
 
-    An example of one of the 10 textual test topics is :
+    An example of one of test topics used for evaluation in the challenge :
 
         \begin{itemize}
 
@@ -138,15 +137,12 @@ The interactive retrieval system is only interesting for this work in terms of c
         \textbf{Narrative} : "The moments show u1 was eating seafood in any restaurant in the evening time are considered relevant. Any dish has seafood as one of its parts is also considered relevant. Some examples of the seafood can be shrimp, lobster, salmon."
 
         \end{itemize}
-
+     
+    Something important to notice is that the dev and test topics share similarities in syntax. 
 
         \subsection{Evaluation Methodology}
         \label{sec:eval}
 
-        In order to evaluate performance, the organizers use the F1-measure at X (F1@X) evaluation method. The F1-measure is the harmonic mean of both Cluster Recall at X (CR@X) metric and the Precision at X (P@X) measure. The Cluster recall is a metric that assesses how many different clusters from the ground truth are represented among the top X results  while the Precision measures the number of  relevant photos among the top X results;
+        In order to evaluate performance, the organizers use the F1-measure at X (F1@X) evaluation method. The F1-measure is the harmonic mean of both Cluster Recall at X (CR@X) metric and the Precision at X (P@X) measure. The Cluster recall is a metric that assesses how many different clusters from the ground truth are represented among the top X results  while the Precision measures the number of  relevant photos among the top X results. \cite{Ninh2020}
 
         This year edition official rankings are obtained trough the F1-measure@10, which gives equal importance to diversity (via CR@10) and relevance (via P@10). Another important aspect of a F1-measure@10 is that only the top 10 pictures for each topic with the highest confidence score are accountable for performance assessment.
-
-    
-    \newpage
- 

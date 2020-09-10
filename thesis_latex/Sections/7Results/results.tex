@@ -1,11 +1,13 @@
+\cleardoublepage
 \chapter{Results}
 \label{ch:results}
 
-This chapter aims at presenting the achieved results on the imageclef challenge, while giving some perspective on what did not work well and what worked well. Firstly in section \ref{sec:example} an example on how the system performed to a given topic is showcased while giving some insight on the differences in performance between both runs. Then, in section \ref{sec:perfomance_results} the achieved results on the challenge are presented.
+This chapter aims at presenting and discussing the achieved results on the imageclef challenge. Firstly, in section \ref{sec:first} a few examples of some tests that showcase the fine-tuning of the system is presented. Secondly, in section \ref{sec:example} an example on how the system performed in a given topic is showcased and some insight is given on the differences in performance between the submitted runs. Finally, in section \ref{sec:perfomance_results} the achieved results on the challenge are presented.
 
-\section{First Tests using the dev topics}
+\section{System Fine-Tuning Using The Dev Topics}
+\label{sec:first}
 
-The first tests using the described system architecture on the previous chapter were run on a laptop. The dataset of pictures used was smaller (20.000 images) and not all topics were fully analysed. This tests took between 8h-10h each and they were done in order to find a good weight distribution between each category and  detect bugs on the code before sending the code to the main processing computer (where fully running the full dataset took 1-2 days).
+The first tests using the system architecture described on the previous chapter were run on a laptop. The dataset of pictures used was smaller (20.000 images) and not all topics were fully analysed. This tests took between 8h-10h each and they were done in order to find a good weight distribution between each category, detect bugs on the code and overall fine-tune the system before sending the code to the main processing computer (where the fully processing of the dataset took up to 1-2 days).
 
 \begin{figure}[H]
   \centering
@@ -21,18 +23,17 @@ The first tests using the described system architecture on the previous chapter 
   \begin{subfigure}{0.22\textwidth}
   \includegraphics[width=\textwidth]{Sections/7Results/images/runexample4.png}\hfill
   \end{subfigure}
-  \caption{Random examples of some tests done to the system.}
+  \caption{Examples of some different results with the fine-tuning of the weight distribution.}
 \end{figure}
 \newpage
 
-This examples show the performance achieved of the system on a F1-measure@XX measure. The difference between performance on the given examples happen because of the difference in calculations of weights for each category.
+This examples show the performance achieved of the system on a F1-measure@XX measure. The differences in performance on the given examples happen because of the difference in calculations of weights for each category. 
 
 
-\section{Final System Performance}
+\section{System Performance Example}
 \label{sec:example}
 
-
-To serve the purpose of exemplifying the performance achieved on one of the given topics, topic 9 is uch:resultssed.
+This section provides an insight on how the system performed in the imageclef challenge using topic 9 as an example : \\
 
 \textbf{Title}: "Eating pizza".
 
@@ -71,7 +72,7 @@ The file is organized in the following way: [topic id number, image name, confid
 \subsection{Top 3 Retrieved Image on Run 1}
 \label{sec:run1}
 
-As it can bee seen in figure \ref{fig:runs_csv} a), the top 3 images that were retrieved for topic 9 on run 1 were:
+As it can be observed in figure \ref{fig:runs_csv} a), the top 3 images that were retrieved for topic 9 in run 1 were:
 \begin{enumerate}
   \itemsep0em
   \item b00000940\_21i6bq\_20150224\_161533e.jpg;
@@ -140,15 +141,15 @@ The images can be seen below.
 
   \subsection{Topic 9 Performance Analysis}
 
-  Even tho the top 10 pictures are the ones that count for the performance evaluation of the run the top 3 pictures are already representative of the system efficiency. It is clear that for topic 9 the Run 1 achieved better efficiency, since the first 2 pictures are clearly from the topic. The third picture however does not belong to topic 9 since it is a picture of a person eating a lasagne alone but it is indeed a similar scenario.
+  Even if the top 10 pictures are the ones that count for the performance evaluation of the run, the top 3 pictures are already representative the system efficiency. It is clear that for topic 9 the run 1 achieved better performance, since the first 2 pictures clearly belong to the moment described in topic 9. The third picture however does not belong to topic 9 since it is a picture of a person eating a lasagne alone but it is a similar scenario.
   
-  Run 2 however did not retrieved any single picture from topic 9 on the top 3 pictures, however the scenario is close. All of the 3 photos are representative of food being eaten. However, something to note is that run 2 confidence scores are higher than run 1, but run 1 achieved better practical results. Some possible reasons for this difference to occur can be :
+  Run 2 however did not retrieved any single picture from topic 9 on the top 3 pictures, however the scenario is identical. All of the 3 photos are representative of food being eaten. However, something to note is that run 2 confidence scores are higher than run 1, but run 1 achieved better practical results. Some possible reasons for this to occur may be :
 
   \begin{itemize}
     \itemsep0em
-    \item The negative categories on run 1 might have decreased the confidence score on wrong pictures.
-    \item The object detection system on Run 1 achieving better performance on these pictures than the run 2 object detection.
-    \item The category weight distribution on run 2 decreasing the importance on some categories that were important on those images.
+    \item The negative categories on run 1 might have decreased the confidence score on  pictures that don't belong to the topic.
+    \item The object detection algorithm on run 1 providing better detections than the algorithm used for run 2.
+    \item The category weight distribution on run 2 decreasing the weight on some categories that were important for the confidence score calculation in the images that belong to the topic.
     \item The difference in the similarity score between the different visual concepts on each run might also impact the performance of the system.
   \end{itemize}
 
@@ -157,7 +158,7 @@ The images can be seen below.
 \section{Achieved Overall Performance Results}
 \label{sec:perfomance_results}
 
-Table \ref{table:2019} and table \ref{table:2020} show the achieved performance results in different runs for different systems that were obtained in the year 2019 and 2020 for the ImageCLEFlifelog LMRT subtask. 
+Table \ref{table:2019} and table \ref{table:2020} provides an overview of the achieved performance results in different runs for different systems that were obtained in the year 2019 and 2020 for the ImageCLEFlifelog LMRT subtask. 
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \begin{table}[H]
     
@@ -180,7 +181,7 @@ Table \ref{table:2019} and table \ref{table:2020} show the achieved performance 
     HCMUS  & interactive  & Run 2   &  0.61 \\
     \hline        
     \end{tabular}
-    \caption{Results obtained in 2019 from UA.PT Bioinformatics and the best team. }
+    \caption{Results obtained in 2019 from UA.PT Bioinformatics \cite{Ribeiro2019} and the best team \cite{Le2019}. }
     \label{table:2019}
 \end{table}
 \begin{table}[H]
@@ -200,17 +201,17 @@ Table \ref{table:2019} and table \ref{table:2020} show the achieved performance 
     HCMUS  & interactive  & Run 10   &  0.81\\
     \hline       
     \end{tabular}
-    \caption{Results obtained in 2020 from UA.PT Bioinformatics and the best team.}
+    \caption{Results obtained in 2020 from UA.PT Bioinformatics \cite{Ribeiro2020} and the best team \cite{Ninh2020}.}
     \label{table:2020}
 \end{table}
 
 \subsection{Overall Performance Analysis}
 
-Comparing the table \ref{table:2019} that shows the results of the year 2019 and table \ref{table:2020} that shows the results of this year challenge, it is clear that there was no overall improvement on an automatic system performance. Furthermore its also possible to clearly see the difference in performance between interactive systems and fully automatic systems. Having user interaction and visualizations yields much better results than having a fully automatic system.
+Comparing the table \ref{table:2019} that shows the results of the year 2019 and table \ref{table:2020} that shows the results of this year challenge, it is clear that there was no overall improvement on an automatic system performance. Furthermore, it is also possible to clearly see the difference in performance between interactive systems and fully automatic systems. Having user interaction and visualizations yields much better results than having a fully automatic system.
 
-The tables shown make a strong argument that for the imageclef LMRT sub-task an interactive approach is a much better suited method,  the user visualization and interaction with the application allows for much more accurate results.
+The tables shown make a strong argument that for the imageclef LMRT sub-task an interactive approach is a much better suited method, the user visualization and interaction with the application allows for much more accurate results since the user can chose the picture that he thinks are correct for the corresponding moment.
 
-Another important aspect to notice is that the results of the automatic approach this year achieved the same exact F1-measure@10 score, this is highly do to the fact that even when using different state-of-the-art object detection algorithms, different weights for each category and even using negative categories on one run and not on the other , much of the data used was provided by the organizers which is a highly faulty and inaccurate data.
+Another important aspect to notice is that the results of the automatic approach this year achieved the same exact F1-measure@10 score, this is highly do to the fact that even when using different state-of-the-art object detection algorithms, different weights for each category and even using negative categories on one run and not on the other, much of the data used for both runs was provided by the organizers which is a highly faulty and inaccurate.
 
 
 

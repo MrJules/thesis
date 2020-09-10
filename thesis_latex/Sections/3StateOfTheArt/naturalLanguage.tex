@@ -136,26 +136,31 @@ The application areas address topics such as extraction of useful information fr
    
         \subsection{Word2Vec}
 
-        \par Developed by Tomas Mikolov, et al. at Google in 2013, Word2Vec is a two-layer neural network that processes text by "vectorizing" words with the purpose of grouping vectors of similar words together in vectorspace. The way Word2Vec detects those similarities is by creating vectors that are distributed numerical representations of word features, without human intervention.
+        \par Developed by Tomas Mikolov, et al.\cite{Mikolov2013} at Google in 2013, Word2Vec is a two-layer neural network that processes text by "vectorizing" words with the purpose of grouping vectors of similar words together in vectorspace. The way Word2Vec detects those similarities is by creating vectors that are distributed numerical representations of word features, without human intervention.
 
 
         \par In a regular one-hot encoded vector, all words have the same distance between each other, even though their meanings are completely different.
 
-        \begin{figure}[htb]
+
+
+        \begin{figure}[H]
             \centering
-            \includegraphics[scale = 0.1]{Sections/3StateOfTheArt/3_images/one_hot_ex.png}
-            \caption{One-hot encoding resulting vector. \cite{word2vec_explained}} 
-        \end{figure}
-
-
-        \par Using Word2Vec, the resulting vector is able to  maintain context.
-
-
-        \begin{figure}[htb]
-            \centering
-            \includegraphics[scale = 0.1]{Sections/3StateOfTheArt/3_images/word2vec_encode.png}
+            \captionsetup{justification=centering}
+          
+            \begin{subfigure}{0.32\textwidth}
+            \includegraphics[width=\textwidth]{Sections/3StateOfTheArt/3_images/one_hot_ex.png} 
+            \caption{One-hot encoding resulting vector. \cite{word2vec_explained}}
+          
+            \end{subfigure}
+            \begin{subfigure}{0.32\textwidth}
+            \includegraphics[width=\textwidth]{Sections/3StateOfTheArt/3_images/word2vec_encode.png}\hfill
             \caption{Word2Vec encoding resulting vector. \cite{word2vec_explained}}
-        \end{figure}
+            \end{subfigure}
+
+          \end{figure}
+
+
+
 
         
         \par Word2Vec is capable of making accurate guesses, based on past appearances, of a word's meaning. 
@@ -266,5 +271,5 @@ The application areas address topics such as extraction of useful information fr
         \par Gensim ("Generate Similar”) is a Natural Language Processing open-source library for unsupervised topic modeling (a technique to extract the underlying topics from large volumes of text)  and for natural language processing. This python-cython library specializes in finding the semantic similarity between two documents through vector space modeling and topic modeling toolkit. It is capable of building document or word vectors, corpora, performing topic identification, performing document comparison (retrieving semantically similar documents) and analysing plain-text documents for semantic structure. In terms of producing word embedding, gensim allows for the usage of Word2Vec and fastText \cite{rehurek_lrec}.
 
         
-        \subsection{Others}
+        \subsection{Uncommon Libraries}
         Other NLP libraries not so common are Flair \cite{akbik2018coling}, Polyglot \cite{polyglot:2013:ACL-CoNLL}, CogCompNLP \cite{2018_lrec_cogcompnlp}, TextBlob \cite{textblob}.
