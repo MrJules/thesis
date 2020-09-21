@@ -4,21 +4,15 @@
 \chapter{Information Extraction From Text}
 \label{ch:nlp}
 
-As previously discussed in chapter \ref{ch:computervision} the problem of big data has become more relevant in the recent years. There is too much data to be analysed and the human brain is incapable of processing such large quantities of information. Therefore, information extraction becomes more prevalent as data increases. 
+As previously discussed, the problem of big data has become more relevant in the recent years.  This problem does not apply only to the ever growing amount of multimedia data created by smartphones but also to the growing presence of information in the form of news, corporate files, medical records, government documents, court hearing and social media. There is an ever increasing flood of information in an unstructured form. Natural Language Processing (NLP) is related to the usage of computation methods to process such data as a mode of communication used by humans.
 
-Information Extraction (IE) is the task of automatically extracting pre-specified information from textual sources, a trivial example is the usage of IE to analyse large quantities of documents only retrieving the relevant information.
-In most cases the task of extracting information is concerned with the processing of human language texts by means of natural language processing (NLP).
-
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale = 0.55]{Sections/3StateOfTheArt/3_images/NaturalLanguageProcessing.png}
-    \caption{Natural Language Processing \cite{rite_wiki}.}   
-\end{figure}
+``There are lot many processes involved in the pipeline of NLP. At the syntactic level, statements are segmented into words, punctuation (i.e.  tokens) and each token is assigned with its label in the form of noun, verb, adjective, adverb and so on (Part of Speech Tagging).  At the semantic level, each word is analyzed to get the meaningful representation of the sentence.  Hence, the basic task of NLP is to process the unstructured text and to produce a representation of its meaning.''  \cite{singh2018natural}.
 
 
 
+Information Extraction (IE) from text is the process of extracting useful information from textual sources by implementing techniques of NLP. It can be defined as the act of efficiently and effectively analyze text and extract valuable and relevant knowledge from it in the form of structured information. ``The goal of IE is to extract salient facts about pre-specified types of events, entities, or relationships, in order to build more meaningful, rich representations of their semantic content, which can be used to populate databases that provide more structured input.'' \cite{singh2018natural}.
 
+In this thesis, NLP is implemented to serve the purpose of creating an algorithm capable of extracting relevant information from a textual source. Furthermore, the algorithm must also be able to categorize the extracted data according pre-specified categories such as "locations" and "activities".
 
 This chapter starts with an introduction to Natural Language Processing in section \ref{sec:nlp}. Section \ref{sec:num} explains the process of representing text in a numerical vector form while describing the concept of word embeddings. Static and contextualized word embedding models are discussed in section \ref{sec:static} and \ref{sec:context} respectively. An overview on some of the available NLP libraries is presented in section \ref{sec:libraries}.
 
@@ -26,9 +20,9 @@ This chapter starts with an introduction to Natural Language Processing in secti
 \section{Natural Language Processing}
 \label{sec:nlp}
 
-Natural language processing is a subfield of linguistics, computer science, information engineering and artificial intelligence, which is devoted to the engineering of computational models and processes to give the ability of human language understanding to computers. \cite{Khurana2018}  \par
+Natural language processing is a subfield of linguistics, computer science, information engineering and artificial intelligence, which is devoted to the engineering of computational models and processes to give the ability of human-like comprehension of texts/languages to computers. \cite{Khurana2018}  
 
-Human language is extremely complex and rarely precise, to understand it is to understand not only the words, but the concepts and how they are linked together in order to create meaning. This makes NLP one of the most difficult tasks in computer science. \par
+Human language is extremely complex and rarely precise, to understand it is not only understand what words alone mean, but also how linking them together creates meaning. The nature of the human language makes NLP one of the most difficult tasks in computer science. 
 
 Figure \ref{fig:nlp_class} shows the classification of NLP, which consists in two major components, Natural Language Understanding (NLU) and Natural Language Generation (NLG) \cite{Khurana2018}.  \par
 
@@ -38,7 +32,7 @@ Figure \ref{fig:nlp_class} shows the classification of NLP, which consists in tw
 \begin{figure}[htb]
     \centering
     \includegraphics[scale = 0.3]{Sections/3StateOfTheArt/3_images/NLP_diagram.png}
-    \caption{Classification of NLP. \cite{Khurana2018}}  
+    \caption{Classification of NLP \cite{Khurana2018}.}  
     \label{fig:nlp_class} 
 \end{figure}
 
@@ -47,38 +41,35 @@ Natural Language Understanding is the process of understanding text. It is relat
 Natural Language Generation is the process of generating text, sentences and
 paragraphs that are meaningful from an internal representation \cite{Khurana2018}. 
 
-\subsection{Important NLP Terminologies}
+Using the visual representation of Figure \ref{fig:nlp_class} the important terminologies of NLP are as follows \cite{Khurana2018} :
 
-\textbf{Phonology}: The part of Linguistics which refers to the systematic arrangement of sound.
+\begin{itemize}
+    \item \textbf{Phonology}: The part of Linguistics which refers to the systematic arrangement of sound;
+    \item \textbf{Morphology}: In linguistics, morphology is the study of words, how they are formed, and their relationship to other words in the same language. The different parts of the word represent the smallest units of meaning known as Morphemes;
+    \item \textbf{Lexical}: In Lexical the focus is the interpretation of the meaning of individual words;
+    \item \textbf{Syntax}: Syntax refers to the study of the grammatical structure of the sentence;
+    \item  \textbf{Semantic}: Semantic processing determines the possible meanings of a
+    sentence by pivoting on the interactions among word-level meanings in the sentence;
+    \item \textbf{Discourse}: Discourse focuses on the properties of the text as a whole that convey meaning by making connections between component sentences;
+    \item \textbf{Pragmatic:}: Subfield of linguistics that studies the ways in which the context of a sentence contributes to the meaning. 
+    
+\end{itemize}
 
-\textbf{Morphology}: In linguistics, morphology is the study of words, how they are formed, and their relationship to other words in the same language. The different parts of the word represent the smallest units of meaning known as Morphemes.
-
-
-\textbf{Lexical}: In Lexical the focus is the interpretation of the meaning of individual words.
-
-\textbf{Syntax}: Syntax refers to the study of the grammatical structure of the sentence. 
-
-\textbf{Semantic}: Semantic processing determines the possible meanings of a
-sentence by pivoting on the interactions among word-level meanings in the sentence.
-
-\textbf{Discourse}: Discourse focuses on the properties of the text as a whole that convey meaning by making connections between component sentences.
-
-\textbf{Pragmatic:}: Pragmatic is a subfield of linguistics that studies the ways in which the context of a sentence contributes to the meaning \cite{Khurana2018}. 
+The field of NLP can be divided in two broad sub-areas: core areas and application areas. The core areas address fundamental problems such as language modeling, morphological processing, parsing and semantic processing \cite{Otter2018}. 
 
 
 
+\begin{itemize}
+    \item Language modeling is considered the most important task in NLP and an essential piece in any application of NLP. It is the process of creating a model capable of predicting words or simple linguistic components given previous words or components. It can capture syntactic and semantic relationships among words or components in a linear neighborhood, making it useful for tasks such as machine translation and text summarization.
+    \item Morphological processing is the process of finding segments within single words,  including roots and stems, prefixes and suffixes.
+    \item Parsing examines how different words and phrases relate to each other.
+    \item Semantic processing is the task of understanding of the meaning of words and phrases. This is done recurring to  word embedding models, like Word2Vec. This will be further discussed in this chapter.
+\end{itemize}
 
 
 
 
 
-
-
-\subsection{Core Areas}
-
-The field of NLP can be divided in two broad sub-areas: core areas and application areas. The core areas address fundamental problems such as language modeling, morphological processing, parsing and semantic processing. Language modeling underscores quantifying associations among naturally occurring words. Morphological processing deals with the segmentation of meaningful components of words and the identification of the true parts of speech of words used. Parsing consists in the building of sentence diagrams as possible precursors to semantic processing. Semantic processing attempts to distill meaning of words, phrases, and higher level components in text \cite{Otter2018}.
-
-\subsection{Application Areas}
 The application areas address topics such as extraction of useful information from text (e.g named entities and relations), translation of text, summarization of written documents, automatic answering of questions, chat bots, email spam detection and many others \cite{Otter2018}.
 
 
@@ -87,19 +78,13 @@ The application areas address topics such as extraction of useful information fr
 \section{Numerical Representation of Text}
 \label{sec:num}
 
-\par Machine learning algorithms and most of all deep learning architectures are incapable of processing strings of text, this is because they require numbers as an input. \cite{Vidhya2017} A human can easily tell that the word "dog" and the word "cat" are identical, since they both represent an animal, however a computer would assume that they are completely different things since all the letters in those  words are different. 
+\par Machine learning algorithms and most of all deep learning architectures are incapable of processing strings of text, this is because they require numbers as an input in order to perform linear algebra operations\cite{Vidhya2017} which is not possible with words. A human can easily tell that the word "dog" and the word "cat" are identical, since they both represent an animal, however a computer would assume that they are completely different things since all the letters in those  words are different. 
 
     \subsection{Word Embeddings}
 
-    \par The dominant approach to solve this problem is the usage of word embeddings, which is a type of word representation that allows words with similar meaning to have a similar representation by mapping a set of words, or phrases in a vocabulary, to vectors of numerical values. For example, the word “happy” can be represented as a vector of 4 dimensions [0.24, 0.45, 0.11, 0.49] and “sad” has a vector of [0.88, 0.78, 0.45, 0.91]. The reason for this vectors to exist is so that a machine learning algorithm can perform linear algebra operations on numbers (vectors) instead of words \cite{MuratMustafa}.
-
-    \par  Word embedding methods learn a real-valued vector representation for a predefined fixed size vocabulary from a corpus  of text \cite{Brownlee2017}.
-   
-    \par A vector representation of a word may be a one-hot encoded vector where 1 stands for the position where the word exists and 0 everywhere else. 
+    \par The dominant approach to solve this problem is the usage of word embeddings, which is a type of word representation that allows words with similar meaning to have a similar representation by mapping a set of words, or phrases in a vocabulary, to vectors of numerical values. For example, the word “happy” can be represented as a vector of 4 dimensions [0.24, 0.45, 0.11, 0.49] and “sad” has a vector of [0.88, 0.78, 0.45, 0.91]. The reason for this vectors to exist is so that a machine learning algorithm can perform linear algebra operations on numbers (vectors) instead of words \cite{MuratMustafa}. Word embedding methods learn a real-valued vector representation for a predefined fixed size vocabulary from a corpus  of text \cite{Brownlee2017}.A vector representation of a word may be a one-hot encoded vector where 1 stands for the position where the word exists and 0 everywhere else. 
     
-    \par As an example, the sentence ”Word Embeddings are Word converted into numbers” can be converted to the following dictionary using the one-hot encoded vector representation : [‘Word’,’Embeddings’,’are’,’Converted’,"Word",’into’,’numbers’] .
-
-    \par Using this representation the word “numbers” in the one-hot encoded vector is [0,0,0,0,0,1] and for the word "converted" is [0,0,0,1,0,0]. This is considered to be the most simple method to represent words in vector forms \cite{Vidhya2017}.
+    \par As an example, the sentence ”Word Embeddings are Word converted into numbers” can be converted to the following dictionary using the one-hot encoded vector representation : [‘Word’,’Embeddings’,’are’,’Converted’,"Word",’into’,’numbers’]. Using this representation the word “numbers” in the one-hot encoded vector is [0,0,0,0,0,1] and for the word "converted" is [0,0,0,1,0,0]. This is considered to be the most simple method to represent words in vector forms \cite{Vidhya2017}.
 
     \par The following image showcases the given example.
     

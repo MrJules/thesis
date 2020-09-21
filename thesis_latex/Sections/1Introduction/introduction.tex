@@ -7,19 +7,20 @@ This chapter gives an introduction to the surrounding theme addressed in this th
 
 \section{Context and Motivation}
 
-The pervasive creation and consumption of visual media content is ingrained into our modern world. In the past, the main purpose given to pictures was to save moments of events. Nowadays people are constantly consuming visual media content. Pictures, images and photos have many different usages, not only we use them for social media but also we use them in engineering, in art, in science, in medicine, in entertainment and also in advertising \cite{Zhang2008}.
+The pervasive creation and consumption of visual media content is ingrained into our modern world. In the past, the main purpose given to pictures was to save moments of events. Nowadays people are constantly consuming visual media content. Images have many different usages, not only we use them for social media but also we use them in engineering, in art, in science, in medicine, in entertainment and also in advertising \cite{Zhang2008}.
 
 
 
 With the rapid development of Internet of things (IOT) this growth in consumption of visual media content has increased the usage of wearable and smart technologies making the subject of lifelogging more prevalent in the recent years. Lifelogging is the task of tracking and recording personal data created trough the activities and behaviour of individuals during their day-to-day life in the form of images, video, biometric data, location and other data. The name given to the data created by lifelogging has the name of "lifelog data" and it is rich in resources for contextual information retrieval \cite{Ribeiro}.
 
-Some great examples of the usefulness of lifelogging is using it as memory extension for people who suffer from memory impairments such as Alzheimers, to find lost items during the day or even to understand human behaviour.
+Some examples of the usefulness of lifelogging is using it as memory extension for people who suffer from memory impairments such as Alzheimers, to find lost items during the day or even to understand human behaviour.
 
-The problems related to creating, compressing, storing, transmitting, rendering and protecting image data are already solved. However there still exists two difficult problems to tackle which are the issues associated with image location and the continuous growth of image data (big data) \cite{Zhang2008}.
 
-"Locating images involves analysing them to determine their content, classifying them into related groupings, and searching for  images. In order to solve these problems, the current technology relies heavily on the image description" \cite{Zhang2008}, usually called as "image metadata". This data can either be added automatically at the capturing time or manually added by someone afterwards.
+The technical problems related to creating, compressing, storing, transmitting, rendering and protecting image data are mostly solved. However there still exists two difficult problems to tackle which are the issues associated with image location and the continuous growth of image data (big data) \cite{Zhang2008}.
 
-According to the literature \cite{Zhang2008} : "In the present time the development in the area of content–based analysis (indexing and searching of visual media) is increasing, this is where most of the research in image management is concentrated. Automatic analysis of the content of images, which in turn would open the door to content–based indexing, classification and retrieval, is an inherently difficult problem and therefore progress is slow." 
+``Locating images involves analysing them to determine their content, classifying them into related groupings, and searching for  images. In order to solve these problems, the current technology relies heavily on the image description'' \cite{Zhang2008}, usually called as ``image metadata''. This data can either be added automatically at the capturing time or manually added by someone afterwards.
+
+According to the literature \cite{Zhang2008} : ``In the present time the development in the area of content–based analysis (indexing and searching of visual media) is increasing, this is where most of the research in image management is concentrated. Automatic analysis of the content of images, which in turn would open the door to content–based indexing, classification and retrieval, is an inherently difficult problem and therefore progress is slow.''
 
 However, if one day a fully automatic image/video retrieval system is implemented it will vastly improve the life quality of the human kind. A great example that we can apply at the present time is that it will be possible to backtrack the last few days of humans infected with COVID-19 through their lifelog data, which in turn would help to identify more possible infected and warn more people to get tested.
 
@@ -29,30 +30,33 @@ As it has been described earlier in the chapter, creating an automatic system ca
 
 Creating an automatic system capable of image retrieval means that the computer has to be able to understand images and text while at the same time being capable of relating both.
 
-For the image processing challenge, the computer has to be able to extract relevant information from images like colors, objects, places, locations, indoor or outdoors, activities happening in the photo, people, etc. However in order to do this,  many different algorithms have to be implemented like object detection, activity recognition, scene recognition and others. The usage of so many algorithms can require extreme computational time and resources depending on the size of the dataset to be analysed. If one image requires 1 second to be fully processed, a dataset of 200.000 images of the same resolution would require approximately 2 days.
+For the image processing challenge, the computer has to be able to extract relevant information from images like colors, objects, places, locations, indoor or outdoors, activities happening in the photo, people, etc. However, in order to do this, many different and complex algorithms have to be implemented like object detection, activity recognition, scene recognition and others. The usage of several algorithms can require extreme computational time and resources depending on the size of the dataset to be analysed. If one image requires 1 second to be fully processed by an algorithm, a dataset of 200.000 images of the same resolution would require approximately 2 days. This processing time might be different depending of the algorithm used, since it can either extract more or less labels from the images. However, one thing is certain, the more algorithms that are implemented for label extraction, the more time it will take to process the image. It is necessary to carefully select which ones to use if there is an intent in saving computer resources and processing time.
 
-In order to teach the computer to understand text there has to be an underlying understanding of the language. Natural Language Processing algorithms have to be implemented, however these algorithms only allow the computer to extract the basics like which words are verbs, adjectives, nouns, etc. With this in mind, another algorithm has to be fully written from scratch capable of using that data to extract activities, locations, people, dates, indoor or outdoor, etc from a corpus of text.
+Tackling the text processing challenge requires the usage of Natural Language Processing algorithms for the extraction of  linguistic annotations from the text, and the implementation of semantic and syntax rules in order to enable the computer to automatically categorize the extracted words according predefined categories like "activities", "locations", "relevant things", etc. 
+
 
 Finally, the computer has to be capable of comparing the extracted features from the text with extracted features from the images, in order to associate images to text.
-
-\section{Objectives}
-
-The main objective of this work is to develop an automatic image retrieval system capable of participating in the ImageCLEF LMRT-subtask challenge (described in chapter \ref{ch:imageclef}). In order to achieve this objective the following tasks have to be accomplished:
-
-\begin{itemize}
-    \item Study on the state of the art of image processing and text processing algorithms.
-    \item Choice of the main algorithms to be used.
-    \item Code of an algorithm capable of processing images and extract relevant features.
-    \item Code of an algorithm capable of processing text and extract relevant features.
-    \item Code of an algorithm able to compare the extracted features from the images with the extracted features from the text and capable of associating images to text.
-    \item Code of an algorithm capable of calculating the F1@score of the final results in order to test the system.
-    \item Code of a batch script in order to make the system run with one click in order to facilitate the process.
-  \end{itemize}
-
 
 \section{Contributions}
 
 Since the process of automatic image retrieval is still a complex problem this works aims at contributing with a baseline system for future investigations with some suggestions on how to improve it further. Additionally a study of the available technology is conducted that may help on finding new and better paths for future investigations on automatic image retrieval.
+
+In addition, the main contribution of this work was the development of an automatic image retrieval system with the objective of participating in the ImageCLEF LMRT-subtask challenge (described in Chapter \ref{ch:imageclef}).
+The participation in this challenge was done using two different systems, an interactive one and an automatic one. The system built in this work was capable of achieving a 0.03 score while the interactive system achieved a more competitive result of 0.58 in the F1-measure@10 metric \cite{Ribeiro2020}.
+
+
+Other contributions of this work that complement the main objective are presented next:
+
+\begin{itemize}
+    \item Study on the state of the art of image processing and text processing algorithms.
+    \item Choice of the main algorithms to be used.
+    \item Algorithm capable of processing images and extract relevant features.
+    \item Algorithm capable of processing text and extract relevant features.
+    \item Algorithm able to compare the extracted features from the images with the extracted features from the text and capable of associating images to text.
+    \item Algorithm capable of calculating the F1-measure@X score of the final results in order to test the system.
+    \item Batch script that enables the system to run with one click in order to facilitate the process.
+  \end{itemize}
+
 
 
 \section{Document Structure}
@@ -62,15 +66,20 @@ This document has a total of 8 chapters that are divided accordingly:
 
 
 \begin{itemize}
-  \item Chapter \ref{ch:introduction} presents the context and motivation along with the challenges and objectives.
-  \item Chapter \ref{ch:imageclef} discusses the imageCLEF challenge.
-  \item Chapter \ref{ch:computervision} provides a survey on the subject of feature extraction from images and video.
-  \item Chapter \ref{ch:nlp} addresses the thematic of natural language processing and word embeddings.
-  \item Chapter \ref{ch:initial_work} provides an overview on how the image processing stage of the automatic system was built.
-  \item Chapter \ref{ch:text_stage} explains how the system is capable of word extraction and categorization and how the system is capable of image retrieval.
+  \item Chapter \ref{ch:introduction} presents the context and motivation along with the challenges and contribution of this works.
+  \item Chapter \ref{ch:imageclef} discusses the imageCLEF Lifelog Challenge and the concept of lifelogging.
+  \item Chapter \ref{ch:computervision} provides a survey on the subject of feature extraction from images while giving an introduction to some important concepts like computer vision, machine learning, deep learning, artificial intelligence, neural networks and so on. An overview of the current state-of-the-art and latest achievements is also exposed.
   
-  \item Chapter \ref{ch:results} presents the achieved results in the imageclef challenge.
-  \item Chapter \ref{ch:conclusions} describes the conclusions taken from the development of the work and provides some ideas for future work and investigations.
+  \item Chapter \ref{ch:nlp} addresses the thematic of extracting data from text. The subject of natural language processing and respective applications, word embeddings,  useful libraries and  models is clarified.  
+  
+  
+  \item Chapter \ref{ch:initial_work} provides an overview on how the automatic image retrieval system was built. Firstly, the image processing stage is explained and the tests that were run are presented. Secondly, it is described how the system manages to extract information from text while categorizing the respective data in predefined categories automatically. Finally it is made clear how the system is able to compare the extracted visual data and the extracted textual data in order to retrieve images accordingly.
+  
+
+
+  \item Chapter \ref{ch:results} presents the achieved results in the ImageClef LMRT challenge. Examples of system performance are showcased, differences between the submitted runs and respective scores are made clear and the variance of the results between the automatic system and the interactive system is clarified.
+  
+  \item Chapter \ref{ch:conclusions} describes the conclusions taken from the development of the work and provides some ideas for future investigations and improvements.
   
  
  

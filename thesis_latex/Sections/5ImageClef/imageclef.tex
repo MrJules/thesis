@@ -1,9 +1,9 @@
 \cleardoublepage
 
-\chapter{ImageCLEF}
+\chapter{ImageCLEF Lifelog Challenge}
 \label{ch:imageclef}
 
-This chapter aims at describing the ImageCLEF challenge. Firstly in section \ref{sec:introduct} an introduction is given to the challenge and the respective goals. Section \ref{sec:tasks} describes the tasks available for the year 2020. The concept of lifelogging is explained in section \ref{sec:concept_lifelog}. Finally section \ref{sec:imagecleflifelog} clarifies the LMRT subtask which is the main focus of this work, along with an introduction to the dataset, dev topics, test topics, ground truth and the evaluation methodology of the task.
+This chapter aims at describing the ImageCLEF Lifelog challenge. Firstly in section \ref{sec:introduct} an introduction is given to the challenge and the respective goals. Section \ref{sec:tasks} describes the tasks available for the year 2020. The concept of lifelogging is explained in section \ref{sec:concept_lifelog}. Finally section \ref{sec:imagecleflifelog} clarifies the Life Moment Retrieval Task (LMRT) wshich is the main focus of this work, along with an introduction to the dataset, dev topics, test topics, ground truth and the evaluation methodology of the task.
 
 
 
@@ -13,9 +13,7 @@ This chapter aims at describing the ImageCLEF challenge. Firstly in section \ref
 The ImageCLEF challenge is a large–scale evaluation campaign that aims at evaluating cross-language image retrieval systems. It is organized as part of the CLEF Initiative (Conference and Labs of the Evaluation Forum, formerly known as Cross-Language Evaluation Forum) and launched in  2003, initially proposed by Mark Sanderson and Paul Clough from the Department of Information Studies from the University of Sheffiel with the goal of providing support for the evaluation of 1) language-independent methods for the automatic annotation of images with concepts, 2) multimodal information retrieval methods based on the combination of visual and textual features, and 3) multilingual image retrieval methods, so as to compare the effect of retrieval of image annotations and query formulations in several languages.
 
 
-Every year an evaluation cycle campaign occurs that consist in workshops where teams can compete to achieve the best possible results while discussing new techniques and ideas. 
-
-In addition to offering the evaluation platform, ImageCLEF also provides several publicly resources, such as benchmarks to evaluate retrieval systems. These benchmarks have helped researchers develop new approaches to visual information retrieval and automatic annotation by enabling the performance of various approaches to be assessed.
+Every year an evaluation cycle campaign occurs that consist in workshops where teams can compete to achieve the best possible results while discussing new techniques and ideas. In addition to offering the evaluation platform, ImageCLEF also provides several publicly resources, such as benchmarks to evaluate retrieval systems. These benchmarks have helped researchers develop new approaches to visual information retrieval and automatic annotation by enabling the performance of various approaches to be assessed.
 
 Since the launch of ImageCLEF  researchers within academic and commercial research groups worldwide, including those from Cross–Language Information Retrieval (CLIR), medical informatics,Content–Based Image Retrieval (CBIR), computer vision and user interaction have been participating in the challenge. 
 
@@ -45,7 +43,7 @@ Lifelogging is defined as a form of pervasive computing consisting of a unified 
 
 Personal lifelogs have a great potential in numerous applications, including memory and moments retrieval, daily living understanding, diet monitoring, or disease diagnosis, as well as other emerging application areas. For example: in Alzheimer’s disease, people with memory problems can use a lifelog application to help a specialist follow the progress of the disease, or to remember certain moments from the last days or months.
 
-One of the greatest challenges of lifelog applications is the large amount of lifelog data that a person can generate. The lifelog datasets, for example the ImageCLEFlifelog dataset, are rich multimodal datasets which consist in one or more months of data from multiple lifeloggers. Therefore, an important aspect is the lifelog data organization in the interest of improving the search and retrieval of information. In order to organize the lifelog data, useful information has to be extracted from it. \cite{Ribeiro2019} \cite{Ribeiro2020}
+One of the greatest challenges of lifelog applications is the large amount of lifelog data that a person can generate. The lifelog datasets, for example the ImageCLEFlifelog dataset, are rich multimodal datasets which consist in one or more months of data from multiple lifeloggers. Therefore, an important aspect is the lifelog data organization in the interest of improving the search and retrieval of information. In order to organize the lifelog data, useful information has to be extracted from it \cite{Ribeiro2019} \cite{Ribeiro2020}.
 
 \newpage
 \section{ImageCLEFlifelog}
@@ -55,16 +53,49 @@ One of the greatest challenges of lifelog applications is the large amount of li
 
 The ImageCLEFlifelog 2020 task is divided into two different sub-tasks: the Lifelog moment retrieval (LMRT) and Sport Performance Lifelog (SPLL) sub-task. In this work, as in the previous year’s challenge, it was only addressed the LMRT sub-task, as a continuous research work that is intended to be developed with the aim of giving a contribution to real problems that exist around the world that can benefit from this technology.
     
-The UA.PT Bioinformatics participated in the LMRT subtask with two different retrieval systems. The first one is the automatic retrieval system which was a continuation of the work done in the previous year challenge \cite{Ribeiro2019} and the main objective of this thesis. The other one was a retrieval system capable of providing user interaction and visualization. 
+The UA.PT Bioinformatics, a team from the Institute of Electronics Engineering and Telematics in the University of Aveiro, participated in the LMRT subtask with two different retrieval systems. The first one is the automatic retrieval system which was a continuation of the work done in the previous year challenge \cite{Ribeiro2019} and the main objective of this thesis. The other one was a retrieval system capable of providing user interaction and visualization. 
 
-The interactive retrieval system is only interesting for this work in terms of comparing the achieved results, therefore this document will not explain how it works. However, for further readings the article "UA.PT Bioinformatics at ImageCLEF 2020: Lifelog Moment Retrieval Web based Tool" \cite{Ribeiro2020} explains in detail how the interactive system operates.
+The interactive retrieval system is only interesting for this work in terms of comparing the achieved results, therefore this document will not explain how it works. However, for further readings the article \cite{Ribeiro2020} explains in detail how the interactive system operates.
 
     \subsection{SubTask: Lifelog Moment Retrieval}
     In the LMRT subtask, the main objective is to create a system capable of retrieving a number of predefined moments in a lifelogger’s day-to-day life from a set of images. Moments can be defined as semantic events or activities that happen at any given time during the day. For example, given the query ”Find the moment(s) when the lifelogger was having an icecream on the beach“ the participants should return the corresponding relevant images that show the moments of the lifelogger having icecream at the beach. Like last year, particular attention should be paid to the diversification of the selected moments with respect to the target scenario.
 
-    ImageCLEFlifelog dataset is a new rich multimodal dataset which consists of 4.5 months of data from three lifeloggers, namely: images (1,500-2,500 per day), visual concepts (automatically extracted visual concepts with varying rates of accuracy), semantic content (locations and activities) based on sensor readings on mobile devices (via the Moves App), biometrics information (heart rate, galvanic skin response, calories burn, steps, continual blood glucose, etc.), music listening history and computer usage . However, in this work only the images, the visual concepts and the semantic content of the dataset were used. \cite{Ribeiro2020}
+    ImageCLEFlifelog dataset is a rich multimodal dataset which consists of 4.5 months of data from three lifeloggers, namely: images (1,500-2,500 per day), visual concepts (automatically extracted visual concepts with varying rates of accuracy), semantic content (locations and activities) based on sensor readings on mobile devices (via the Moves App), biometrics information (heart rate, galvanic skin response, calories burn, steps, continual blood glucose, etc.), music listening history and computer usage. 
+    All of the data was given in a csv file except for the images. An excerpt of the csv file is presented in Figure \ref{fig:dataset_csv} and examples of images from the dataset are showcased in Figure \ref{fig:dataset_image}.
 
-    Firstly the organizers release the dev topics and the image dataset with the corresponding ground truth. This means that it is possible to initially create a retrieval system and analyse if it is producing good results, since it is possible to know which pictures should retrieved for each textual topic. 
+    \begin{figure}[htb]
+        
+        \centering
+ 
+        \captionsetup{justification=centering}
+        \includegraphics[width =  \textwidth]{Sections/5ImageClef/images/dataset.png}
+        \caption{Excerpt of the csv file provided by the organizers.}  
+       \label{fig:dataset_csv}
+    \end{figure}
+
+
+    \begin{figure}[H]
+        \captionsetup{justification=centering}
+        \begin{subfigure}{\linewidth}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image1.jpg}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image2.jpg}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image3.jpg}
+        \end{subfigure}\par\medskip
+        \begin{subfigure}{\linewidth}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image4.jpg}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image5.jpg}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image6.jpg}
+        \end{subfigure}\par\medskip
+        \caption{Random images from the imageCLEF dataset.}
+        \label{fig:dataset_image}
+      \end{figure}
+
+
+    
+    However, in this work only the images and the respective semantic content and time were used \cite{Ribeiro2020}. This decision is mainly justified by the fact that much of the provided data like the biometric information, computer usage and music history gives no useful information for the retrieval of images. The visual concepts provided were also not utilized since the system created in this work uses its own algorithms in order to extract more accurate labels from the images. 
+    
+
+    Initially, the dev topics are firstly released along with the images dataset and the corresponding ground truth. This means that it is possible to initially create a retrieval system and analyse if it is producing good results, since it is possible to know which pictures should retrieved for each textual topic. 
 
     After a few weeks the test topics for evaluation are released without the ground truth, the participants who achieve the best results are the ones who have more pictures retrieved that correspond to the ground truth for the evaluation phase.
 
@@ -74,49 +105,56 @@ The interactive retrieval system is only interesting for this work in terms of c
     \label{sec:devtopic1}
     As discussed above the participants should return the corresponding relevant images that show the moments of the lifelogger during a predefined moment. 
     
-    Those moments are defined in a series of 10 textual query topics, an example is given below:
-
-
-    \begin{itemize}
-        \item Topic 1 
-        
-        \textbf{Title} : "Having Beers in a Bar”
-
-        \textbf{Description} : ”Find the moment in 2015 and 2016 when u1 enjoyed beers in the bar.”
-
-        \textbf{Narrative} : ”To be considered relevant, u1 must be clearly in a bar. Any moments that u1 drinks beers at home or outside without the bar view are not considered relevant.”
-        
-
-
-    \end{itemize}
+    Those moments are provided in the format of a pdf file that contains 10 different textual query topics representing 10 different moments. Topic 1 is illustrated below to serve as an example of the query topics:
     
 
-    \subsubsection{Example of the ground truth}
+
+   \hfill
+
+        \textbf{Title} : ``Having Beers in a Bar”
+
+        \textbf{Description} : ``Find the moment in 2015 and 2016 when u1 enjoyed beers in the bar.”
+
+        \textbf{Narrative} : ``To be considered relevant, u1 must be clearly in a bar. Any moments that u1 drinks beers at home or outside without the bar view are not considered relevant.”
+        
 
 
-    The ground truth is given as .txt file with the following format : [topic number, image name, cluster].
-    The cluster number is used to calculate the F1@score which will be explained in more detail in \ref{sec:eval}.
+    
+    \begin{itemize}
+        \item    \textbf{Example of the ground truth}
+    \end{itemize}
+ 
+
+
+    The ground truth is given as text file with the following format : [topic number, image name, cluster].
+    The cluster number is used to calculate the F1@score which will be explained in more detail in Section \ref{sec:eval}.
 
 
     \begin{figure}[htb]
         
         \centering
+        \captionsetup{justification=centering}
         \includegraphics[scale = 0.55]{Sections/5ImageClef/images/gt_t1.png}
         \caption{Excerpt of the ground truth for the dev topic 1.}  
         \label{fig:gt}
     \end{figure}
 
+    \begin{itemize}
+        \item    \textbf{Example of corresponding pictures}
+    \end{itemize}
+ 
 
-    \subsubsection{Example of a corresponding picture}
+    The dataset is composed of 200.000 images. The figure below gives an example of one of the lifelog pictures that belongs to the example topic given in Section \ref{sec:devtopic1} and to the ground truth given in the Figure \ref{fig:gt}:
 
-    The dataset is composed of 200.000 images. The figure below gives an example of one of the lifelog pictures that belongs to the example topic given in section \ref{sec:devtopic1} and to the ground truth given in the figure \ref{fig:gt}:
 
-    \begin{figure}[htb]
+    \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.2]{Sections/5ImageClef/images/example.png}
-        \caption{Example of an image from the ground truth of the topic 1.}
-    \end{figure}
-    
+        \captionsetup{justification=centering}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/example.jpg}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/example1.jpg}
+        \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/example3.jpg}
+        \caption{Example of 3 images that belong to the ground truth of the topic 1.}
+    \end{figure}      
 
     \newpage
 
@@ -142,7 +180,100 @@ The interactive retrieval system is only interesting for this work in terms of c
 
         \subsection{Evaluation Methodology}
         \label{sec:eval}
+        
+        
+        In order to evaluate performance, the organizers use the F1-measure at X (F1@X) evaluation method. The F1-measure is the harmonic mean of both Cluster Recall at X (CR@X) metric and the Precision at X (P@X) measure. The Cluster recall is a metric that assesses how many different clusters from the ground truth are represented among the top X results  while the Precision measures the number of  relevant photos among the top X results \cite{Ninh2020}.
 
-        In order to evaluate performance, the organizers use the F1-measure at X (F1@X) evaluation method. The F1-measure is the harmonic mean of both Cluster Recall at X (CR@X) metric and the Precision at X (P@X) measure. The Cluster recall is a metric that assesses how many different clusters from the ground truth are represented among the top X results  while the Precision measures the number of  relevant photos among the top X results. \cite{Ninh2020}
+
+     
+
+        \begin{align*}
+            &\textbf{Precision}  =  True Positives / (True Positives + False Positives) \\ 
+            &\textbf{Recall}  =  True Positives / (True Positives + False Negatives) \\ 
+            &\textbf{F1-score}  =  2\times(Precision \times Recall)/(Precision + Recall) \\ 
+        \end{align*}
+       
+        
+        Figure \ref{fig:example_f1} shows an illustration on how these calculations are done.
 
         This year edition official rankings are obtained trough the F1-measure@10, which gives equal importance to diversity (via CR@10) and relevance (via P@10). Another important aspect of a F1-measure@10 is that only the top 10 pictures for each topic with the highest confidence score are accountable for performance assessment.
+
+
+
+        \begin{figure}[H]
+            \centering
+            \captionsetup{justification=centering}
+            \begin{subfigure}{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Sections/5ImageClef/images/f1_1.png}
+                \end{subfigure}
+                \begin{subfigure}{0.4\textwidth}
+                \includegraphics[width=\textwidth]{Sections/5ImageClef/images/f1_2.png}
+                \end{subfigure}
+
+            \caption[Illustration of Recall and Precision calculation]{Illustration of Recall and Precision calculations \cite{Wikipedia2020}.}   
+         
+            \label{fig:example_f1}
+        \end{figure}
+        
+    \subsection{Evaluation Problems}
+
+    The main problem in the evaluation of the imageCLEF lifelog subtask is that  pictures that could be considered to belong to a given moment are at times not present in the ground truth and therefore decrease the score in the f1-measure evaluation.
+
+    A clear example follows.
+
+    \begin{itemize}
+
+        \item Dev topic 6
+        
+
+        \textbf{Title} : "Seaside Moments"
+
+        \textbf{Description} : "Find moment(s) in which u1 was walking by the
+        sea taking photos or eating ice cream."
+
+        \textbf{Narrative} : To be considered relevant, u1 must be taking a
+        walk by the sea or eating ice cream and the sea is clearly
+        visible. u1 must also be shown taking a photo with his/her camera
+        phone or holding the ice cream cone at this time. On the beach or
+        walking on a pier are both considered relevant once u1 is taking a
+        photo or eating ice cream."
+
+        \end{itemize}
+
+        \begin{figure}[htb]
+            \centering
+            \captionsetup{justification=centering}
+            \includegraphics[width =  0.5 \textwidth]{Sections/5ImageClef/images/t6_gt.png}
+            \caption{Ground truth for the dev topic 6.}  
+           \label{fig:dataset_csv}
+        \end{figure}
+    
+        The following pictures do not belong to the ground truth of the dev topic 6. However, Figure \ref{fig:images_notgt} a that these pictures are indeed related to the topic described.
+
+        \begin{itemize}
+            \centering
+            \item B00008426\_21I6X0\_20180528\_192213E.JPG;
+            \item B00008427\_21I6X0\_20180528\_192236E.JPG;
+            \item B00008428\_21I6X0\_20180528\_192259E.JPG;
+            \item B00008429\_21I6X0\_20180528\_192323E.JPG;
+            \item B00008430\_21I6X0\_20180528\_192409E.JPG.
+        \end{itemize}
+       
+        \begin{figure}[H]
+            \centering
+            \captionsetup{justification=centering}
+            \begin{subfigure}{\linewidth}
+            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/a.jpg}
+            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/b.jpg}
+            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/c.jpg}
+            \end{subfigure}\par\medskip
+            \begin{subfigure}{\linewidth}
+                \hspace{2.2cm}
+            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/d.jpg}
+            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/e.jpg}
+            \end{subfigure}\par\medskip
+            \caption{Sample of pictures that are not considered in the ground truth for the moment described.}
+            \label{fig:images_notgt}
+          \end{figure}
+   
+    It is clear that the pictures shown in Figure \ref{fig:images_notgt} should belong to the moment described in the dev topic 6, however they are not.  This situation is important to have in account since the system can be retrieving images that should belong to the topic but the evaluation process just considers them wrong for not being in the ground truth. In short, this can have an impact not only in the dev topics but also in the test topics evaluation, since the ground truth is incomplete and does not present all the possible images related to a moment.
