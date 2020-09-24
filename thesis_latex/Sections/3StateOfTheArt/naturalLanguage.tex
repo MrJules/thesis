@@ -14,7 +14,7 @@ Information Extraction (IE) from text is the process of extracting useful inform
 
 In this thesis, NLP is implemented to serve the purpose of creating an algorithm capable of extracting relevant information from a textual source. Furthermore, the algorithm must also be able to categorize the extracted data according pre-specified categories such as "locations" and "activities".
 
-This chapter starts with an introduction to Natural Language Processing in section \ref{sec:nlp}. Section \ref{sec:num} explains the process of representing text in a numerical vector form while describing the concept of word embeddings. Static and contextualized word embedding models are discussed in section \ref{sec:static} and \ref{sec:context} respectively. An overview on some of the available NLP libraries is presented in section \ref{sec:libraries}.
+This chapter starts with an introduction to Natural Language Processing in Section \ref{sec:nlp}. Section \ref{sec:num} explains the process of representing text in a numerical vector form while describing the concept of word embeddings. Static and contextualized word embedding models are introduced in Section \ref{sec:static} and \ref{sec:context} respectively. An overview on some of the available NLP libraries is presented in Section \ref{sec:libraries}. Finally, Section \ref{sec:final_remarks} gives the final remarks of this chapter.
 
 \newpage
 \section{Natural Language Processing}
@@ -78,7 +78,7 @@ The application areas address topics such as extraction of useful information fr
 \section{Numerical Representation of Text}
 \label{sec:num}
 
-\par Machine learning algorithms and most of all deep learning architectures are incapable of processing strings of text, this is because they require numbers as an input in order to perform linear algebra operations\cite{Vidhya2017} which is not possible with words. A human can easily tell that the word "dog" and the word "cat" are identical, since they both represent an animal, however a computer would assume that they are completely different things since all the letters in those  words are different. 
+\par Machine learning algorithms and most of all deep learning architectures are incapable of processing strings of text, this is because they require numbers (vectors) as an input in order to perform linear algebra operations \cite{Vidhya2017} which is not possible with words. A human can easily tell that the word "dog" and the word "cat" are identical, since they both represent an animal, however a computer would assume that they are completely different things since all the letters in those  words are different. 
 
     \subsection{Word Embeddings}
 
@@ -106,26 +106,29 @@ The application areas address topics such as extraction of useful information fr
     \par This section introduces some common static word embedding models to learn word embeddings from text.
 
 
-    \par Static word embedding have the fundamental problem which is they generate the same embedding, in different contexts, for the same word, failing to capture the polysemy of the word. This is due to the fact that each word has a single vector, regardless of context. \cite{Mikolov2013}  
+    \par Static word embedding have the fundamental problem which is they generate the same embedding, in different contexts, for the same word and once learned they do not change it. They map each word type to a single vector, making it harder to deal with the polysemy problem. This is due to the fact that each word has a single vector, regardless of context \cite{Mikolov2013}. Therefore, these models assume that the meaning of any given word is the same across the entire text.
    
 
     \par As an example, having these two phrases:
 
     \begin{itemize}
-        \item "The Apple Company is the one who produces iPhones."
-        \item "This apple is delicious."
+        \item "I saw her at the library."
+        \item "Pass me the saw to cut the log in half."
     \end{itemize}
 
-    \par In this case, the word "Apple" has two different meanings, being one a company and the other a fruit, however for static word embedding models, words only have one single meaning, and therefore  the word representation for "Apple" would be the same for both cases. \cite{Batista2018}
+    \par In this case, the word "saw" has two different meanings. In the first phrase the word "saw" refers to the verb "see" and for the second phrase it refers to the tool "saw". However, for static word embedding models, words only have one single meaning and therefore  the word representation for "saw" would be the same in both cases.
+
+    Dynamic word embeddings models represent “saw” differently according to the contexts, while static embedding can not distinguish the semantic difference between two “saws” and represent with the same vector no matter the context \cite{Wang2020} \cite{Batista2018}.
 
    
         \subsection{Word2Vec}
 
-        \par Developed by Tomas Mikolov, et al.\cite{Mikolov2013} at Google in 2013, Word2Vec is a two-layer neural network that processes text by "vectorizing" words with the purpose of grouping vectors of similar words together in vectorspace. The way Word2Vec detects those similarities is by creating vectors that are distributed numerical representations of word features, without human intervention.
+        One of the most important and most popular models developed in NLP was Word2Vec. Created by Tomas Mikolov, et al. \cite{Mikolov2013} at Google in 2013, Word2Vec is a two-layer neural network that processes text by "vectorizing" words with the purpose of grouping vectors of similar words together in vectorspace. These similarities are detected by creating vectors that are distributed numerical representations of word features, without human intervention. A vocabulary is outputted from Word2Vec where each item has a vector attached to it. This can be fed into a deep-learning network or queried to detect relationships between words, like similarities. The similarities are measured trough a cosine similarity, having no similarity is expressed as a cosine similarity of 0 since it is 90 degree angle, while a full similarity is expressed as cosine similarity of 1 and it is a 0 degree angle, complete overlap. Sweden is equal to Sweden therefore the cosine similarity is equal to 1, while Norway has a cosine distance of 0.760124 from Sweden \cite{Wiki}.
+        
+        
 
 
-        \par In a regular one-hot encoded vector, all words have the same distance between each other, even though their meanings are completely different.
-
+        In a regular one-hot encoded vector all words have the same distance between each other, even though their meanings are completely different, this creates a lost in information at the encoding.  However, Word2Vec is capable of learning vectors by understanding the context in which words appear. This results in vectors in which words with similar meanings end up with a similar numerical representation in the vectorspace. Figure \ref{fig:one_vs_word2vec} illustrates this situation. For instance, cats and dogs are more similar than fish and sharks. This extra information is useful for machine learning algorithms \cite{word2vec_explained}.	
 
 
         \begin{figure}[H]
@@ -134,33 +137,54 @@ The application areas address topics such as extraction of useful information fr
           
             \begin{subfigure}{0.32\textwidth}
             \includegraphics[width=\textwidth]{Sections/3StateOfTheArt/3_images/one_hot_ex.png} 
-            \caption{One-hot encoding resulting vector. \cite{word2vec_explained}}
+            \caption{One-hot encoding resulting vector \cite{word2vec_explained}. }
           
             \end{subfigure}
             \begin{subfigure}{0.32\textwidth}
             \includegraphics[width=\textwidth]{Sections/3StateOfTheArt/3_images/word2vec_encode.png}\hfill
-            \caption{Word2Vec encoding resulting vector. \cite{word2vec_explained}}
+            \caption{Word2Vec encoding resulting vector \cite{word2vec_explained}. }
             \end{subfigure}
+            \caption{}
+            \label{fig:one_vs_word2vec}
 
           \end{figure}
 
-
-
+          Furthermore, using a word offset technique, Word2Vec is capable of performing simple algebraic operations to the word vectors. An example is that the vector(”King”) - vector(”Man”) + vecs
+          tor(”Woman”) results in a vector that is closest to the vector representation of the word "Queen" \cite{Mikolov2013}. 
 
         
-        \par Word2Vec is capable of making accurate guesses, based on past appearances, of a word's meaning. 
-
-        \par The output of Word2Vec is a vocabulary in which each item has a vector attached to it, which can be fed into a deep-learning net or simply queried to detect relationships between words.
-
-        \par Word2Vec is composed of two different models, CBOW (Continuous Bag of words) which predicts a word given the context and Skip-Gram which predicts context given a word. \cite{Mikolov2013} \cite{Wiki}
+        Word2Vec is composed of two different models, CBOW (Continuous Bag of words) which predicts a word given the context and Skip-Gram which predicts context given a word \cite{Mikolov2013} \cite{Wiki} as shown in Figure \ref{fig:cbow_skip}.
 
         
 
-        \begin{figure}[htb]
+        \begin{figure}[H]
             \centering
-            \includegraphics[scale = 0.15]{Sections/3StateOfTheArt/3_images/Cbow_Skip.png}
-            \caption{CBOW model and Skip-Gram model. \cite{Mikolov2013}} 
+            \captionsetup{justification=centering}
+            \includegraphics[width=0.8\textwidth]{Sections/3StateOfTheArt/3_images/Cbow_Skip.png}
+            \caption{CBOW and Skip-gram models \cite{Mikolov2013}.} 
+            \label{fig:cbow_skip}
         \end{figure}
+
+
+
+        \begin{itemize}
+            \item \textbf{Continuous Bag of Words}
+        \end{itemize}
+
+
+       CBOW allows to take a big amount of text and train a neural network to predict a word inputting the N words at each side. In the given example in Figure \ref{fig:cbow_skip}  N = 2. Using the example given in \cite{Mordecki2017} : “The monkey is eating a banana”, the word "eating" is predicted given that the previous two words are "The" and "monkey" and the next two are "a" and "banana".
+
+        Using Figure \ref{fig:cbow_skip} again, the inputs of CBOW would be : w(t+2) = "monkey", w(t+1) = "is", w(t-1) = "a", w(t+2) = "banana" and the output (prediction) would be w(t) = "eating" \cite{Mordecki2017}.
+        
+        
+        \begin{itemize}
+            \item \textbf{Skip-gram}
+        \end{itemize}
+
+        Skip-gram is much identical to CBOW but instead of predicting a word given the context, it predicts the context given a word. 
+
+        One again using Figure \ref{fig:cbow_skip}, the input of Skip-gram is w(t) = "eating" and the outputs would be : w(t+2) = "monkey", w(t+1) = "is", w(t-1) = "a", w(t+2) = "banana" \cite{Mordecki2017}.
+
 
         
         \subsection{GloVe}
@@ -180,7 +204,7 @@ The application areas address topics such as extraction of useful information fr
     
     \section{Contextualized Word Embedding Models}
     \label{sec:context}    
-        \par Contextualized words embeddings aim at capturing word semantics in different contexts to address the issue of polysemous and the context-dependent nature of words \cite{Batista2018}. Using the example given in  section \ref{sec:static}, these models would be able to distinguish the different meaning of the word "apple" given the two different sentences.
+        \par Contextualized words embeddings aim at capturing word semantics in different contexts to address the issue of polysemous and the context-dependent nature of words \cite{Batista2018}. Using the example given in  Section \ref{sec:static}, these models would be able to distinguish the different meaning of the word "saw" given the two different sentences.
 
         \subsection{Context2vec}
         
@@ -210,7 +234,7 @@ The application areas address topics such as extraction of useful information fr
 
             \par ELMo (Embeddings from Language Models) is a NLP model with context-aware representation, it understands different meanings for the same word since it takes into account the surrounding words unlike traditional word embedding models such as Word2Vec and GLoVe. In order to achieve this, ELMo attributes an embedding for each word after looking at the entire context in which it is used, instead of using fixed embeddings for each word. Therefore, the same word might have different word vectors under different contexts.
             \par This NLP models both syntax and semantics of word use and how these uses vary across linguistic context.The word vectors are learned through the usage of internal states of a deep bidirectional LSTM algorithm, trained on a large corpus of text. Bidirectional implies that the algorithm takes into account the words before and the words after it in both directions. LSTM (Long Short-Term Memory) is one type of neural network that is able to retain data in memory for long periods of time, allowing it to learn longer-term dependencies.
-            This language model can predict both the next word and the previous word and it is a character based model allowing the network to use morphological clues to form robust representations for out-of-vocabulary tokens not presented during training.  \cite{Peters:2018}
+            This language model can predict both the next word and the previous word and it is a character based model allowing the network to use morphological clues to form robust representations for out-of-vocabulary tokens not presented during training \cite{Peters:2018}.
             \par Below an image showcasing an example of the differences between GLOVe that is a non-context aware model and ELMo biLM (bidirectional Language Model) that is context aware.
 
             
@@ -227,11 +251,15 @@ The application areas address topics such as extraction of useful information fr
 \section{Available NLP libraries}
     \label{sec:libraries}
 
+    There is a wide array of NLP tools and services available. Knowing their features is important in order to find the most appropriate one for the project at hands. Some might be better for smaller project and others better for experts working with big data projects. Furthermore, NLP libraries solve the problem of requiring superior knowledge of mathematics, machine learning, and linguistics. Using these tools, developers can simplify text processing so that they can concentrate on building machine learning models. Some of the libraries created to solve NLP problems will be discussed in the next sections.
+
+
+
+
+
         \subsection{SpaCy}
         
-        \par SpaCy is a free, open-source library for advanced natural language processing written in Python and Cython published by Explosion AI. It was designed specifically for production use and to help in the building of applications that process and "understand" large volumes of text data.  Some use cases for this specific library are to build information extraction or natural language understanding systems, or to pre-process text for deep learning. \cite{Spacy2017}
-
-        \par This NLP library was chosen for the development of the text processing phase of the practical work, not only because ig provides a well written documentation and being simple to use but also because it offers many useful features such as:
+        \par SpaCy is a free, open-source library for advanced natural language processing written in Python and Cython published by Explosion AI. It was designed specifically for production use and to help in the building of applications that process and "understand" large volumes of text data.  Some use cases for this specific library are to build information extraction or natural language understanding systems, or to pre-process text for deep learning \cite{Spacy2017}. Some of the features that SpaCy offers are: 
 
         \begin{itemize}
             \item \textbf{Tokenization} : The segmentation of text into words, punctuation, etc
@@ -254,7 +282,26 @@ The application areas address topics such as extraction of useful information fr
         \subsection{Gensim}
 
         \par Gensim ("Generate Similar”) is a Natural Language Processing open-source library for unsupervised topic modeling (a technique to extract the underlying topics from large volumes of text)  and for natural language processing. This python-cython library specializes in finding the semantic similarity between two documents through vector space modeling and topic modeling toolkit. It is capable of building document or word vectors, corpora, performing topic identification, performing document comparison (retrieving semantically similar documents) and analysing plain-text documents for semantic structure. In terms of producing word embedding, gensim allows for the usage of Word2Vec and fastText \cite{rehurek_lrec}.
+        
+        \subsection{TextBlob}
+
+        TextBlob, also a Python library,  offers an API for performing NLP tasks, like part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, language translation, word inflection, parsing, n-grams, and WordNet integration \cite{textblob}.
+
+        \subsection{Flair}
+
+        Flair allows the usage of state-of-the-art NLP models for entity recognition (NER), part-of-speech tagging (PoS), sense disambiguation and classification \cite{akbik2018coling}.
+
+        \subsection{Polyglot}
+
+        This python NLP package supports various multilingual applications and offers the following tasks
+        language detection (196 languages), tokenization (165 languages), named entity recognition (40 Languages), part of speech tagging (16 languages), sentiment analysis (136 Languages) \cite{polyglot:2013:ACL-CoNLL}.
+    
+
 
         
-        \subsection{Uncommon Libraries}
-        Other NLP libraries not so common are Flair \cite{akbik2018coling}, Polyglot \cite{polyglot:2013:ACL-CoNLL}, CogCompNLP \cite{2018_lrec_cogcompnlp}, TextBlob \cite{textblob}.
+        \section{Final Remarks}
+        \label{sec:final_remarks}
+
+        In this thesis the NLP library that was chosen for the development of the text processing phase of the automatic image retrieval system was SpaCy. This decision was because it offers state-of-the-art NLP models, many useful features, it is easy to use and also because of the simple and well written documentation which makes it very beginner friendly. In addition, there was some prior knowledge thanks to the work developed last year for the ImageCLEF challenge \cite{Ribeiro2019}. 
+        
+        
