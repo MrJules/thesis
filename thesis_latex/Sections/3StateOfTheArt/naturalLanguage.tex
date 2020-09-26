@@ -31,8 +31,9 @@ Figure \ref{fig:nlp_class} shows the classification of NLP, which consists in tw
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[scale = 0.3]{Sections/3StateOfTheArt/3_images/NLP_diagram.png}
-    \caption{Classification of NLP \cite{Khurana2018}.}  
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.7\textwidth]{Sections/3StateOfTheArt/3_images/NLP_diagram.png}
+    \caption[Classification of NLP.]{Classification of NLP \cite{Khurana2018}.}  
     \label{fig:nlp_class} 
 \end{figure}
 
@@ -137,12 +138,12 @@ The application areas address topics such as extraction of useful information fr
           
             \begin{subfigure}{0.32\textwidth}
             \includegraphics[width=\textwidth]{Sections/3StateOfTheArt/3_images/one_hot_ex.png} 
-            \caption{One-hot encoding resulting vector \cite{word2vec_explained}. }
+            \caption[One-hot encoding resulting vector.]{One-hot encoding resulting vector \cite{word2vec_explained}. }
           
             \end{subfigure}
             \begin{subfigure}{0.32\textwidth}
             \includegraphics[width=\textwidth]{Sections/3StateOfTheArt/3_images/word2vec_encode.png}\hfill
-            \caption{Word2Vec encoding resulting vector \cite{word2vec_explained}. }
+            \caption[Word2Vec encoding resulting vector]{Word2Vec encoding resulting vector \cite{word2vec_explained}. }
             \end{subfigure}
             \caption{}
             \label{fig:one_vs_word2vec}
@@ -161,7 +162,7 @@ The application areas address topics such as extraction of useful information fr
             \centering
             \captionsetup{justification=centering}
             \includegraphics[width=0.8\textwidth]{Sections/3StateOfTheArt/3_images/Cbow_Skip.png}
-            \caption{CBOW and Skip-gram models \cite{Mikolov2013}.} 
+            \caption[CBOW and Skip-gram models]{CBOW and Skip-gram models \cite{Mikolov2013}.} 
             \label{fig:cbow_skip}
         \end{figure}
 
@@ -215,16 +216,18 @@ The application areas address topics such as extraction of useful information fr
             
             In contrast to word2vec that use context modeling mostly internally and considers the target word embeddings as their main output, the focus of context2vec is the context representation. Context2vec achieves its objective by assigning similar embeddings to sentential contexts and their associated target words \cite{Melamud2016}.
 
-            \begin{figure}[htb]
+            \begin{figure}[H]
                 \centering
-                \includegraphics[scale = 0.35]{Sections/3StateOfTheArt/3_images/context2vec_embedding.png}
-                \caption{A 2D illustration of context2vec’s embedded space and similarity metrics. Triangles and circles denote sentential context embeddings and target word embeddings, respectively \cite{Melamud2016}.} 
+                \captionsetup{justification=centering}
+                \includegraphics[width=0.4\textwidth]{Sections/3StateOfTheArt/3_images/context2vec_embedding.png}
+                \caption[Context2vec’s embedded space and similarity metrics.]{A 2D illustration of context2vec’s embedded space and similarity metrics. Triangles and circles denote sentential context embeddings and target word embeddings, respectively \cite{Melamud2016}.} 
             \end{figure}
 
-            \begin{figure}[htb]
+            \begin{figure}[H]
                 \centering
-                \includegraphics[scale = 0.35]{Sections/3StateOfTheArt/3_images/context2vec_predict.png}
-                \caption{Closest target words to various sentential contexts, illustrating context2vec’s sensitivity to long range dependencies, and both sides of the target word \cite{Melamud2016}.} 
+                \captionsetup{justification=centering}
+                \includegraphics[width=0.8\textwidth]{Sections/3StateOfTheArt/3_images/context2vec_predict.png}
+                \caption[Context2vec's closest target words]{Closest target words to various sentential contexts, illustrating context2vec’s sensitivity to long range dependencies, and both sides of the target word \cite{Melamud2016}.} 
             \end{figure}
             
         \newpage
@@ -238,10 +241,11 @@ The application areas address topics such as extraction of useful information fr
             \par Below an image showcasing an example of the differences between GLOVe that is a non-context aware model and ELMo biLM (bidirectional Language Model) that is context aware.
 
             
-        \begin{figure}[htb]
+        \begin{figure}[H]
             \centering
-            \includegraphics[scale = 0.3]{Sections/3StateOfTheArt/3_images/ELMO.png}
-            \caption{Nearest neighbors to "play" using GLoVe and context embeddings from a biLM \cite{Peters:2018}.} 
+            \captionsetup{justification=centering}
+            \includegraphics[width=0.85\textwidth]{Sections/3StateOfTheArt/3_images/ELMO.png}
+            \caption[Nearest neighbors to "play" using GLoVe]{Nearest neighbors to "play" using GLoVe and context embeddings from a biLM \cite{Peters:2018}.} 
         \end{figure}
 
         \par GLoVe only uses the word "play" as source, therefore the obtained neighbors for that word are spread across several parts of speech however they all focus on the sports-related sense of the word "play". ELMo biLM uses the entire sentence as source, this means that it is able to understand the context of the word, therefore in both cases, the biLM is able to disambiguate both the part of speech and word sense in the source sentence \cite{Peters:2018}.

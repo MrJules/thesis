@@ -19,7 +19,7 @@ Feature extraction plays an important role in image classification and object de
 \begin{figure}[H]
     \centering
     \includegraphics[scale = 0.55]{Sections/2StateOfTheArt/2_images/Feature_extraction.png}
-    \caption{Feature extraction from an image. \cite{feature} }  
+    \caption[Feature extraction from an image.]{Feature extraction from an image. \cite{feature} }  
     \label{fig:feature_extraction}
 \end{figure}
 
@@ -190,19 +190,19 @@ Feature extraction plays an important role in image classification and object de
     \begin{figure}[htb]
         \centering
         \includegraphics[scale = 0.5]{Sections/2StateOfTheArt/2_images/deeplearning.pdf}
-        \caption{Typical neural network architecture \cite{mathworks_NN}.}
+        \caption[Typical neural network architecture.]{Typical neural network architecture \cite{mathworks_NN}.}
         \label{fig:neural}
     \end{figure}
         
     
-    \par The connections between layers are called weighted connections and they are adjusted with a real-valued number attached to them. This number is important, because each neuron takes the value of the attached neuron (in their layer) and multiplies it by their connection weight. The bias value is an additional parameter in the neural network which is used to adjust the output along with weighted sum of the inputs to the neuron. The sum of the bias value with the weights  is put through an activation function which mathematically transforms the value and assigns it to the connected neuron in the adjacent layer. This is propagated through the whole network.  Se Figure \ref{fig:neuron} for a clear representation of this process.
+    \par The connections between layers are called weighted connections and they are adjusted with a real-valued number attached to them. This number is important, because each neuron takes the value of the attached neuron (in their layer) and multiplies it by their connection weight. The bias value is an additional parameter in the neural network which is used to adjust the output along with weighted sum of the inputs to the neuron. The sum of the bias value with the weights  is put through an activation function which mathematically transforms the value and assigns it to the connected neuron in the adjacent layer. This is propagated through the whole network.  See Figure \ref{fig:neuron} for a clear representation of this process.
     
 
     
     \begin{figure}[htb]
         \centering
         \includegraphics[scale = 0.15]{Sections/2StateOfTheArt/2_images/neuron.png}
-        \caption{ Operations done by a neuron \cite{neuron}.}
+        \caption[Operations done by a neuron.]{Operations done by a neuron \cite{neuron}.}
         \label{fig:neuron}
     \end{figure}
     
@@ -295,7 +295,7 @@ Feature extraction plays an important role in image classification and object de
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    
+\newpage   
 
 
 \section{Recent Innovations and Improvements}
@@ -305,22 +305,24 @@ Feature extraction plays an important role in image classification and object de
 \par In the Figures \ref{fig:leaderboard_object} and \ref{fig:leaderboard_image} it is shown  not only the current best methods for both image classification and object detection but also the development of the state-of-the-art throughout the years.
 
 
+
+
+
 \begin{figure}[H]
     \centering
     \captionsetup{justification=centering}
-    \begin{subfigure}{0.49\textwidth}
-        \includegraphics[width=\textwidth]{Sections/2StateOfTheArt/2_images/chart_object.pdf}
-        \caption{Object Detection on COCO test-dev benchmark \cite{papers_object}}
-        \label{fig:leaderboard_object}
-        \end{subfigure}
-        \begin{subfigure}{0.49\textwidth}
-        \includegraphics[width=\textwidth]{Sections/2StateOfTheArt/2_images/chart_image.pdf}
-        \caption{Image Classification on ImageNet benchmark \cite{papers_image}}
-        \label{fig:leaderboard_image}
-        \end{subfigure}
-    \label{fig:example_f1}
+    \includegraphics[width=0.65\textwidth]{Sections/2StateOfTheArt/2_images/chart_object.pdf}
+    \caption[Object Detection COCO test-dev benchmark.]{Object Detection COCO test-dev benchmark \cite{papers_object}.}
+    \label{fig:leaderboard_object}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.65\textwidth]{Sections/2StateOfTheArt/2_images/chart_image.pdf}
+    \caption[Image Classification ImageNet benchmark.]{Image Classification ImageNet benchmark \cite{papers_image}.}
+    \label{fig:leaderboard_image}
+\end{figure}
 
 
 
@@ -330,7 +332,7 @@ Feature extraction plays an important role in image classification and object de
 
 
 
-
+\newpage
 \subsection{COCO Test-Dev}
 
 \par The COCO benchmark \cite{Lin2014} is a dataset that places object recognition in the context of scene understanding. The evaluation metric used is the average precision (AP). Table \ref{table:cocotable} shows the current best architectures and their respective score for the COCO test-dev dataset.
@@ -399,8 +401,9 @@ Feature extraction plays an important role in image classification and object de
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.25]{Sections/2StateOfTheArt/2_images/cbnet.png}
-    \caption{CBNet Architecture for object detection \cite{Liu2019}.} 
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.7\textwidth]{Sections/2StateOfTheArt/2_images/cbnet.png}
+    \caption[CBNet Architecture]{CBNet Architecture for object detection \cite{Liu2019}.} 
     \label{fig:cbnet}
 \end{figure}
 
@@ -415,10 +418,11 @@ Feature extraction plays an important role in image classification and object de
 \par This architecture is an improvement over the Inception architectures, being more simple in design and adding more branches (towers) within modules. \cite{Xie2017}
 
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.23]{Sections/2StateOfTheArt/2_images/resnext.png}
-    \caption{ResNeXt architecture \cite{cnnarchitectures}. }
+    \captionsetup{justification=centering}
+    \includegraphics[width=\textwidth]{Sections/2StateOfTheArt/2_images/resnext.png}
+    \caption[ResNeXt architecture.]{ResNeXt architecture \cite{cnnarchitectures}. }
     \label{fig:noisestudent}
 \end{figure}
 
@@ -499,19 +503,21 @@ Feature extraction plays an important role in image classification and object de
 
 
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.15]{Sections/2StateOfTheArt/2_images/noisy_student.png}
-    \caption{Noisy Student Method \cite{Xie2019}.} 
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.6\textwidth]{Sections/2StateOfTheArt/2_images/noisy_student.png}
+    \caption[Noisy Student Method]{Noisy Student Method \cite{Xie2019}.} 
     \label{fig:noisestudent}
-\end{figure}cnnarchitectures
+\end{figure}
 
 \par Researchers at Google decided to study the impact of scaling up CNNs, in order to achieve better accuracy and efficiency. EfficientNet-B0 was developed based on a simple idea, scaling each of the dimensions of the network (width, depth and resolution) with a constant ratio, improves the overall performance \cite{tan2019efficientnet}.
 
-\begin{figure}[htb]
+\begin{figure}[h]
     \centering
-    \includegraphics[scale = 0.25]{Sections/2StateOfTheArt/2_images/efficientNet_scale.png}
-    \caption{Comparison of different scaling methods:  (a) is a baseline network example; (b)-(d) are conventional scaling that only increases one dimension of network  width, depth, or resolution. (e) is the proposed compound scaling method that uniformly scales all three dimensions with a fixed ratio \cite{tan2019efficientnet}.
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.8\textwidth]{Sections/2StateOfTheArt/2_images/efficientNet_scale.png}
+    \caption[Comparison of different scaling methods.]{Comparison of different scaling methods:  (a) is a baseline network example; (b)-(d) are conventional scaling that only increases one dimension of network  width, depth, or resolution. (e) is the proposed compound scaling method that uniformly scales all three dimensions with a fixed ratio \cite{tan2019efficientnet}.
     } 
 
 \end{figure}
@@ -520,10 +526,11 @@ Feature extraction plays an important role in image classification and object de
 
 \par The baseline network architecture, EffecientNet-B0, uses mobile inverted bottleneck convolution (MBConv), similar to MobileNetV2 \cite{s2018mobilenetv2} and MnasNet \cite{tan2018mnasnet}. Figure \ref{fig:eff} shows the baseline network architecture EfficientNet-B0.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.22]{Sections/2StateOfTheArt/2_images/efficientNet_Arch.png}
-    \caption{EfficientNet-B0 architecture representation \cite{Tan}.} 
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.9\textwidth]{Sections/2StateOfTheArt/2_images/efficientNet_Arch.png}
+    \caption[EfficientNet-B0 architecture.]{EfficientNet-B0 architecture representation \cite{Tan}.} 
     \label{fig:eff}
 
 \end{figure}
