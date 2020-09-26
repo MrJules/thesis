@@ -10,7 +10,7 @@ The task of automatically recognizing and locating objects in images and videos 
 
 For this work the purpose of using object detection technologies is to convert images into text in order to allow the computer to compare an image with a moment described in text.
 
-Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer is only capable of learning that the extracted features represent a motorcycle after classifying the extracted data, which is done with the usage of pre-trained deep learning neural networks.
+Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer is only capable of learning that the extracted features represent a motorcycle (in the case of the example shown below) after classifying the extracted data, which is done with the usage of pre-trained deep learning neural networks.
 
 
 
@@ -19,7 +19,7 @@ Feature extraction plays an important role in image classification and object de
 \begin{figure}[H]
     \centering
     \includegraphics[scale = 0.55]{Sections/2StateOfTheArt/2_images/Feature_extraction.png}
-    \caption[Feature extraction from an image.]{Feature extraction from an image. \cite{feature} }  
+    \caption[Feature extraction from an image.]{Feature extraction from an image \cite{feature}.}  
     \label{fig:feature_extraction}
 \end{figure}
 
@@ -93,7 +93,7 @@ Feature extraction plays an important role in image classification and object de
     
 
 
-    \par As an example, picture \ref{fig:picnic} shows an image of a family having a picnic. Feeding this image to a computer will output very different results from what a human would say.
+    \par As an example, Figure \ref{fig:picnic} shows an image of a family having a picnic. Feeding this image to a computer will output very different results from what a human would say.
 
     \begin{figure}[H]
         \centering
@@ -127,10 +127,7 @@ Feature extraction plays an important role in image classification and object de
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \section{Teaching a Computer on How to Learn}
 
-    \begin{itemize}
-        \item \textbf{ Artificial Intelligence }
-    \end{itemize}
-
+    \
     Artificial Intelligence (AI) is the artificial simulation of human intelligence by a computer system in a way that it can perceive its environment, understand its behaviors and take action. Two important areas of AI are machine learning and deep learning \cite{mathworks_AI}.
 
     
@@ -152,7 +149,7 @@ Feature extraction plays an important role in image classification and object de
 
     \par Deep Learning is a subset of Machine Learning that is inspired by the structure and function of the human brain. In order to achieve this, deep learning resorts to artificial neural networks (ANNs).
     
-    \par The idea behind an ANN is that it tries to replicate the working of the human brain in the processing of data and creation of patterns, which is important for decision making. These ANNs are capable of learning unsupervised data that can either be unstructured, unlabeled or both. Putting it as simple as possible, deep learning is a machine learning technique that teaches computers to learn by example, like a human would \cite{mathworks_deeplearning}.
+    \par The idea behind an ANN is that it tries to replicate the working of the human brain in the processing of data and creation of patterns, which is important for decision making. These ANNs are capable of learning unsupervised data that can either be unstructured, unlabeled or both. In short, deep learning is a machine learning technique that teaches computers to learn by example, like a human would \cite{mathworks_deeplearning}.
 
 
     \par Thanks to the new digital era, there has been an exponential increase in all forms of data, from every region of the planet. This data is defined as "big data" and comes from sources like social media, search engines, live streaming services and many others. Even though all of this information is easily accessible, it is unstructured. The problem with unstructured data is that the human brain cannot comprehend it efficiently enough to extract relevant information. However, using deep learning, all of this unstructured data can be usable.
@@ -184,18 +181,18 @@ Feature extraction plays an important role in image classification and object de
     \par A neural network can be considered a computer program that operates identically to how a human brain would, in the sense that it is able to be teachable to do certain tasks like problem-solving. The appeal of a neural network is the ability to emulate the human brain in pattern recognition skills. 
 
 
-    \par Neural networks are composed of many small cells called neurons. These neurons are grouped into several layers that form columns. The connection between columns are formed also through their neurons. Each neuron of each layer is connected to another neuron of another layer. A visual representation of a generic neural network architecture is shown in figure \ref{fig:neural}. For further readings on neural network architectures Appendix \ref{ch:appendix} describes most of the common architectures.
+    \par Neural networks are composed of many small cells called neurons. These neurons are grouped into several layers that form columns. The connection between columns are formed also through their neurons. Each neuron of each layer is connected to another neuron of another layer. A visual representation of a generic neural network architecture is shown in Figure \ref{fig:neural}. For further readings on neural network architectures Appendix \ref{ch:appendix} describes most of the common architectures.
 
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[scale = 0.5]{Sections/2StateOfTheArt/2_images/deeplearning.pdf}
+        \includegraphics[scale = 0.55]{Sections/2StateOfTheArt/2_images/deeplearning.pdf}
         \caption[Typical neural network architecture.]{Typical neural network architecture \cite{mathworks_NN}.}
         \label{fig:neural}
     \end{figure}
         
     
-    \par The connections between layers are called weighted connections and they are adjusted with a real-valued number attached to them. This number is important, because each neuron takes the value of the attached neuron (in their layer) and multiplies it by their connection weight. The bias value is an additional parameter in the neural network which is used to adjust the output along with weighted sum of the inputs to the neuron. The sum of the bias value with the weights  is put through an activation function which mathematically transforms the value and assigns it to the connected neuron in the adjacent layer. This is propagated through the whole network.  See Figure \ref{fig:neuron} for a clear representation of this process.
+    \par The connections between layers are called weighted connections and they are adjusted with a real-valued number attached to them. This number is important, each neuron takes the value of the attached neuron (in their layer) and multiplies it by their connection weight. The bias value is an additional parameter in the neural network which is used to adjust the output along with weighted sum of the inputs to the neuron. The sum of the bias value with the weights  is put through an activation function which mathematically transforms the value and assigns it to the connected neuron in the adjacent layer. This is propagated through the whole network.  See Figure \ref{fig:neuron} for a clear representation of this process.
     
 
     
@@ -233,7 +230,7 @@ Feature extraction plays an important role in image classification and object de
 
     \par A few examples of some available datasets are:  MS COCO \cite{Lin2014}, ImageNet \cite{Takamitsu1978} , VisualGenome \cite{Language2015}, OpenImages \cite{Kuznetsova2018} and Pascal-VOC \cite{Everingham2010}.
 
-    \par Some of these datasets propose challenges, where teams are able to compete in order to achieve state-of-the-art results. This subject is discussed in section \ref{sec:state}
+    \par Some of these datasets propose challenges, where teams are able to compete in order to achieve state-of-the-art results. This subject is discussed in Section \ref{sec:state}.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -250,7 +247,7 @@ Feature extraction plays an important role in image classification and object de
 
     OpenCV is an open source computer vision and machine learning software library originally developed by Intel in the year 2000 \cite{Culjak2012}.\par
 
-    The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract 3D models of objects, produce 3D point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality, etc. \cite{opencvweb} \par
+    The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract 3D models of objects, produce 3D point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality, etc \cite{opencvweb}. \par
     
     OpenCV Supports the deep learning frameworks like Tensorflow, Torch/PyTorch, Caffe and it is the most standardized tooling for computer vision.  
 
@@ -261,7 +258,7 @@ Feature extraction plays an important role in image classification and object de
     \label{Tensorflow}
    
 
-    Tensorflow is currently the most popular open source framework for numerical computation and large-scale machine learning introduced by google and was originally created for tasks with heavy numerical computations.  \cite{Abadi} \cite{Dignam1983} 
+    Tensorflow is currently the most popular open source framework for numerical computation and large-scale machine learning introduced by google and was originally created for tasks with heavy numerical computations \cite{Abadi} \cite{Dignam1983}.
     
     Tensorflow is written in c++ which enables extremely fast compile times, non the less, it can still be accessed by other languages, such as Python and also supports CPUs, GPUs and distributed processing. \par
     
@@ -276,7 +273,7 @@ Feature extraction plays an important role in image classification and object de
     \end{itemize}
 
     The VLFeat open source library implements popular computer vision algorithms specializing in image understanding and local features extraction and matching. Algorithms include Fisher Vector, VLAD, SIFT, MSER, k-means, hierarchical k-means, agglomerative information bottleneck, SLIC superpixels, quick shift superpixels, large scale SVM training, and many others. It is written in C for efficiency and compatibility, with interfaces in MATLAB for ease of use, and detailed documentation throughout. It supports Windows, Mac OS X, and Linux \cite{vedaldi08vlfeat}.
-
+\newpage
     \begin{itemize}
         \item \textbf{BoofCV}
     \end{itemize}
@@ -302,7 +299,7 @@ Feature extraction plays an important role in image classification and object de
 \label{sec:state}
 
 \par Image classification and object detection are both subjects that are constantly innovating and improving upon previously results, every month new papers are published with new and more efficient networks. 
-\par In the Figures \ref{fig:leaderboard_object} and \ref{fig:leaderboard_image} it is shown  not only the current best methods for both image classification and object detection but also the development of the state-of-the-art throughout the years.
+\par In Figures \ref{fig:leaderboard_object} and \ref{fig:leaderboard_image} it is shown  not only the current best methods for both image classification and object detection but also the development of the state-of-the-art throughout the years.
 
 
 
@@ -390,7 +387,7 @@ Feature extraction plays an important role in image classification and object de
 
 \par In typical CNN based detectors, the backbone network (the baseline of a network architecture) is used for basic feature extraction.
 
-\par CBNet feeds the output features of the previous backbone as an input feature to the succeeding backbone through composite connections.At the final stage, the Lead Backbone outputs features for object detection.
+\par CBNet feeds the output features of the previous backbone as an input feature to the succeeding backbone through composite connections. At the final stage, the Lead Backbone outputs features for object detection.
 
 \par This architecture was able to achieve the best result in the COCO Test-Dev with a 53.3\% AP with single model by integrating a CBNet using triple ResNeXt-152 \cite{Xie2017} backbones into the Cascade Mask R-CNN baseline.
 
@@ -415,7 +412,7 @@ Feature extraction plays an important role in image classification and object de
 \label{sec:resnext}
 \par ResNeXt, also known as Aggregated Residual Transform Network was created by facebook researchers and it is a simple highly modularized network architecture for image classification. 
 \par The network is constructed by repeating a building block that aggregates a set of transformations with the same topology. The simple design results in a homogeneous, multi-branch architecture that has only a few hyper-parameters to set. This strategy creates a new dimension, which was given the name of "cardinality" (size of the set of transformations). 
-\par This architecture is an improvement over the Inception architectures, being more simple in design and adding more branches (towers) within modules. \cite{Xie2017}
+\par This architecture is an improvement over the Inception architectures, being more simple in design and adding more branches (towers) within modules \cite{Xie2017}.
 
 
 \begin{figure}[H]
@@ -496,10 +493,8 @@ Feature extraction plays an important role in image classification and object de
 
 \par The algorithm was iterated a few times by treating the student as a teacher to relabel the unlabeled data and training a new student.
 
-\par An important discovery was made during the training of the algorithm. For the method to work well at scale the student model should be noised during its training while the teacher should not be noised during the generation of pseudo labels. This way, the pseudo labels are as accurate as possible and the noised student is forced to learn harder from the pseudo labels. To induce noise in the model it was used RandAugment data, dropout and stochastic depth during the training. Figure \ref{fig:noisestudent} shows a brief view of how the method works.
-\par This is where the name of the method "Noisy Student"comes from, since the student is noised to learn beyond the teacher's knowledge.
-\par With this method they were able to show that it is possible to use unlabeled images to significantly advance both accuracy and robustness of state-of-the-art imageNet models.
-\par The presented model uses EfficientNe as a backbone trained on images from imageNet dataset and was able to obtain the best results in the ImageNet benchmark dataset by achieving an accuracy of 88.4\%.
+\par An important discovery was made during the training of the algorithm. For the method to work well at scale the student model should be noised during its training while the teacher should not be noised during the generation of pseudo labels. This way, the pseudo labels are as accurate as possible and the noised student is forced to learn harder from the pseudo labels. To induce noise in the model it was used RandAugment data, dropout and stochastic depth during the training. Figure \ref{fig:noisestudent} shows a brief view of how the method works. This is where the name of the method "Noisy Student"comes from, since the student is noised to learn beyond the teacher's knowledge. With this method they were able to show that it is possible to use unlabeled images to significantly advance both accuracy and robustness of state-of-the-art imageNet models.
+\par The presented model uses EfficientNet as a backbone trained on images from imageNet dataset and was able to obtain the best results in the ImageNet benchmark dataset by achieving an accuracy of 88.4\%.
 
 
 

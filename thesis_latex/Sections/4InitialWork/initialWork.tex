@@ -7,7 +7,7 @@ This chapter aims at making clear how the automatic image retrieval system was b
 
 
 
-Initially in Section \ref{sec:diagram} the system workflow architecture is illustrated trough a diagram and a small description is present. Section \ref{sec:testruns} describes some of the preliminary experiences done to image recognition algorithms and object detection models provided by the ImageAI library in order to find the best performers. After, Section \ref{sec:alpha_retrieval} describes a very raw first attempt at an image retrieval system using only object detection. The implementation of the scene recognition algorithm is demonstrated in Section \ref{sec:scene_recognition}. Following up, in Section \ref{sec:runs} a description of the differences in the image processing stage between the submitted runs for the challenges is presented. Then, the text processing stage is introduced in Section \ref{sec:text}, in this section there is an explanation to how the system was able to extract linguistic annotations, what kind of syntax and semantic rules were implemented in the algorithm and how the categorization and extraction of relevant words from text was done. Section \ref{sec:retrieval} explains how the system is capable of automatically retrieving images for a given moment described in text, how it is able to compare the similarity of the mined text words with the visual concept words and all the calculations it does in order to compute weights and scores. Lastly, Sections \ref{sec:run1} and \ref{sec:run2} explain both of the submitted runs for the automatic image retrieval system.
+Initially in Section \ref{sec:diagram} the system workflow architecture is illustrated trough a diagram and a small description is presented. Section \ref{sec:testruns} describes some of the preliminary experiences done to image recognition algorithms and object detection models provided by the ImageAI library. Afterwards, Section \ref{sec:alpha_retrieval} describes a very raw first attempt at an image retrieval system using only object detection. The implementation of the scene recognition algorithm is demonstrated in Section \ref{sec:scene_recognition}. Following up, in Section \ref{sec:runs} it is presented a description of the differences between both submitted runs in the image processing stage. Subsequently, the text processing stage is introduced in Section \ref{sec:text}, in this section there is an explanation on how the system was able to extract linguistic annotations, what kind of syntax and semantic rules were implemented in the algorithm and how the categorization and extraction of relevant words from text was done. Section \ref{sec:retrieval} explains how the system is capable of automatically retrieving images for a given moment described in text, how it is able to compare the similarity of the mined text words with the visual concept words and all the calculations it does in order to compute weights and confidence scores. Lastly, Sections \ref{sec:run1} and \ref{sec:run2} explain both of the submitted runs for the automatic image retrieval system. 
 
 
 
@@ -15,9 +15,9 @@ Initially in Section \ref{sec:diagram} the system workflow architecture is illus
 \label{sec:diagram}
    
 \begin{figure}[H]
-    \centering
+   
     \captionsetup{justification=centering}
-    \includegraphics[width = 0.9\textwidth]{Sections/6textprocessing/images/diagram.png}
+    \hspace{+1cm} \includegraphics[width = 0.9\textwidth]{Sections/6textprocessing/images/diagram.png}
     \caption{System Architecture.}
     \label{fig:testtopic}
   \end{figure}
@@ -34,7 +34,7 @@ Subsequently, text is processed using an NLP model that extracts linguistic anno
 
 Following up, when all of the textual labels and visual labels are extracted and correctly categorized the confidence score computation stage starts. This stage has several steps that can be summarized in two main steps: the computation of weights for each category and the calculation of similarity scores.
 
-Finally, in the retrieval stage, the system checks for the 50 highest confidence scores for a given topic and stores it in a csv file. This 50 images are the ones retrieved for a given moment.
+Finally, in the retrieval stage, the system checks for the 50 highest confidence scores for a given topic and stores it in a csv file. These 50 images are the ones retrieved for a given moment.
 
 As an extra step, an evaluation stage was created to analyse system results for the dev topics with the objective of emulating the evaluation methodology for the challenge.
 
@@ -91,7 +91,7 @@ As an extra step, an evaluation stage was created to analyse system results for 
     
 The following 3 images (Figure \ref{fig:exp1}, \ref{fig:exp2} and \ref{fig:exp3}) show three examples of the achieved performance of these algorithms in the processing of the pictures shown in Figure \ref{fig:experi}.
 
-The graphs are structured in the following manner : the X axis represents the predictions, the Y axis represents the percentage probability certainty for the respective prediction and the color represents the algorithm evaluation and used.
+The graphs are structured in the following manner : the X axis represents the predictions, the Y axis represents the percentage probability certainty for the respective prediction and the color represents the algorithm used.
 
 The obtained results are discussed further down in this section.
 
@@ -163,7 +163,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
       \label{fig:labels} 
   \end{figure}
 
-  The next pages present the tests done which are structured in the following way: on the left is the picture with the respective detections and on the right is an image with a graph representation of the detections. The color represents the detected object (label) which is the same in both images. The analysis of the achieved results are discussed later in Section \ref{ch:wordclouds}.
+  The next pages present the tests done which are structured in the following way: on the left is the picture with the respective detections and on the right is an image with a graph representation of the detections. The color represents the detected object (label). The analysis of the achieved results are discussed later in Section \ref{ch:wordclouds}.
 
   The pictures used for the testing of the described models were the following:
 
@@ -185,8 +185,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
   \end{figure}
 
 
-
-  evaluation and
+\newpage
     
   \begin{itemize}
     \item \textbf{Detection Experience Number 1}
@@ -434,20 +433,20 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
 
     
 
-     From the different test runs done in Section \ref{sec:object_test} it is possible to analyse that the TinyYolo model under performs severely compared to RetinaNet and YoloV3. This is expected, as explained in section \ref{sec:tiny_yolo} the TinyYolo model is a smaller model of YOLOv3 that requires less computational resources and that is better suited for more constrained environments with smaller targets.
+     From the different test runs done in Section \ref{sec:object_test} it is possible to analyse that the TinyYolo model under performs severely compared to RetinaNet and YoloV3. This is expected, as explained in Appendix \ref{ch:appendix} Section \ref{sec:tiny_yolo} the TinyYolo model is a smaller model of YOLOv3 that requires less computational resources and is better suited for more constrained environments with smaller targets.
 
-     Comparing RetinaNet to YoloV3 it is possible to conclude that YoloV3 is more accurate than RetinaNet. For example in the first run, RetinaNet detects knifes and forks in the same place, in third example RetinaNet detects a bus in the place of a building while Yolo is capable of detecting a correctly stop sign that no other model detected.
+     Comparing RetinaNet to YoloV3 it is possible to conclude that YoloV3 is more accurate than RetinaNet. For example in the first run, RetinaNet detects knifes and forks in the same place, in the third example RetinaNet detects a bus in the place of a building while Yolo is capable of detecting a correctly stop sign that no other model detected.
 
-     As for the word clouds generated in this section, it is possible to notice that in the YoloV3 cloud and the retinaNet cloud there are many more words than the tinyyolo cloud, again, tinyyolo is severely under performing when compared to the other 2 model.
+     As for the word clouds generated in this section, it is possible to notice that in the YoloV3 cloud and the retinaNet cloud there are many more words than the tinyyolo cloud. Again, tinyyolo is severely under performing when compared to the other 2 models.
      
-     Looking at the Yolo model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words from different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like "pizza", "donut and "person" in one of the images.
+     Looking at the Yolo model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words of different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like "pizza", "donut and "person" in some of the images.
 
      These test runs allow for the conclusion that the YoloV3 model is the better performing one and therefore the one chosen for object detections for the automatic retrieval system. 
 
 \section{Example of a Raw Retrieval System}
 \label{sec:alpha_retrieval}
 
-As a first step in building a fully automatic retrieval system an "alpha system" was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects that are not "cup" or that are "cup" but below the threshold of 40\% wont be returned.
+As a first step in building a fully automatic retrieval system an "alpha system" was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects that are not "cup" or that are "cup" but below the threshold of 40\% wont be retrieved.
 
 \begin{figure}[H]
   \centering
@@ -501,7 +500,7 @@ As a first step in building a fully automatic retrieval system an "alpha system"
 
     Following up, the "categories" is where the model tries to predict what the image represents in terms of a scene. In this case the model predicts with 34.8\% accuracy that it is a "television\_room" which is also correct, since the image represents a division of a house with a television.
 
-    Finally, the "attributes" is the section where the model tries to describe the picture. Some of the predicaments were "enclosed area", "man-made", "indoor lightning" and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
+    Finally, the "attributes" is the section where the model tries to describe the picture. Some of the attributed labels were "enclosed area", "man-made", "indoor lightning" and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
 
 \section{Image Processing Submitted Runs Differences}
 \label{sec:runs}
@@ -544,7 +543,7 @@ As a first step in building a fully automatic retrieval system an "alpha system"
       \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/res1.png} 
       \end{subfigure}
       \begin{subfigure}{0.3\textwidth}
-      \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/res2.png}
+      \includegraphics[width=0.968\textwidth]{Sections/4InitialWork/4_images_random/res2.png}
       \end{subfigure}
       \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_random/res3.png}
@@ -554,9 +553,9 @@ As a first step in building a fully automatic retrieval system an "alpha system"
       \end{figure}
 
 
-      The "activity" and "location" were extracted from the data provided by the organizers in a .csv file. However,  that data is not accurate enough, and a good option would be to use activity recognition algorithms to extract activities from images. Furthermore, the processing time was already to high with the current setup.
+      The "activity" and "location" were extracted from the data provided by the organizers in a csv file. However,  that data is not accurate enough, and a good option would be to use activity recognition algorithms to extract activities from images. Furthermore, the processing time was already to high with the current setup.
       The "local\_time" was extracted directly from the picture name.
-      The "box" is the location of the given "concept" in the image according to the pixels of the image.
+      The "box" is the pixels location of the respective "concept" in the image.
 
 
 
@@ -571,7 +570,7 @@ The SpaCy en\_core\_web\_md model \cite{Spacy2017} is used to analyse the query 
 
 
 
-The words extracted are divided into 10 categories being them : "relevant things", "activities", "dates", "locations", "inside", "outside", "negative relevant things", "negative activities", "negative locations" and "negative dates". The importance of this extraction and categorization is done in order to later compare this extracted textual data with the extracted visual data from all of the images. To give a clear example, having the sentence from Figure \ref{fig:spacy_labels} it is crucial to correctly extract the concept "fast food" and categorize it in the "relevant things" textual category in order to compare with the "concepts" visual category. It is also important to extract the word "airport" and categorize it in the "locations" category in order to compare with the "location" visual category. It would not make sense toe extract the word "fast food" and categorize it in the "locations" textual category for later comparing with the "location" visual category.
+The words extracted are divided into 10 categories being them : "relevant things", "activities", "dates", "locations", "inside", "outside", "negative relevant things", "negative activities", "negative locations" and "negative dates". The importance of this extraction and categorization is done in order to later compare this extracted textual data with the extracted visual data from all of the images. To give a clear example, it is crucial to correctly extract the concept "fast food" from Figure \ref{fig:spacy_labels} and categorize it in the "relevant things" textual category in order to compare with the "concepts" visual category. It is also important to extract the word "airport" and categorize it in the "locations" category in order to compare with the "location" visual category. It would not make sense toe extract the word "fast food" and categorize it in the "locations" textual category for later comparing with the "location" visual category.
 
 In order to assign words to each category some linguistic rules were defined,
 such as semantic and syntactic rules. Semantic rules build the meaning of the
@@ -614,7 +613,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       
       \item If the word is a "NUM" (number) then it probably refers to a year.
       
-      \item If the word isSpaCy en\_core\_web\_md a "VERB", and the following word is a "poss" (possession modifier) and if the following word to the last is a "NOUN", then all of this sentence referes to an activity and the NOUN to an object. For example "Repairing his car". "Repairing" and "Repairing his car" are the activities and "car" is the relevant thing.
+      \item If the word is a "VERB", and the following word is a "poss" (possession modifier) and if the following word to the last is a "NOUN", then all of this sentence referes to an activity and the NOUN to an object. For example "Repairing his car". "Repairing" and "Repairing his car" are the activities and "car" is the relevant thing.
       
       \item If the sentence has an auxiliary verb, the main verb usually corresponds to an activity and the words that follow the main verb may be objects or locations.
       
@@ -738,7 +737,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
    In this example, the "Relevant Things" category is worth 40\% of the sum of all importance factors while "Activities" is worth 20\%, "Inside/Outside" is worth 30\% and "Location" is worth 10\%. Therefore, if by any means the "Activities" category is empty, the importance weight factor of this category will be distributed to all other categories in the following way:
 
    \begin{enumerate}
-    \item Distribution : 4x + 3x + x = 0.2 (=) x = 0.25;
+    \item Distribution : 0.4x + 0.3x + 0.1x = 0.2 (=) x = 0.25;
     \item Weight "Relevant Things" = 0.4 + 4*0.25 = 0.5 (50\%);
     \item Weight "Activities" = 0;
     \item Weight "Inside/Outside" category = 0.3 + 3*0.25 = 0.375 (37.5\%);
@@ -821,7 +820,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
 
     In this run all of the importance weight factors for all categories were the same. This means that each category counts the same for the computation of the confidence score. No category is more important or less important. When a category is empty, their respective importance factor is equally apportionated to all other categories but never to the negative categories. If a negative category importance factor is negative, their factor is apportionated to the other negative categories. And if a positive category is empty, their factor is apportionated to the positive categories.
 
-    Another aspect of Run 1 is that the negative categories can only impact the confidence score up to 0.5.
+    Another aspect of Run 1 is that the negative categories can only impact the confidence score up to 50\% if the image confidence score.
     
  
 
