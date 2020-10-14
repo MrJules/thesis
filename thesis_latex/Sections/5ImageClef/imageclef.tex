@@ -3,7 +3,7 @@
 \chapter{ImageCLEF Lifelog Challenge}
 \label{ch:imageclef}
 
-This chapter aims at describing the ImageCLEF Lifelog challenge. Firstly in Section \ref{sec:introduct} an introduction is given to the challenge and the respective goals. Section \ref{sec:tasks} describes the tasks available for the year 2020. The concept of lifelogging is explained in Section \ref{sec:concept_lifelog}. Finally Section \ref{sec:imagecleflifelog} clarifies the Life Moment Retrieval Task (LMRT) which is the main focus of this work, along with an introduction to the dataset, dev topics, test topics, ground truth and the evaluation methodology of the task.
+This chapter aims at describing the ImageCLEF Lifelog challenge. Firstly in Section \ref{sec:introduct} an introduction is given to the challenge and the respective goals. Section \ref{sec:tasks} describes the tasks available for the year 2020. The concept of lifelogging is explained in Section \ref{sec:concept_lifelog}. Finally Section \ref{sec:imagecleflifelog} clarifies the Lifelog Moment Retrieval Task (LMRT) which is the main focus of this work, along with an introduction to the dataset, dev topics, test topics, ground truth and the evaluation methodology of the task.
 
 
 
@@ -55,7 +55,7 @@ The ImageCLEFlifelog 2020 task is divided into two different sub-tasks: the Life
     
 The UA.PT Bioinformatics, a team from the Institute of Electronics Engineering and Telematics in the University of Aveiro, participated in the LMRT subtask with two different retrieval systems. The first one is the automatic retrieval system which was a continuation of the work done in the previous year challenge \cite{Ribeiro2019} and the main objective of this thesis. The other one was a retrieval system capable of providing user interaction and visualization. 
 
-The interactive retrieval system is only interesting for this work in terms of comparing the achieved results, therefore this document will only give a small description of this system in Chapter \ref{ch:results} Section \ref{sec:overall_perfomance}. For further readings of this system the article \cite{Ribeiro2020} explains in detail how the interactive system operates and how it was built.
+The interactive retrieval system is only interesting for this work in terms of comparing the achieved results, therefore this document will only give a small description of this system in Chapter \ref{ch:results} Section \ref{sec:overall_perfomance}. More details are presented in \cite{Ribeiro2020}.
 
     \subsection{SubTask: Lifelog Moment Retrieval}
     In the LMRT subtask, the main objective is to create a system capable of retrieving a number of predefined moments in a lifelogger’s day-to-day life from a set of images. Moments can be defined as semantic events or activities that happen at any given time during the day. For example, given the query “Find the moment(s) when the lifelogger was having an icecream on the beach” the participants should return the corresponding relevant images that show the moments of the lifelogger having icecream at the beach. Like last year, particular attention should be paid to the diversification of the selected moments with respect to the target scenario.
@@ -86,7 +86,7 @@ The interactive retrieval system is only interesting for this work in terms of c
         \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image5.jpg}
         \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/image6.jpg}
         \end{subfigure}\par\medskip
-        \caption[Images from the imageCLEF dataset]{Random images from the imageCLEF dataset.}
+        \caption[Images from the imageCLEF dataset]{Example of images from the imageCLEF dataset.}
         \label{fig:dataset_image}
       \end{figure}
 
@@ -97,7 +97,7 @@ The interactive retrieval system is only interesting for this work in terms of c
 
     Initially, the dev topics are firstly released along with the images dataset and the corresponding ground truth. This means that it is possible to initially create a retrieval system and analyse if it is producing good results, since thanks to the ground truth it is known which pictures should be retrieved for each textual topic. 
 
-    After a few weeks the test topics for evaluation are released without the ground truth, the participants who achieve the best results are the ones who have the highest F1-measure at 10 score. This is further discussed in Section \ref{sec:eval}.
+    After a few weeks the test topics for evaluation are released without the ground truth, the participants who achieve the best results are the ones who have the highest F1-measure at the top 10 images score. This is further discussed in Section \ref{sec:eval}.
     \newpage
     \subsection{Dev Topic example}
     \label{sec:devtopic1}
@@ -142,7 +142,7 @@ The interactive retrieval system is only interesting for this work in terms of c
     \end{itemize}
  
 
-    The dataset is composed of nearly 200.000 images. The figure below gives an example of one of the lifelog pictures that belongs to the example topic given in Section \ref{sec:devtopic1} and to the ground truth given in the Figure \ref{fig:gt}:
+    The dataset is composed of nearly 200.000 images. Figure \ref{fig:gt_images} illustrates lifelog pictures from the dev topic 1 (given as an example in Section \ref{sec:devtopic1}) that correspond to the ground truth given in Figure \ref{fig:gt}:
 
 
     \begin{figure}[H]
@@ -152,6 +152,7 @@ The interactive retrieval system is only interesting for this work in terms of c
         \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/example1.jpg}
         \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/example3.jpg}
         \caption[Ground truth images]{Example of 3 images that belong to the ground truth of the topic 1.}
+        \label{fig:gt_images}
     \end{figure}      
 
     \newpage
@@ -159,11 +160,11 @@ The interactive retrieval system is only interesting for this work in terms of c
 
     \subsection{Test Topic example}
 
-    An example of one of test topics used for evaluation in the challenge :
+    An example of one of test topics used for evaluation in the challenge the test topic 7 is presented next:
 
         \begin{itemize}
 
-        \item Topic 7
+        \item []
         
 
         \textbf{Title} : "Seafood at Restaurant"
@@ -180,98 +181,80 @@ The interactive retrieval system is only interesting for this work in terms of c
         \label{sec:eval}
         
         
-        In order to evaluate performance, the organizers use the F1-measure at X (F1@X) evaluation method. The F1-measure is the harmonic mean of both Cluster Recall at X (CR@X) metric and the Precision at X (P@X) measure. The Cluster recall is a metric that assesses how many different clusters from the ground truth are represented among the top X results  while the Precision measures the number of  relevant photos among the top X results \cite{Ninh2020}.
-
-
-     
-
-        \begin{align*}
-            &\textbf{Precision}  =  True Positives / (True Positives + False Positives) \\ 
-            &\textbf{Recall}  =  True Positives / (True Positives + False Negatives) \\ 
-            &\textbf{F1-score}  =  2\times(Precision \times Recall)/(Precision + Recall) \\ 
-        \end{align*}
-       
-        
-        Figure \ref{fig:ex_f1} presents an illustration on how these calculations are done.
-
-        This year edition official rankings are obtained trough the F1-measure@10, which gives equal importance to diversity (via CR@10) and relevance (via P@10). Another important aspect of a F1-measure@10 is that only the top 10 pictures for each topic with the highest confidence score are accountable for performance assessment.
-
+        In order to evaluate performance, the organizers use the F1-measure at X (F1@X) evaluation method. The F1-measure is the harmonic mean of both Cluster Recall at X (CR@X) metric and the Precision at X (P@X) measure. The Cluster recall is a metric that assesses how many different clusters from the ground truth are represented among the top X results  while the Precision measures the number of  relevant photos among the top X results \cite{Ninh2020}. Figure \ref{fig:ex_f1} illustrates these calculations.
 
 
         \begin{figure}[H]
             \centering
             \captionsetup{justification=centering}
-            \begin{subfigure}{0.3\textwidth}
+            \begin{subfigure}{0.25\textwidth}
                 \includegraphics[width=\textwidth]{Sections/5ImageClef/images/f1_1.png}
                 \end{subfigure}
                 \begin{subfigure}{0.4\textwidth}
                 \includegraphics[width=\textwidth]{Sections/5ImageClef/images/f1_2.png}
                 \end{subfigure}
             \caption[Illustration of recall and precision calculation]{Illustration of Recall and Precision calculations \cite{Wikipedia2020}.}   
-            \label{fig:ex_f1}        
+            \label{fig:ex_f1}    
+        \end{figure}    
            
-        \end{figure}
+        However, in the challenge these calculations are done as follows:
+
+        \begin{align*}
+            &\textbf{Cluster Recall at X (CR@X)}  =  N / Ngt \\ 
+            &\textbf{Precision at X (P@X)} = Nr / X \\ 
+            &\textbf{F1@X}  =  2\times(P@X \times CR@X)/(P@X + CR@X) \\ 
+        \end{align*}
+
+        \textit{N} is the number of image clusters represented in the first \textit{X} ranked images. \textit{Ngt} is the total number of image clusters from the ground truth. \textit{Nr} is the number of relevant pictures from the first \textit{X} ranked results.
+
+        This year edition official rankings are obtained trough the F1-measure@10, which gives equal importance to diversity (via CR@10) and relevance (via P@10). Another important aspect of a F1-measure@10 is that only the top 10 pictures for each topic with the highest confidence score are accountable for performance assessment.
+
+
+
+     
+  
         
     \subsection{Evaluation Problems}
     \label{sec:ev_problems}
 
-    The main problem in the evaluation of the imageCLEF lifelog subtask is that  pictures that could be considered to belong to a given moment are at times not present in the ground truth and therefore decrease the score in the f1-measure evaluation.
+    The main problem in the evaluation of the imageCLEF lifelog subtask is that  pictures that could be considered to belong to a given moment are at times not present in the ground truth and therefore decrease the score in the F1-measure evaluation. In addition to this problem, some pictures accounted for the ground truth should have not been considered.
 
-    A clear example follows.
+    Dev topic 4 is presented next to serve as an example.
 
     \begin{itemize}
 
-        \item Dev topic 6
-        
+        \item[] \textbf{Title}: "Television Recording."
 
-        \textbf{Title} : "Seaside Moments"
+        \textbf{Description}: "Find the moments when u1 was being recorded for
+        a television show."
 
-        \textbf{Description} : "Find moment(s) in which u1 was walking by the
-        sea taking photos or eating ice cream."
+        \textbf{Narrative} : "To be considered relevant, there must clearly be a television camera in front of u1. The moments the interviewer/cameramen is interviewing/recording u1 are also considered relevant. This can take place at home or in another location. All recording took place in one day and in more than one location."
 
-        \textbf{Narrative} : To be considered relevant, u1 must be taking a
-        walk by the sea or eating ice cream and the sea is clearly
-        visible. u1 must also be shown taking a photo with his/her camera
-        phone or holding the ice cream cone at this time. On the beach or
-        walking on a pier are both considered relevant once u1 is taking a
-        photo or eating ice cream."
+    \end{itemize}
 
-        \end{itemize}
 
-        \begin{figure}[htb]
-            \centering
-            \captionsetup{justification=centering}
-            \includegraphics[width =  0.5 \textwidth]{Sections/5ImageClef/images/t6_gt.png}
-            \caption{Ground truth for the dev topic 6.}  
-           \label{fig:dataset_csv}
+ 
+    \begin{figure}[H]
+        \centering
+        \captionsetup{justification=centering}
+        \includegraphics[width=.32\linewidth]{Sections/5ImageClef/images/2_gt.jpg}
+        \includegraphics[width=.32\linewidth]{Sections/5ImageClef/images/3_gt.jpg}
+        \includegraphics[width=.32\linewidth]{Sections/5ImageClef/images/4_gt.jpg}
+        \caption[Picture that should not belong in the ground truth]{Sample of pictures that are considered in the ground truth of dev topic 4 but should not have been.}
+        \label{fig:bad}
         \end{figure}
-    
-        The following pictures do not belong to the ground truth of the dev topic 6. However, Figure \ref{fig:images_notgt} clearly proves that these pictures are indeed related to the topic described.
 
-        \begin{itemize}
-            \centering
-            \item B00008426\_21I6X0\_20180528\_192213E.JPG;
-            \item B00008427\_21I6X0\_20180528\_192236E.JPG;
-            \item B00008428\_21I6X0\_20180528\_192259E.JPG;
-            \item B00008429\_21I6X0\_20180528\_192323E.JPG;
-            \item B00008430\_21I6X0\_20180528\_192409E.JPG.
-        \end{itemize}
-       
-        \begin{figure}[H]
-            \centering
-            \captionsetup{justification=centering}
-            \begin{subfigure}{\linewidth}
-            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/a.jpg}
-            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/b.jpg}
-            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/c.jpg}
-            \end{subfigure}\par\medskip
-            \begin{subfigure}{\linewidth}
-                \hspace{2.2cm}
-            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/d.jpg}
-            \includegraphics[width=.3\linewidth]{Sections/5ImageClef/images/e.jpg}
-            \end{subfigure}\par\medskip
-            \caption[Pictures outside of the ground truth]{Sample of pictures that are not considered in the ground truth for the moment described.}
-            \label{fig:images_notgt}
-          \end{figure}
-   
-    It is clear that the pictures shown in Figure \ref{fig:images_notgt} should belong to the moment described in the dev topic 6, however they are not.  This situation is important to have in account since the system can be retrieving images that should belong to the topic but the evaluation process just considers them wrong for not being in the ground truth. In short, this can have an impact not only in the dev topics but also in the test topics evaluation, since the ground truth is incomplete and does not present all the possible images related to a moment.
+
+  
+
+    \begin{figure}[H]
+        \centering
+        \captionsetup{justification=centering}
+        \includegraphics[width=.32\linewidth]{Sections/5ImageClef/images/1_ngt.jpg}
+        \includegraphics[width=.32\linewidth]{Sections/5ImageClef/images/2_ngt.jpg}
+        \includegraphics[width=.32\linewidth]{Sections/5ImageClef/images/3_ngt.jpg}
+        \caption[Pictures that should belong in the ground truth]{Sample of pictures that were not considered in the ground truth of dev topic 4 but should have been.}
+        \label{fig:good}
+        \end{figure}
+     
+    It is clear that the pictures shown in Figure \ref{fig:bad} should not belong in the ground truth of the dev topic 4 since none of them are representative of an interview going on. The first picture shows the user on the phone, the second shows two people talking and the last picture is just a door. Finally, the images presented in Figure \ref{fig:good} should belong to the moment described in the dev topic 4 since all of them show a camera pointed at the user, however they are not.  This situation is important to have in account since the system can be retrieving images that should belong to the topic but the evaluation process just considers them wrong for not being in the ground truth. In short, this can have an impact not only in the dev topics but also in the test topics evaluation, since the ground truth is incomplete and does not present all the possible images related to a moment.

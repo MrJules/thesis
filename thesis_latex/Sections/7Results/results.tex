@@ -36,7 +36,7 @@ The examples in Figure \ref{fig:fine_tuning} show the different achieved perform
 \section{Final System Performance Example}
 \label{sec:example}
 
-After computing all confidence scores for every image and every topic, the system generates an csv file used for evaluation. The file is organized in the following way: \textbf{[topic id number, image name, confidence score]}. The 50 highest scoring pictures for each topic are stored in this file, however only the 10 highest pictures for each topic are used for the F1-measure@10 evaluation. An excerpt showing the performance of both runs in test topic 9 is presented in Figure \ref{fig:runs_csv}. This will be further discussed in Section \ref{sec:analysis}.
+After computing all confidence scores for every image and every topic, the system generates an csv file used for evaluation. The file is organized in the following way: \textbf{[topic id number, image name, confidence score]}. The 50 highest scoring pictures for each topic are stored in this file, however only the 10 highest pictures for each topic are used for the challenge evaluation. An excerpt showing the performance of both runs in test topic 9 is presented in Figure \ref{fig:runs_csv}. This will be further discussed in Section \ref{sec:analysis}.
 
 
 \begin{figure}[H]
@@ -56,15 +56,42 @@ After computing all confidence scores for every image and every topic, the syste
   \label{fig:runs_csv}
 \end{figure}
 
+\subsection{Topic 9 Performance Analysis}
+\label{sec:analysis}
+
+In order to critical analyse the retrieved images from both runs it is important to understand the moment described in topic 9, which is presented next:\\
+
+
+
+\textbf{Title}: "Eating pizza".
+
+\textbf{Description}: "Find the moments when u1 was eating a pizza
+while talking to one man".
+
+\textbf{Narrative}:" To be considered relevant, the u1 must eat or
+hold a pizza with a man visible in the background. The moments that
+u1 was talking to more than one person are not relevant".\\
+
+
+Analysing the images retrieved by both runs for topic 9 (illustrated in Figure \ref{fig:run1} and \ref{fig:run2}) it is clear that run 1 achieved better performance for this specific topic, since 3 of the top 10 images returned belong to the moment described while for run 2 only 2 images from the top 10 belong to the moment. 
+
+
+As shown in Figure \ref{fig:run1} for run 1 the  top 1, 2 and 4 all belong to the moment since all of these images show the user eating pizza with a man visible in the background. Furthermore, the top 5 image from run 1 also shows the user with a pizza in the background, however there is no man in the background. Subsequently, the top 6 image has a poster of a pizza. Image top 7,8,9 and 10 are not related to the moment at all, however all of the pictures are inside interiors and illustrate food which is similar to the description of the moment.
+
+  
+For run 2 (represented in Figure \ref{fig:run2}, the top 8 and 9 are images are related to the topic since both of them also show the user eating pizza with a man on the background. All of the other images are related to food being eaten inside an interior, however they do not belong to the described moment. Top 1 and top 2 images show an image of a lasagne which is similar to pizza where the scenario can be considered identical.
+
+Some possible reasons that lead run 1 to achieve better performance than run 2 are presented next:
+
+\begin{itemize}
+  \itemsep0em
+  \item The negative categories on run 1 might have decreased the confidence score on  pictures that don't belong to the topic.
+  \item The object detection algorithm on run 1 providing better detections than the algorithm used for run 2.
+  \item The category weight distribution on run 2 decreasing the weight on some categories that were important for the confidence score calculation in the images that belong to the topic.
+  \item The difference in the similarity score between the different visual concepts on each run might also impact the performance of the system.
+\end{itemize}
+
 \newpage
-
-
-
-
-\subsection{Top 10 Retrieved Images on Run 1}
-\label{sec:run1_retrieved}
-
-Figure \ref{fig:run1} illustrates the top 10 pictures retrieved for test topic 9 on Run 1. This results are discussed in Section \ref{sec:analysis}.\\
 
 \begin{figure}[H]
   \centering
@@ -122,10 +149,6 @@ Figure \ref{fig:run1} illustrates the top 10 pictures retrieved for test topic 9
 
 
 \newpage
-\subsection{Top 10 Retrieved Images on Run 2}
-\label{sec:run2_retrieved}
-Figure \ref{fig:run2} illustrates the top 10 pictures retrieved for test topic 9 on Run 2. This results are discussed in Section \ref{sec:analysis}.\\
-
 
 \begin{figure}[H]
     \centering
@@ -183,44 +206,7 @@ Figure \ref{fig:run2} illustrates the top 10 pictures retrieved for test topic 9
 
   \newpage
 
-  \subsection{Topic 9 Performance Analysis}
-  \label{sec:analysis}
-
-  In order to critical analyse the retrieved images from both runs it is important to understand the moment described in topic 9, which is presented next:\\
-  
-
-  
-  \textbf{Title}: "Eating pizza".
-  
-  \textbf{Description}: "Find the moments when u1 was eating a pizza
-  while talking to one man".
-  
-  \textbf{Narrative}:" To be considered relevant, the u1 must eat or
-  hold a pizza with a man visible in the background. The moments that
-  u1 was talking to more than one person are not relevant".\\
-  
-  \begin{itemize}
-    \item \textbf{Discussion}
-  \end{itemize}
-  
-  Analysing the images retrieved by both runs for topic 9 (illustrated in Figure \ref{fig:run1} and \ref{fig:run2}) it is clear that run 1 achieved better performance for this specific topic, since 3 of the top 10 images returned belong to the moment described while for run 2 only 2 images from the top 10 belong to the moment. 
-  
-  
-  In run 1 the top 1, 2 and 4 all belong to the moment since all of these images show the user eating pizza with a man visible in the background. Furthermore, the top 5 image from run 1 also shows the user with a pizza in the background, however there is no man in the background. Subsequently, the top 6 image has a poster of a pizza. Image top 7,8,9 and 10 are not related to the moment at all, however all of the pictures are inside interiors and illustrate food which is similar to the description of the moment.
-
-    
-  For run 2, the top 8 and 9 are images are related to the topic since both of them also show the user eating pizza with a man on the background. All of the other images are related to food being eaten inside an interior, however they do not belong to the described moment. Top 1 and top 2 images show an image of a lasagne which is similar to pizza where the scenario can be considered identical.
-
-  Some possible reasons for run 1 to had better performance than run 2 are :
-
-  \begin{itemize}
-    \itemsep0em
-    \item The negative categories on run 1 might have decreased the confidence score on  pictures that don't belong to the topic.
-    \item The object detection algorithm on run 1 providing better detections than the algorithm used for run 2.
-    \item The category weight distribution on run 2 decreasing the weight on some categories that were important for the confidence score calculation in the images that belong to the topic.
-    \item The difference in the similarity score between the different visual concepts on each run might also impact the performance of the system.
-  \end{itemize}
-
+ 
 \newpage
 
 \section{Achieved Overall Performance Results}
@@ -260,9 +246,9 @@ Table \ref{table:2019} and table \ref{table:2020} provides an overview of the ac
     \hline
     Team & System Type & Run Name & F1-measure@10 \\
     \hline
-    UA.PT Bioinformatics  & automatic  & Run 1   &  0.03 \\
-    UA.PT Bioinformatics  & automatic  & Run 2   &  0.03 \\
-    UA.PT Bioinformatics  & interactive  & Run 3  &  \textbf{0.54} \\
+    UA.PT Bioinformatics  & automatic  & Run 1   &  0.031 \\
+    UA.PT Bioinformatics  & automatic  & Run 2   &  0.031 \\
+    UA.PT Bioinformatics  & interactive  & Run 3  &  \textbf{0.517} \\
     \hline
     \multicolumn{4}{|c|}{\textbf{Best Results Achieved by a Team}} \\
     \hline
@@ -285,13 +271,30 @@ Another important aspect to notice is that the results of the automatic approach
 
 
 
-
-\begin{itemize}
-  \item \textbf{Small description of the interactive system}
-\end{itemize}
-
 The interactive system is built around a web application where the user has interaction with 3 different stages of the application. These stages are upload, retrieval and visualization. 
 
 In the upload, the user uploads the dataset to be processed. During the retrieval stage, the user inputs the words extracted from the query topic into several categories and a comparison is done with the inputs and the app database information. This comparison is done in order to compute a confidence for each image for the assigned topic. Finally, in the visualization stage the user visualizes the images retrieved in forms of image gallery or data tables and manually selects the relevant clusters for the query topic. In order to improve the results, the user can exclude several irrelevant images from the selected clusters. To improve the cluster recall of the run, the user can change the confidence of a relevant image of each selected timestamp clusters \cite{Ribeiro2020}.
 
 This last visualization step is the critical difference between both systems. In the interactive system the the user can exclude images that he thinks that do not belong to the moment described in the query topic. This makes the automatic system incapable of competing with the results of the interactive system.
+
+Figure \ref{fig:app_diagram} illustrates the different stages presented in the interactive system and Figure \ref{fig:app_view} shows a screenshot of the application retrieval view.
+
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+
+  \includegraphics[width=\textwidth]{Sections/7Results/images/Appdiagram.png} 
+  \caption[General representation of the  developed  web  application.]{General representation of the  developed  web  application.  The  user  interacts with the three stages of the application: Upload, Retrieval and Visualization \cite{Ribeiro2020}.}
+  \label{fig:app_diagram}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering}
+
+  \includegraphics[width=\textwidth]{Sections/7Results/images/retrievalview.png} 
+  \caption[Web application retrievable view] {Web application retrieval view \cite{Ribeiro2020}.}
+  \label{fig:app_view}
+\end{figure}

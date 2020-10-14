@@ -13,30 +13,27 @@ Initially in Section \ref{sec:diagram} the system workflow architecture is illus
 
 \section{System Workflow Architecture Diagram}
 \label{sec:diagram}
+In the diagram presented in Figure \ref{fig:system_architecture} it is possible to see that the system starts by firstly processing all images from the dataset provided by the imageCLEF challenge with scene and object recognition algorithms. During the process the labels are categorized according pre-defined categories.
+
+Subsequently, text is processed using an NLP model that extracts linguistic annotations from textual sources.  With the implementation of syntax and semantic rules alongside with the provided linguistic annotations, relevant words are extracted and categorized in pre-defined categories. 
+
+Following up, when all of the textual and visual labels are extracted and correctly categorized the confidence score computation stage starts. This stage has several steps that can be summarized in two main steps: the computation of weights for each category and the calculation of similarity scores.
+
+Finally, in the retrieval stage, the system checks for the 50 highest confidence scores for a given topic and stores it in a csv file. These 50 images are the ones retrieved for a given moment.
+
+As an extra step, an evaluation stage was created to analyse system results for the dev topics with the objective of emulating the evaluation methodology for the challenge.
+
+
    
 \begin{figure}[H]
    
     \captionsetup{justification=centering}
     \hspace{+1cm} \includegraphics[width = 0.9\textwidth]{Sections/6textprocessing/images/diagram.png}
     \caption{System Architecture.}
-    \label{fig:testtopic}
+    \label{fig:system_architecture}
   \end{figure}
 
 \newpage
-
-\begin{itemize}
-  \item \textbf{Workflow Diagram Explained}
-\end{itemize}
-
-The system starts by firstly processing all images from the dataset provided by the imageCLEF challenge with scene and object recognition algorithms. During the process the labels are categorized according pre-defined categories.
-
-Subsequently, text is processed using an NLP model that extracts linguistic annotations from textual sources.  With the implementation of syntax and semantic rules alongside with the provided linguistic annotations, relevant words are extracted and categorized in pre-defined categories. 
-
-Following up, when all of the textual labels and visual labels are extracted and correctly categorized the confidence score computation stage starts. This stage has several steps that can be summarized in two main steps: the computation of weights for each category and the calculation of similarity scores.
-
-Finally, in the retrieval stage, the system checks for the 50 highest confidence scores for a given topic and stores it in a csv file. These 50 images are the ones retrieved for a given moment.
-
-As an extra step, an evaluation stage was created to analyse system results for the dev topics with the objective of emulating the evaluation methodology for the challenge.
 
 
   
@@ -45,7 +42,7 @@ As an extra step, an evaluation stage was created to analyse system results for 
 
    With the goal of comparing the different image recognition algorithms and object detection models a few test runs were made. The models and algorithms were provided trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features. It supports algorithms for image prediction, custom image prediction, object detection, video detection, video object tracking and image predictions trainings \cite{ImageAI}.
 
-  The test runs consist on feeding each of the models and algorithms with one picture manually chosen beforehand. Each model produces predictions on what the image represents or what the objected detected is. The prediction probability ranges in an interval between [0,100]. This prediction probability represents the certainty of the model or algorithm in the respective prediction.
+  The test runs consist on feeding each of the models and algorithms with one picture manually chosen beforehand. Each model produces predictions on what the image represents or what is the objected detected. The prediction probability ranges in an interval between [0,100]. This prediction probability represents the certainty of the model or algorithm in the respective prediction.
 
 
   \par Sections \ref{sec:image_test} and \ref{sec:object_test} provide examples of the performance test runs done to the models and algorithms.
@@ -54,13 +51,10 @@ As an extra step, an evaluation stage was created to analyse system results for 
   \label{sec:image_test}
 
 
-  The imageAI library allows the usage of 4 image recognition algorithms for image recognition which are DenseNet, inceptionV3, ResNet50, and SquezeeNet. The experiences done to these algorithms consist in analysing one image and compare the results of the different algorithms with the goal of finding which one was the best performer and had the most accurate prediction with the highest prediction probability.
+  The imageAI library allows the usage of 4 image recognition algorithms for image recognition which are DenseNet, inceptionV3, ResNet50, and SquezeeNet that were pre-trained on the the ImageNet-1000 dataset. This means that they can  predict/recognize 1000 different objects in any image or number of images. The experiences done to evaluate these algorithms consist in analysing one image and compare the results of the different algorithms with the goal of finding which one was the best performer and had the most accurate prediction with the highest prediction probability.
  
-  In order to given a few examples of these preliminary experiences, the following 3 images in Figure \ref{fig:experi} were fully analysed with the image recognition algorithms.
-\newpage
-\begin{itemize}
-  \item \textbf{Picture samples for image recognition tests}
-\end{itemize}
+  In order to given a few examples of these preliminary experiences, the images in Figure \ref{fig:experi} were fully analysed with the image recognition algorithms.
+
 
   \begin{figure}[H]
     \centering
@@ -84,22 +78,29 @@ As an extra step, an evaluation stage was created to analyse system results for 
     \label{fig:experi}
     \end{figure}
 
-
+    \newpage
     \begin{itemize}
       \item \textbf{Obtained performance graphs in the image recognition tests}
     \end{itemize}
     
-The following 3 images (Figure \ref{fig:exp1}, \ref{fig:exp2} and \ref{fig:exp3}) show three examples of the achieved performance of these algorithms in the processing of the pictures shown in Figure \ref{fig:experi}.
+Figures \ref{fig:exp1}, \ref{fig:exp2} and \ref{fig:exp3} show three examples of the performance achieved of these algorithms in the processing of the pictures shown in Figure \ref{fig:experi}.The graphs are structured in the following manner : the X axis represents the predictions, the Y axis represents the percentage probability certainty for the respective prediction and the color represents the algorithm used.
 
-The graphs are structured in the following manner : the X axis represents the predictions, the Y axis represents the percentage probability certainty for the respective prediction and the color represents the algorithm used.
 
-The obtained results are discussed further down in this section.
+In the first example a picture of a dog (breed Saluki) is analysed. Figure \ref{fig:exp1} shows that InceptionV3 is the best performer in the first run, predicting correctly with an efficiency of 96.38\% and out performing the other 3 neural networks by a large margin, being that the second best is the ResNet50 with an efficiency of 42.32\%.
+
+For the second example a picture of a car was processed. Figure \ref{fig:exp2} shows that illustrates that InceptionV3 predicted with a 99.99\% that the car was a minivan. The shown car is not a minivan but its similar to one, so it is possible to assume that the prediction is correct.
+
+The final example a picture of an espresso coffee is analysed. In this example all image recognition algorithms predicted correctly that the image represents an espresso. However, SquezeeNet only achieved 63.88\% efficiency while InceptionV3 predicted with 100.0\% efficiency as shown in Figure \ref{fig:exp3}.
+
+From the 3 examples that were shown, it is clear that the inceptionV3 algorithm achieved the best results and out performed the other algorithms.
+
+
 
 \begin{figure}[H]
   \centering
   \captionsetup{justification=centering}
   \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run1_res.png}
-  \caption[Achieved performance of different algorithms]{Achieved performance of different algorithms in the processing of Figure \ref{fig:experi} a).} 
+  \caption[Performance achieved of different algorithms]{Performance achieved of different algorithms in the processing of Figure \ref{fig:experi} a).} 
   \label{fig:exp1}
 \end{figure}
 
@@ -108,7 +109,7 @@ The obtained results are discussed further down in this section.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run3_res.png}
-  \caption[Achieved performance of different algorithms]{Achieved performance of different algorithms in the processing of Figure \ref{fig:experi} b).}
+  \caption[Performance achieved of different algorithms]{Performance achieved of different algorithms in the processing of Figure \ref{fig:experi} b).}
   \label{fig:exp2}
 \end{figure}
 
@@ -117,29 +118,12 @@ The obtained results are discussed further down in this section.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images/run4_res.png}
-  \caption[Achieved performance of different algorithms]{Achieved performance of different algorithms in the processing of Figure \ref{fig:experi} c).}
+  \caption[Performance achieved of different algorithms]{Performance achieved of different algorithms in the processing of Figure \ref{fig:experi} c).}
   \label{fig:exp3}
 \end{figure}
 
 
 \newpage
-
-
-\begin{itemize}
-  \item \textbf{Image recognition results analysis}
-\end{itemize}
-
-
-
-
-
-In the first example a picture of a dog (breed Saluki) is analysed. InceptionV3 is the best performer in the first run, predicting correctly with an efficiency of 96.38\% and out performing the other 3 neural networks by a large margin, being that the second best is the ResNet50 with an efficiency of 42.32\%.
-
-For the second example a picture of a car was processed. InceptionV3 predicted with a 99.99\% that the car was a minivan. The shown car is not a minivan but its similar to one, so it is possible to assume that the prediction is correct.
-
-The final example a picture of an espresso coffee is analysed. In this example all image recognition algorithms predicted correctly that the image represents an espresso. However, SquezeeNet only achieved 63.88\% efficiency while InceptionV3 predicted with 100.0\% efficiency.
-
-From the 3 examples that were shown, it is clear that the inceptionV3 algorithm achieved the best results and out performed the other algorithms.
 
 
 
@@ -148,7 +132,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OBJECT RECOGNITION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \subsection{Object Detection Preliminary Experiences}
+  \subsection{Preliminary Experiences in Object Detection}
   \label{sec:object_test}
 
   ImageAI provides 3 different models trained on the COCO dataset for object detection that are able to identify up to 80 of the most common objects in everyday life. Figure \ref{fig:labels} illustrates all of the objects that these models are able to detect in an image. The models that are provided include RetinaNet, YOLOv3 and TinyYOLOv3. \cite{ImageAI}.
@@ -163,7 +147,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
       \label{fig:labels} 
   \end{figure}
 
-  The next pages present the tests done which are structured in the following way: on the left is the picture with the respective detections and on the right is an image with a graph representation of the detections. The color represents the detected object (label). The analysis of the achieved results are discussed later in Section \ref{ch:wordclouds}.
+ This sections presents the tests done which are structured in the following way: on the left is the picture with the respective detections and on the right is an image with a graph representation of the detections. The color represents the detected object (label). 
 
   The pictures used for the testing of the described models were the following:
 
@@ -185,10 +169,17 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
   \end{figure}
 
 
+  Figures  \ref{fig:retina_1}, \ref{fig:yolo_1}, \ref{fig:tiny_1} present the performance achieved for the first image. Figures  \ref{fig:retina_2}, \ref{fig:yolo_2}, \ref{fig:tiny_2} show the results obtained for the second image. Finally, Figures \ref{fig:retina_3}, \ref{fig:yolo_3}, \ref{fig:tiny_3} illustrate performance obtained in the processing of the third picture.
+
+
+  From the different test runs done it is possible to analyse that the TinyYolo model under performs severely compared to RetinaNet and YoloV3. This is expected, as explained in Appendix \ref{ch:appendix} Section \ref{sec:tiny_yolo} the TinyYolo model is a smaller model of YOLOv3 that requires less computational resources and is better suited for more constrained environments with smaller targets.
+
+  Comparing RetinaNet to YoloV3 it is possible to conclude that YoloV3 is more accurate than RetinaNet. For example in the first run, RetinaNet detects knifes and forks in the same place as shown in Figure \ref{fig:retina_1} a), in the third example RetinaNet detects a bus in the place of a building as illustrated in Figure \ref{fig:retina_3} a) while Yolo was capable of correctly detecting a stop sign that no other model detected as shown in Figure \ref{fig:yolo_3}.
+
 \newpage
     
   \begin{itemize}
-    \item \textbf{Detection Experience Number 1}
+    \item \textbf{Object Detection Experience Number 1}
   \end{itemize}
 
     
@@ -204,10 +195,12 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
         \begin{subfigure}{0.65\textwidth}
         \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/retinaNet_graph.png}
         \caption{}
+      
         \end{subfigure}
         
         \caption[Test run 1 with RetinaNet]{ 
         Test run 1 with RetinaNet; a) Analysed picture with detections; b) Achieved performance on detections. }
+        \label{fig:retina_1}
         \end{figure}
     
 
@@ -223,10 +216,12 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
           \begin{subfigure}{0.65\textwidth}
           \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run1/yolo_graph.png}
           \caption{}
+          
           \end{subfigure}
           
           \caption[Test run 1 with YOLOv3]{ 
           Test run 1 with YOLOv3; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \label{fig:yolo_1}
           \end{figure}
       
 
@@ -246,6 +241,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
             
             \caption[Test run 1 with TinyYolo]{ 
             Test run 1 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \label{fig:tiny_1}
             \end{figure}
 
       \newpage
@@ -253,7 +249,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% run2   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       
   \begin{itemize}
-    \item \textbf{Detection Experience Number 2}
+    \item \textbf{Object Detection Experience Number 2}
   \end{itemize}
 
     
@@ -273,6 +269,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
         
         \caption[Test run 2 with RetinaNet]{ 
         Test run 2 with RetinaNet; a) Analysed picture with detections; b) Achieved performance detections. }
+        \label{fig:retina_2}
         \end{figure}
 
 
@@ -292,6 +289,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
           
           \caption[Test run 2 with YoloV3]{ 
           Test run 2 with YoloV3 model; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \label{fig:yolo_2}
           \end{figure}
   
 
@@ -310,12 +308,13 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
             
             \caption[Test run 2 with TinyYolo]{ 
             Test run 2 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \label{fig:tiny_2}
             \end{figure}
 
       \newpage
 
       \begin{itemize}
-        \item \textbf{Detection Experience Number 3}
+        \item \textbf{Object Detection Experience Number 3}
       \end{itemize}
     
 
@@ -334,6 +333,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
         
         \caption[Test run 3 with RetinaNet]{ 
         Test run 3 with RetinaNet; a) Analysed picture with detections; b) Achieved performance detections. }
+        \label{fig:retina_3}
         \end{figure}
 
 
@@ -353,6 +353,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
           
           \caption[Test run 3 with YoloV3]{ 
           Test run 3 with YoloV3 model; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \label{fig:yolo_3}
           \end{figure}
   
 
@@ -371,16 +372,17 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
             
             \caption[Test run 3 with TinyYolo]{ 
             Test run 3 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \label{fig:tiny_3}
             \end{figure}
 
 
     \newpage
 
-    \subsection{Object Detection Word Clouds Generation Test Run}
+    \subsection{Object Detection Word Clouds Generation Preliminary Experiences}
     \label{ch:wordclouds}
-    In order to make the labels extraction more easily visible and still achieve some degree of performance comparison between the 3 object detection models word clouds were generated. In a word cloud, the bigger a word is the more times that label was detected in the pictures. For this test 6 previously chosen images with identical setting were processed in order to generate 1 word cloud with all the extracted labels.
+    In order to make the labels extraction more easily visible and still achieve some degree of performance comparison between the 3 object detection models word clouds were generated. In a word cloud, the bigger a word is the more times that label was detected in the pictures. For this test 6 images were processed with identical setting in order to generate 1 word cloud for each object detection model with all of the extracted labels.
 
-    The following images were used for word cloud generation:
+    Figure \ref{fig:used_word} presents the images that were used for word cloud generation:
     
    
 
@@ -397,14 +399,14 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
       \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_wordcloud/photo6.jpg}
       \end{subfigure}\par\medskip
       \caption{Used images for word cloud generation.}
+      \label{fig:used_word}
     \end{figure}
 
+    As for the word clouds generated in this section, it is possible to notice that in the YoloV3 cloud and the RetinaNet cloud (shown in Figure \ref{fig:wordcloudss} a) and b) respectively) there are many more words than in the TinyYolo cloud (shown in Figure \ref{fig:wordcloudss} c)). Again, TinyYolo is severely under performing when compared to the other 2 models.
+     
+    Looking at the Yolo model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words of different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like "pizza", "donut and "person" in some of the images.
 
-    \begin{itemize}
-      \item \textbf{Generated Word Clouds}
-    \end{itemize}
-    
-
+    These test runs allow for the conclusion that the YoloV3 model is the better performing one and therefore the one chosen for object detections for the automatic retrieval system. 
 
     \begin{figure}[H]
       \centering
@@ -423,30 +425,17 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
       \caption{}
       \end{subfigure}
       \caption[Generated Word Clouds]{Generated Word Clouds; a) Yolo word cloud; b) RetinaNet word cloud; c) TinyYolo word cloud}
+      \label{fig:wordcloudss}
     \end{figure}
 
-    \newpage
-    
-    \begin{itemize}
-      \item \textbf{Object Detection Results Analysis}
-    \end{itemize}
-
     
 
-     From the different test runs done in Section \ref{sec:object_test} it is possible to analyse that the TinyYolo model under performs severely compared to RetinaNet and YoloV3. This is expected, as explained in Appendix \ref{ch:appendix} Section \ref{sec:tiny_yolo} the TinyYolo model is a smaller model of YOLOv3 that requires less computational resources and is better suited for more constrained environments with smaller targets.
-
-     Comparing RetinaNet to YoloV3 it is possible to conclude that YoloV3 is more accurate than RetinaNet. For example in the first run, RetinaNet detects knifes and forks in the same place, in the third example RetinaNet detects a bus in the place of a building while Yolo is capable of detecting a correctly stop sign that no other model detected.
-
-     As for the word clouds generated in this section, it is possible to notice that in the YoloV3 cloud and the retinaNet cloud there are many more words than the tinyyolo cloud. Again, tinyyolo is severely under performing when compared to the other 2 models.
      
-     Looking at the Yolo model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words of different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like "pizza", "donut and "person" in some of the images.
-
-     These test runs allow for the conclusion that the YoloV3 model is the better performing one and therefore the one chosen for object detections for the automatic retrieval system. 
 
 \section{Example of a Raw Retrieval System}
 \label{sec:alpha_retrieval}
 
-As a first step in building a fully automatic retrieval system an "alpha system" was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects that are not "cup" or that are "cup" but below the threshold of 40\% wont be retrieved.
+As a first step in building a fully automatic retrieval system an "raw retrieval system" was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects that are not "cup" or that are "cup" but below the threshold of 40\% wont be retrieved.
 
 \begin{figure}[H]
   \centering
@@ -474,7 +463,7 @@ As a first step in building a fully automatic retrieval system an "alpha system"
 
 \section{Scene Recognition}
 \label{sec:scene_recognition}
-  In order to detect interiors, exteriors and places a pre-trained model provided by Zhou et al., 2018 \cite{Zhou2018}  trained on the Places365 standard dataset was used. The following example shows the extractions done to a sample picture. 
+  In order to detect indoors, outdoors and places a pre-trained model provided by Zhou et al., 2018 \cite{Zhou2018}  trained on the Places365 standard dataset was used. The following example shows the extractions done to a sample picture. 
 
   \begin{figure}[H]
     \centering
@@ -502,7 +491,7 @@ As a first step in building a fully automatic retrieval system an "alpha system"
 
     Finally, the "attributes" is the section where the model tries to describe the picture. Some of the attributed labels were "enclosed area", "man-made", "indoor lightning" and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
 
-\section{Image Processing Submitted Runs Differences}
+\section{ImageCLEF Submissions}
 \label{sec:runs}
 
 
@@ -510,7 +499,7 @@ As a first step in building a fully automatic retrieval system an "alpha system"
     
     Since the interactive system processed the images with detections from a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset proposed by Mahajan et al. \cite{Mahajan2018} it was decided to reutilize those labels for the automatic system, since the labels were already readily available.  Therefore, for the first submitted run of the automatic image retrieval system it was used the ResNeXt-101 labels and for the second run it was used the YoloV3 \cite{Redmon2018} extracted labels.
     
-    The usage of two different set of extracted labels from two different object detection models was mainly done in order to have an understanding if the the difference in labels and the respective scores would help in achieving better results. Furthermore the images were also fully processed with the Places scene recognition model. This exhaustive approach of processing so many images too a  lot of computer processing time and resources
+    The usage of two different set of extracted labels from two different object detection models was mainly done in order to have an understanding if the the difference in labels and the respective scores would help in achieving better results. Furthermore the images were also fully processed with the Places scene recognition model. This exhaustive approach of processing so many images took a lot of computer processing time and resources
 
 
     Figure \ref{fig:image_fully_processed} shows the fully processing of the image shown in Figure \ref{fig:imagea} a) with YoloV3 and PLACES365:
@@ -565,12 +554,12 @@ As a first step in building a fully automatic retrieval system an "alpha system"
 
 In the text mining/processing stage, the query topics are analysed using Natural Language Processing tools to extract relevant words in order to retrieve the desired moment. Those words are compared with the visual concepts words obtained in the image processing stage. 
 
-The SpaCy en\_core\_web\_md model \cite{Spacy2017} is used to analyse the query topics fully, extracting relevant words from the title, the description and narrative. This model is an english multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl and is a general-purpose pretrained model to predict named entities, part-of-speech tags and syntactic dependencies. It can be used out-of-the-box and fine-tuned on more specific data \cite{Spacy2017}. This model was chosen since it is specific for the English language and it is medium sized (48 MB) which is a good balance between loading speed and accuracy. The larger SpaCy model is 756 MB (79 times larger) which makes it much more slower to load and process. However, the difference in performance between the two models for the given task is negligibly.
+The SpaCy model \cite{Spacy2017} is used to analyse the query topics fully, extracting relevant words from the title, the description and narrative. This model is an english multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl and is a general-purpose pretrained model to predict named entities, part-of-speech tags and syntactic dependencies. It can be used out-of-the-box and fine-tuned on more specific data \cite{Spacy2017}. This model was chosen since it is specific for the English language and it is medium sized (48 MB) which is a good balance between loading speed and accuracy. The larger SpaCy model is 756 MB (79 times larger) which makes it much more slower to load and process. However, the difference in performance between the two models for the given task is negligibly.
 
 
 
 
-The words extracted are divided into 10 categories being them : "relevant things", "activities", "dates", "locations", "inside", "outside", "negative relevant things", "negative activities", "negative locations" and "negative dates". The importance of this extraction and categorization is done in order to later compare this extracted textual data with the extracted visual data from all of the images. To give a clear example, it is crucial to correctly extract the concept "fast food" from Figure \ref{fig:spacy_labels} and categorize it in the "relevant things" textual category in order to compare with the "concepts" visual category. It is also important to extract the word "airport" and categorize it in the "locations" category in order to compare with the "location" visual category. It would not make sense toe extract the word "fast food" and categorize it in the "locations" textual category for later comparing with the "location" visual category.
+The words extracted are divided into 10 categories being them : "relevant things", "activities", "dates", "locations", "inside", "outside", "negative relevant things", "negative activities", "negative locations" and "negative dates". The importance of this extraction and categorization is done in order to later compare this extracted textual data with the extracted visual data from all of the images. To give a clear example, it is crucial to correctly extract the concept "fast food" from Figure \ref{fig:spacy_labels} and categorize it in the "relevant things" textual category in order to compare with the "concepts" visual category. It is also important to extract the word "airport" and categorize it in the "locations" category in order to compare with the "location" visual category. It would not make sense to extract the word "fast food" and categorize it in the "locations" textual category for later comparing with the "location" visual category.
 
 In order to assign words to each category some linguistic rules were defined,
 such as semantic and syntactic rules. Semantic rules build the meaning of the
@@ -621,7 +610,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       
       \item If the sentence ends with "not considered relevant" the extracted words go to the negative categories.
       
-      \item Rules for the extraction of dates, like the day of the week, the month or even years were also created. However do the the syntax of the test topics, since they had no reference to dates in the text, the dates category was discarded in order to save time. Nevertheless, for the dev topics dates were used and produced good results. As an example if in the topic it was said that the moment happened on a "wednesday" or in year 2014, only pictures from wednesday or the year 2014 were retrieved.
+      \item Rules for the extraction of dates, like the day of the week, the month or even years were also created. However do the syntax of the test topics, since they had no reference to dates in the text, the dates category was discarded in order to save time. Nevertheless, for the dev topics dates were used and produced good results. As an example if in the topic it was said that the moment happened on a "wednesday" or in year 2014, only pictures from wednesday or the year 2014 were retrieved.
 
     \end{itemize}
       
@@ -685,19 +674,16 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       \item \textbf{Similarity Score Computation}
     \end{itemize}
 
-    The SpaCy en\_core\_web\_md model allows the computer to calculate the similarity between the visual concepts and the extracted data. As an example of similarity between words using the described model, the word "television" and "seafood" have a similarity of approximately 0.07 (7\%) while "television" and "screen" have a similarity of approximately 0.43 (43\%).
+    The SpaCy model allows the computer to calculate the similarity between the visual concepts and the extracted data. As an example of similarity between words using the described model, the word "television" and "seafood" have a similarity of approximately 0.07 (7\%) while "television" and "screen" have a similarity of approximately 0.43 (43\%).
     
       
     Using Figures \ref{fig:image_fully_processed} and \ref{fig:image_fully_processed_resnext} to illustrate the different categories, the calculation of the similarity scores is done trough the comparison of the extracted words and the visual concepts:
     \begin{enumerate}
         \itemsep0em
-        \item The visual category "concepts" is compared to the textual category "relevant things";
-        \item The visual category "concepts" is compared to the textual category "negative relevant things";
-        \item The visual category "activity" is compared to the textual category "activities";
-        \item The visual category "activity" is compared to the textual category "negative activities";
-        \item The visual category "location" is compared to the textual category "locations";
-        \item The visual category "location" is compared to the textual category "negative locations";
-        \item "Depending if the textual category "inside" = "True" / "False" the visual category "io\_score" value will have different impact on the confidence score.
+        \item The visual category "concepts" is compared to the textual category "relevant things" and "negative relevant things";
+        \item The visual category "activity" is compared to the textual category 
+        \item The visual category "location" is compared to the textual category "locations" and "negative locations";;
+        \item Depending if the textual category "inside" = "True" / "False" the visual category "io\_score" value will have different impact on the confidence score.
     \end{enumerate}
 
     \begin{itemize}
@@ -705,18 +691,18 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
     \end{itemize}
 
 
-    The weight for each category is obtained through two different factors, an importance weight factor and a distributed weight factor. The weight of the category is therefore the sum of the importance weight factor and the distributed weight factor. 
+    The weight for each category is obtained through two different factors, an importance weight factor and a distributed weight factor. The weight of the category is therefore the sum of the importance and the distributed weight factor. 
 
     \begin{align*}
       &\textbf{Weight}  =   ImportanceFactor + DistributedFactor \\ 
   \end{align*}
 
-    
+    \newpage
     \begin{itemize}
       \item \textbf{Importance Weight Factor}
     \end{itemize}
 
-    The importance weight factor is a value that is assigned to the positive available categories that are not empty. It is a pre-defined valor and is the factor that gives more importance to one category than others to the contribution of the confidence score computation. This factor ranges from 0 to 1 and the sum of all of the factors is equal to 1. For example, if the category of "relevant things" is worth 0.4 and if the category of "activities" is worth 0.2, then "relevant things" has a weight always two times higher than "activities" for the computation of the confidence score.
+    The importance weight factor is a value that is assigned to the positive available categories that are not empty. It is a pre-defined value and is the factor that gives more importance to one category than others to the contribution of the confidence score computation. This factor ranges from 0 to 1 and the sum of all of the factors is equal to 1. For example, if the category of "relevant things" is worth 0.4 and if the category of "activities" is worth 0.2, then "relevant things" has a weight always two times higher than "activities" for the computation of the confidence score.
 
     \begin{itemize}
       \item \textbf{Distributed Weight Factor}
@@ -738,10 +724,10 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
 
    \begin{enumerate}
     \item Distribution : 0.4x + 0.3x + 0.1x = 0.2 (=) x = 0.25;
-    \item Weight "Relevant Things" = 0.4 + 4*0.25 = 0.5 (50\%);
+    \item Weight "Relevant Things" = 0.4 + 0.4*0.25 = 0.5 (50\%);
     \item Weight "Activities" = 0;
-    \item Weight "Inside/Outside" category = 0.3 + 3*0.25 = 0.375 (37.5\%);
-    \item Weight "Location" =  0.1 + 0.25 = 0.125 (12.5\%);
+    \item Weight "Inside/Outside" category = 0.3 + 0.3*0.25 = 0.375 (37.5\%);
+    \item Weight "Location" =  0.1 + 0.1*0.025 = 0.125 (12.5\%);
     \item Sum of all weights = 1.
    \end{enumerate}
 
@@ -787,7 +773,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
   \end{itemize}
 
     Finally, a script runs through all the selected confidence scores for a given
-    query topic and stores the 50 pictures with the highest confidence score for each topic. The 10 highest pictures for each topic are the ones who count for the f1@measure score.
+    query topic and stores the 50 pictures with the highest confidence score for each topic. The 10 highest pictures for each topic are the ones who count for the F1@10 score.
        
     \begin{itemize}
       \item \textbf{Discarded Categories}
@@ -820,7 +806,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
 
     In this run all of the importance weight factors for all categories were the same. This means that each category counts the same for the computation of the confidence score. No category is more important or less important. When a category is empty, their respective importance factor is equally apportionated to all other categories but never to the negative categories. If a negative category importance factor is negative, their factor is apportionated to the other negative categories. And if a positive category is empty, their factor is apportionated to the positive categories.
 
-    Another aspect of Run 1 is that the negative categories can only impact the confidence score up to 50\% if the image confidence score.
+    Another aspect of Run 1 is that the negative categories can only impact the confidence score up to 50\% in the image confidence score.
     
  
 

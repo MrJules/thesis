@@ -2,10 +2,7 @@
 
 \chapter{Introduction}
 \label{ch:introduction}
-This chapter gives an introduction to the surrounding theme addressed in this thesis. In that sense, firstly the contextualization of the theme and the respective motivation will be presented. The different challenges, the objectives that are intended to be reach and the contributions given to the community are also described. Finally the document structure and organization is explained.
 
-
-\section{Context and Motivation}
 
 The pervasive creation and consumption of visual media content is ingrained into our modern world. In the past, the main purpose given to pictures was to save moments of events. Nowadays people are constantly consuming visual media content. Images have many different usages, not only we use them for social media but also we use them in engineering, in art, in science, in medicine, in entertainment and also in advertising \cite{Zhang2008}.
 
@@ -30,9 +27,9 @@ As it has been described earlier in the chapter, creating an automatic system ca
 
 Creating an automatic system capable of image retrieval means that the computer has to be able to understand images and text while at the same time being capable of relating both.
 
-For the image processing challenge, the computer has to be able to extract relevant information from images like colors, objects, places, locations, indoor or outdoors, activities happening in the photo, people, etc. However, in order to do this, many different and complex algorithms have to be implemented like object detection, activity recognition, scene recognition and others. The usage of several algorithms can require extreme computational time and resources depending on the size of the dataset to be analysed. If one image requires 1 second to be fully processed by an algorithm, a dataset of 200.000 images of the same resolution would require approximately 2 days. This processing time might be different depending of the algorithm used, since it can either extract more or less labels from the images. However, one thing is certain, the more algorithms that are implemented for label extraction, the more time it will take to process the image. It is necessary to carefully select which ones to use if there is an intent in saving computer resources and processing time.
+For the image processing challenge, the computer has to be able to extract relevant information from images like colors, objects, places, locations, indoors, outdoors, activities happening in the photo, people, etc. However, in order to do this, many different and complex algorithms have to be implemented like object detection, activity recognition, scene recognition and others. The usage of several algorithms can require extreme computational time and resources depending on the size of the dataset to be analysed. If one image requires 1 second to be fully processed by an algorithm, a dataset of 200.000 images of the same resolution would require approximately 2 days. This processing time might be different depending of the algorithm used, since it can either extract more or less labels from the images. However, one thing is certain, the more algorithms that are implemented for label extraction, the more time it will take to process the image. It is necessary to carefully select which ones to use if there is an intent in saving computer resources and processing time.
 
-Tackling the text processing challenge requires the usage of Natural Language Processing algorithms for the extraction of  linguistic annotations from the text, and the implementation of semantic and syntax rules in order to enable the computer to automatically categorize the extracted words according predefined categories like "activities", "locations", "relevant things", etc. 
+Tackling the text processing challenge requires the usage of Natural Language Processing algorithms for the extraction of  linguistic annotations from the text, and the implementation of semantic and syntax rules in order to enable the computer to automatically categorize the extracted words according predefined categories like ``activities”, ``locations”, ``relevant things”, etc. 
 
 
 Finally, the computer has to be capable of comparing the extracted features from the text with extracted features from the images, in order to associate images to text.
@@ -41,26 +38,14 @@ Finally, the computer has to be capable of comparing the extracted features from
 
 Since the process of automatic image retrieval is still a complex problem this works aims at contributing with a baseline system for future investigations with some suggestions on how to improve it further. Additionally a study of the available technology is conducted that may help on finding new and better paths for future investigations on automatic image retrieval.
 
-In addition, the main contribution of this work was the development of an automatic image retrieval system with the objective of participating in the ImageCLEF LMRT-subtask challenge (described in Chapter \ref{ch:imageclef}).
-The participation in this challenge was done using two different systems, an interactive one and an automatic one. The system built in this work was capable of achieving a 0.03 score while the interactive system achieved a more competitive result of 0.58 in the F1-measure@10 metric \cite{Ribeiro2020}.
+In addition, the main contribution of this work was the development of an automatic image retrieval system with the objective of participating in the ImageCLEF Lifelog challenge, more specifically in the LMRT subtask (described in Chapter \ref{ch:imageclef}).The participation in this challenge was done using two different systems, an interactive one and an automatic one. The system built in this work was capable of achieving a 0.031 score while the interactive system achieved a more competitive result of 0.517 in the F1-measure@10 metric \cite{Ribeiro2020}.
 
 
-Other contributions of this work that complement the main objective are presented next:
+To achieve the goal of creating an automatic image retrieval system other tasks had to be fulfilled. Firstly, a study on the state of the art of image and text processing was done in order to choose the algorithms to be used for label extraction. Subsequently, an algorithm was built capable of processing a large dataset of images  with the aim of extracting relevant features. Following, another algorithm was programed capable of processing text with the intention of extracting relevant words and categorize them accordingly. Afterwards, in order to compare the extracted features from images and text another algorithm was built capable of associating images to text. This algorithm recurs to a similarity function that computed a confidence score for every image. After computing a confidence score for every image, an algorithm was created capable of computing the F1-measure@x score of the final results in order to allow the system of self evaluating. Finally, with the aim of facilitating the process a batch script was created in order to allow the system to run with one click.
 
-\begin{itemize}
-    \item Study on the state of the art of image processing and text processing algorithms.
-    \item Choice of the main algorithms to be used.
-    \item Algorithm capable of processing images and extract relevant features.
-    \item Algorithm capable of processing text and extract relevant features.
-    \item Algorithm able to compare the extracted features from the images with the extracted features from the text and capable of associating images to text.
-    \item Algorithm capable of calculating the F1-measure@X score of the final results in order to test the system.
-    \item Batch script that enables the system to run with one click in order to facilitate the process.
-  \end{itemize}
-
-
-
+As a result of the work developed and participation in the challenge the paper ``UA.PT Bioinformatics at ImageCLEF 2020: Lifelog Moment Retrieval Web based Tool” (Ricardo Ribeiro \& Júlio Silva, 2020) was published.
 \section{Document Structure}
-This document has a total of 8 chapters that are divided accordingly:
+This document has a total of 7 chapters and an appendix that are divided accordingly:
 
 
 
@@ -81,6 +66,7 @@ This document has a total of 8 chapters that are divided accordingly:
   
   \item Chapter \ref{ch:conclusions} describes the conclusions taken from the development of the work and provides some ideas for future investigations and improvements.
   
+  \item Appendix \ref{ch:appendix} gives an overview of some of the most common neural networks architectures, object detection models and image classification algorithms.
  
  
 \end{itemize}

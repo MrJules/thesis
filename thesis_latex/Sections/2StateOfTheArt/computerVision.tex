@@ -6,11 +6,11 @@
 
 
 
-The task of automatically recognizing and locating objects in images and videos is of extreme importance for computers to be able to understand and interact with their surroundings. Some major applications of this particular task of object detection are pedestrian detection, surveillance, autonomous driving, text digitalization, face detection and recognition, robotics, object counting and so on \cite{Agarwal2019}. 
+The task of automatically recognizing and locating objects in images and videos is extremely important for computers to be able to understand and interact with their surroundings. Some major applications of this particular task of object detection are pedestrian detection, surveillance, autonomous driving, text digitalization, face detection and recognition, robotics, object counting and so on \cite{Agarwal2019}. 
 
 For this work the purpose of using object detection technologies is to convert images into text in order to allow the computer to compare an image with a moment described in text.
 
-Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer is only capable of learning that the extracted features represent a motorcycle (in the case of the example shown below) after classifying the extracted data, which is done with the usage of pre-trained deep learning neural networks.
+Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer is only capable of learning that the extracted features represent a motorcycle (in the case of the example shown below) after classifying the extracted data, which is done with the usage of deep learning.
 
 
 
@@ -24,7 +24,7 @@ Feature extraction plays an important role in image classification and object de
 \end{figure}
 
 
-\par This chapter starts with fundamental concepts in Section \ref{sec:fundamental}. Section \ref{sec:libraries_cv} gives a brief introduction of the most common computer vision libraries. Neural networks are introduced in Section \ref{sec:neuralnet}, where the most common architecture types are presented. Finally, a state-of-the-art in object detection and image classification can be read in Section \ref{sec:state}.
+\par This chapter starts with fundamental concepts in Section \ref{sec:fundamental}. Section \ref{sec:teach} introduces the important subjects of machine learning, deep learning and neural networks and computer vision. Subsequently, in Section \ref{sec:dataset} a few examples of some of datasets used to train neural networks are presented. Afterwards, Section \ref{sec:libraries_cv} gives a brief introduction of the most common computer vision libraries.  Finally, a state-of-the-art in object detection and image classification can be read in Section \ref{sec:state}.
 
 \newpage
 
@@ -53,7 +53,7 @@ Feature extraction plays an important role in image classification and object de
     \end{itemize}
 
  
-    \par An object is used to identify specific items in an image or specific frames in a video. It is possible to label multiple objects in an image. An example of objects in an image of a car might be wheels, headlights, etc.
+    \par An object is used to identify specific items in an image or a video. It is possible to label multiple objects in an image. An example of objects in an image of a car might be wheels, headlights, etc.
     \par Usually an object is represented by a group of features in form of a feature vector that is used to recognize objects and classify them \cite{Tiwari2013}.
 
     \par In object detection, small objects are normally the ones that give  worst results and lower performance when being detected. This happens because the information available to detect them is more compressed and hard to decode without some prior knowledge or context \cite{Agarwal2019}.
@@ -116,8 +116,9 @@ Feature extraction plays an important role in image classification and object de
        \item \textbf{Sentence}: A family having a picnic in the park.
    \end{itemize}
 
-     
-    \par A computer is only capable of outputting the objects and labels detected but is incapable of giving them any sort of meaning like a human can.
+    
+   
+    In the given example, the computer is only capable of outputting the objects and labels detected but is incapable of giving them any sort of meaning like a human can. However, recurring to image caption systems might allow the computer to create sentences in order to describe an image.
 
 
 
@@ -126,26 +127,19 @@ Feature extraction plays an important role in image classification and object de
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \section{Teaching a Computer on How to Learn}
+    \label{sec:teach}
 
-    \
     Artificial Intelligence (AI) is the artificial simulation of human intelligence by a computer system in a way that it can perceive its environment, understand its behaviors and take action. Two important areas of AI are machine learning and deep learning \cite{mathworks_AI}.
 
     
 
-
-    \begin{itemize}
-        \item \textbf{Machine Learning}
-    \end{itemize}
-    
+   \subsection{Machine Learning}
 
     \par Machine learning can be defined as a data analytics technique that allows computers to learn from experience. There are two types of machine learning techniques, which are supervised learning and unsupervised learning.
     \par Normally, supervised machine learning is used to train a model to predict future outputs, this is done by inputting and outputting known data. Supervised learning uses two different techniques which are classification and regression. Classification techniques are used to classify input data into categories while regression techniques are used to predict continuous responses. 
     \par Unsupervised learning is mostly used to find hidden patterns or intrinsic structures in input data. The most common unsupervised learning technique is clustering which is used for data analysis exploration, in order to find hidden patterns or groupings in data \cite{mathworks_ML}.
 
-    \begin{itemize}
-        \item \textbf{Deep Learning}
-    \end{itemize}
-    
+    \subsection{Deep Learning}
 
     \par Deep Learning is a subset of Machine Learning that is inspired by the structure and function of the human brain. In order to achieve this, deep learning resorts to artificial neural networks (ANNs).
     
@@ -168,11 +162,6 @@ Feature extraction plays an important role in image classification and object de
 
 
     The main purpose of deep learning, for this work, will be to apply it to the images provided by the imageCLEF challenge.
-    
-    \begin{itemize}
-        \item \textbf{Computer Vision}
-    \end{itemize}
-    \par Computer vision is a field of artificial intelligence and computer science that aims at giving computers a visual understanding of the world \cite{cv} \cite{cv2}. It is related with pattern recognition, which is a common way to train a computer so that it can understand visual information. Pattern Recognition is the training a computer goes through when it is fed with different labeled images and then subjected to different algorithms, allowing the computer to hunt for patterns in every element related to those specific labels \cite{pattern}.
 
 
 \subsection{Neural Networks}
@@ -210,23 +199,27 @@ Feature extraction plays an important role in image classification and object de
     
 
 
-        \begin{itemize}
-            \item \textbf{Neural Network Training}
-        \end{itemize}
-    \par The best way to train a neural network from scratch is to design a network architecture that will learn through the feeding of a large dataset of labeled data. This allows it it to learn the features and model. The problem with this is that depending on the learning rate of the network and the amount of data, these networks can take a lot of time to train (days, maybe weeks). 
+    \subsection{Neural Network Training}
+    \par The best way to train a neural network from scratch is to design a network architecture that will learn through the feeding of a large dataset of labeled data. This allows it to learn the features in order to create a model. The problem with this is that depending on the learning rate of the network and the amount of data, these networks can take a lot of time to train (days, maybe weeks). 
 
-    \par To solve the problem of time, deep learning applications can recur to the usage of transfer learning. Transfer learning is a process that involves the fine-tuning of a pretrained model. This works by using an existing network like GoogLeNet, and feed it new data of previously unknown classes to the network. After some tweaks to the network, it will be able to categorize only a specific object instead of many different ones. This not only allows the network to be more precise in categorizing that one specific object, but it will also save lot of computation time \cite{mathworks_deeplearning}.
+    \par To solve the problem of time, deep learning applications can recur to the usage of transfer learning. Transfer learning is a process that involves the fine-tuning of a pre trained model. This works by using a pre trained model, for example one trained with an existing network architecture like GoogLeNet, and feed it new data of previously unknown classes to the model. After some tweaks, the model will be able to categorize only a specific object instead of many different ones. This not only allows the model to be more precise in categorizing that one specific object, but it will also save lot of computation time \cite{mathworks_deeplearning}.
 
 
- 
+     
+    \subsection{Learning From Images}
+    \par Computer vision is a field of artificial intelligence and computer science that focuses on giving computers a visual understanding of the world \cite{cv} \cite{cv2}. This is done by enabling computers to process and identify objects in a way similar to humans. This processing is done at a pixel level.
+    Thanks to the recent innovations in deep learning and neural networks, computers are able to accurately identify, classify and even react in real time to objects. 
 
+
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \section{Datasets With Common Objects}
 
-    \label{dataset}
+    \label{sec:dataset}
 
-    \par A dataset is a collection of images and videos that contain every day life objects that are manually labeled. State-of-the-art object detection models require deep learning neural networks, and in order for neural networks to be trained, they  require training datasets, as previously explained.  
+    \par A common objects dataset is a collection of images and videos that contain every day life objects that are manually labeled.  State-of-the-art object detection models require deep neural networks. Training datasets are used in order to train these neural networks, as as previously explained. 
+    
 
     \par A few examples of some available datasets are:  MS COCO \cite{Lin2014}, ImageNet \cite{Takamitsu1978} , VisualGenome \cite{Language2015}, OpenImages \cite{Kuznetsova2018} and Pascal-VOC \cite{Everingham2010}.
 
@@ -273,7 +266,7 @@ Feature extraction plays an important role in image classification and object de
     \end{itemize}
 
     The VLFeat open source library implements popular computer vision algorithms specializing in image understanding and local features extraction and matching. Algorithms include Fisher Vector, VLAD, SIFT, MSER, k-means, hierarchical k-means, agglomerative information bottleneck, SLIC superpixels, quick shift superpixels, large scale SVM training, and many others. It is written in C for efficiency and compatibility, with interfaces in MATLAB for ease of use, and detailed documentation throughout. It supports Windows, Mac OS X, and Linux \cite{vedaldi08vlfeat}.
-\newpage
+
     \begin{itemize}
         \item \textbf{BoofCV}
     \end{itemize}
@@ -536,4 +529,4 @@ Feature extraction plays an important role in image classification and object de
 
 The models and algorithms experimented in this thesis were provided trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features \cite{ImageAI}. This library required the pre-installation of TensorFlow, OpenCV and Keras libraries. The Keras library \cite{CholletFrancois2015} is an open-source neural-network library written in Python which is capable of running on top of TensorFlow.
 
-During the development of the automatic retrieval system many of the described algorithms and models in Appendix \ref{ch:appendix} were tried. For image classification the algorithms tested were DenseNet, InceptionV3, ResNet and SqueezeNet. For object detection the models used were YoloV3, TinyYoloV3, RetinaNet and ResNetXt-101. The testing of all of these models was done in order to find the most suitable model to process the imageCLEF images dataset.
+During the development of the automatic retrieval system several of the described algorithms and models in Appendix \ref{ch:appendix} were tested. For image classification the algorithms analysed were DenseNet, InceptionV3, ResNet and SqueezeNet. For object detection the models used were YoloV3, TinyYoloV3, RetinaNet and ResNetXt-101. The testing of all of these models was done in order to find the most suitable model to process the imageCLEF images dataset.
