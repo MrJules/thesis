@@ -8,7 +8,7 @@ The pervasive creation and consumption of visual media content is ingrained into
 
 
 
-With the rapid development of Internet of things (IOT) this growth in consumption of visual media content has increased the usage of wearable and smart technologies making the subject of lifelogging more prevalent in the recent years. Lifelogging is the task of tracking and recording personal data created trough the activities and behaviour of individuals during their day-to-day life in the form of images, video, biometric data, location and other data. The name given to the data created by lifelogging has the name of "lifelog data" and it is rich in resources for contextual information retrieval \cite{Ribeiro}.
+With the rapid development of Internet of things (IOT) this growth in consumption of visual media content has increased the usage of wearable and smart technologies making the subject of lifelogging more prevalent in the recent years. Lifelogging is the task of tracking and recording personal data created trough the activities and behaviour of individuals during their day-to-day life in the form of images, video, biometric data, location and other data. The name given to the data created by lifelogging has the name of \enquote{lifelog data} and it is rich in resources for contextual information retrieval \cite{Ribeiro}.
 
 Some examples of the usefulness of lifelogging is using it as a memory extension for people who suffer from memory impairments such as Alzheimers, to find lost items during the day or even to understand human behaviour.
 
@@ -38,10 +38,10 @@ Finally, the computer has to be capable of comparing the extracted features from
 
 Since the process of automatic image retrieval is still a complex problem this works aims at contributing with a baseline system for future investigations with some suggestions on how to improve it further. Additionally a study of the available technology is conducted that may help on finding new and better paths for future investigations on automatic image retrieval.
 
-In addition, the main contribution of this work was the development of an automatic image retrieval system with the objective of participating in the ImageCLEF Lifelog challenge, more specifically in the LMRT subtask (described in Chapter \ref{ch:imageclef}).The participation in this challenge was done using two different systems, an interactive one and an automatic one. The system built in this work was capable of achieving a 0.031 score while the interactive system achieved a more competitive result of 0.517 in the F1-measure@10 metric \cite{Ribeiro2020}.
+The main contribution of this work was the development of an automatic image retrieval system with the objective of participating in the ImageCLEF Lifelog challenge, more specifically in the LMRT subtask (described in Chapter \ref{ch:imageclef}). The participation in this challenge was done using two different systems, one being interactive and the other automatic. The system built in this work was capable of achieving a 0.031 score while the interactive system achieved a more competitive result of 0.517 in the F1-measure@10 metric \cite{Ribeiro2020}.
 
 
-To achieve the goal of creating an automatic image retrieval system other tasks had to be fulfilled. Firstly, a study on the state of the art of image and text processing was done in order to choose the algorithms to be used for label extraction. Subsequently, an algorithm was built capable of processing a large dataset of images  with the aim of extracting relevant features. Following, another algorithm was programed capable of processing text with the intention of extracting relevant words and categorize them accordingly. Afterwards, in order to compare the extracted features from images and text another algorithm was built capable of associating images to text. This algorithm recurs to a similarity function that computed a confidence score for every image. After computing a confidence score for every image, an algorithm was created capable of computing the F1-measure@x score of the final results in order to allow the system of self evaluating. Finally, with the aim of facilitating the process a batch script was created in order to allow the system to run with one click.
+To achieve the goal of creating an automatic image retrieval system other tasks had to be fulfilled. Firstly, a study on the state of the art of image and text processing was done in order to choose the algorithms to be used for label extraction. Subsequently, an algorithm was built capable of processing a large dataset of images  with the aim of extracting relevant features. Following, another algorithm was programed capable of processing text with the intention of extracting relevant words and categorize them accordingly. Afterwards, in order to compare the extracted features from images and text another algorithm was built capable of associating images to text. This algorithm recurs to a similarity function that computed a confidence score for every image. After computing a confidence score for every image, an algorithm was created capable of computing F1-measure@X score of the final results in order to allow the system of self evaluating. Finally, with the aim of facilitating the process a batch script was created in order to allow the system to run with one click.
 
 As a result of the work developed and participation in the challenge the paper ``UA.PT Bioinformatics at ImageCLEF 2020: Lifelog Moment Retrieval Web based Tool” (Ricardo Ribeiro \& Júlio Silva, 2020) was published.
 \section{Document Structure}
@@ -51,14 +51,14 @@ This document has a total of 7 chapters and an appendix that are divided accordi
 
 
 \begin{itemize}
-  \item Chapter \ref{ch:introduction} presents the context and motivation along with the challenges and contribution of this works.
+  \item Chapter \ref{ch:introduction} presents the context and motivation along with the challenges and contributions of this work.
   \item Chapter \ref{ch:imageclef} discusses the imageCLEF Lifelog Challenge and the concept of lifelogging.
-  \item Chapter \ref{ch:computervision} provides a survey on the subject of feature extraction from images while giving an introduction to some important concepts like computer vision, machine learning, deep learning, artificial intelligence, neural networks and so on. An overview of the current state-of-the-art and latest achievements is also exposed.
+  \item Chapter \ref{ch:computervision} provides a survey on the subject of feature extraction from images while giving an introduction to some important concepts like computer vision, machine learning, deep learning, artificial intelligence, neural networks and so on. An overview of the current state of the art and latest achievements is also exposed.
   
   \item Chapter \ref{ch:nlp} addresses the thematic of extracting data from text. The subjects of natural language processing and respective applications, word embeddings, useful libraries and models are examined.  
   
   
-  \item Chapter \ref{ch:initial_work} provides an overview on how the automatic image retrieval system was built. Firstly, the image processing stage is explained and the tests that were run are presented. Secondly, it is described how the system manages to extract information from text while categorizing the respective data in predefined categories automatically. Finally it is made clear how the system is able to compare the extracted visual data and the extracted textual data in order to retrieve images accordingly.
+  \item Chapter \ref{ch:initial_work} provides an overview on how the automatic image retrieval system was built. Firstly, the image processing stage is explained and the tests that were run are presented. Secondly, it is described how the system manages to extract information from text while categorizing the respective data in predefined categories automatically. Finally, it is made clear how the system is able to compare the extracted visual data and the extracted textual data in order to retrieve images accordingly.
   
 
 
@@ -66,7 +66,7 @@ This document has a total of 7 chapters and an appendix that are divided accordi
   
   \item Chapter \ref{ch:conclusions} describes the conclusions taken from the development of the work and provides some ideas for future investigations and improvements.
   
-  \item Appendix \ref{ch:appendix} gives an overview of some of the most common neural networks architectures, object detection models and image classification algorithms.
+  \item Appendix \ref{ch:appendix} gives an overview of some of the most common neural networks architectures, object detection systems and image classification models.
  
  
 \end{itemize}

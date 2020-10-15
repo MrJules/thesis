@@ -15,7 +15,7 @@ The ImageCLEF challenge is a large–scale evaluation campaign that aims at eval
 
 Every year an evaluation cycle campaign occurs that consist in workshops where teams can compete to achieve the best possible results while discussing new techniques and ideas. In addition to offering the evaluation platform, ImageCLEF also provides several publicly resources, such as benchmarks to evaluate retrieval systems. These benchmarks have helped researchers develop new approaches to visual information retrieval and automatic annotation by enabling the performance of various approaches to be assessed.
 
-Since the launch of ImageCLEF  researchers within academic and commercial research groups worldwide, including those from Cross–Language Information Retrieval (CLIR), medical informatics,Content–Based Image Retrieval (CBIR), computer vision and user interaction have been participating in the challenge. 
+Since the launch of ImageCLEF, researchers within academic and commercial research groups worldwide, including those from Cross–Language Information Retrieval (CLIR), medical informatics, Content–Based Image Retrieval (CBIR), computer vision and user interaction have been participating in the challenge. 
 
 Currently, ImageCLEF main goal is to support the advancement of the field of visual media analysis, indexing, classification, and retrieval, by developing the necessary infrastructure for the evaluation of visual information retrieval systems operating in both monolingual, cross–language and language-independent contexts \cite{Zhang2008}. 
 
@@ -124,7 +124,7 @@ The interactive retrieval system is only interesting for this work in terms of c
  
 
 
-    The ground truth is given as text file with the following format : [topic number, image name, cluster].
+    The ground truth is given as text file with the following format : \textbf{[topic number, image name, cluster]}.
     The cluster number is used to calculate the F1-measure score which will be explained in more detail in Section \ref{sec:eval}.
 
 
@@ -142,7 +142,7 @@ The interactive retrieval system is only interesting for this work in terms of c
     \end{itemize}
  
 
-    The dataset is composed of nearly 200.000 images. Figure \ref{fig:gt_images} illustrates lifelog pictures from the dev topic 1 (given as an example in Section \ref{sec:devtopic1}) that correspond to the ground truth given in Figure \ref{fig:gt}:
+    The dataset is composed of nearly 200.000 images. Figure \ref{fig:gt_images} illustrates lifelog pictures from the dev topic 1 that correspond to the ground truth given in Figure \ref{fig:gt}:
 
 
     \begin{figure}[H]
@@ -167,11 +167,11 @@ The interactive retrieval system is only interesting for this work in terms of c
         \item []
         
 
-        \textbf{Title} : "Seafood at Restaurant"
+        \textbf{Title} : \enquote{Seafood at Restaurant.}
 
-        \textbf{Description} : "Find moments when u1 was eating seafood in a restaurant in the evening time"
+        \textbf{Description} : \enquote{Find moments when u1 was eating seafood in a restaurant in the evening time.}
 
-        \textbf{Narrative} : "The moments show u1 was eating seafood in any restaurant in the evening time are considered relevant. Any dish has seafood as one of its parts is also considered relevant. Some examples of the seafood can be shrimp, lobster, salmon."
+        \textbf{Narrative} : \enquote{The moments show u1 was eating seafood in any restaurant in the evening time are considered relevant. Any dish has seafood as one of its parts is also considered relevant. Some examples of the seafood can be shrimp, lobster, salmon.}
 
         \end{itemize}
      
@@ -217,18 +217,18 @@ The interactive retrieval system is only interesting for this work in terms of c
     \subsection{Evaluation Problems}
     \label{sec:ev_problems}
 
-    The main problem in the evaluation of the imageCLEF lifelog subtask is that  pictures that could be considered to belong to a given moment are at times not present in the ground truth and therefore decrease the score in the F1-measure evaluation. In addition to this problem, some pictures accounted for the ground truth should have not been considered.
+    The main problem in the evaluation of the imageCLEF lifelog subtask is that  pictures that could be considered to belong to a given moment are at times not present in the ground truth and therefore decrease the score in the F1-measure evaluation. In addition to this problem, some pictures accounted in the ground truth should have not been considered.
 
     Dev topic 4 is presented next to serve as an example.
 
     \begin{itemize}
 
-        \item[] \textbf{Title}: "Television Recording."
+        \item[] \textbf{Title}: \enquote{Television Recording.}
 
-        \textbf{Description}: "Find the moments when u1 was being recorded for
-        a television show."
+        \textbf{Description}: \enquote{Find the moments when u1 was being recorded for
+        a television show.}
 
-        \textbf{Narrative} : "To be considered relevant, there must clearly be a television camera in front of u1. The moments the interviewer/cameramen is interviewing/recording u1 are also considered relevant. This can take place at home or in another location. All recording took place in one day and in more than one location."
+        \textbf{Narrative} : \enquote{To be considered relevant, there must clearly be a television camera in front of u1. The moments the interviewer/cameramen is interviewing/recording u1 are also considered relevant. This can take place at home or in another location. All recording took place in one day and in more than one location.}
 
     \end{itemize}
 

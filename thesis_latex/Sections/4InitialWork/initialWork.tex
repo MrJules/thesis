@@ -88,7 +88,7 @@ Figures \ref{fig:exp1}, \ref{fig:exp2} and \ref{fig:exp3} show three examples of
 
 In the first example a picture of a dog (breed Saluki) is analysed. Figure \ref{fig:exp1} shows that InceptionV3 is the best performer in the first run, predicting correctly with an efficiency of 96.38\% and out performing the other 3 neural networks by a large margin, being that the second best is the ResNet50 with an efficiency of 42.32\%.
 
-For the second example a picture of a car was processed. Figure \ref{fig:exp2} shows that illustrates that InceptionV3 predicted with a 99.99\% that the car was a minivan. The shown car is not a minivan but its similar to one, so it is possible to assume that the prediction is correct.
+For the second example a picture of a car was processed. Figure \ref{fig:exp2} illustrates that InceptionV3 predicted with a 99.99\% that the car was a minivan. The shown car is not a minivan but its similar to one, so it is possible to assume that the prediction is correct.
 
 The final example a picture of an espresso coffee is analysed. In this example all image recognition algorithms predicted correctly that the image represents an espresso. However, SquezeeNet only achieved 63.88\% efficiency while InceptionV3 predicted with 100.0\% efficiency as shown in Figure \ref{fig:exp3}.
 
@@ -147,9 +147,9 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
       \label{fig:labels} 
   \end{figure}
 
- This sections presents the tests done which are structured in the following way: on the left is the picture with the respective detections and on the right is an image with a graph representation of the detections. The color represents the detected object (label). 
+ This section presents the tests done with object detection models,  which are structured in the following way: on the left is the picture with the respective detections and on the right is an image with a graph representation of the detections. The color represents the detected object (label). 
 
-  The pictures used for the testing of the described models were the following:
+  The pictures used for the testing of the described models are presented in Figure \ref{fig:picsss}.
 
 \begin{figure}[H]
   \centering
@@ -164,17 +164,18 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
   \begin{subfigure}{0.3\textwidth}
   \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_obj_run4/photo.jpg}
   \end{subfigure}
-
+  
   \caption[Sample pictures used for testing]{Sample pictures used for testing the object recognition models.}
+  \label{fig:picsss}
   \end{figure}
 
 
-  Figures  \ref{fig:retina_1}, \ref{fig:yolo_1}, \ref{fig:tiny_1} present the performance achieved for the first image. Figures  \ref{fig:retina_2}, \ref{fig:yolo_2}, \ref{fig:tiny_2} show the results obtained for the second image. Finally, Figures \ref{fig:retina_3}, \ref{fig:yolo_3}, \ref{fig:tiny_3} illustrate performance obtained in the processing of the third picture.
+  Figures  \ref{fig:retina_1}, \ref{fig:yolo_1}, \ref{fig:tiny_1} present the performance achieved for the first image. Figures  \ref{fig:retina_2}, \ref{fig:yolo_2}, \ref{fig:tiny_2} show the results obtained for the second image. Finally, Figures \ref{fig:retina_3}, \ref{fig:yolo_3}, \ref{fig:tiny_3} illustrate the performance obtained in the processing of the third picture.
 
 
-  From the different test runs done it is possible to analyse that the TinyYolo model under performs severely compared to RetinaNet and YoloV3. This is expected, as explained in Appendix \ref{ch:appendix} Section \ref{sec:tiny_yolo} the TinyYolo model is a smaller model of YOLOv3 that requires less computational resources and is better suited for more constrained environments with smaller targets.
+  From the different test runs done it is possible to analyse that the TinyYOLOv3 model under performs severely compared to RetinaNet and YOLOv3. This is expected, as explained in Appendix \ref{ch:appendix} Section \ref{sec:tiny_yolo}, the TinyYOLOv3 model is a smaller model of YOLOv3 that requires less computational resources and is better suited for more constrained environments with smaller targets.
 
-  Comparing RetinaNet to YoloV3 it is possible to conclude that YoloV3 is more accurate than RetinaNet. For example in the first run, RetinaNet detects knifes and forks in the same place as shown in Figure \ref{fig:retina_1} a), in the third example RetinaNet detects a bus in the place of a building as illustrated in Figure \ref{fig:retina_3} a) while Yolo was capable of correctly detecting a stop sign that no other model detected as shown in Figure \ref{fig:yolo_3}.
+  Comparing RetinaNet to YOLOv3 it is possible to conclude that YOLOv3 is more accurate than RetinaNet. For example, in the first run, RetinaNet detects knifes and forks in the same place as shown in Figure \ref{fig:retina_1} a), in the third example RetinaNet detects a bus in the place of a building as illustrated in Figure \ref{fig:retina_3} a) while YOLOv3 was capable of correctly detecting a stop sign that no other model detected, as shown in Figure \ref{fig:yolo_3}.
 
 \newpage
     
@@ -199,7 +200,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
         \end{subfigure}
         
         \caption[Test run 1 with RetinaNet]{ 
-        Test run 1 with RetinaNet; a) Analysed picture with detections; b) Achieved performance on detections. }
+        Test run 1 with RetinaNet; a) Analysed picture with detections; b) Performance achieved on detections. }
         \label{fig:retina_1}
         \end{figure}
     
@@ -220,7 +221,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
           \end{subfigure}
           
           \caption[Test run 1 with YOLOv3]{ 
-          Test run 1 with YOLOv3; a) Analysed picture with detections; b) Achieved performance on detections. }
+          Test run 1 with YOLOv3; a) Analysed picture with detections; b) Performance achieved on detections. }
           \label{fig:yolo_1}
           \end{figure}
       
@@ -239,8 +240,8 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
             \caption{}
             \end{subfigure}
             
-            \caption[Test run 1 with TinyYolo]{ 
-            Test run 1 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \caption[Test run 1 with TinyYOLOv3]{ 
+            Test run 1 with TinyYOLOv3; a) Analysed picture with detections; b) Performance achieved on detections. }
             \label{fig:tiny_1}
             \end{figure}
 
@@ -268,7 +269,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
         \end{subfigure}
         
         \caption[Test run 2 with RetinaNet]{ 
-        Test run 2 with RetinaNet; a) Analysed picture with detections; b) Achieved performance detections. }
+        Test run 2 with RetinaNet; a) Analysed picture with detections; b) Performance achieved detections. }
         \label{fig:retina_2}
         \end{figure}
 
@@ -287,8 +288,8 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
           \caption{}
           \end{subfigure}
           
-          \caption[Test run 2 with YoloV3]{ 
-          Test run 2 with YoloV3 model; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \caption[Test run 2 with YOLOv3]{ 
+          Test run 2 with YOLOv3 model; a) Analysed picture with detections; b) Performance achieved on detections. }
           \label{fig:yolo_2}
           \end{figure}
   
@@ -306,8 +307,8 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
             \caption{}
             \end{subfigure}
             
-            \caption[Test run 2 with TinyYolo]{ 
-            Test run 2 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \caption[Test run 2 with TinyYOLOv3]{ 
+            Test run 2 with TinyYOLOv3; a) Analysed picture with detections; b) Performance achieved on detections. }
             \label{fig:tiny_2}
             \end{figure}
 
@@ -332,7 +333,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
         \end{subfigure}
         
         \caption[Test run 3 with RetinaNet]{ 
-        Test run 3 with RetinaNet; a) Analysed picture with detections; b) Achieved performance detections. }
+        Test run 3 with RetinaNet; a) Analysed picture with detections; b) Performance achieved detections. }
         \label{fig:retina_3}
         \end{figure}
 
@@ -351,8 +352,8 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
           \caption{}
           \end{subfigure}
           
-          \caption[Test run 3 with YoloV3]{ 
-          Test run 3 with YoloV3 model; a) Analysed picture with detections; b) Achieved performance on detections. }
+          \caption[Test run 3 with YOLOv3]{ 
+          Test run 3 with YOLOv3 model; a) Analysed picture with detections; b) Performance achieved on detections. }
           \label{fig:yolo_3}
           \end{figure}
   
@@ -370,17 +371,17 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
             \caption{}
             \end{subfigure}
             
-            \caption[Test run 3 with TinyYolo]{ 
-            Test run 3 with TinyYolo; a) Analysed picture with detections; b) Achieved performance on detections. }
+            \caption[Test run 3 with TinyYOLOv3]{ 
+            Test run 3 with TinyYOLOv3; a) Analysed picture with detections; b) Performance achieved on detections. }
             \label{fig:tiny_3}
             \end{figure}
 
 
     \newpage
 
-    \subsection{Object Detection Word Clouds Generation Preliminary Experiences}
+    \subsection{Object Detection Word Clouds Preliminary Experiences}
     \label{ch:wordclouds}
-    In order to make the labels extraction more easily visible and still achieve some degree of performance comparison between the 3 object detection models word clouds were generated. In a word cloud, the bigger a word is the more times that label was detected in the pictures. For this test 6 images were processed with identical setting in order to generate 1 word cloud for each object detection model with all of the extracted labels.
+    In order to make the labels extraction more easily visible and still achieve some degree of performance comparison between the 3 object detection models, word clouds were generated. In a word cloud, the bigger a word is the more times that label was detected in the pictures. For this test 6 images were processed with identical setting in order to generate 1 word cloud for each object detection model with all of the extracted labels.
 
     Figure \ref{fig:used_word} presents the images that were used for word cloud generation:
     
@@ -402,11 +403,9 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
       \label{fig:used_word}
     \end{figure}
 
-    As for the word clouds generated in this section, it is possible to notice that in the YoloV3 cloud and the RetinaNet cloud (shown in Figure \ref{fig:wordcloudss} a) and b) respectively) there are many more words than in the TinyYolo cloud (shown in Figure \ref{fig:wordcloudss} c)). Again, TinyYolo is severely under performing when compared to the other 2 models.
-     
-    Looking at the Yolo model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words of different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like "pizza", "donut and "person" in some of the images.
+    As for the word clouds generated, it is possible to notice that in the YOLOv3 cloud and the RetinaNet cloud (shown in Figure \ref{fig:wordcloudss} a) and b) respectively) there are many more words than in the TinyYOLOv3 cloud (shown in Figure \ref{fig:wordcloudss} c)). Again, TinyYOLOv3 is severely under performing when compared to the other 2 models. Looking at the YOLOv3 model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words of different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like \enquote{pizza}, \enquote{donut} and \enquote{person} in some of the images.  In addition, it is also possible to analyse that much of the extracted labels for all of the models were the exact same, this happens because all of them were trained using the same dataset, as previously explained. Using a different model of YOLOv3 trained with other dataset would probably provide a word cloud with different labels.
 
-    These test runs allow for the conclusion that the YoloV3 model is the better performing one and therefore the one chosen for object detections for the automatic retrieval system. 
+    These test runs allow for the conclusion that the YOLOv3 model is the better performing one and therefore it was the one chosen to do object detections for the automatic image retrieval system.
 
     \begin{figure}[H]
       \centering
@@ -424,7 +423,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
       \includegraphics[width=\textwidth]{Sections/4InitialWork/4_images_wordcloud/tiny_yolo_pic.png}\hfill
       \caption{}
       \end{subfigure}
-      \caption[Generated Word Clouds]{Generated Word Clouds; a) Yolo word cloud; b) RetinaNet word cloud; c) TinyYolo word cloud}
+      \caption[Generated Word Clouds]{Generated Word Clouds; a) YOLOv3 word cloud; b) RetinaNet word cloud; c) TinyYOLOv3 word cloud}
       \label{fig:wordcloudss}
     \end{figure}
 
@@ -435,13 +434,15 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
 \section{Example of a Raw Retrieval System}
 \label{sec:alpha_retrieval}
 
-As a first step in building a fully automatic retrieval system an "raw retrieval system" was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses "cup" and "40\%", objects that are not "cup" or that are "cup" but below the threshold of 40\% wont be retrieved.
+As a first step in building a fully automatic retrieval system an \enquote{raw retrieval system} was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses \enquote{cup} and \enquote{40\%}, objects that are not \enquote{cup} or that are \enquote{cup} but below the threshold of 40\% wont be retrieved. 
+
+Figure \ref{fig:raw} illustrates the \enquote{raw retrieval system} user interface and Figure \ref{fig:raw_results} presents the retrieved images for the given example.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width = \textwidth]{Sections/4InitialWork/4_images_random/alpha.png}
   \caption[Raw retrieval system]{System capable of detecting specific user inputted labels in multiple images. }
-  \label{fig:yolov3} 
+  \label{fig:raw} 
 \end{figure}
 
 
@@ -458,12 +459,13 @@ As a first step in building a fully automatic retrieval system an "raw retrieval
   \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_6.jpg}\hfill
   \includegraphics[width=.3\linewidth]{Sections/4InitialWork/4_images_alphasystem/alpha_yolo_7.jpg}
   \end{subfigure}
-  \caption[Retrieved images]{Retrieved images for the label "cup" with "40\%" threshold.}
+  \caption[Retrieved images]{Retrieved images for the label \enquote{cup} with \enquote{40\%} threshold.}
+  \label{fig:raw_results}
 \end{figure}
 
 \section{Scene Recognition}
 \label{sec:scene_recognition}
-  In order to detect indoors, outdoors and places a pre-trained model provided by Zhou et al., 2018 \cite{Zhou2018}  trained on the Places365 standard dataset was used. The following example shows the extractions done to a sample picture. 
+  In order to detect indoors, outdoors and places a pre-trained model provided by Zhou et al., 2018 \cite{Zhou2018}  trained on the Places365 standard dataset was used. The following example shown in Figure \ref{fig:imagea} presents the extractions done to a sample picture. 
 
   \begin{figure}[H]
     \centering
@@ -485,11 +487,11 @@ As a first step in building a fully automatic retrieval system an "raw retrieval
     \end{figure}
 
 
-    The "io\_score" represents the interior vs exterior certainty. It ranges from 0 to 1. If its close to 0 it means the image is probably an interior and if it is close to 1 it means it is probably an exterior. In this example, the image is an interior and the "io\_score" is 0, therefore the model predicted correctly that the image is in fact an interior.
+    The \enquote{io\_score} represents the indoor vs outdoor certainty. It ranges from 0 to 1. If its close to 0 it means the image is probably an indoor scenery and if it is close to 1 it means it is probably an outdoor scenery. In this example, the image represents an indoor scenery and the \enquote{io\_score} is 0, therefore the model predicted correctly that the image is in fact an indoor scenery.
 
-    Following up, the "categories" is where the model tries to predict what the image represents in terms of a scene. In this case the model predicts with 34.8\% accuracy that it is a "television\_room" which is also correct, since the image represents a division of a house with a television.
+    Following up, the \enquote{categories} is where the model tries to predict what the image represents in terms of a scene. In this case the model predicts with 34.8\% accuracy that it is a \enquote{television\_room} which is also correct, since the image represents a division of a house with a television.
 
-    Finally, the "attributes" is the section where the model tries to describe the picture. Some of the attributed labels were "enclosed area", "man-made", "indoor lightning" and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
+    Finally, for the \enquote{attributes} is where the model tries to describe the picture. Some of the attributed labels were \enquote{enclosed area}, \enquote{man-made}, \enquote{indoor lightning} and so on which are all correct since the image represents a man-made enclosed space structure with indoor-lightning.
 
 \section{ImageCLEF Submissions}
 \label{sec:runs}
@@ -497,12 +499,12 @@ As a first step in building a fully automatic retrieval system an "raw retrieval
 
     In this year ImageCLEFlifog LMRT subtask, 3 different runs were submitted. The first 2 runs belong to the automatic image retrieval system and the last to the interactive retrieval system. 
     
-    Since the interactive system processed the images with detections from a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset proposed by Mahajan et al. \cite{Mahajan2018} it was decided to reutilize those labels for the automatic system, since the labels were already readily available.  Therefore, for the first submitted run of the automatic image retrieval system it was used the ResNeXt-101 labels and for the second run it was used the YoloV3 \cite{Redmon2018} extracted labels.
+    Since the interactive system processed the images with detections from a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset proposed by Mahajan et al. \cite{Mahajan2018} it was decided to reutilize those labels for the automatic system, since the labels were already readily available.  Therefore, for the first submitted run of the automatic image retrieval system it was used the ResNeXt-101 labels and for the second run it was used the YOLOv3 \cite{Redmon2018} extracted labels.
     
     The usage of two different set of extracted labels from two different object detection models was mainly done in order to have an understanding if the the difference in labels and the respective scores would help in achieving better results. Furthermore the images were also fully processed with the Places scene recognition model. This exhaustive approach of processing so many images took a lot of computer processing time and resources
 
 
-    Figure \ref{fig:image_fully_processed} shows the fully processing of the image shown in Figure \ref{fig:imagea} a) with YoloV3 and PLACES365:
+    Figure \ref{fig:image_fully_processed} shows the fully processing of the image shown in Figure \ref{fig:imagea} a) with YOLOv3 and PLACES365:
     
     \begin{figure}[H]
       \centering
@@ -542,9 +544,9 @@ As a first step in building a fully automatic retrieval system an "raw retrieval
       \end{figure}
 
 
-      The "activity" and "location" were extracted from the data provided by the organizers in a csv file. However,  that data is not accurate enough, and a good option would be to use activity recognition algorithms to extract activities from images. Furthermore, the processing time was already to high with the current setup.
-      The "local\_time" was extracted directly from the picture name.
-      The "box" is the pixels location of the respective "concept" in the image.
+      The \enquote{activity} and \enquote{location} were extracted from the data provided by the organizers in a csv file. However, this data is not accurate enough, and a good option would be to use activity recognition algorithms to extract activities from images. However, the implementation of this processing algorithm was not done since the processing time was already to high with the current setup.
+      The \enquote{local\_time} was extracted directly from the picture name.
+      The \enquote{box} is the pixels location of the respective \enquote{concept} in the image.
 
 
 
@@ -559,7 +561,7 @@ The SpaCy model \cite{Spacy2017} is used to analyse the query topics fully, extr
 
 
 
-The words extracted are divided into 10 categories being them : "relevant things", "activities", "dates", "locations", "inside", "outside", "negative relevant things", "negative activities", "negative locations" and "negative dates". The importance of this extraction and categorization is done in order to later compare this extracted textual data with the extracted visual data from all of the images. To give a clear example, it is crucial to correctly extract the concept "fast food" from Figure \ref{fig:spacy_labels} and categorize it in the "relevant things" textual category in order to compare with the "concepts" visual category. It is also important to extract the word "airport" and categorize it in the "locations" category in order to compare with the "location" visual category. It would not make sense to extract the word "fast food" and categorize it in the "locations" textual category for later comparing with the "location" visual category.
+The words extracted are divided into 10 categories being them : \enquote{relevant things}, \enquote{activities}, \enquote{dates}, \enquote{locations}, \enquote{inside}, \enquote{outside}, \enquote{negative relevant things}, \enquote{negative activities}, \enquote{negative locations} and \enquote{negative dates}. The importance of this extraction and categorization is done in order to later compare this extracted textual data with the extracted visual data from all of the images. To give a clear example, it is crucial to correctly extract the concept \enquote{fast food} from Figure \ref{fig:spacy_labels} and categorize it in the \enquote{relevant things} textual category in order to compare with the \enquote{concepts} visual category. It is also important to extract the word \enquote{airport} and categorize it in the \enquote{locations} category in order to compare with the \enquote{location} visual category. It would not make sense to extract the word \enquote{fast food} and categorize it in the \enquote{locations} textual category for later comparing with the \enquote{location} visual category.
 
 In order to assign words to each category some linguistic rules were defined,
 such as semantic and syntactic rules. Semantic rules build the meaning of the
@@ -575,16 +577,16 @@ sentences.
     \label{fig:spacy_labels}
   \end{figure}
 
- 
+ \newpage
 Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the the narrative of the test topic 6 are presented next:
-\newpage
+
     \begin{itemize}
       \itemsep0em
-        \item \textbf{relevant things} : "fast food".
-        \item \textbf{activities} : "ordering", "ordering fast food".
-        \item \textbf{locations} : "airport".
-        \item \textbf{inside} : "True".
-        \item \textbf{outside}: "False".
+        \item \textbf{relevant things} : \enquote{fast food}.
+        \item \textbf{activities} : \enquote{ordering}, \enquote{ordering fast food}.
+        \item \textbf{locations} : \enquote{airport}.
+        \item \textbf{inside} : \enquote{True}.
+        \item \textbf{outside}: \enquote{False}.
        
     \end{itemize}
 
@@ -595,22 +597,22 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
   
   \begin{itemize}
     
-      \item  If the word is a "VERB" and ends with "ing", like "ordering" then it probably is an activity and if the words that follows are "NOUN" then those words probably refer to a location or an object. 
+      \item  If the word is a \enquote{VERB} and ends with \enquote{ing}, like \enquote{ordering} then it probably is an activity and if the words that follows are \enquote{NOUN} then those words probably refer to a location or an object. 
       
       
-      \item  If the word is and "ADP" (adposition) and its either "in" or "at" then the words that follow are probably locations and usually means that the moment occurs inside a location and not outside, the category "inside" is then flagged to "True" and "outside" is flagged to "False".
+      \item  If the word is and \enquote{ADP} (adposition) and its either \enquote{in} or \enquote{at} then the words that follow are probably locations and usually means that the moment occurs inside a location and not outside, the category \enquote{inside} is then flagged to \enquote{True} and \enquote{outside} is flagged to \enquote{False}.
       
-      \item If the word is a "NUM" (number) then it probably refers to a year.
+      \item If the word is a \enquote{NUM} (number) then it probably refers to a year.
       
-      \item If the word is a "VERB", and the following word is a "poss" (possession modifier) and if the following word to the last is a "NOUN", then all of this sentence referes to an activity and the NOUN to an object. For example "Repairing his car". "Repairing" and "Repairing his car" are the activities and "car" is the relevant thing.
+      \item If the word is a \enquote{VERB}, and the following word is a \enquote{poss} (possession modifier) and if the following word to the last is a \enquote{NOUN}, then all of this sentence refers to an activity and the NOUN to an object. For example \enquote{Repairing his car}. \enquote{Repairing} and \enquote{Repairing his car} are the activities and \enquote{car} is the relevant thing.
       
       \item If the sentence has an auxiliary verb, the main verb usually corresponds to an activity and the words that follow the main verb may be objects or locations.
       
-      \item If the word is an "ADJ" (adjective) then the following word is probably an object. It can also be a bi-gram like "ice cream" or in this case "fast food".
+      \item If the word is an \enquote{ADJ} (adjective) then the following word is probably an object. It can also be a bi-gram like \enquote{ice cream} or in this case \enquote{fast food}.
       
-      \item If the sentence ends with "not considered relevant" the extracted words go to the negative categories.
+      \item If the sentence ends with \enquote{not considered relevant} the extracted words go to the negative categories.
       
-      \item Rules for the extraction of dates, like the day of the week, the month or even years were also created. However do the syntax of the test topics, since they had no reference to dates in the text, the dates category was discarded in order to save time. Nevertheless, for the dev topics dates were used and produced good results. As an example if in the topic it was said that the moment happened on a "wednesday" or in year 2014, only pictures from wednesday or the year 2014 were retrieved.
+      \item Rules for the extraction of dates, like the day of the week, the month or even years were also created. However do the syntax of the test topics, since they had no reference to dates in the text, the dates category was discarded in order to save time. Nevertheless, for the dev topics dates were used and produced good results. As an example if in the topic it was said that the moment happened on a \enquote{wednesday} or in year 2014, only pictures from wednesday or the year 2014 were retrieved.
 
     \end{itemize}
       
@@ -618,10 +620,10 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
 
     
     
-    The main idea in creating these syntax rules was to look at the linguistic annotations that the SpaCy model provided and see which words were the ones important for extraction. This was something that was complex to do, but after making the algorithm work for the dev topics, the test topics did not require much iteration since the syntax was very much identical to the dev topics. However, the word extraction and categorization is not flawless and sometimes it places things to wrong categories or misses one or two words for extraction. However, in the current state, it can be considered that it it working well enough. 
+    The main idea in creating these syntax rules was to look at the linguistic annotations that the SpaCy model provided and see which words were the ones important for extraction. This was something that was complex to do, but after making the algorithm work for the dev topics, the test topics did not require much iteration since the syntax was very much identical to the dev topics. Furthermore, many more syntax rules than the ones that were presented were also implemented which made the algorithm increasingly complex.
+    However, the word extraction and categorization is not flawless and sometimes it places things to wrong categories or misses one or two words for extraction. Nevertheless, in the current state, it can be considered that it it working well enough. 
         
-    Furthermore, many more syntax rules were implemented which made the algorithm very complex.
-  
+
 
 
 
@@ -644,16 +646,16 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       \begin{itemize}
         \itemsep0em
         \item \textbf{relevant things} : 
-            "seafood",
-            "parts",
-            "shrimp",
-            "lobster",
-            "salmon".
-        \item \textbf{activities} : "eating",
-        "eating seafood"
-        \item \textbf{locations} : "restaurant",  "evening time".
-        \item \textbf{inside} : "True".
-        \item \textbf{outside}: "False".
+        \enquote{seafood},
+        \enquote{parts},
+        \enquote{shrimp},
+        \enquote{lobster},
+        \enquote{salmon}.
+        \item \textbf{activities} : \enquote{eating},
+        {eating seafood}.
+        \item \textbf{locations} : {restaurant},  \enquote{evening time}.
+        \item \textbf{inside} : \enquote{True}.
+        \item \textbf{outside}: \enquote{False}.
         \item \textbf{dates}: NULL.
         \item \textbf{negative relevant thing}: NULL.
         \item \textbf{negative activities}: NULL.
@@ -662,7 +664,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
        
     \end{itemize}
 \newpage
-    An important detail to be noticed is that the extracted words "evening time" are wrongly categorized on the "locations" textual category. The main reason for this error to occur is probably a direct consequence of one of the syntax rules that did not work as intended for this specific case. The sentence is written in the following manner "The moments show u1 was eating seafood in any restaurant in the evening time.." and one of the rules for locations extraction is, as previously discussed, if the word is an "ADP" (adposition) and its either "in" or "at" then the words that follow are probably locations. However, in this case, there are two different "in", one refers to "restaurant" which is a location and the other to "evening time" which is not a location. This is an example of the algorithm not working as intended.
+    An important detail to be noticed is that the extracted words \enquote{evening time} are wrongly categorized on the \enquote{locations} textual category. The main reason for this error to occur is probably a direct consequence of one of the syntax rules that did not work as intended for this specific case. The sentence is written in the following manner \enquote{The moments show u1 was eating seafood in any restaurant in the evening time...} and one of the rules for locations extraction is, as previously discussed, if the word is an \enquote{ADP} (adposition) and its either \enquote{in} or \enquote{at} then the words that follow are probably locations. However, in this case, there are two different \enquote{in}, one refers to \enquote{restaurant} which is a location and the other to \enquote{evening time} which is not a location. This is an example of the algorithm not working as intended.
 
     \subsection{Retrieving Images According to the Similarity Between Words}
 
@@ -674,16 +676,16 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       \item \textbf{Similarity Score Computation}
     \end{itemize}
 
-    The SpaCy model allows the computer to calculate the similarity between the visual concepts and the extracted data. As an example of similarity between words using the described model, the word "television" and "seafood" have a similarity of approximately 0.07 (7\%) while "television" and "screen" have a similarity of approximately 0.43 (43\%).
+    The SpaCy model allows the computer to calculate the similarity between the visual concepts and the extracted data. As an example of similarity between words using the described model, the word \enquote{television} and \enquote{seafood} have a similarity of approximately 0.07 (7\%) while \enquote{television} and \enquote{screen} have a similarity of approximately 0.43 (43\%).
     
       
     Using Figures \ref{fig:image_fully_processed} and \ref{fig:image_fully_processed_resnext} to illustrate the different categories, the calculation of the similarity scores is done trough the comparison of the extracted words and the visual concepts:
     \begin{enumerate}
         \itemsep0em
-        \item The visual category "concepts" is compared to the textual category "relevant things" and "negative relevant things";
-        \item The visual category "activity" is compared to the textual category 
-        \item The visual category "location" is compared to the textual category "locations" and "negative locations";;
-        \item Depending if the textual category "inside" = "True" / "False" the visual category "io\_score" value will have different impact on the confidence score.
+        \item The visual category \enquote{concepts} is compared to the textual category \enquote{relevant things} and \enquote{negative relevant things};
+        \item The visual category \enquote{activity} is compared to the textual category 
+        \item The visual category \enquote{location} is compared to the textual category \enquote{locations} and \enquote{negative locations};;
+        \item Depending if the textual category \enquote{inside} = \enquote{True} / \enquote{False} the visual category \enquote{io\_score} value will have different impact on the confidence score.
     \end{enumerate}
 
     \begin{itemize}
@@ -702,37 +704,37 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       \item \textbf{Importance Weight Factor}
     \end{itemize}
 
-    The importance weight factor is a value that is assigned to the positive available categories that are not empty. It is a pre-defined value and is the factor that gives more importance to one category than others to the contribution of the confidence score computation. This factor ranges from 0 to 1 and the sum of all of the factors is equal to 1. For example, if the category of "relevant things" is worth 0.4 and if the category of "activities" is worth 0.2, then "relevant things" has a weight always two times higher than "activities" for the computation of the confidence score.
+    The importance weight factor is a value that is assigned to the positive available categories that are not empty. It is a pre-defined value and is the factor that gives more importance to one category than others for the contribution of the confidence score computation. This factor ranges from 0 to 1 and the sum of all of the factors is equal to 1. For example, if the category of \enquote{relevant things} is worth 0.4 and if the category of \enquote{activities} is worth 0.2, then \enquote{relevant things} has a weight always two times higher than \enquote{activities} for the computation of the confidence score.
 
     \begin{itemize}
       \item \textbf{Distributed Weight Factor}
     \end{itemize}
 
-    The distributed weight factor is the distribution of the importance weight factor from an empty category to all other categories that are not empty. To make it clear, if the text mining algorithm didn't extract any words to the "activities" category then there is no use in calculating millions of similarity scores that are comparing the images category "activities" with the NULL "activities" textual category . 
+    The distributed weight factor is the distribution of the importance weight factor from an empty category to all other categories that are not empty. To make it clear, if the text mining algorithm didn't extract any words to the \enquote{activities} category then there is no use in calculating millions of similarity scores that are comparing the images category \enquote{activities} with the NULL \enquote{activities} textual category . 
 
         
    Assuming the following example:
    \begin{enumerate}
-    \item (Not Empty category) "Relevant Things" importance weight factor = 0.4 (40\%);
-    \item (Empty category)"Activities" importance weight factor =  0.2 (20\%);
-    \item (Not Empty category) "Inside/Outside" importance weight factor = 0.3 (30\%);
-    \item (Not Empty category) "Location" importance weight factor = 0.1 (10\%);
+    \item (Not Empty category) \enquote{Relevant Things} importance weight factor = 0.4 (40\%);
+    \item (Empty category) \enquote{Activities} importance weight factor =  0.2 (20\%);
+    \item (Not Empty category) \enquote{Inside/Outside} importance weight factor = 0.3 (30\%);
+    \item (Not Empty category) \enquote{Location} importance weight factor = 0.1 (10\%);
     \item Sum of all importance factors = 1.
    \end{enumerate}
 
-   In this example, the "Relevant Things" category is worth 40\% of the sum of all importance factors while "Activities" is worth 20\%, "Inside/Outside" is worth 30\% and "Location" is worth 10\%. Therefore, if by any means the "Activities" category is empty, the importance weight factor of this category will be distributed to all other categories in the following way:
+   In this example, the \enquote{Relevant Things} category is worth 40\% of the sum of all importance factors while \enquote{Activities} is worth 20\%, \enquote{Inside/Outside} is worth 30\% and \enquote{Location} is worth 10\%. Therefore, if by any means the \enquote{Activities} category is empty, the importance weight factor of this category will be distributed to all other categories in the following way:
 
    \begin{enumerate}
     \item Distribution : 0.4x + 0.3x + 0.1x = 0.2 (=) x = 0.25;
-    \item Weight "Relevant Things" = 0.4 + 0.4*0.25 = 0.5 (50\%);
-    \item Weight "Activities" = 0;
-    \item Weight "Inside/Outside" category = 0.3 + 0.3*0.25 = 0.375 (37.5\%);
-    \item Weight "Location" =  0.1 + 0.1*0.025 = 0.125 (12.5\%);
+    \item Weight \enquote{Relevant Things} = 0.4 + 0.4*0.25 = 0.5 (50\%);
+    \item Weight \enquote{Activities} = 0;
+    \item Weight \enquote{Inside/Outside} category = 0.3 + 0.3*0.25 = 0.375 (37.5\%);
+    \item Weight \enquote{Location} =  0.1 + 0.1*0.025 = 0.125 (12.5\%);
     \item Sum of all weights = 1.
    \end{enumerate}
 
 
-   This distribution achieves two important things, the sum of all weights is always 1 (100\%) and the ratio between categories is always the same. In the begin "Relevant things" was 40\% and "Location" was 10\%  which is a ratio of 4 and in the end "Relevant things" is 50\% and "Location" is 12.5\% which is still a ratio of 4. This means that in this situation "Relevant things" has a weight of 50\% for the computation of the confidence score.
+   This distribution achieves two important things, the sum of all weights is always 1 (100\%) and the ratio between categories is always the same. In the begin \enquote{Relevant things} was 40\% and \enquote{Location} was 10\%  which is a ratio of 4 and in the end \enquote{Relevant things} is 50\% and \enquote{Location} is 12.5\% which is still a ratio of 4. This means that in this situation \enquote{Relevant things} has a weight of 50\% for the computation of the confidence score.
    
    The negative categories works the same way, but instead of contributing for the confidence score, it decreases the value.
 
@@ -779,7 +781,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       \item \textbf{Discarded Categories}
     \end{itemize}
     
-    Due to the fact that the PLACES365 scene recognition model extracts scenes with very low scores, rarely above 30\%-40\% it was decided to discard the category "categories" and "attributes" from contributing to the confidence score in order to save processing time.
+    Due to the fact that the PLACES365 scene recognition model extracts scenes with very low scores, rarely above 30\%-40\% it was decided to discard the category \enquote{categories} and \enquote{attributes} from contributing to the confidence score in order to save processing time.
 
    \newpage
     \begin{itemize}
@@ -790,21 +792,21 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
 
    \begin{enumerate}
     \item Visual concept label score minimum threshold : 0.3;
-    \item "Relevant Things" category score  minimum threshold: 0.15;
-    \item Confidence score minimum threshold  : 0.25;
+    \item \enquote{Relevant Things} category score  minimum threshold: 0.15;
+    \item Confidence score minimum threshold  : 0.25.
    \end{enumerate}
 
 
-   The thresholds were implemented through some trial and error during the test phases, and it merely serves the purpose of saving some computational time so that confidence scores of images with low scores are not fully processed. 
+   The thresholds were implemented through some trial and error during the test phases, and they merely serve the purpose of saving some computational time so that confidence scores of images with low scores are not fully processed. 
 
 
 
     \section{Submitted Run 1}
       \label{sec:run1}
 
-    The first run to be submitted for the imageclef LMRT subtask used a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset for the extraction of visual concepts.
+    The first run that was submitted for the imageclef LMRT subtask used a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset for the extraction of visual concepts.
 
-    In this run all of the importance weight factors for all categories were the same. This means that each category counts the same for the computation of the confidence score. No category is more important or less important. When a category is empty, their respective importance factor is equally apportionated to all other categories but never to the negative categories. If a negative category importance factor is negative, their factor is apportionated to the other negative categories. And if a positive category is empty, their factor is apportionated to the positive categories.
+    In this run all of the importance weight factors for all categories were the same. This means that each category counts the same for the computation of the confidence score. No category is more or less important. When a category is empty, their respective importance factor is equally apportionated to all other categories but never to the negative categories. If a negative category importance factor is negative, their factor is apportionated to the other negative categories. And if a positive category is empty, their factor is apportionated to the positive categories.
 
     Another aspect of Run 1 is that the negative categories can only impact the confidence score up to 50\% in the image confidence score.
     
@@ -813,5 +815,5 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
     \section{Submitted Run 2}
     \label{sec:run2}
     
-    In the second run, the object detection algorithm used is the YoloV3 model pretrained in the COCO dataset.  It was decided to define the importance weight factor differently for each category. It was given a bigger importance to specific categories like "relevant things" and "ioscore". Categories like ”activities” and ”locations” get a lesser importance weight factor since they are being compared to the organizers label data which is limiting and lesser accurate.  Another difference from Run 1 to Run 2 is that all of the negative categories were discarded from contributing to the confidence score, in order to save processing time and since the first results from Run 1 did not appear to impact much.
+    In the second run, the object detection algorithm used is the YOLOv3 model pretrained in the COCO dataset.  It was decided to define the importance weight factor differently for each category. It was given a bigger importance to specific categories like \enquote{relevant things} and \enquote{io\_score}. Categories like ”activities” and ”locations” get a lesser importance weight factor since they are being compared to the organizers labeled data which is limiting and lesser accurate.  Another difference between Run 1 abd Run 2 is that all of the negative categories were discarded from contributing to the confidence score. This was done in order to save more processing time and to see if this had a good or bad impact on final results.
     

@@ -10,10 +10,10 @@ The objectives defined in the first chapter for this thesis were fully achieved.
 Given the complexity and difficulty of creating a fully automatic image retrieval system and considering the limitation in research in this area and the extreme amount of computing processing time and resources a system of this kind requires, it can be concluded that the results of this work open the possibility for more exploration into to the development of a more robust system.
 
 
-With the current state-of-the-art and computer technology fully automatic retrieval systems cannot surpass interactive systems in performance. Some very good reasons for this is that interactive systems offer user visualization, user interaction and user decision. This helps the system to be tremendously more accurate than a computer, since the user can correct the computer if the retrieved images are not related to the topic.
+With the current state of the art and computer technology fully automatic retrieval systems cannot surpass interactive systems in performance. Some very good reasons for this is that interactive systems offer user visualization, user interaction and user decision. This helps the system to be tremendously more accurate than a computer, since the user can correct the computer if the retrieved images are not related to the topic.
 
 
-However even though the end results have low-score, it was still possible to present results that prove that the automatic retrieval system built was capable, in some situations, of working like intended. This was shown in the given example in Chapter \ref{ch:results} where the pictures returned in the first run did indeed belong to the moment that was described in the test topic. This concludes that a system like this can work, and can contribute to the improvement of the quality of life of the human kind, however it still requires a lot of improvement. Furthermore, like described in Chapter \ref{ch:imageclef} the ground truth of the challenge does not consider all possible images for a moment, therefore it is possible that the present system might actually perform better than the achieved challenge results demonstrate.
+However even though the end results have low-score, it was still possible to present results that prove that the automatic retrieval system built was capable, in some situations, of working like intended. This was shown in the given example in Chapter \ref{ch:results} where the pictures returned in the first run did indeed belong to the moment that was described in the test topic. This concludes that a system like this can work, and can contribute to the improvement of the quality of life of the human kind, however it still requires a lot of improvement. Furthermore, like described in Chapter \ref{ch:imageclef}, the ground truth of the challenge does not consider all possible images for a moment, therefore it is possible that the present system might actually perform better than the challenge results achieved demonstrate.
 
 
 
@@ -40,27 +40,22 @@ However even though the end results have low-score, it was still possible to pre
 
 \section{Future Work}
 
-A few things can be done in order to improve system performance for the 2021 imageclef LMRT sub-task.
+A few things can be done in order to improve system performance for the 2021 imageCLEF LMRT sub-task.
 
-Firstly the text processing and word extraction stage can be improved in order to only extract meaningful words. Sometimes in the extractions, words that had no meaningful use and were only clutter were extracted. For example "evening time" was in the category "locations". In most cases this wont influence the confidence score by much, but will increase a lot the processing time. This is because "evening time" will be compared with all of the images extracted "locations" from the organizers data. Another aspect that needs improving is the extraction of negative words which is very dependent on how the sentence is worded.
+Firstly the text processing and word extraction stage can be improved in order to only extract meaningful words. Sometimes, in the extractions, words that had no meaningful use and were only clutter were extracted. For example \enquote{evening time} was in the category \enquote{locations}. In most cases this wont influence the confidence score by much, but will increase a lot the processing time. This is because \enquote{evening time} will be compared with all of the images extracted \enquote{locations} from the organizers data. Another aspect that needs improving is the extraction of negative words which is very dependent on how the sentence is worded.
 
-Using more powerful computers and improve system optimization is essential in order to conduct a more large quantity of tests to fine tune the system. Currently the system is so slow, that the fine-tuning process becomes complex.
+Using more powerful computers and improve system optimization is essential in order to conduct a more large quantity of tests to fine tune the system. Currently the system is so slow that the fine-tuning process becomes complex.
 
-Since most of the dataset is comprised of folders of images of one full day, it is theoretically possible to link a set of images like a video and implement activity video recognition algorithms in order to extract the activity of the images instead of using the organizers data, which was in most cases inaccurate. Furthermore, better scene recognition and even color recognition algorithms will definitely improve the f1-measure@10 scores. Another suggestion is using algorithms to remove blurred images , which can help the time it takes for the system to process the dataset by removing low quality images .
+Since most of the dataset is comprised of folders of images of one full day, it is theoretically possible to link a set of images like a video and implement activity video recognition algorithms in order to extract the activity of the images instead of using the organizers data, which was in most cases inaccurate. Furthermore, better scene recognition and even color recognition algorithms will definitely improve the f1-measure@10 scores. Another suggestion is using algorithms to remove blurred images, which can help the time it takes for the system to process the dataset by removing low quality images. In addition, using two or three different object detection algorithms, all pre-trained with different datasets, will allow for the extraction of different image labels , which might improve performance, however this will require a lot of processing time in order to extract and then to compare the image labels with the textual data.
 
-Another future improvement would be to use the google cloud vision API \cite{google}, which gives labels that are more related to the words extracted. 
-
+Another future improvement would be to implement the google cloud vision API \cite{google}, which extracts labels that are more related to the words extracted than the algorithms used in this work. Figure \ref{fig:visiiion} shows a few examples of the extracted labels from google cloud vision API.
+\newpage
 
 \begin{figure}[H]
     \centering
     \captionsetup{justification=centering}
-    \begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{Sections/8Conclusion/images/google.png} 
+    \includegraphics[width=0.7\textwidth]{Sections/8Conclusion/images/google.png} 
   
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{Sections/8Conclusion/images/labels.png}
-    \end{subfigure}
 
   \end{figure}
 
@@ -68,8 +63,19 @@ Another future improvement would be to use the google cloud vision API \cite{goo
 \begin{figure}[H]
     \centering
     \captionsetup{justification=centering}
+    \includegraphics[width=0.7\textwidth]{Sections/8Conclusion/images/labels.png}
+  
 
-    \includegraphics[width=0.45\textwidth]{Sections/8Conclusion/images/google_labels_2.png}
+  \end{figure}
+  
+
+
+\begin{figure}[H]
+    \centering
+    \captionsetup{justification=centering}
+
+    \includegraphics[width=0.7\textwidth]{Sections/8Conclusion/images/google_labels_2.png}
     
     \caption[Google cloud vision API labels]{Examples of google cloud vision API extracted labels \cite{google}.}
+    \label{fig:visiiion}
 \end{figure}

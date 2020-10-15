@@ -3,6 +3,7 @@
 
 \label{ch:appendix}
 
+This appendix provides an overview of the most common neural networks architectures. In addition, it also presents a survey on several image classification models, object detection classification based algorithms and regression based algorithms.
 \section{Types of Neural Networks architectures}
 
             \subsection{Feedforward Neural Network}
@@ -18,7 +19,7 @@
 
             \subsection{Radial Basis Function Neural Network}
 
-            \par This network is composed of two layers. In the first one features are combined with a radial basis function in the inner layer. The second one is the output, where these features are taken in consideration while computing the same output in the next function.
+            \par This network is composed of two layers. In the first one, features are combined with a radial basis function in the inner layer. The second layer is the output, where these features are taken in consideration while computing the same output in the next function.
             \par A radial basis function means that the distance of a point is considered with respect to the center \cite{ArmaanMerchant2018}.
 
 
@@ -37,7 +38,7 @@
             
             
 
-            \par CNN convolves learned features with input data, and uses 2D convolutional layers which make this architecture one of the best to process 2D data, such as images. They also remove the necessity of manual feature extraction. There is no need to identify features used to classify images since CNNs work by extracting them directly from images. This is important because relevant features are not pretrained, they are learned while the network trains on a dataset \cite{mathworks_deeplearning}.
+            \par CNN convolves learned features with input data, and uses 2D convolutional layers which make this architecture one of the best to process 2D data, such as images. They also remove the necessity of manual feature extraction. There is no need to identify features used to classify images since CNNs work by extracting them directly from images. This is important because relevant features are not pretrained, they are learned while the network trains on a dataset \cite{mathworks_deeplearning}. Figure \ref{fig:cnnn} illustrates the CNN architecture.
 
             \vspace{+2.5cm}
             \begin{figure}[H]
@@ -45,6 +46,7 @@
                 \captionsetup{justification=centering}
                 \includegraphics[width=\textwidth]{Sections/2StateOfTheArt/2_images/conv.png}
                 \caption[CNN architecture]{CNN architecture \cite{Ribeiro}.}  
+                \label{fig:cnnn}
             \end{figure}
 
             \newpage

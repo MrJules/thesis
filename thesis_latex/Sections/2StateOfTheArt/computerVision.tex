@@ -10,7 +10,7 @@ The task of automatically recognizing and locating objects in images and videos 
 
 For this work the purpose of using object detection technologies is to convert images into text in order to allow the computer to compare an image with a moment described in text.
 
-Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer is only capable of learning that the extracted features represent a motorcycle (in the case of the example shown below) after classifying the extracted data, which is done with the usage of deep learning.
+Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer is only capable of learning that the extracted features represent a motorcycle (in the case of the example shown below) after classifying the extracted data, which is done by recurring to deep learning.
 
 
 
@@ -24,7 +24,7 @@ Feature extraction plays an important role in image classification and object de
 \end{figure}
 
 
-\par This chapter starts with fundamental concepts in Section \ref{sec:fundamental}. Section \ref{sec:teach} introduces the important subjects of machine learning, deep learning and neural networks and computer vision. Subsequently, in Section \ref{sec:dataset} a few examples of some of datasets used to train neural networks are presented. Afterwards, Section \ref{sec:libraries_cv} gives a brief introduction of the most common computer vision libraries.  Finally, a state-of-the-art in object detection and image classification can be read in Section \ref{sec:state}.
+\par This chapter starts with fundamental concepts in Section \ref{sec:fundamental}. Section \ref{sec:teach} introduces the important subjects of machine learning, deep learning and neural networks and computer vision. Subsequently, in Section \ref{sec:dataset} a few examples of some of datasets used to train neural networks are presented. Afterwards, Section \ref{sec:libraries_cv} gives a brief introduction of the most common computer vision libraries.  Finally, a state of the art in object detection and image classification can be read in Section \ref{sec:state}.
 
 \newpage
 
@@ -53,8 +53,7 @@ Feature extraction plays an important role in image classification and object de
     \end{itemize}
 
  
-    \par An object is used to identify specific items in an image or a video. It is possible to label multiple objects in an image. An example of objects in an image of a car might be wheels, headlights, etc.
-    \par Usually an object is represented by a group of features in form of a feature vector that is used to recognize objects and classify them \cite{Tiwari2013}.
+    \par An object is used to identify specific items in an image or a video. It is possible to label multiple objects in an image. An example of objects in an image of a car might be wheels, headlights, etc. Usually an object is represented by a group of features in form of a feature vector that is used to recognize objects and classify them \cite{Tiwari2013}.
 
     \par In object detection, small objects are normally the ones that give  worst results and lower performance when being detected. This happens because the information available to detect them is more compressed and hard to decode without some prior knowledge or context \cite{Agarwal2019}.
 
@@ -74,7 +73,7 @@ Feature extraction plays an important role in image classification and object de
     \end{itemize}
     
 
-    \par Object detection is the name given to the process that combines image classification with object localization \cite{ObjectDetection}. As previously explained, image classification is the prediction and assignment of a class label to an image, while object localization is the prediction and drawing of a bounding box around one or more objects in the image. In other words, object detection is the task that deals with the detection of objects of a certain class (e.g "flower","table","plane") in images, making it a natural extension of the classification problem. 
+    \par Object detection is the name given to the process that combines image classification with object localization \cite{ObjectDetection}. As previously explained, image classification is the prediction and assignment of a class label to an image, while object localization is the prediction and drawing of a bounding box around one or more objects in the image. In other words, object detection is the task that deals with the detection of objects of a certain class (e.g \enquote{flower}, \enquote{table}, \enquote{plane}) in images, making it a natural extension of the classification problem. 
 
     \par The object detection task is considered to be a supervised learning problem, since the objective is to design an algorithm which can accurately locate and correctly classify as many instances of objects as possible, in a bounding box, while avoiding false detections in a given set of training images.  As an added challenge, many object detection applications require the problem to be solved in real time, which can be achieved. However, in order for a detector to be faster, accuracy is usually reduced. 
 
@@ -118,7 +117,7 @@ Feature extraction plays an important role in image classification and object de
 
     
    
-    In the given example, the computer is only capable of outputting the objects and labels detected but is incapable of giving them any sort of meaning like a human can. However, recurring to image caption systems might allow the computer to create sentences in order to describe an image.
+    In the given example, the computer is only capable of outputting the objects and labels detected but is incapable of giving them any sort of meaning like a human can. However, recurring to recent image caption systems the computer might achieve some degree of similarity to a human in terms of describing an image.
 
 
 
@@ -146,19 +145,19 @@ Feature extraction plays an important role in image classification and object de
     \par The idea behind an ANN is that it tries to replicate the working of the human brain in the processing of data and creation of patterns, which is important for decision making. These ANNs are capable of learning unsupervised data that can either be unstructured, unlabeled or both. In short, deep learning is a machine learning technique that teaches computers to learn by example, like a human would \cite{mathworks_deeplearning}.
 
 
-    \par Thanks to the new digital era, there has been an exponential increase in all forms of data, from every region of the planet. This data is defined as "big data" and comes from sources like social media, search engines, live streaming services and many others. Even though all of this information is easily accessible, it is unstructured. The problem with unstructured data is that the human brain cannot comprehend it efficiently enough to extract relevant information. However, using deep learning, all of this unstructured data can be usable.
+    \par Thanks to the new digital era, there has been an exponential increase in all forms of data from every region of the planet. This data is defined as \enquote{big data} and comes from sources like social media, search engines, live streaming services and many others. Even though all of this information is easily accessible, it is unstructured. The problem with unstructured data is that the human brain cannot comprehend it efficiently enough to extract relevant information. However, using deep learning, all of this unstructured data can be usable.
 
     \par A computer model learns how to perform classification tasks directly from data, being it text, images or sound. Current deep learning models are able to achieve such levels of accuracy that they can outperform humans.
 
-    \par In deep learning, models are trained with the usage of a large set of labeled data and neural network architectures that contain many layers. This is one of the disadvantages of deep learning, in order to improve the results of an ANN it requires to be trained with large amounts of labeled data. Since deep learning deals with such great volumes of information, this introduces another disadvantage to deep learning, which is the extreme need of higher and higher computing power.
+    \par In deep learning, models are trained with large sets of labeled data and neural network architectures that contain several layers. This is one of the disadvantages of deep learning, in order to improve the results of an ANN it requires to be trained with large amounts of labeled data. Since deep learning deals with such great volumes of information, this introduces another disadvantage to deep learning, which is the extreme need of higher and higher computing power.
 
    
         
-    \par The term "deep" comes from the usage of an extensive quantity of hidden layers in the neural network. A normal neural network usually contains 2-3 hidden layers where as a deep neural network can go up to 150 hidden layers or more.
+    \par The term \enquote{deep} comes from the usage of an extensive quantity of hidden layers in the neural network. A normal neural network usually contains 2-3 hidden layers where as a deep neural network can go up to 150 hidden layers or more.
 
     \par As explained previously, deep learning models are trained by the usage of  large sets of labeled data and neural network architectures that are capable of automatically extracting features from the data, without the need for manual feature extraction. This automated feature extraction makes deep learning models highly accurate and practical for computer vision tasks such as object classification. 
     
-    \par Deep Learning also offers "end-to-end learning", this means that a network can learn how to automatically classify raw data. In addition, deep learning algorithms scale with data, where as machine learning methods bottleneck at a certain level of performance when more examples and training data are added, which gives deep learning networks a key advantage since they improve as the size of the data increases \cite{mathworks_deeplearning}.
+    \par Deep Learning also offers \enquote{end-to-end learning}, this means that a network can learn how to automatically classify raw data. In addition, deep learning algorithms scale with data, where as machine learning methods bottleneck at a certain level of performance when more examples and training data are added, which gives deep learning networks a key advantage since they improve as the size of the data increases \cite{mathworks_deeplearning}.
 
 
     The main purpose of deep learning, for this work, will be to apply it to the images provided by the imageCLEF challenge.
@@ -208,7 +207,7 @@ Feature extraction plays an important role in image classification and object de
      
     \subsection{Learning From Images}
     \par Computer vision is a field of artificial intelligence and computer science that focuses on giving computers a visual understanding of the world \cite{cv} \cite{cv2}. This is done by enabling computers to process and identify objects in a way similar to humans. This processing is done at a pixel level.
-    Thanks to the recent innovations in deep learning and neural networks, computers are able to accurately identify, classify and even react in real time to objects. 
+    Thanks to the recent innovations in deep learning and neural networks, computers are able to accurately identify, classify and even react in real time to objects and their surroundings. 
 
 
 \newpage
@@ -278,7 +277,7 @@ Feature extraction plays an important role in image classification and object de
         \item \textbf{GluonCV}
     \end{itemize}
 
-    GluonCV is a toolkit that offers pre-trained models, performance metrics of the different available models, consistent interface for when switching between the models, regular re-training and continuous integration to ensure code correctness, detailed documentation and well-documented examples. It also supports a range of different applications like : image classification, object detection, semantic segmentation, instance segmentation, pose estimation, video action recognition, depth prediction and a few others.
+    GluonCV is a toolkit that offers pre trained models, performance metrics of the different available models, consistent interface for when switching between the models, regular re-training and continuous integration to ensure code correctness, detailed documentation and well-documented examples. It also supports a range of different applications like : image classification, object detection, semantic segmentation, instance segmentation, pose estimation, video action recognition, depth prediction and a few others.
 
    In short, gluonCV provides implementations of state-of-the-art deep learning algorithms in computer vision. It aims to help engineers, researchers, and students quickly prototype products, validate new ideas and learn computer vision \cite{Guo2019}.
 
@@ -292,7 +291,7 @@ Feature extraction plays an important role in image classification and object de
 \label{sec:state}
 
 \par Image classification and object detection are both subjects that are constantly innovating and improving upon previously results, every month new papers are published with new and more efficient networks. 
-\par In Figures \ref{fig:leaderboard_object} and \ref{fig:leaderboard_image} it is shown  not only the current best methods for both image classification and object detection but also the development of the state-of-the-art throughout the years.
+\par In Figures \ref{fig:leaderboard_object} and \ref{fig:leaderboard_image} it is shown  not only the current best methods for both image classification and object detection but also the development of the state of the art throughout the years.
 
 
 
@@ -316,7 +315,7 @@ Feature extraction plays an important role in image classification and object de
 
 
 
-\par Due to the fact that object detection is a subject of great innovation, there is an extreme amount of papers that try to compete for the best results coming out every few months. So, in order to do a review of the state-of-the-art, the Tables \ref{table:cocotable} and \ref{table:imagenettable} show the benchmarks for both imageNet and COCO test-dev. These tables were obtained from \cite{Ribeiro} and are based on the analysis of \cite{papers_image} and \cite{papers_object} which is a website dedicated to  the current state-of-the-art for object detection and image classification.
+\par Due to the fact that object detection is a subject of great innovation, there is an extreme amount of papers that try to compete for the best results coming out every few months. So, in order to do a review of the state of the art, the Tables \ref{table:cocotable} and \ref{table:imagenettable} show the benchmarks for both imageNet and COCO test-dev. These tables were obtained from \cite{Ribeiro} and are based on the analysis of \cite{papers_image} and \cite{papers_object} which is a website dedicated to  the current state of the art for object detection and image classification.
 
 
 
@@ -404,7 +403,7 @@ Feature extraction plays an important role in image classification and object de
 
 \label{sec:resnext}
 \par ResNeXt, also known as Aggregated Residual Transform Network was created by facebook researchers and it is a simple highly modularized network architecture for image classification. 
-\par The network is constructed by repeating a building block that aggregates a set of transformations with the same topology. The simple design results in a homogeneous, multi-branch architecture that has only a few hyper-parameters to set. This strategy creates a new dimension, which was given the name of "cardinality" (size of the set of transformations). 
+\par The network is constructed by repeating a building block that aggregates a set of transformations with the same topology. The simple design results in a homogeneous, multi-branch architecture that has only a few hyper-parameters to set. This strategy creates a new dimension, which was given the name of \enquote{cardinality} (size of the set of transformations). 
 \par This architecture is an improvement over the Inception architectures, being more simple in design and adding more branches (towers) within modules \cite{Xie2017}.
 
 
@@ -486,7 +485,7 @@ Feature extraction plays an important role in image classification and object de
 
 \par The algorithm was iterated a few times by treating the student as a teacher to relabel the unlabeled data and training a new student.
 
-\par An important discovery was made during the training of the algorithm. For the method to work well at scale the student model should be noised during its training while the teacher should not be noised during the generation of pseudo labels. This way, the pseudo labels are as accurate as possible and the noised student is forced to learn harder from the pseudo labels. To induce noise in the model it was used RandAugment data, dropout and stochastic depth during the training. Figure \ref{fig:noisestudent} shows a brief view of how the method works. This is where the name of the method "Noisy Student"comes from, since the student is noised to learn beyond the teacher's knowledge. With this method they were able to show that it is possible to use unlabeled images to significantly advance both accuracy and robustness of state-of-the-art imageNet models.
+\par An important discovery was made during the training of the algorithm. For the method to work well at scale, the student model should be noised during its training while the teacher should not be noised during the generation of pseudo labels. This way, the pseudo labels are as accurate as possible and the noised student is forced to learn harder from the pseudo labels. To induce noise in the model it was used RandAugment data, dropout and stochastic depth during the training. Figure \ref{fig:noisestudent} shows a brief view of how the method works. This is where the name of the method \enquote{Noisy Student}comes from, since the student is noised to learn beyond the teacher's knowledge. With this method they were able to show that it is possible to use unlabeled images to significantly advance both accuracy and robustness of state-of-the-art imageNet models.
 \par The presented model uses EfficientNet as a backbone trained on images from imageNet dataset and was able to obtain the best results in the ImageNet benchmark dataset by achieving an accuracy of 88.4\%.
 
 
@@ -499,7 +498,7 @@ Feature extraction plays an important role in image classification and object de
     \label{fig:noisestudent}
 \end{figure}
 
-\par Researchers at Google decided to study the impact of scaling up CNNs, in order to achieve better accuracy and efficiency. EfficientNet-B0 was developed based on a simple idea, scaling each of the dimensions of the network (width, depth and resolution) with a constant ratio, improves the overall performance \cite{tan2019efficientnet}.
+\par Researchers at Google decided to study the impact of scaling up CNNs (shown in Figure \ref{fig:cenas}), in order to achieve better accuracy and efficiency. EfficientNet-B0 was developed based on a simple idea, scaling each of the dimensions of the network (width, depth and resolution) with a constant ratio, improves the overall performance \cite{tan2019efficientnet}.
 
 \begin{figure}[h]
     \centering
@@ -507,6 +506,7 @@ Feature extraction plays an important role in image classification and object de
     \includegraphics[width=0.8\textwidth]{Sections/2StateOfTheArt/2_images/efficientNet_scale.png}
     \caption[Comparison of different scaling methods.]{Comparison of different scaling methods:  (a) is a baseline network example; (b)-(d) are conventional scaling that only increases one dimension of network  width, depth, or resolution. (e) is the proposed compound scaling method that uniformly scales all three dimensions with a fixed ratio \cite{tan2019efficientnet}.
     } 
+    \label{fig:cenas}
 
 \end{figure}
 
@@ -527,6 +527,6 @@ Feature extraction plays an important role in image classification and object de
 \section{Final Remarks}
 
 
-The models and algorithms experimented in this thesis were provided trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features \cite{ImageAI}. This library required the pre-installation of TensorFlow, OpenCV and Keras libraries. The Keras library \cite{CholletFrancois2015} is an open-source neural-network library written in Python which is capable of running on top of TensorFlow.
+The models and algorithms experimented in this thesis were provided trough a computer vision python library called imageAI, which allows the ability to easily use state-of-the-art AI features \cite{ImageAI}. This library required the pre-installation of TensorFlow, OpenCV and Keras libraries. The Keras library \cite{CholletFrancois2015} is an open-source neural network library written in Python which is capable of running on top of TensorFlow.
 
-During the development of the automatic retrieval system several of the described algorithms and models in Appendix \ref{ch:appendix} were tested. For image classification the algorithms analysed were DenseNet, InceptionV3, ResNet and SqueezeNet. For object detection the models used were YoloV3, TinyYoloV3, RetinaNet and ResNetXt-101. The testing of all of these models was done in order to find the most suitable model to process the imageCLEF images dataset.
+During the development of the automatic retrieval system, several of the described algorithms and models in Appendix \ref{ch:appendix} were tested. For image classification the algorithms analysed were DenseNet, InceptionV3, ResNet and SqueezeNet. For object detection the models used were YoloV3, TinyYoloV3, RetinaNet and ResNetXt-101. The testing of all of these models was done in order to find the most suitable model to process the imageCLEF images dataset.
