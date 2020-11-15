@@ -6,7 +6,7 @@
 
 As previously discussed, the problem of big data has become more relevant in the recent years.  This problem does not apply only to the ever growing amount of multimedia data created by smartphones but also to the growing presence of information in the form of news, corporate files, medical records, government documents, court hearing and social media. There is an ever increasing flood of information in an unstructured form. Natural Language Processing (NLP) is related to the usage of computation methods to process such data as a mode of communication used by humans.
 
-``There are lot many processes involved in the pipeline of NLP. At the syntactic level, statements are segmented into words, punctuation (i.e.  tokens) and each token is assigned with its label in the form of noun, verb, adjective, adverb and so on (Part of Speech Tagging).  At the semantic level, each word is analyzed to get the meaningful representation of the sentence.  Hence, the basic task of NLP is to process the unstructured text and to produce a representation of its meaning.''  \cite{singh2018natural}.
+``There are lot many processes involved in the pipeline of NLP. At the syntactic level, statements are segmented into words, punctuation (i.e.  tokens) and each token is assigned with a label in the form of noun, verb, adjective, adverb and so on (Part of Speech Tagging).  At the semantic level, each word is analyzed to get the meaningful representation of the sentence.  Hence, the basic task of NLP is to process the unstructured text and to produce a representation of its meaning.''  \cite{singh2018natural}.
 
 
 
@@ -85,7 +85,7 @@ The application areas address topics such as extraction of useful information fr
 
     \par The dominant approach to solve this problem is the usage of word embeddings, which is a type of word representation that allows words with similar meaning to have a similar representation by mapping a set of words, or phrases in a vocabulary, to vectors of numerical values. For example, the word “happy” can be represented as a vector of 4 dimensions [0.24, 0.45, 0.11, 0.49] and “sad” as the following vector [0.88, 0.78, 0.45, 0.91]. The reason for this vectors to exist is so that a machine learning algorithm can perform linear algebra operations on numbers (vectors) instead of words \cite{MuratMustafa}. Word embedding methods learn a real-valued vector representation for a predefined fixed size vocabulary from a corpus  of text \cite{Brownlee2017}. A vector representation of a word may be a one-hot encoded vector where 1 stands for the position where the word exists and 0 everywhere else. 
     
-    \par As an example, the sentence ``Word Embeddings are Word converted into numbers” can be converted to the following dictionary using the one-hot encoded vector representation : [``Word”,``Embeddings”,``are”,``Converted”,``Word”,``into”,``numbers”]. Using this representation the word ``numbers” in the one-hot encoded vector is [0,0,0,0,0,1] and for the word ``converted” is [0,0,0,1,0,0]. This is considered to be the most simple method to represent words in vector forms \cite{Vidhya2017}. Figure \ref{fig:onehott} showcases the given example.
+    \par As an example, the sentence ``Word Embeddings are Word converted into numbers” can be converted to the following dictionary using the one-hot encoded vector representation : [``Word”,``Embeddings”,``are”,``Word,``Converted”,``into”,``numbers”]. Using this representation the word ``numbers” in the one-hot encoded vector is [0,0,0,0,0,1] and for the word ``converted” is [0,0,0,1,0,0]. This is considered to be the most simple method to represent words in vector forms \cite{Vidhya2017}. Figure \ref{fig:onehott} showcases the given example.
     
     
     \begin{figure}[H]
@@ -119,7 +119,7 @@ The application areas address topics such as extraction of useful information fr
 
     \par In this case, the word ``saw” has two different meanings. In the first phrase the word ``saw” refers to the verb ``see” and for the second phrase it refers to the tool ``saw”. However, for static word embedding models, words only have one single meaning and therefore  the word representation for \enquote{saw} would be the same in both cases.
 
-    Dynamic word embeddings models represent ``saw” differently according to the contexts, while static embedding can not distinguish the semantic difference between two ``saws” and represent with the same vector no matter the context \cite{Wang2020} \cite{Batista2018}.
+    Dynamic word embeddings models represent ``saw” differently according to the contexts, while static embedding can not distinguish the semantic difference between two ``saws” and therefore represent ``saw” with the same vector no matter the context \cite{Wang2020} \cite{Batista2018}.
 \newpage
    
         \subsection{Word2Vec}
@@ -129,7 +129,7 @@ The application areas address topics such as extraction of useful information fr
         
 
 
-        In a regular one-hot encoded vector all words have the same distance between each other, even though their meanings are completely different, this creates a lost in information at the encoding.  However, Word2Vec is capable of learning vectors by understanding the context in which words appear. This results in vectors in which words with similar meanings end up with a similar numerical representation in the vectorspace. Figure \ref{fig:one_vs_word2vec} illustrates this situation. For instance, cats and dogs are more similar than fish and sharks. This extra information is useful for machine learning algorithms \cite{word2vec_explained}.	
+        In a regular one-hot encoded vector all words have the same distance between each other, even though their meanings are completely different, this creates a loss in information at the encoding.  However, Word2Vec is capable of learning vectors by understanding the context in which words appear. This results in vectors in which words with similar meanings end up with a similar numerical representation in the vectorspace. Figure \ref{fig:one_vs_word2vec} illustrates this situation. For instance, cats and dogs are more similar than fish and sharks. This extra information is useful for machine learning algorithms \cite{word2vec_explained}.	
 
 
         \begin{figure}[H]

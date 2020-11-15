@@ -10,7 +10,7 @@ The task of automatically recognizing and locating objects in images and videos 
 
 For this work the purpose of using object detection technologies is to convert images into text in order to allow the computer to compare an image with a moment described in text.
 
-Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer is only capable of learning that the extracted features represent a motorcycle (in the case of the example shown below) after classifying the extracted data, which is done by recurring to deep learning.
+Feature extraction plays an important role in image classification and object detection systems which are two core components of computer vision. To put in simple terms, feature extraction is the first step in converting an image into text \cite{Tiwari2013}. Figure \ref{fig:feature_extraction} shows an example of feature extraction. However, the computer can be capable of learning that the extracted features represent a motorcycle (in the case of the example shown below) after classifying the extracted data. One way of achieving this is done by recurring to deep learning.
 
 
 
@@ -41,11 +41,11 @@ Feature extraction plays an important role in image classification and object de
 \end{itemize}
 
     \label{sec:featurespace}
-    \par A feature is considered to be a measurable piece of data in the image which is unique to a specific object, it can be color, texture or shape. Usually this features are extracted from the image and used in order to represent an object. Color is the most straightforward visual feature for indexing and image retrieval, while shape representation is the most difficult. This is because a 3-D real world object is represented in a 2-D plane in an image, which means that one dimension of information is completely lost. Texture features are very important in pattern recognition and is an important cue in region based segmentation of images.
+    \par A feature is considered to be a measurable piece of data in the image which is unique to a specific object, it can be color, texture or shape. Usually these features are extracted from the image and used in order to represent an object. Color is the most straightforward visual feature for indexing and image retrieval, while shape representation is the most difficult. This is because a 3-D real world object is represented in a 2-D plane in an image, which means that one dimension of information is completely lost. Texture features are very important in pattern recognition and is an important cue in region based segmentation of images.
 
     \par The similarity between images can be determined through features which are represented as a vector. 
 
-    \par To sum things up, feature space is a collection of features related to some properties of the object, while a feature is an individual measurable characteristics of the object \cite{Tiwari2013}.
+    \par To sum things up, feature space is a collection of features related to some properties of the object, while a feature is an individual measurable characterstic of the object \cite{Tiwari2013}.
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{itemize}
@@ -75,7 +75,7 @@ Feature extraction plays an important role in image classification and object de
 
     \par Object detection is the name given to the process that combines image classification with object localization \cite{ObjectDetection}. As previously explained, image classification is the prediction and assignment of a class label to an image, while object localization is the prediction and drawing of a bounding box around one or more objects in the image. In other words, object detection is the task that deals with the detection of objects of a certain class (e.g \enquote{flower}, \enquote{table}, \enquote{plane}) in images, making it a natural extension of the classification problem. 
 
-    \par The object detection task is considered to be a supervised learning problem, since the objective is to design an algorithm which can accurately locate and correctly classify as many instances of objects as possible, in a bounding box, while avoiding false detections in a given set of training images.  As an added challenge, many object detection applications require the problem to be solved in real time, which can be achieved. However, in order for a detector to be faster, accuracy is usually reduced. 
+    \par The object detection task is considered to be a supervised learning problem, since the objective is to design an algorithm which can accurately locate and correctly classify as many instances of the target objects as possible, in a bounding box, while avoiding false detections in a given set of training images.  As an added challenge, many object detection applications require the problem to be solved in real time, which can be achieved. However, in order for a detector to be faster, accuracy is usually compromised. 
 
     \par Finally, object segmentation is the task of grouping pixels from the same object into a single region and object recognition is usually defined as giving the name of the category of an object that is contained in an image or a bounding box, assuming there is only one object in the image. For some authors object recognition can also involve detecting all objects in an image \cite{Agarwal2019}.
 
@@ -92,7 +92,7 @@ Feature extraction plays an important role in image classification and object de
     
 
 
-    \par As an example, Figure \ref{fig:picnic} shows an image of a family having a picnic. Feeding this image to a computer will output very different results from what a human would say.
+    \par As an example, Figure \ref{fig:picnic} shows an image of a family having a picnic. Feeding this image to a computer can output very different results from what a human would say. However, this is highly depedent of the algortihms used and their respective purpose that was taken into account during their design.
 
     \begin{figure}[H]
         \centering
@@ -142,12 +142,12 @@ Feature extraction plays an important role in image classification and object de
 
     \par Deep Learning is a subset of Machine Learning that is inspired by the structure and function of the human brain. In order to achieve this, deep learning resorts to artificial neural networks (ANNs).
     
-    \par The idea behind an ANN is that it tries to replicate the working of the human brain in the processing of data and creation of patterns, which is important for decision making. These ANNs are capable of learning unsupervised data that can either be unstructured, unlabeled or both. In short, deep learning is a machine learning technique that teaches computers to learn by example, like a human would \cite{mathworks_deeplearning}.
+    \par The idea behind an ANN is that it tries to replicate the working of the human brain in the processing of data and creation of patterns, which is important for decision making. These ANNs are capable of learning unsupervised data that can either be unstructured, unlabeled or both. In short, deep learning is a machine learning technique that teaches computers to learn by example, like a human would \cite{mathworks_deeplearning}. This is also true for supervised machine learning.
 
 
     \par Thanks to the new digital era, there has been an exponential increase in all forms of data from every region of the planet. This data is defined as \enquote{big data} and comes from sources like social media, search engines, live streaming services and many others. Even though all of this information is easily accessible, it is unstructured. The problem with unstructured data is that the human brain cannot comprehend it efficiently enough to extract relevant information. However, using deep learning, all of this unstructured data can be usable.
 
-    \par A computer model learns how to perform classification tasks directly from data, being it text, images or sound. Current deep learning models are able to achieve such levels of accuracy that they can outperform humans.
+    \par A computer model learns how to perform classification tasks directly from data, being it text, images or sound. Current deep learning models are able to achieve such levels of accuracy that they can outperform humans in specific and very controlled tasks.
 
     \par In deep learning, models are trained with large sets of labeled data and neural network architectures that contain several layers. This is one of the disadvantages of deep learning, in order to improve the results of an ANN it requires to be trained with large amounts of labeled data. Since deep learning deals with such great volumes of information, this introduces another disadvantage to deep learning, which is the extreme need of higher and higher computing power.
 
@@ -166,10 +166,10 @@ Feature extraction plays an important role in image classification and object de
 \subsection{Neural Networks}
 \label{sec:neuralnet}
 
-    \par A neural network can be considered a computer program that operates identically to how a human brain would, in the sense that it is able to be teachable to do certain tasks like problem-solving. The appeal of a neural network is the ability to emulate the human brain in pattern recognition skills. 
+    \par A neural network can be considered a computer program that operates identically to how a human brain would, in the sense that it is able to be taught to do certain tasks like problem-solving. The appeal of a neural network is the ability to emulate the human brain in pattern recognition skills. 
 
 
-    \par Neural networks are composed of many small cells called neurons. These neurons are grouped into several layers that form columns. The connection between columns are formed also through their neurons. Each neuron of each layer is connected to another neuron of another layer. A visual representation of a generic neural network architecture is shown in Figure \ref{fig:neural}. For further readings on neural network architectures Appendix \ref{ch:appendix} describes most of the common architectures.
+    \par Neural networks are composed of many small cells called neurons. These neurons are grouped into several layers that form columns. The connection between columns are formed also through their neurons. Each neuron of each layer is connected to every neuron of the next layer. A visual representation of a generic neural network architecture is shown in Figure \ref{fig:neural}. For further readings on neural network architectures Appendix \ref{ch:appendix} describes most of the common architectures.
 
 
     \begin{figure}[htb]
@@ -180,7 +180,7 @@ Feature extraction plays an important role in image classification and object de
     \end{figure}
         
     
-    \par The connections between layers are called weighted connections and they are adjusted with a real-valued number attached to them. This number is important, each neuron takes the value of the attached neuron (in their layer) and multiplies it by their connection weight. The bias value is an additional parameter in the neural network which is used to adjust the output along with weighted sum of the inputs to the neuron. The sum of the bias value with the weights  is put through an activation function which mathematically transforms the value and assigns it to the connected neuron in the adjacent layer. This is propagated through the whole network.  See Figure \ref{fig:neuron} for a clear representation of this process.
+    \par The connections between layers are called weighted connections and they are adjusted with a real-valued number attached to them. This number is important, each neuron takes the output value of the attached neuron (in their layer) and multiplies it by their connection weight. The bias value is an additional parameter in the neural network which is used to adjust the output along with weighted sum of the inputs to the neuron. The sum of the bias value with the weights  is put through an activation function which mathematically transforms the value and assigns it to the connected neuron in the adjacent layer. This is propagated through the whole network.  See Figure \ref{fig:neuron} for a clear representation of this process.
     
 
     
@@ -217,7 +217,7 @@ Feature extraction plays an important role in image classification and object de
 
     \label{sec:dataset}
 
-    \par A common objects dataset is a collection of images and videos that contain every day life objects that are manually labeled.  State-of-the-art object detection models require deep neural networks. Training datasets are used in order to train these neural networks, as as previously explained. 
+    \par A common objects dataset is a collection of images and videos that contain every day life objects that are manually labeled.  State-of-the-art object detection models require deep neural networks. Training datasets are used in order to train these neural networks, as previously explained. 
     
 
     \par A few examples of some available datasets are:  MS COCO \cite{Lin2014}, ImageNet \cite{Takamitsu1978} , VisualGenome \cite{Language2015}, OpenImages \cite{Kuznetsova2018} and Pascal-VOC \cite{Everingham2010}.
@@ -252,7 +252,6 @@ Feature extraction plays an important role in image classification and object de
 
     Tensorflow is currently the most popular open source framework for numerical computation and large-scale machine learning introduced by google and was originally created for tasks with heavy numerical computations \cite{Abadi} \cite{Dignam1983}.
     
-    Tensorflow is written in c++ which enables extremely fast compile times, non the less, it can still be accessed by other languages, such as Python and also supports CPUs, GPUs and distributed processing. \par
     
 
     The name given to tensorflow comes from the inputs, since it receives inputs as a multi-dimensional array, also known as tensors. The input (tensor) goes on one end and then it “flows” throughout a system of operations and comes out on the other end as output. \par 
@@ -264,7 +263,7 @@ Feature extraction plays an important role in image classification and object de
         \item \textbf{VLFeat}
     \end{itemize}
 
-    The VLFeat open source library implements popular computer vision algorithms specializing in image understanding and local features extraction and matching. Algorithms include Fisher Vector, VLAD, SIFT, MSER, k-means, hierarchical k-means, agglomerative information bottleneck, SLIC superpixels, quick shift superpixels, large scale SVM training, and many others. It is written in C for efficiency and compatibility, with interfaces in MATLAB for ease of use, and detailed documentation throughout. It supports Windows, Mac OS X, and Linux \cite{vedaldi08vlfeat}.
+    The VLFeat open source library implements popular computer vision algorithms specializing in image understanding and local features extraction and matching. Algorithms include Fisher Vector, VLAD, SIFT, MSER, k-means, hierarchical k-means, agglomerative information bottleneck, SLIC superpixels, quick shift superpixels, large scale SVM training, and many others. It offers interfaces in MATLAB for ease of use, and detailed documentation throughout. It supports Windows, Mac OS X, and Linux \cite{vedaldi08vlfeat}.
 
     \begin{itemize}
         \item \textbf{BoofCV}
@@ -290,7 +289,7 @@ Feature extraction plays an important role in image classification and object de
 \section{Recent Innovations and Improvements}
 \label{sec:state}
 
-\par Image classification and object detection are both subjects that are constantly innovating and improving upon previously results, every month new papers are published with new and more efficient networks. 
+\par Image classification and object detection are both subjects that are constantly innovating and improving upon previous results, every month new papers are published with new and more efficient networks. 
 \par In Figures \ref{fig:leaderboard_object} and \ref{fig:leaderboard_image} it is shown  not only the current best methods for both image classification and object detection but also the development of the state of the art throughout the years.
 
 
@@ -473,7 +472,7 @@ Feature extraction plays an important role in image classification and object de
 
 
 
-\par Xie et al. \cite{Xie2019} stated that current state-of-the-art vision models are still trained with supervised learning, which implies the necessity of large corpus of labeled images in order to work properly. The fact that current models are only shown labeled images causes an obvious limitations in the improvement of accuracy and robustness of current state-of-the-art models, this can be improved with the usage of the large available quantities of unlabeled images available.
+\par Xie et al. \cite{Xie2019} stated that current state-of-the-art vision models are still trained with supervised learning, which implies the necessity of large corpus of labeled images in order to work properly. The fact that current models are only shown labeled images causes an obvious limitations in the improvement of accuracy and robustness of current state-of-the-art models, this can be improved with the usage of large quantities of unlabeled images that are available.
 \par Having this in mind, they decided to use unlabeled images to improve the state-of-the-art ImageNet accuracy and show that accuracy has an outsized impact on robustness. For this purpose, they used a much larger corpus of unlabeled images, where a large fraction of images did not belong to ImageNet training set distribution.
 \par Using a self-training framework the model was trained with 3 main steps which consist in:
 
@@ -483,9 +482,9 @@ Feature extraction plays an important role in image classification and object de
     \item Train a student model on the combination of labeled images.
 \end{enumerate}
 
-\par The algorithm was iterated a few times by treating the student as a teacher to relabel the unlabeled data and training a new student.
+\par The algorithm was iterated a few times by treating the student as a teacher to relabel the unlabeled data and train a new student.
 
-\par An important discovery was made during the training of the algorithm. For the method to work well at scale, the student model should be noised during its training while the teacher should not be noised during the generation of pseudo labels. This way, the pseudo labels are as accurate as possible and the noised student is forced to learn harder from the pseudo labels. To induce noise in the model it was used RandAugment data, dropout and stochastic depth during the training. Figure \ref{fig:noisestudent} shows a brief view of how the method works. This is where the name of the method \enquote{Noisy Student}comes from, since the student is noised to learn beyond the teacher's knowledge. With this method they were able to show that it is possible to use unlabeled images to significantly advance both accuracy and robustness of state-of-the-art imageNet models.
+\par An important discovery was made during the training of the algorithm. For the method to work well at scale, the student model should be noised during its training while the teacher should not be noised during the generation of pseudo labels. This way, the pseudo labels are as accurate as possible and the noised student is forced to learn harder from the pseudo labels. To induce noise in the model it was used RandAugment data, dropout and stochastic depth during the training. Figure \ref{fig:noisestudent} shows a brief view of how the method works. This is where the name of the method \enquote{Noisy Student} comes from, since the student is noised to learn beyond the teacher's knowledge. With this method they were able to show that it is possible to use unlabeled images to significantly advance both accuracy and robustness of state-of-the-art imageNet models.
 \par The presented model uses EfficientNet as a backbone trained on images from imageNet dataset and was able to obtain the best results in the ImageNet benchmark dataset by achieving an accuracy of 88.4\%.
 
 

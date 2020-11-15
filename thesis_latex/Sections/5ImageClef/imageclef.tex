@@ -10,7 +10,7 @@ This chapter aims at describing the ImageCLEF Lifelog challenge. Firstly in Sect
 \section{The ImageCLEF challenge}
 \label{sec:introduct}
 
-The ImageCLEF challenge is a large–scale evaluation campaign that aims at evaluating cross-language image retrieval systems. It is organized as part of the CLEF Initiative (Conference and Labs of the Evaluation Forum, formerly known as Cross-Language Evaluation Forum) and launched in  2003. Initially proposed by Mark Sanderson and Paul Clough from the Department of Information Studies from the University of Sheffiel with the goal of providing support for the evaluation of 1) language-independent methods for the automatic annotation of images with concepts, 2) multimodal information retrieval methods based on the combination of visual and textual features, and 3) multilingual image retrieval methods, so as to compare the effect of retrieval of image annotations and query formulations in several languages.
+The ImageCLEF challenge is a large–scale evaluation campaign that aims at evaluating cross-language image retrieval systems. It is organized as part of the CLEF Initiative (Conference and Labs of the Evaluation Forum, formerly known as Cross-Language Evaluation Forum) and launched in  2003. Initially proposed by Mark Sanderson and Paul Clough from the Department of Information Studies from the University of Sheffield with the goal of providing support for the evaluation of 1) language-independent methods for the automatic annotation of images with concepts, 2) multimodal information retrieval methods based on the combination of visual and textual features, and 3) multilingual image retrieval methods, so as to compare the effect of retrieval of image annotations and query formulations in several languages.
 
 
 Every year an evaluation cycle campaign occurs that consist in workshops where teams can compete to achieve the best possible results while discussing new techniques and ideas. In addition to offering the evaluation platform, ImageCLEF also provides several publicly resources, such as benchmarks to evaluate retrieval systems. These benchmarks have helped researchers develop new approaches to visual information retrieval and automatic annotation by enabling the performance of various approaches to be assessed.
@@ -53,7 +53,7 @@ One of the greatest challenges of lifelog applications is the large amount of li
 
 The ImageCLEFlifelog 2020 task is divided into two different sub-tasks: the Lifelog moment retrieval (LMRT) and Sport Performance Lifelog (SPLL) sub-task. In this work, as in the previous year’s challenge, it was only addressed the LMRT sub-task, as a continuous research work that is intended to be developed with the aim of giving a contribution to real problems that exist around the world that can benefit from this technology.
     
-The UA.PT Bioinformatics, a team from the Institute of Electronics Engineering and Telematics in the University of Aveiro, participated in the LMRT subtask with two different retrieval systems. The first one is the automatic retrieval system which was a continuation of the work done in the previous year challenge \cite{Ribeiro2019} and the main objective of this thesis. The other one was a retrieval system capable of providing user interaction and visualization. 
+The UA.PT Bioinformatics, a team from the Institute of Electronics Engineering and Telematics in the University of Aveiro, participated in the LMRT subtask with two different retrieval systems. The first one is an automatic retrieval system which was a continuation of the work done in the previous year challenge \cite{Ribeiro2019} and the main objective of this thesis. The second system, not developed in this thesis, was a retrieval system capable of providing user interaction and visualization. 
 
 The interactive retrieval system is only interesting for this work in terms of comparing the achieved results, therefore this document will only give a small description of this system in Chapter \ref{ch:results} Section \ref{sec:overall_perfomance}. More details are presented in \cite{Ribeiro2020}.
 
@@ -61,7 +61,7 @@ The interactive retrieval system is only interesting for this work in terms of c
     In the LMRT subtask, the main objective is to create a system capable of retrieving a number of predefined moments in a lifelogger’s day-to-day life from a set of images. Moments can be defined as semantic events or activities that happen at any given time during the day. For example, given the query “Find the moment(s) when the lifelogger was having an icecream on the beach” the participants should return the corresponding relevant images that show the moments of the lifelogger having icecream at the beach. Like last year, particular attention should be paid to the diversification of the selected moments with respect to the target scenario.
 
     ImageCLEFlifelog dataset is a rich multimodal dataset which consists of 4.5 months of data from three lifeloggers, namely: images (1,500-2,500 per day), visual concepts (automatically extracted visual concepts with varying rates of accuracy), semantic content (locations and activities) based on sensor readings on mobile devices (via the Moves App), biometrics information (heart rate, galvanic skin response, calories burn, steps, continual blood glucose, etc.), music listening history and computer usage. 
-    Except for the images, all of the data was provided in a csv file. An excerpt of this file is presented in Figure \ref{fig:dataset_csv} and examples of images from the dataset are showcased in Figure \ref{fig:dataset_image}.
+    Except for the images, all of the data was provided in a csv file. An excerpt of this file is presented in Figure \ref{fig:dataset_csv} and examples of images from the dataset are showcased in Figure \ref{fig:dataset_image}. The total dataset was composed of nearly 200.000 images.
 
     \begin{figure}[htb]
         
@@ -98,7 +98,7 @@ The interactive retrieval system is only interesting for this work in terms of c
     In this work only the images, the respective semantic content and time were used \cite{Ribeiro2020}. This decision is mainly justified by the fact that much of the provided data like the biometric information, computer usage and music history gives no useful information for the retrieval of images. The visual concepts provided were also not utilized since the system created in this work uses its own algorithms in order to extract more accurate labels from the images. 
     
 
-    Initially, the dev topics are firstly released along with the images dataset and the corresponding ground truth. This means that it is possible to initially create a retrieval system and analyse if it is producing good results, since thanks to the ground truth it is known which pictures should be retrieved for each textual topic. 
+    Initially, the dev topics are first released along with the images dataset and the corresponding ground truth. This means that it is possible to initially create a retrieval system and analyse if it is producing good results, since thanks to the ground truth it is known which pictures should be retrieved for each textual topic. 
 
     After a few weeks the test topics for evaluation are released without the ground truth, the participants who achieve the best results are the ones who have the highest F1-measure at the top 10 images score. This is further discussed in Section \ref{sec:eval}.
     \newpage
@@ -163,7 +163,7 @@ The interactive retrieval system is only interesting for this work in terms of c
 
     \subsection{Test Topic example}
 
-    An example of one of test topics used for evaluation in the challenge the test topic 7 is presented next:
+    As an example of one of test topics used for evaluation in the challenge, test topic 7 is presented next:
 
         \begin{itemize}
 
@@ -260,4 +260,6 @@ The interactive retrieval system is only interesting for this work in terms of c
         \label{fig:good}
         \end{figure}
      
-    It is clear that the pictures shown in Figure \ref{fig:bad} should not belong in the ground truth of the dev topic 4 since none of them are representative of an interview going on. The first picture shows the user on the phone, the second shows two people talking and the last picture is just a door. Finally, the images presented in Figure \ref{fig:good} should belong to the moment described in the dev topic 4 since all of them show a camera pointed at the user, however they are not.  This situation is important to have in account since the system can be retrieving images that should belong to the topic but the evaluation process just considers them wrong for not being in the ground truth. In short, this can have an impact not only in the dev topics but also in the test topics evaluation, since the ground truth is incomplete and does not present all the possible images related to a moment.
+    It is clear that the pictures shown in Figure \ref{fig:bad} should not belong in the ground truth of the dev topic 4 since none of them are representative of an interview going on. The first picture shows the user on the phone, the second shows two people talking and the last picture is just a door. One possible reason for this to ocurr is that pictures are part of a recording event, pictures before these and after these are related to the moment described, and since these pictures are close in the time frame, the ground truth consideres them correct.However there should have been some manual avaluation in order to remove this picture from the ground truth.
+    
+    Finally, the images presented in Figure \ref{fig:good} should belong to the moment described in the dev topic 4 since all of them show a camera pointed at the user, however they are not.  This situation is important to have in account since the system can be retrieving images that should belong to the topic but the evaluation process just considers them wrong for not being in the ground truth. In short, this can have an impact not only in the dev topics but also in the test topics evaluation, since the ground truth is incomplete and does not present all the possible images related to a moment.

@@ -13,7 +13,10 @@ Initially in Section \ref{sec:diagram} the system workflow architecture is illus
 
 \section{System Workflow Architecture Diagram}
 \label{sec:diagram}
-In the diagram presented in Figure \ref{fig:system_architecture} it is possible to see that the system starts by firstly processing all images from the dataset provided by the imageCLEF challenge with scene and object recognition algorithms. During the process the labels are categorized according pre-defined categories.
+
+The diagram presented in Figure \ref{fig:system_architecture} represents the automatic system architecture which is a majorly contribution of this thesis.
+
+It is possible to see that the system starts by firstly processing all images from the dataset provided by the imageCLEF challenge with scene and object recognition algorithms. During the process the labels are categorized according pre-defined categories.
 
 Subsequently, text is processed using an NLP model that extracts linguistic annotations from textual sources.  With the implementation of syntax and semantic rules alongside with the provided linguistic annotations, relevant words are extracted and categorized in pre-defined categories. 
 
@@ -405,7 +408,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
 
     As for the word clouds generated, it is possible to notice that in the YOLOv3 cloud and the RetinaNet cloud (shown in Figure \ref{fig:wordcloudss} a) and b) respectively) there are many more words than in the TinyYOLOv3 cloud (shown in Figure \ref{fig:wordcloudss} c)). Again, TinyYOLOv3 is severely under performing when compared to the other 2 models. Looking at the YOLOv3 model word cloud its possible to notice some consistency because most of the words have the same size. In the RetinaNet word cloud there are many words of different sizes, this can occur because RetinaNet wrongly detects 1 or 2 object like \enquote{pizza}, \enquote{donut} and \enquote{person} in some of the images.  In addition, it is also possible to analyse that much of the extracted labels for all of the models were the exact same, this happens because all of them were trained using the same dataset, as previously explained. Using a different model of YOLOv3 trained with other dataset would probably provide a word cloud with different labels.
 
-    These test runs allow for the conclusion that the YOLOv3 model is the better performing one and therefore it was the one chosen to do object detections for the automatic image retrieval system.
+    These test runs allow for the conclusion that the YOLOv3 model is the better performing one and therefore it was the one chosen to do object detections for the automatic image retrieval system. However, it is important to note that due to time constraints this kind of model selection and analysis only serves as a good proxy in order to have an idea of which model might be the best. 
 
     \begin{figure}[H]
       \centering
@@ -434,7 +437,7 @@ From the 3 examples that were shown, it is clear that the inceptionV3 algorithm 
 \section{Example of a Raw Retrieval System}
 \label{sec:alpha_retrieval}
 
-As a first step in building a fully automatic retrieval system an \enquote{raw retrieval system} was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses \enquote{cup} and \enquote{40\%}, objects that are not \enquote{cup} or that are \enquote{cup} but below the threshold of 40\% wont be retrieved. 
+As a first step in building a fully automatic retrieval system a \enquote{raw retrieval system} was created without any text processing and very raw on the way it worked. Simply put, a user just needs to write a label, according to one of the words available for detection, and the system will scan all the images that are inside a directory and return the images that have detections of that specific user inputted label. The user is also able to input the minimum percentage probability for the detections, therefore, if the user chooses \enquote{cup} and \enquote{40\%}, objects that are not \enquote{cup} or that are \enquote{cup} but below the threshold of 40\% wont be retrieved. 
 
 Figure \ref{fig:raw} illustrates the \enquote{raw retrieval system} user interface and Figure \ref{fig:raw_results} presents the retrieved images for the given example.
 
@@ -591,7 +594,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
     \end{itemize}
 
   \subsection{Implemented Syntax Rules}
-  The syntax rules were created from a continuous work from last year \cite{Ribeiro2019}. However, this year many more rules were implemented and more categories for word categorization were created like the negatives category. Something very important to note is that the syntax from the dev topics and test topics is very specific and very similar, therefore some syntax rules that were created probably wouldn't work so well for other kinds of documents with different syntaxes.
+  The syntax rules were created from a continuous work from last year \cite{Ribeiro2019}. However, this year many more rules were implemented and more categories for word categorization were created like the negatives category. This is also one of the majorly contribution of this thesis. Something very important to note is that the syntax from the dev topics and test topics is very specific and very similar, therefore some syntax rules that were created probably wouldn't work so well for other kinds of documents with different syntaxes.
 
   An excerpt of few of the most simple syntax rules that were applied to the extraction and categorization of the textual data are presented next:
   
@@ -678,13 +681,14 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
 
     The SpaCy model allows the computer to calculate the similarity between the visual concepts and the extracted data. As an example of similarity between words using the described model, the word \enquote{television} and \enquote{seafood} have a similarity of approximately 0.07 (7\%) while \enquote{television} and \enquote{screen} have a similarity of approximately 0.43 (43\%).
     
+    The computation of this value is also one of the most important contributions of this thesis.
       
     Using Figures \ref{fig:image_fully_processed} and \ref{fig:image_fully_processed_resnext} to illustrate the different categories, the calculation of the similarity scores is done trough the comparison of the extracted words and the visual concepts:
     \begin{enumerate}
         \itemsep0em
         \item The visual category \enquote{concepts} is compared to the textual category \enquote{relevant things} and \enquote{negative relevant things};
-        \item The visual category \enquote{activity} is compared to the textual category 
-        \item The visual category \enquote{location} is compared to the textual category \enquote{locations} and \enquote{negative locations};;
+        \item The visual category \enquote{activity} is compared to the textual category \enquote{activities} and \enquote{negative activities};
+        \item The visual category \enquote{location} is compared to the textual category \enquote{locations} and \enquote{negative locations};
         \item Depending if the textual category \enquote{inside} = \enquote{True} / \enquote{False} the visual category \enquote{io\_score} value will have different impact on the confidence score.
     \end{enumerate}
 
@@ -729,7 +733,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
     \item Weight \enquote{Relevant Things} = 0.4 + 0.4*0.25 = 0.5 (50\%);
     \item Weight \enquote{Activities} = 0;
     \item Weight \enquote{Inside/Outside} category = 0.3 + 0.3*0.25 = 0.375 (37.5\%);
-    \item Weight \enquote{Location} =  0.1 + 0.1*0.025 = 0.125 (12.5\%);
+    \item Weight \enquote{Location} =  0.1 + 0.1*0.25 = 0.125 (12.5\%);
     \item Sum of all weights = 1.
    \end{enumerate}
 
@@ -744,7 +748,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
       \item \textbf{Confidence Score Computation}
     \end{itemize}
 
-    The confidence score is a value that also ranges from 0 to 1 (0\% to 100\%) and is the final value that gives the verdict on how an image relates to a given moment. A score of 20\% means that the image is not related while a higher score of 80\% means that an image probably relates to the moment. 
+    The confidence score is a value that also ranges from 0 to 1 (0\% to 100\%) and is the final value that gives the verdict on how an image relates to a given moment. A score of 20\% means that the image is not related while a higher score of 80\% means that an image probably relates to the moment. This calculation is therefore also one of the most important contributions of this thesis.
 
     The computation of the confidence score is also influenced by the score of the image concepts obtained trough the image processing phase. This means that an image with low prediction score (from the image processing stage) will have a lower confidence score. 
 
@@ -806,7 +810,7 @@ Using Figure \ref{fig:spacy_labels} to illustrate, the extracted words for the t
 
     The first run that was submitted for the imageclef LMRT subtask used a combination of ResNeXt-101 and Feature Pyramid Network architectures in a basic Faster Region-based Convolutional Network (Faster R-CNN) pretrained on the COCO dataset for the extraction of visual concepts.
 
-    In this run all of the importance weight factors for all categories were the same. This means that each category counts the same for the computation of the confidence score. No category is more or less important. When a category is empty, their respective importance factor is equally apportionated to all other categories but never to the negative categories. If a negative category importance factor is negative, their factor is apportionated to the other negative categories. And if a positive category is empty, their factor is apportionated to the positive categories.
+    In this run all of the importance weight factors for all categories were the same. This means that each category counts the same for the computation of the confidence score. No category is more or less important. When a category is empty, their respective importance factor is equally apportionated to all other categories but never to the negative categories. If a negative category is empty, the respective importance factor is apportionated to the other negative categories. And if a positive category is empty, their factor is apportionated to the positive categories.
 
     Another aspect of Run 1 is that the negative categories can only impact the confidence score up to 50\% in the image confidence score.
     

@@ -59,7 +59,7 @@ After computing all confidence scores for every image and every topic, the syste
 \subsection{Topic 9 Performance Analysis}
 \label{sec:analysis}
 
-In order to critical analyse the retrieved images from both runs it is important to understand the moment described in topic 9, which is presented next:\\
+In order to critically analyse the retrieved images from both runs it is important to understand the moment described in topic 9, which is presented next:\\
 
 
 
@@ -196,7 +196,7 @@ Some possible reasons that lead run 1 to achieve better performance than run 2 a
         \includegraphics[width=\textwidth]{Sections/7Results/images/run2top10.jpg}\hfill
         \caption{Top 10}
       \end{subfigure}
-    \caption{Top 3 retrieved pictures for topic 9 on run 2}
+    \caption{Top 10 retrieved pictures for topic 9 on run 2}
     \label{fig:run2}
   \end{figure}
 
@@ -267,7 +267,7 @@ Comparing the Table \ref{table:2019} that shows the results of the year 2019 and
 
 The tables shown make a strong argument that for the ImageCLEF LMRT sub-task an interactive approach is a much better suited method, the user visualization and interaction with the application allows for much more accurate results since the user can manually choose the picture that he thinks is correct for the corresponding moment.
 
-Another important aspect to notice is that the results of the automatic approach this year achieved the same exact F1-measure@10 score, this is highly due to the fact that even when using different state-of-the-art object detection algorithms, different weights for each category and even using negative categories on one run and not on the other, much of the data used for both runs was provided by the organizers which is a highly faulty and inaccurate.
+Another important aspect to notice is that the results of the automatic approach this year achieved the same exact F1-measure@10 score, this is highly due to the fact that even when using different state-of-the-art object detection algorithms, different weights for each category and even using negative categories on one run and not on the other, much of the data used for both runs was provided by the organizers which is a highly faulty and inaccurate. Furthemore, both models used for object detection were trained in the COCO dataset, and therefore extract the same kind of labels from images.
 
 
 
